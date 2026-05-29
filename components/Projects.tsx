@@ -64,22 +64,23 @@ export default function Projects() {
   return (
     <section
       id="projects"
+      className="projects-section"
       style={{
-        padding: "100px 32px",
         position: "relative",
         zIndex: 1,
       }}
     >
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <SectionHeader
           tag="02. Projects"
           title="Things I've Built"
           sub="A collection of projects from research, development, and personal exploration."
         />
 
-        <div style={{ display: "flex", gap: 8, marginBottom: 36, flexWrap: "wrap" }}>
+        <div className="project-filter-row">
           {filters.map((item) => (
             <button
+              className="project-filter-button"
               key={item}
               onClick={() => setFilter(item)}
               style={{
@@ -89,7 +90,7 @@ export default function Projects() {
                 borderColor: filter === item ? "#378add" : "rgba(55,138,221,0.2)",
                 background: filter === item ? "rgba(55,138,221,0.12)" : "transparent",
                 color: filter === item ? "#378add" : "rgba(200,220,255,0.5)",
-                fontSize: 13,
+                fontSize: 15,
                 cursor: "pointer",
                 transition: "all 0.2s",
               }}
@@ -99,18 +100,51 @@ export default function Projects() {
           ))}
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: 20,
-          }}
-        >
+        <div className="project-grid">
           {shown.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}
         </div>
       </div>
+
+      <style>{`
+        .projects-section {
+          padding: 100px 32px;
+        }
+        .project-filter-row {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 36px;
+          flex-wrap: wrap;
+        }
+        .project-filter-button {
+          flex: 0 0 auto;
+        }
+        .project-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+          gap: 20px;
+        }
+        @media (max-width: 640px) {
+          .projects-section {
+            padding: 64px 16px;
+          }
+          .project-filter-row {
+            margin-bottom: 28px;
+          }
+          .project-filter-button {
+            flex: 1 1 calc(50% - 8px);
+          }
+          .project-grid {
+            gap: 14px;
+          }
+        }
+        @media (max-width: 820px) and (min-width: 641px) {
+          .projects-section {
+            padding: 80px 24px;
+          }
+        }
+      `}</style>
     </section>
   );
 }
@@ -120,6 +154,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 
   return (
     <div
+      className="project-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -134,13 +169,15 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         display: "flex",
         flexDirection: "column",
         gap: 14,
+        minWidth: 0,
+        overflow: "hidden",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-        <div>
+      <div className="project-card-head">
+        <div className="project-card-title-wrap">
           <span
             style={{
-              fontSize: 10,
+              fontSize: 12,
               padding: "3px 9px",
               borderRadius: 4,
               background: "rgba(55,138,221,0.1)",
@@ -154,19 +191,22 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
             {project.type}
           </span>
           <h3
+            className="project-card-title"
             style={{
-              fontSize: 16,
+              fontSize: 19,
               fontWeight: 600,
               color: "#e8f4ff",
               margin: 0,
+              overflowWrap: "anywhere",
             }}
           >
             {project.title}
           </h3>
         </div>
         <span
+          className="project-card-status"
           style={{
-            fontSize: 10,
+            fontSize: 12,
             padding: "3px 9px",
             borderRadius: 100,
             background:
@@ -188,7 +228,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         </span>
       </div>
 
-      <p style={{ fontSize: 13, color: "rgba(200,220,255,0.6)", lineHeight: 1.65, margin: 0 }}>
+      <p style={{ fontSize: 15, color: "rgba(200,220,255,0.6)", lineHeight: 1.65, margin: 0 }}>
         {project.desc}
       </p>
 
@@ -197,7 +237,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
           <span
             key={tag}
             style={{
-              fontSize: 11,
+              fontSize: 13,
               padding: "3px 9px",
               borderRadius: 4,
               background: "rgba(255,255,255,0.05)",
@@ -218,7 +258,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
           display: "inline-flex",
           alignItems: "center",
           gap: 6,
-          fontSize: 12,
+          fontSize: 14,
           color: "#378add",
           textDecoration: "none",
           marginTop: "auto",
@@ -226,6 +266,39 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
       >
         View on GitHub -{">"}
       </a>
+
+      <style>{`
+        .project-card-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 12px;
+          min-width: 0;
+        }
+        .project-card-title-wrap {
+          min-width: 0;
+        }
+        @media (max-width: 640px) {
+          .project-card {
+            padding: 18px 16px !important;
+            gap: 12px !important;
+          }
+          .project-card-head {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+          }
+          .project-card-title {
+            font-size: 17px !important;
+          }
+          .project-card-status {
+            align-self: flex-start;
+            max-width: 100%;
+            white-space: normal !important;
+            overflow-wrap: anywhere;
+          }
+        }
+      `}</style>
     </div>
   );
 }
@@ -243,10 +316,10 @@ function SectionHeader({
     <div style={{ marginBottom: 48 }}>
       <p
         style={{
-          fontSize: 12,
+          fontSize: 14,
           color: "#378add",
           fontFamily: "'Courier New', monospace",
-          marginBottom: 8,
+          margin: "0 0 8px",
           letterSpacing: "0.05em",
         }}
       >
@@ -254,7 +327,7 @@ function SectionHeader({
       </p>
       <h2
         style={{
-          fontSize: "clamp(28px, 4vw, 40px)",
+          fontSize: "clamp(32px, 4vw, 44px)",
           fontWeight: 700,
           color: "#e8f4ff",
           margin: "0 0 12px",
@@ -262,7 +335,7 @@ function SectionHeader({
       >
         {title}
       </h2>
-      <p style={{ fontSize: 15, color: "rgba(200,220,255,0.55)", maxWidth: 500 }}>{sub}</p>
+      <p style={{ fontSize: 17, color: "rgba(200,220,255,0.55)", maxWidth: 500, margin: 0 }}>{sub}</p>
     </div>
   );
 }

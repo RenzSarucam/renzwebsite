@@ -17,8 +17,8 @@ export default function Contact() {
   return (
     <section
       id="contact"
+      className="contact-section"
       style={{
-        padding: "100px 32px 120px",
         position: "relative",
         zIndex: 1,
       }}
@@ -27,10 +27,10 @@ export default function Contact() {
         <div style={{ textAlign: "center", marginBottom: 52 }}>
           <p
             style={{
-              fontSize: 12,
+              fontSize: 14,
               color: "#378add",
               fontFamily: "'Courier New', monospace",
-              marginBottom: 8,
+              margin: "0 0 8px",
               letterSpacing: "0.05em",
             }}
           >
@@ -38,7 +38,7 @@ export default function Contact() {
           </p>
           <h2
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
+              fontSize: "clamp(32px, 4vw, 44px)",
               fontWeight: 700,
               color: "#e8f4ff",
               margin: "0 0 14px",
@@ -46,7 +46,7 @@ export default function Contact() {
           >
             Get In Touch
           </h2>
-          <p style={{ fontSize: 15, color: "rgba(200,220,255,0.55)", lineHeight: 1.7 }}>
+          <p style={{ fontSize: 17, color: "rgba(200,220,255,0.55)", lineHeight: 1.7, margin: 0 }}>
             Whether you have a project, collaboration, or just want to say hi -
             my inbox is always open.
           </p>
@@ -92,7 +92,7 @@ export default function Contact() {
                 background: "rgba(255,255,255,0.03)",
                 border: "1px solid rgba(55,138,221,0.2)",
                 color: "rgba(200,220,255,0.7)",
-                fontSize: 13,
+                fontSize: 15,
                 textDecoration: "none",
                 transition: "all 0.2s",
               }}
@@ -123,12 +123,12 @@ export default function Contact() {
             gap: 18,
           }}
         >
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+          <div className="contact-form-grid">
             <div>
               <label
                 style={{
                   display: "block",
-                  fontSize: 12,
+                  fontSize: 14,
                   color: "rgba(200,220,255,0.5)",
                   marginBottom: 6,
                   letterSpacing: "0.05em",
@@ -149,7 +149,7 @@ export default function Contact() {
                   border: "1px solid rgba(55,138,221,0.2)",
                   background: "rgba(255,255,255,0.04)",
                   color: "#e8f4ff",
-                  fontSize: 14,
+                  fontSize: 16,
                   outline: "none",
                   boxSizing: "border-box",
                 }}
@@ -159,7 +159,7 @@ export default function Contact() {
               <label
                 style={{
                   display: "block",
-                  fontSize: 12,
+                  fontSize: 14,
                   color: "rgba(200,220,255,0.5)",
                   marginBottom: 6,
                   letterSpacing: "0.05em",
@@ -180,7 +180,7 @@ export default function Contact() {
                   border: "1px solid rgba(55,138,221,0.2)",
                   background: "rgba(255,255,255,0.04)",
                   color: "#e8f4ff",
-                  fontSize: 14,
+                  fontSize: 16,
                   outline: "none",
                   boxSizing: "border-box",
                 }}
@@ -192,7 +192,7 @@ export default function Contact() {
             <label
               style={{
                 display: "block",
-                fontSize: 12,
+                fontSize: 14,
                 color: "rgba(200,220,255,0.5)",
                 marginBottom: 6,
                 letterSpacing: "0.05em",
@@ -213,7 +213,7 @@ export default function Contact() {
                 border: "1px solid rgba(55,138,221,0.2)",
                 background: "rgba(255,255,255,0.04)",
                 color: "#e8f4ff",
-                fontSize: 14,
+                fontSize: 16,
                 outline: "none",
                 resize: "vertical",
                 boxSizing: "border-box",
@@ -230,7 +230,7 @@ export default function Contact() {
               background: sent ? "rgba(29,158,117,0.2)" : "#378add",
               border: sent ? "1px solid rgba(29,158,117,0.4)" : "none",
               color: sent ? "#5dcaa5" : "#fff",
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: 500,
               cursor: "pointer",
               transition: "all 0.25s",
@@ -245,14 +245,38 @@ export default function Contact() {
           style={{
             textAlign: "center",
             marginTop: 60,
-            fontSize: 13,
+            fontSize: 15,
             color: "rgba(200,220,255,0.3)",
             fontFamily: "'Courier New', monospace",
           }}
         >
-          Built with Next.js - Designed by Renz Carljansen Sarucam - 2026
+          Designed by Renz Carljansen Sarucam - 2026
         </p>
       </div>
+
+      <style>{`
+        .contact-section {
+          padding: 100px 32px 120px;
+        }
+        .contact-form-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
+        @media (max-width: 640px) {
+          .contact-section {
+            padding: 64px 16px 80px;
+          }
+          .contact-form-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+        @media (max-width: 820px) and (min-width: 641px) {
+          .contact-section {
+            padding: 80px 24px 100px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

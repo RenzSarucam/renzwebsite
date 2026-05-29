@@ -1,36 +1,35 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
+import Certificates from "@/components/Certificates";
+import Contact from "@/components/Contact";
+
 
 export default function Home() {
   return (
     <main
+      className="page-shell"
       style={{
         minHeight: "100svh",
         width: "100%",
+        maxWidth: "100vw",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
         padding: 0,
         margin: 0,
-        overflow: "hidden",
+        position: "relative",
         background: "transparent",
+        overflowX: "clip",
       }}
     >
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          borderRadius: 0,
-          overflow: "hidden",
-          background: "transparent",
-          border: "none",
-          boxShadow: "none",
-        }}
-      >
-        <Navbar />
-        <Hero />
-      </div>
+
+      <Navbar />
+      <Hero />
+      <Projects />
+      <Skills />
+      <Certificates />
+      <Contact />
     </main>
   );
 }

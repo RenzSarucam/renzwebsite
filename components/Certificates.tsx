@@ -35,8 +35,8 @@ export default function Certificates() {
   return (
     <section
       id="certificates"
+      className="certs-section"
       style={{
-        padding: "100px 32px",
         position: "relative",
         zIndex: 1,
       }}
@@ -45,10 +45,10 @@ export default function Certificates() {
         <div style={{ marginBottom: 52 }}>
           <p
             style={{
-              fontSize: 12,
+              fontSize: 14,
               color: "#378add",
               fontFamily: "'Courier New', monospace",
-              marginBottom: 8,
+              margin: "0 0 8px",
               letterSpacing: "0.05em",
             }}
           >
@@ -56,7 +56,7 @@ export default function Certificates() {
           </p>
           <h2
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
+              fontSize: "clamp(32px, 4vw, 44px)",
               fontWeight: 700,
               color: "#e8f4ff",
               margin: "0 0 12px",
@@ -66,18 +66,11 @@ export default function Certificates() {
           </h2>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.2fr",
-            gap: 32,
-            alignItems: "start",
-          }}
-        >
+        <div className="certs-grid">
           <div>
             <p
               style={{
-                fontSize: 11,
+                fontSize: 13,
                 color: "rgba(200,220,255,0.4)",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
@@ -107,7 +100,7 @@ export default function Certificates() {
                 >
                   <span
                     style={{
-                      fontSize: 11,
+                      fontSize: 13,
                       padding: "3px 9px",
                       borderRadius: 100,
                       background: "rgba(239,159,39,0.1)",
@@ -119,7 +112,7 @@ export default function Certificates() {
                   </span>
                   <span
                     style={{
-                      fontSize: 12,
+                      fontSize: 14,
                       color: "#378add",
                       fontFamily: "'Courier New', monospace",
                     }}
@@ -129,7 +122,7 @@ export default function Certificates() {
                 </div>
                 <h3
                   style={{
-                    fontSize: 16,
+                    fontSize: 19,
                     fontWeight: 600,
                     color: "#e8f4ff",
                     margin: "0 0 6px",
@@ -138,10 +131,10 @@ export default function Certificates() {
                 >
                   {item.degree}
                 </h3>
-                <p style={{ fontSize: 13, color: "#378add", margin: "0 0 4px" }}>
+                <p style={{ fontSize: 15, color: "#378add", margin: "0 0 4px" }}>
                   {item.school}
                 </p>
-                <p style={{ fontSize: 12, color: "rgba(200,220,255,0.45)", margin: 0 }}>
+                <p style={{ fontSize: 14, color: "rgba(200,220,255,0.45)", margin: 0 }}>
                   {item.location}
                 </p>
               </div>
@@ -184,7 +177,7 @@ export default function Certificates() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontSize: 11,
+                      fontSize: 13,
                       color: item.color,
                       flexShrink: 0,
                       fontFamily: "'Courier New', monospace",
@@ -195,7 +188,7 @@ export default function Certificates() {
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <p
                       style={{
-                        fontSize: 13,
+                        fontSize: 15,
                         fontWeight: 500,
                         color: "#e8f4ff",
                         margin: "0 0 3px",
@@ -206,13 +199,13 @@ export default function Certificates() {
                     >
                       {item.title}
                     </p>
-                    <p style={{ fontSize: 11, color: "rgba(200,220,255,0.45)", margin: 0 }}>
+                    <p style={{ fontSize: 13, color: "rgba(200,220,255,0.45)", margin: 0 }}>
                       {item.issuer}
                     </p>
                   </div>
                   <span
                     style={{
-                      fontSize: 11,
+                      fontSize: 13,
                       color: item.color,
                       fontFamily: "'Courier New', monospace",
                       flexShrink: 0,
@@ -226,6 +219,32 @@ export default function Certificates() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        .certs-section {
+          padding: 100px 32px;
+        }
+        .certs-grid {
+          display: grid;
+          grid-template-columns: 1fr 1.2fr;
+          gap: 32px;
+          align-items: start;
+        }
+        @media (max-width: 768px) {
+          .certs-section {
+            padding: 64px 16px;
+          }
+          .certs-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+        }
+        @media (max-width: 820px) and (min-width: 769px) {
+          .certs-section {
+            padding: 80px 24px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

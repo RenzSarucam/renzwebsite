@@ -24,11 +24,13 @@ const contribs = [
 ];
 
 const sections = ["about", "projects", "skills", "certificates", "contact"];
+const navLabels = ["Home", "Projects", "Skills", "Certificates", "Contact"];
 
 export default function Hero() {
   const [roleIdx, setRoleIdx] = useState(0);
   const [visible, setVisible] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -50,6 +52,30 @@ export default function Hero() {
     transition: "all 0.55s ease",
   } as const;
 
+  const scrollToSection = (id: string) => {
+    setMenuOpen(false);
+    window.requestAnimationFrame(() => {
+      const element = document.getElementById(id);
+      if (!element) return;
+
+      const navbar = document.querySelector("nav");
+      const baseOffset = navbar
+        ? navbar.getBoundingClientRect().bottom
+        : window.innerWidth <= 640
+          ? 68
+          : 80;
+      const targetOffset = baseOffset + 26;
+      const sectionPaddingTop = Number.parseFloat(window.getComputedStyle(element).paddingTop) || 0;
+      const top =
+        element.getBoundingClientRect().top +
+        window.scrollY -
+        targetOffset +
+        sectionPaddingTop;
+
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    });
+  };
+
   return (
     <section className="hero-shell" id="about">
       <div className="hero-wrapper">
@@ -61,16 +87,12 @@ export default function Hero() {
             </div>
 
             <div className="hero-nav">
-              {["Home", "Projects", "Skills", "Certificates", "Contact"].map(
+              {navLabels.map(
                 (label, index) => (
                   <button
                     className={`hero-nav-link ${index === 0 ? "active" : ""}`}
                     key={label}
-                    onClick={() =>
-                      document
-                        .getElementById(sections[index])
-                        ?.scrollIntoView({ behavior: "smooth" })
-                    }
+                    onClick={() => scrollToSection(sections[index])}
                     type="button"
                   >
                     {label}
@@ -81,27 +103,61 @@ export default function Hero() {
 
             <button
               className="hero-hire-button"
-              onClick={() =>
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => scrollToSection("contact")}
               type="button"
             >
               Hire me
             </button>
+
+            <button
+              aria-expanded={menuOpen}
+              aria-label="Toggle navigation menu"
+              className="hero-menu-toggle"
+              onClick={() => setMenuOpen((open) => !open)}
+              type="button"
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+
+            {menuOpen && (
+              <div className="hero-mobile-menu">
+                {navLabels.map((label, index) => (
+                  <button
+                    className="hero-mobile-menu-link"
+                    key={label}
+                    onClick={() => scrollToSection(sections[index])}
+                    type="button"
+                  >
+                    {label}
+                  </button>
+                ))}
+                <button
+                  className="hero-mobile-menu-link hero-mobile-menu-cta"
+                  onClick={() => scrollToSection("contact")}
+                  type="button"
+                >
+                  Hire me
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="hero-grid">
             <div className="hero-left">
-              <div>
+              <div className="hero-intro">
                 <div className="hero-status">
                   <span className="hero-status-dot" />
                   <span>Open to opportunities</span>
                 </div>
 
                 <h1 className="hero-title">
-                  Renz Carljansen
-                  <br />
-                  <span>Sarucam</span>
+                  <span className="hero-title-line">
+                    <span className="hero-title-word">Renz</span>
+                    <span className="hero-title-word">Carljansen</span>
+                  </span>
+                  <span className="hero-title-line hero-title-accent">Sarucam</span>
                 </h1>
 
                 <div className="hero-role-wrap">
@@ -145,7 +201,10 @@ export default function Hero() {
 
               <div className="hero-footer">
                 <span className="hero-footer-item">
-                  <span>•</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M20 10c0 6-8 13-8 13s-8-7-8-13a8 8 0 0 1 16 0Z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
                   Davao City, PH
                 </span>
                 <a
@@ -154,7 +213,9 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <span>•</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+                  </svg>
                   renz134542770
                 </a>
               </div>
@@ -237,10 +298,14 @@ export default function Hero() {
           padding: 0;
           position: relative;
           z-index: 1;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: clip;
         }
 
         .hero-wrapper {
           width: 100%;
+          max-width: 100%;
           min-height: 100svh;
           background: transparent;
           padding: 18px;
@@ -249,6 +314,7 @@ export default function Hero() {
 
         .hero-frame {
           width: 100%;
+          max-width: 100%;
           min-height: calc(100svh - 36px);
           display: flex;
           flex-direction: column;
@@ -267,12 +333,14 @@ export default function Hero() {
           padding: 14px 22px;
           border-bottom: 1px solid rgba(55,138,221,0.1);
           flex-wrap: wrap;
+          max-width: 100%;
         }
 
         .hero-brand {
           display: flex;
           align-items: center;
           gap: 12px;
+          min-width: 0;
         }
 
         .hero-brand-dot {
@@ -285,9 +353,10 @@ export default function Hero() {
 
         .hero-brand-name {
           color: #e8f4ff;
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 700;
           letter-spacing: 0.02em;
+          min-width: 0;
         }
 
         .hero-nav {
@@ -304,7 +373,7 @@ export default function Hero() {
           padding: 6px 10px;
           border-radius: 6px;
           font: inherit;
-          font-size: 12px;
+          font-size: 14px;
           color: rgba(200,220,255,0.55);
           text-underline-offset: 6px;
         }
@@ -322,15 +391,44 @@ export default function Hero() {
           border: 1px solid rgba(55,138,221,0.55);
           color: #378add;
           font: inherit;
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 600;
           cursor: pointer;
         }
 
+        .hero-menu-toggle {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          gap: 4px;
+          width: 42px;
+          height: 42px;
+          border: 1px solid rgba(55,138,221,0.4);
+          border-radius: 10px;
+          background: rgba(255,255,255,0.04);
+          color: #378add;
+          cursor: pointer;
+          flex-shrink: 0;
+        }
+
+        .hero-menu-toggle span {
+          display: block;
+          width: 18px;
+          height: 2px;
+          border-radius: 999px;
+          background: currentColor;
+        }
+
+        .hero-mobile-menu {
+          display: none;
+        }
+
         .hero-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
           flex: 1;
+          min-width: 0;
         }
 
         .hero-left {
@@ -339,6 +437,14 @@ export default function Hero() {
           gap: 14px;
           padding: 26px 22px 0;
           border-right: 1px solid rgba(55,138,221,0.1);
+          min-width: 0;
+          overflow-x: clip;
+        }
+
+        .hero-intro {
+          width: 100%;
+          min-width: 0;
+          overflow-x: clip;
         }
 
         .hero-right {
@@ -346,6 +452,7 @@ export default function Hero() {
           flex-direction: column;
           gap: 16px;
           padding: 28px 22px 0;
+          min-width: 0;
         }
 
         .hero-status {
@@ -359,7 +466,7 @@ export default function Hero() {
           width: fit-content;
           margin-bottom: 22px;
           color: #5dcaa5;
-          font-size: 15px;
+          font-size: 17px;
           font-weight: 600;
         }
 
@@ -376,13 +483,24 @@ export default function Hero() {
           margin: 0 0 12px;
           color: #e8f4ff;
           font-family: "Courier New", monospace;
-          font-size: clamp(42px, 4.6vw, 66px);
+          font-size: 58px;
           font-weight: 800;
           line-height: 1.02;
-          letter-spacing: -0.035em;
+          letter-spacing: 0;
+          max-width: 100%;
         }
 
-        .hero-title span {
+        .hero-title-line {
+          display: block;
+          max-width: 100%;
+        }
+
+        .hero-title-word {
+          display: inline-block;
+          margin-right: 0.28em;
+        }
+
+        .hero-title-accent {
           color: #378add;
         }
 
@@ -394,7 +512,7 @@ export default function Hero() {
 
         .hero-role {
           margin: 0;
-          font-size: 16px;
+          font-size: 18px;
           color: #5dcaa5;
           font-family: "Courier New", monospace;
           transition: all 0.3s ease;
@@ -403,9 +521,10 @@ export default function Hero() {
         .hero-bio {
           margin: 0;
           max-width: 600px;
-          font-size: 15px;
+          font-size: 17px;
           line-height: 1.6;
           color: rgba(220,235,255,0.68);
+          overflow-wrap: anywhere;
         }
 
         .hero-actions {
@@ -413,18 +532,24 @@ export default function Hero() {
           gap: 12px;
           margin-top: 22px;
           flex-wrap: wrap;
+          align-items: stretch;
+          width: 100%;
+          max-width: 100%;
         }
 
         .hero-actions a {
           display: inline-flex;
           align-items: center;
           gap: 8px;
+          justify-content: center;
+          flex: 1 1 220px;
+          max-width: 100%;
           padding: 12px 20px;
           border-radius: 12px;
           background: rgba(255,255,255,0.07);
           border: 1px solid rgba(255,255,255,0.12);
           color: #e8f4ff;
-          font-size: 15px;
+          font-size: 17px;
           font-weight: 600;
           text-decoration: none;
         }
@@ -444,9 +569,11 @@ export default function Hero() {
           display: flex;
           align-items: center;
           gap: 10px;
-          font-size: 14px;
+          min-width: 0;
+          font-size: 16px;
           color: rgba(200,220,255,0.5);
           text-decoration: none;
+          overflow-wrap: anywhere;
         }
 
         .hero-stats {
@@ -540,285 +667,309 @@ export default function Hero() {
           display: flex;
           justify-content: flex-end;
           padding: 10px 0 12px;
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
         }
 
         .hero-link {
           display: flex;
           align-items: center;
+          flex-wrap: wrap;
           gap: 5px;
+          min-width: 0;
+          max-width: 100%;
           font-size: 13px;
           color: #378add;
           text-decoration: none;
+          overflow-wrap: anywhere;
+          word-break: break-word;
         }
 
+        /* ── Tablet: single-column grid ── */
         @media (max-width: 1100px) {
           .hero-grid {
             grid-template-columns: 1fr;
           }
-
           .hero-left {
             border-right: none;
             border-bottom: 1px solid rgba(55,138,221,0.1);
           }
-
           .hero-right {
-            padding-top: 28px;
+            padding-top: 24px;
+            padding-bottom: 24px;
           }
         }
 
+        /* ── Tablet narrow (820px) ── */
         @media (max-width: 820px) {
           .hero-wrapper {
-            padding: 12px;
+            padding: 10px;
           }
-
+          .hero-frame {
+            min-height: calc(100svh - 20px);
+            overflow-x: hidden;
+          }
           .hero-topbar {
-            padding: 14px 16px;
-            gap: 12px;
+            padding: 12px 16px;
+            gap: 10px;
+            align-items: center;
           }
-
+          .hero-topbar > * {
+            min-width: 0;
+          }
           .hero-brand {
-            width: 100%;
+            width: auto;
+            flex: 1;
           }
-
           .hero-nav {
-            width: 100%;
-            justify-content: flex-start;
-            gap: 4px;
+            display: none;
           }
-
-          .hero-nav-link {
-            padding: 7px 10px;
-            font-size: 13px;
-          }
-
           .hero-hire-button {
-            padding: 10px 18px;
-            border-radius: 12px;
-            font-size: 14px;
+            display: none;
           }
-
+          .hero-menu-toggle {
+            display: inline-flex;
+          }
+          .hero-mobile-menu {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            width: 100%;
+            gap: 8px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(55,138,221,0.1);
+          }
+          .hero-mobile-menu-link {
+            width: 100%;
+            min-width: 0;
+            padding: 10px 12px;
+            border: 1px solid rgba(55,138,221,0.16);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.035);
+            color: rgba(220,235,255,0.74);
+            cursor: pointer;
+            font: inherit;
+            font-size: 14px;
+            text-align: center;
+          }
+          .hero-mobile-menu-cta {
+            grid-column: 1 / -1;
+            color: #61afff;
+            border-color: rgba(55,138,221,0.36);
+          }
           .hero-left,
           .hero-right {
-            padding-left: 18px;
-            padding-right: 18px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
-
           .hero-left {
-            padding-top: 26px;
-          }
-
-          .hero-right {
-            gap: 16px;
             padding-top: 24px;
           }
-
-          .hero-status {
-            margin-bottom: 24px;
-            padding: 9px 16px;
-            font-size: 15px;
+          .hero-right {
+            gap: 14px;
+            padding-top: 20px;
           }
-
-          .hero-status-dot {
-            width: 8px;
-            height: 8px;
+        .hero-status {
+            margin-bottom: 20px;
+            padding: 8px 14px;
+            font-size: 14px;
+            max-width: 100%;
           }
-
           .hero-title {
-            font-size: clamp(42px, 9vw, 62px);
+            font-size: 44px;
+            margin-bottom: 12px;
+          }
+          .hero-role-wrap {
+            min-height: 30px;
             margin-bottom: 14px;
           }
-
-          .hero-role-wrap {
-            min-height: 34px;
-            margin-bottom: 18px;
-          }
-
-          .hero-role {
-            font-size: 18px;
-          }
-
+          .hero-role { font-size: 16px; }
           .hero-bio {
-            font-size: 16px;
-            max-width: 100%;
-          }
-
-          .hero-actions {
-            gap: 12px;
-            margin-top: 24px;
-          }
-
-          .hero-actions a {
             font-size: 15px;
-            padding: 12px 20px;
-          }
-
-          .hero-stats {
-            gap: 14px;
-          }
-
-          .hero-stat-card {
-            padding: 20px 20px;
-            border-radius: 14px;
-          }
-
-          .hero-stat-value {
-            font-size: 34px;
-          }
-
-          .hero-stat-label {
-            font-size: 14px;
-          }
-
-          .hero-panel {
-            padding: 22px 20px 18px;
-            border-radius: 14px;
-          }
-
-          .hero-panel-title {
-            font-size: 12px;
-            margin-bottom: 16px;
-          }
-
-          .hero-chip-grid {
-            gap: 10px;
             max-width: 100%;
           }
-
-          .hero-chip {
+          .hero-actions {
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+          }
+          .hero-actions a {
             font-size: 14px;
-            padding: 8px 14px;
+            padding: 11px 18px;
           }
-
-          .hero-chip-dot {
-            width: 10px;
-            height: 10px;
-          }
-
-          .hero-chart {
-            height: 104px;
-            gap: 4px;
-          }
-
-          .hero-chart-bar {
-            min-width: 6px;
-          }
-
-          .hero-link {
-            font-size: 14px;
-          }
+          .hero-stats { gap: 12px; }
+          .hero-stat-card { padding: 18px; border-radius: 12px; }
+          .hero-stat-value { font-size: 30px; }
+          .hero-stat-label { font-size: 13px; }
+          .hero-panel { padding: 18px 16px 14px; border-radius: 12px; }
+          .hero-panel-title { font-size: 11px; margin-bottom: 14px; }
+          .hero-chip-grid { gap: 8px; max-width: 100%; }
+          .hero-chip { font-size: 13px; padding: 7px 11px; }
+          .hero-chart { height: 90px; gap: 3px; }
+          .hero-chart-bar { min-width: 5px; }
+          .hero-link { font-size: 13px; }
         }
 
+        /* ── Phone (640px and below) ── */
         @media (max-width: 640px) {
           .hero-wrapper {
-            padding: 8px;
+            padding: 6px;
           }
-
+          .hero-frame {
+            min-height: calc(100svh - 12px);
+            border-radius: 10px;
+            overflow-x: hidden;
+          }
           .hero-topbar {
-            padding: 12px 14px;
+            padding: 10px 12px;
+            flex-direction: row;
+            align-items: center;
+            text-align: left;
+            flex-wrap: wrap;
           }
-
+          .hero-brand {
+            justify-content: flex-start;
+          }
+          .hero-mobile-menu {
+            grid-template-columns: 1fr;
+          }
+          .hero-mobile-menu-link {
+            font-size: 13px;
+          }
           .hero-left,
           .hero-right {
             padding-left: 14px;
             padding-right: 14px;
           }
-
           .hero-left {
-            padding-top: 20px;
-            gap: 12px;
-          }
-
-          .hero-right {
             padding-top: 18px;
-            gap: 12px;
+            gap: 10px;
           }
-
+          .hero-right {
+            padding-top: 16px;
+            gap: 10px;
+          }
+          .hero-status {
+            margin-bottom: 16px;
+            padding: 7px 13px;
+            font-size: 13px;
+          }
+          .hero-intro {
+            text-align: center;
+          }
+          .hero-status {
+            margin-left: auto;
+            margin-right: auto;
+          }
           .hero-title {
-            font-size: clamp(34px, 12vw, 46px);
-            margin-bottom: 10px;
+            font-size: 34px;
+            margin-bottom: 8px;
+            line-height: 1.08;
           }
-
+          .hero-title-word {
+            display: block;
+            margin-right: 0;
+          }
           .hero-role-wrap {
-            min-height: 28px;
-            margin-bottom: 14px;
+            min-height: 24px;
+            margin-bottom: 12px;
           }
-
-          .hero-role {
-            font-size: 15px;
-          }
-
+          .hero-role { font-size: 14px; }
           .hero-bio {
-            font-size: 14px;
+            font-size: 13px;
             line-height: 1.55;
+            max-width: 100%;
           }
-
           .hero-actions {
             flex-direction: column;
-            align-items: stretch;
+            align-items: center;
+            gap: 10px;
+            margin-top: 18px;
           }
-
           .hero-actions a {
-            justify-content: center;
-            width: 100%;
-            font-size: 15px;
-            padding: 12px 16px;
+            width: min(100%, 320px);
+            flex-basis: auto;
+            font-size: 14px;
+            padding: 11px 14px;
+            border-radius: 10px;
           }
-
           .hero-footer {
             flex-direction: column;
             align-items: flex-start;
+            gap: 8px;
+            padding: 12px 0 10px;
+          }
+          .hero-stats {
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
           }
+          .hero-stat-card { padding: 14px 14px; border-radius: 10px; }
+          .hero-stat-value { font-size: 26px; }
+          .hero-stat-label { font-size: 12px; }
+          .hero-panel { padding: 14px 14px 12px; border-radius: 10px; }
+          .hero-panel-title { font-size: 10px; margin-bottom: 12px; }
+          .hero-chip-grid { gap: 6px; }
+          .hero-chip { font-size: 12px; padding: 6px 10px; }
+          .hero-chip-dot { width: 7px; height: 7px; }
+          /* Hide chart on very small screens to reduce clutter */
+          .hero-chart-panel { display: none; }
+          .hero-link-row { justify-content: flex-start; }
+          .hero-link {
+            width: 100%;
+            font-size: 13px;
+          }
+        }
 
+        @media (max-width: 380px) {
+          .hero-wrapper {
+            padding: 4px;
+          }
+          .hero-frame {
+            border-radius: 8px;
+          }
+          .hero-topbar {
+            padding: 9px 8px;
+          }
+          .hero-brand-name {
+            font-size: 15px;
+          }
+          .hero-menu-toggle {
+            width: 38px;
+            height: 38px;
+          }
+          .hero-left,
+          .hero-right {
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+          .hero-status {
+            border-radius: 12px;
+            font-size: 12px;
+            white-space: normal;
+          }
+          .hero-title {
+            font-size: 30px;
+          }
+          .hero-role {
+            font-size: 13px;
+          }
+          .hero-bio {
+            font-size: 12px;
+          }
+          .hero-actions a {
+            width: 100%;
+          }
           .hero-stats {
             grid-template-columns: 1fr;
           }
-
-          .hero-stat-card {
-            padding: 18px 18px;
+          .hero-footer {
+            align-items: center;
+            text-align: center;
           }
-
-          .hero-stat-value {
-            font-size: 30px;
-          }
-
-          .hero-stat-label {
-            font-size: 13px;
-          }
-
-          .hero-panel {
-            padding: 18px 16px 16px;
-          }
-
-          .hero-panel-title {
-            font-size: 11px;
-          }
-
-          .hero-chip {
-            font-size: 13px;
-            padding: 7px 12px;
-          }
-
-          .hero-chip-dot {
-            width: 8px;
-            height: 8px;
-          }
-
-          .hero-chart {
-            height: 86px;
-            gap: 3px;
-          }
-
-          .hero-chart-bar {
-            min-width: 4px;
-          }
-
-          .hero-link-row {
-            justify-content: flex-start;
-          }
-
-          .hero-link {
-            font-size: 14px;
+          .hero-footer-item {
+            justify-content: center;
+            overflow-wrap: anywhere;
           }
         }
       `}</style>

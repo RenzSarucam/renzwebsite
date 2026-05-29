@@ -47,8 +47,8 @@ export default function Skills() {
   return (
     <section
       id="skills"
+      className="skills-section"
       style={{
-        padding: "100px 32px",
         position: "relative",
         zIndex: 1,
       }}
@@ -57,10 +57,10 @@ export default function Skills() {
         <div style={{ marginBottom: 52 }}>
           <p
             style={{
-              fontSize: 12,
+              fontSize: 14,
               color: "#378add",
               fontFamily: "'Courier New', monospace",
-              marginBottom: 8,
+              margin: "0 0 8px",
               letterSpacing: "0.05em",
             }}
           >
@@ -68,7 +68,7 @@ export default function Skills() {
           </p>
           <h2
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
+              fontSize: "clamp(32px, 4vw, 44px)",
               fontWeight: 700,
               color: "#e8f4ff",
               margin: "0 0 12px",
@@ -76,7 +76,7 @@ export default function Skills() {
           >
             My Expertise
           </h2>
-          <p style={{ fontSize: 15, color: "rgba(200,220,255,0.55)", maxWidth: 500 }}>
+          <p style={{ fontSize: 17, color: "rgba(200,220,255,0.55)", maxWidth: 500, margin: 0 }}>
             Technologies and tools I work with as a Junior R&D Engineer.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function Skills() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
             gap: 20,
           }}
         >
@@ -106,12 +106,12 @@ export default function Skills() {
                   marginBottom: 20,
                 }}
               >
-                <span style={{ fontSize: 12, color: "#5dcaa5", fontFamily: "'Courier New', monospace" }}>
+                <span style={{ fontSize: 14, color: "#5dcaa5", fontFamily: "'Courier New', monospace" }}>
                   {group.icon}
                 </span>
                 <h3
                   style={{
-                    fontSize: 14,
+                    fontSize: 16,
                     fontWeight: 600,
                     color: "#e8f4ff",
                     margin: 0,
@@ -131,12 +131,12 @@ export default function Skills() {
                         marginBottom: 6,
                       }}
                     >
-                      <span style={{ fontSize: 13, color: "rgba(200,220,255,0.7)" }}>
+                      <span style={{ fontSize: 15, color: "rgba(200,220,255,0.7)" }}>
                         {skill.name}
                       </span>
                       <span
                         style={{
-                          fontSize: 12,
+                          fontSize: 14,
                           color: "#378add",
                           fontFamily: "'Courier New', monospace",
                         }}
@@ -168,6 +168,22 @@ export default function Skills() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        .skills-section {
+          padding: 100px 32px;
+        }
+        @media (max-width: 640px) {
+          .skills-section {
+            padding: 64px 16px;
+          }
+        }
+        @media (max-width: 820px) and (min-width: 641px) {
+          .skills-section {
+            padding: 80px 24px;
+          }
+        }
+      `}</style>
     </section>
   );
 }
