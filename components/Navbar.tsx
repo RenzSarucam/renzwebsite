@@ -6,7 +6,7 @@ const navLinks: [string, string][] = [
   ["Home", "about"],
   ["Projects", "projects"],
   ["Skills", "skills"],
-  ["Certificates", "certificates"],
+  ["Credential", "certificates"],
   ["Contact", "contact"],
 ];
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const projects = [
+export const projects = [
   {
     title: "Research Management System",
     desc: "A web-based platform for managing R&D research workflows, documentation, and team collaboration.",
@@ -50,6 +50,78 @@ const projects = [
     type: "IoT",
     status: "Completed",
     link: "https://github.com/RenzSarucam",
+  },
+  {
+    title: "TrackGuard Admin Panel",
+    desc: "Smart and secure control center for tracking, managing, and safeguarding your data all in one powerful dashboard.",
+    tags: ["Admin Panel", "Dashboard", "Security"],
+    type: "Web App",
+    status: "Completed",
+    link: "#",
+  },
+  {
+    title: "TrackGuard Mobile App",
+    desc: "Real-time tracking and smart protection right in your pocket. Stay connected, stay secure, anytime, anywhere.",
+    tags: ["Mobile App", "Tracking", "Security"],
+    type: "IoT",
+    status: "Completed",
+    link: "#",
+  },
+  {
+    title: "TrueNest Seekers Website Design",
+    desc: "A sleek real estate platform helping seekers find their perfect nest with ease, style, and smart location tools.",
+    tags: ["UI/UX", "Real Estate", "Web Design"],
+    type: "Web App",
+    status: "Completed",
+    link: "#",
+  },
+  {
+    title: "TrueNest Seekers Mobile Design",
+    desc: "A seamless real estate experience at your fingertips explore, discover, and secure your dream home with ease and elegance.",
+    tags: ["Mobile UI", "Real Estate", "App Design"],
+    type: "Web App",
+    status: "Completed",
+    link: "#",
+  },
+  {
+    title: "Clotify Ecomm",
+    desc: "Style meets simplicity your personalized fashion destination with seamless shopping at your fingertips.",
+    tags: ["E-Commerce", "Fashion", "Web Design"],
+    type: "Web App",
+    status: "Completed",
+    link: "#",
+  },
+  {
+    title: "Good Taste",
+    desc: "Curated elegance in every bite. Savor the finest flavors and elevate your dining experience.",
+    tags: ["Restaurant", "Mobile UI", "Food App"],
+    type: "Web App",
+    status: "Completed",
+    link: "#",
+  },
+  {
+    title: "Facebook Clone",
+    desc: "A sleek social experience connect, share, and engage with friends and communities, just like the original.",
+    tags: ["Social App", "UI Clone", "Web Design"],
+    type: "Web App",
+    status: "Completed",
+    link: "#",
+  },
+  {
+    title: "JIT (Jairo Institute of Technology) Design",
+    desc: "A creative division of JIT focused on innovative, user-centered design solutions that blend technology and aesthetics.",
+    tags: ["Education", "UI/UX", "Web Design"],
+    type: "Web App",
+    status: "Completed",
+    link: "#",
+  },
+  {
+    title: "Jairosoft ELMS Designer",
+    desc: "A smart e-learning platform with tools for course management, student tracking, and interactive learning simple and effective.",
+    tags: ["E-Learning", "Dashboard", "UI Design"],
+    type: "Web App",
+    status: "Completed",
+    link: "#",
   },
 ];
 
