@@ -4,128 +4,80 @@ import { useState } from "react";
 
 export const projects = [
   {
-    title: "Research Management System",
-    desc: "A web-based platform for managing R&D research workflows, documentation, and team collaboration.",
-    tags: ["Next.js", "Node.js", "PostgreSQL"],
-    type: "Web App",
-    status: "Completed",
-    link: "https://github.com/RenzSarucam",
-  },
-  {
-    title: "IoT Monitoring Dashboard",
-    desc: "Real-time sensor data visualization dashboard for IoT devices with alert management.",
-    tags: ["React", "MQTT", "Chart.js"],
-    type: "IoT",
-    status: "Completed",
-    link: "https://github.com/RenzSarucam",
-  },
-  {
-    title: "ML Data Classifier",
-    desc: "Python-based machine learning model for classifying research datasets using scikit-learn.",
-    tags: ["Python", "scikit-learn", "Pandas"],
-    type: "ML/AI",
-    status: "In Progress",
-    link: "https://github.com/RenzSarucam",
-  },
-  {
-    title: "Portfolio Website",
-    desc: "Personal portfolio built with Next.js featuring animated network background and responsive design.",
-    tags: ["Next.js", "TypeScript", "CSS"],
-    type: "Web App",
-    status: "Completed",
-    link: "https://github.com/RenzSarucam",
-  },
-  {
-    title: "REST API Backend",
-    desc: "RESTful API server for a campus information system with JWT authentication.",
-    tags: ["Node.js", "Express", "MongoDB"],
-    type: "Backend",
-    status: "Completed",
-    link: "https://github.com/RenzSarucam",
-  },
-  {
-    title: "Arduino Sensor System",
-    desc: "Embedded system project for environmental monitoring using Arduino and various sensors.",
-    tags: ["Arduino", "C++", "Python"],
-    type: "IoT",
-    status: "Completed",
-    link: "https://github.com/RenzSarucam",
-  },
-  {
     title: "TrackGuard Admin Panel",
     desc: "Smart and secure control center for tracking, managing, and safeguarding your data all in one powerful dashboard.",
     tags: ["Admin Panel", "Dashboard", "Security"],
     type: "Web App",
     status: "Completed",
-    link: "#",
+    link: "https://github.com/TrackGuard/Trackguard-WebAdmin",
   },
   {
     title: "TrackGuard Mobile App",
     desc: "Real-time tracking and smart protection right in your pocket. Stay connected, stay secure, anytime, anywhere.",
     tags: ["Mobile App", "Tracking", "Security"],
-    type: "IoT",
+    type: "Mobile",
     status: "Completed",
-    link: "#",
+    link: "https://github.com/TrackGuard/trackguard-mobile",
   },
   {
     title: "TrueNest Seekers Website Design",
     desc: "A sleek real estate platform helping seekers find their perfect nest with ease, style, and smart location tools.",
     tags: ["UI/UX", "Real Estate", "Web Design"],
-    type: "Web App",
+    type: "Figma",
     status: "Completed",
-    link: "#",
+    link: "https://www.figma.com/design/yHev3Md58ibmab66ZDCBpw/Real-Estate%7C-TrueNest-Seekers?node-id=13-2&t=q48CBJJSDRO9OPQp-1",
   },
   {
     title: "TrueNest Seekers Mobile Design",
     desc: "A seamless real estate experience at your fingertips explore, discover, and secure your dream home with ease and elegance.",
     tags: ["Mobile UI", "Real Estate", "App Design"],
-    type: "Web App",
+    type: "Mobile",
     status: "Completed",
-    link: "#",
+    link: "https://www.figma.com/design/yHev3Md58ibmab66ZDCBpw/Real-Estate%7C-TrueNest-Seekers?node-id=13-2&t=q48CBJJSDRO9OPQp-1",
   },
   {
     title: "Clotify Ecomm",
     desc: "Style meets simplicity your personalized fashion destination with seamless shopping at your fingertips.",
     tags: ["E-Commerce", "Fashion", "Web Design"],
-    type: "Web App",
+    type: "Figma",
     status: "Completed",
-    link: "#",
+    link: "https://github.com/RenzSarucam/Clothify-Ecomm",
   },
   {
     title: "Good Taste",
     desc: "Curated elegance in every bite. Savor the finest flavors and elevate your dining experience.",
     tags: ["Restaurant", "Mobile UI", "Food App"],
-    type: "Web App",
+    type: "Mobile",
     status: "Completed",
-    link: "#",
+    link: "https://www.figma.com/design/IPXOqKQOcXlH7s8wb1xK24/Good-Taste?node-id=0-1&t=dYubPY7NNZECtJVD-1",
   },
   {
     title: "Facebook Clone",
     desc: "A sleek social experience connect, share, and engage with friends and communities, just like the original.",
     tags: ["Social App", "UI Clone", "Web Design"],
-    type: "Web App",
+    type: "Figma",
     status: "Completed",
-    link: "#",
+    link: "https://www.figma.com/design/Els0kit8BXfniyEsmdE48Y/HCIACtivity1?node-id=0-1&t=jXQKsUDKxx88GlDi-1",
   },
   {
     title: "JIT (Jairo Institute of Technology) Design",
     desc: "A creative division of JIT focused on innovative, user-centered design solutions that blend technology and aesthetics.",
     tags: ["Education", "UI/UX", "Web Design"],
-    type: "Web App",
+    type: "Figma",
     status: "Completed",
-    link: "#",
+    link: "https://www.figma.com/design/aMb9FTGYo8G0MlHldnoxxa/MVP-%7C-JIT?node-id=352-2321&t=7TiJ5HnhQp1ffiPJ-1",
   },
   {
     title: "Jairosoft ELMS Designer",
     desc: "A smart e-learning platform with tools for course management, student tracking, and interactive learning simple and effective.",
     tags: ["E-Learning", "Dashboard", "UI Design"],
-    type: "Web App",
+    type: "Figma",
     status: "Completed",
-    link: "#",
+    link: "",
   },
 ];
 
-const filters = ["All", "Web App", "IoT", "ML/AI", "Backend"];
+const filters = ["All", "Web App", "Mobile", "Figma", "Docker"];
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
@@ -322,22 +274,37 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         ))}
       </div>
 
-      <a
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 6,
-          fontSize: 14,
-          color: "#378add",
-          textDecoration: "none",
-          marginTop: "auto",
-        }}
-      >
-        View on GitHub -{">"}
-      </a>
+      {project.link ? (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            fontSize: 14,
+            color: "#378add",
+            textDecoration: "none",
+            marginTop: "auto",
+          }}
+        >
+          {project.type === "Figma" ? "View on Figma" : "View on GitHub"} -{">"}
+        </a>
+      ) : (
+        <span
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            fontSize: 14,
+            color: "rgba(200,220,255,0.48)",
+            marginTop: "auto",
+          }}
+        >
+          Confidential
+        </span>
+      )}
 
       <style>{`
         .project-card-head {
