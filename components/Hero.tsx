@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { certificates, projects } from "@/app/_lib/portfolio-data";
+import ContribGraph from "@/components/ContribGraph";
 
 const roles = [
   "Junior R&D Engineer",
+  "DevOps Engineer",
   "Web Designer",
   "Web Developer",
 ];
@@ -14,8 +16,12 @@ const techStack = [
   { name: "React", color: "#61dafb" },
   { name: "Node.js", color: "#1d9e75" },
   { name: "HTML/CSS", color: "#e34c26" },
-  { name: "Python", color: "#7f77dd" },
   { name: "Next.js", color: "#e8f4ff" },
+  { name: "Docker", color: "#2496ed" },
+  { name: "Git/GitHub", color: "#f05032" },
+  { name: "Linux CLI", color: "#5dcaa5" },
+  { name: "MySQL", color: "#00758f" },
+  { name: "Nginx", color: "#009639" },
 ];
 
 const contribs = [
@@ -23,8 +29,8 @@ const contribs = [
   13, 8,
 ];
 
-const sections = ["about", "projects", "skills", "certificates", "contact"];
-const navLabels = ["Home", "Projects", "Skills", "Credential", "Contact"];
+const sections = ["about", "projects", "experience", "skills", "certificates", "contact"];
+const navLabels = ["Home", "Projects", "Experience", "Skills", "Credential", "Contact"];
 const heroStats = [
   { val: `${projects.length}+`, label: "Projects done" },
   { val: `${certificates.length}+`, label: "Certificates" },
@@ -184,9 +190,9 @@ export default function Hero() {
 
                 <div className="hero-actions">
                   <a
-                    href="https://github.com/RenzSarucam"
-                    rel="noopener noreferrer"
+                    href="/resume"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <ResumeIcon />
                     View Resume
@@ -247,26 +253,7 @@ export default function Hero() {
               </div>
 
               <div className="hero-panel hero-chart-panel">
-                <p className="hero-panel-title">2026 Contributions</p>
-                <div className="hero-chart">
-                  {contribs.map((height, index) => (
-                    <div
-                      className="hero-chart-bar"
-                      key={index}
-                      style={{
-                        height: `${(height / 28) * 100}%`,
-                        background:
-                          height > 20
-                            ? "#1d9e75"
-                            : height > 12
-                              ? "#5dcaa5"
-                              : height > 7
-                                ? "rgba(93,202,165,0.5)"
-                                : "rgba(29,158,117,0.15)",
-                      }}
-                    />
-                  ))}
-                </div>
+                <ContribGraph />
               </div>
 
               <div className="hero-link-row">

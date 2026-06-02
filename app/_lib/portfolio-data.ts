@@ -49,7 +49,7 @@ export const contactEmail = "renzcarljansen@gmail.com";
 export const profile = {
   fullName: "Renz Carljansen Sarucam",
   firstName: "Renz",
-  role: "Junior R&D Engineer",
+  role: "Junior R&D Engineer · DevOps Engineer",
   location: "Davao City, Philippines",
   college: "Holy Cross of Davao College",
   degree: "Bachelor of Science in Information Technology",
@@ -100,7 +100,7 @@ export const workExperiences: WorkExperience[] = [
     role: "Junior Research And Development Engineer",
     period: "April 2026 - Present",
     description: "Currently working as a Junior R&D Engineer, contributing to research initiatives and development projects within the organization.",
-    tools: ["Linux CLI", "Docker", "Git / GitHub", "VS Code", "AI", "REST API", "Node.js", "Next.js"],
+    tools: ["Linux CLI", "Docker", "Git / GitHub", "VS Code", "AI", "Node.js", "Next.js", "Nginx"],
   },
   {
     company: "DSG Son's Group Inc.",
