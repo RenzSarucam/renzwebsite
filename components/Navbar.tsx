@@ -217,7 +217,7 @@ export default function Navbar() {
         )}
       </div>
 
-      <style>{`
+      <style suppressHydrationWarning>{`
         /* Desktop: show links, hide hamburger */
         .navbar-links { display: flex !important; }
         .navbar-hire { display: block !important; }

@@ -1,14 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { contactEmail } from "@/app/_lib/portfolio-data";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    console.log("Form submitted:", form);
+    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+    );
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
     setSent(true);
     window.setTimeout(() => setSent(false), 4000);
     setForm({ name: "", email: "", message: "" });
@@ -24,7 +29,7 @@ export default function Contact() {
       }}
     >
       <div style={{ maxWidth: 700, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 52 }}>
+        <div style={{ textAlign: "center", marginBottom: 28 }}>
           <p
             style={{
               fontSize: 14,
@@ -50,65 +55,6 @@ export default function Contact() {
             Whether you have a project, collaboration, or just want to say hi -
             my inbox is always open.
           </p>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 14,
-            marginBottom: 44,
-            flexWrap: "wrap",
-          }}
-        >
-          {[
-            {
-              label: "GitHub",
-              href: "https://github.com/RenzSarucam",
-              icon: "GitHub",
-            },
-            {
-              label: "Facebook",
-              href: "https://facebook.com/renz134542770",
-              icon: "Facebook",
-            },
-            {
-              label: "Email",
-              href: "mailto:renz@example.com",
-              icon: "Email",
-            },
-          ].map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "9px 18px",
-                borderRadius: 8,
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(55,138,221,0.2)",
-                color: "rgba(200,220,255,0.7)",
-                fontSize: 15,
-                textDecoration: "none",
-                transition: "all 0.2s",
-              }}
-              onMouseEnter={(event) => {
-                event.currentTarget.style.borderColor = "rgba(55,138,221,0.5)";
-                event.currentTarget.style.color = "#378add";
-              }}
-              onMouseLeave={(event) => {
-                event.currentTarget.style.borderColor = "rgba(55,138,221,0.2)";
-                event.currentTarget.style.color = "rgba(200,220,255,0.7)";
-              }}
-            >
-              <span>{item.icon}</span>
-              {item.label}
-            </a>
-          ))}
         </div>
 
         <form
@@ -202,7 +148,7 @@ export default function Contact() {
             </label>
             <textarea
               required
-              rows={5}
+              rows={3}
               value={form.message}
               onChange={(event) => setForm({ ...form, message: event.target.value })}
               placeholder="What's on your mind?"
@@ -244,7 +190,7 @@ export default function Contact() {
         <p
           style={{
             textAlign: "center",
-            marginTop: 60,
+            marginTop: 24,
             fontSize: 15,
             color: "rgba(200,220,255,0.3)",
             fontFamily: "'Courier New', monospace",
@@ -254,9 +200,14 @@ export default function Contact() {
         </p>
       </div>
 
-      <style>{`
+      <style suppressHydrationWarning>{`
         .contact-section {
-          padding: 100px 32px 120px;
+          padding: 40px 32px 40px;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding-top: 80px;
         }
         .contact-form-grid {
           display: grid;

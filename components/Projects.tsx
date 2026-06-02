@@ -1,81 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-export const projects = [
-  {
-    title: "TrackGuard Admin Panel",
-    desc: "Smart and secure control center for tracking, managing, and safeguarding your data all in one powerful dashboard.",
-    tags: ["Admin Panel", "Dashboard", "Security"],
-    type: "Web App",
-    status: "Completed",
-    link: "https://github.com/TrackGuard/Trackguard-WebAdmin",
-  },
-  {
-    title: "TrackGuard Mobile App",
-    desc: "Real-time tracking and smart protection right in your pocket. Stay connected, stay secure, anytime, anywhere.",
-    tags: ["Mobile App", "Tracking", "Security"],
-    type: "Mobile",
-    status: "Completed",
-    link: "https://github.com/TrackGuard/trackguard-mobile",
-  },
-  {
-    title: "TrueNest Seekers Website Design",
-    desc: "A sleek real estate platform helping seekers find their perfect nest with ease, style, and smart location tools.",
-    tags: ["UI/UX", "Real Estate", "Web Design"],
-    type: "Figma",
-    status: "Completed",
-    link: "https://www.figma.com/design/yHev3Md58ibmab66ZDCBpw/Real-Estate%7C-TrueNest-Seekers?node-id=13-2&t=q48CBJJSDRO9OPQp-1",
-  },
-  {
-    title: "TrueNest Seekers Mobile Design",
-    desc: "A seamless real estate experience at your fingertips explore, discover, and secure your dream home with ease and elegance.",
-    tags: ["Mobile UI", "Real Estate", "App Design"],
-    type: "Mobile",
-    status: "Completed",
-    link: "https://www.figma.com/design/yHev3Md58ibmab66ZDCBpw/Real-Estate%7C-TrueNest-Seekers?node-id=13-2&t=q48CBJJSDRO9OPQp-1",
-  },
-  {
-    title: "Clotify Ecomm",
-    desc: "Style meets simplicity your personalized fashion destination with seamless shopping at your fingertips.",
-    tags: ["E-Commerce", "Fashion", "Web Design"],
-    type: "Figma",
-    status: "Completed",
-    link: "https://github.com/RenzSarucam/Clothify-Ecomm",
-  },
-  {
-    title: "Good Taste",
-    desc: "Curated elegance in every bite. Savor the finest flavors and elevate your dining experience.",
-    tags: ["Restaurant", "Mobile UI", "Food App"],
-    type: "Mobile",
-    status: "Completed",
-    link: "https://www.figma.com/design/IPXOqKQOcXlH7s8wb1xK24/Good-Taste?node-id=0-1&t=dYubPY7NNZECtJVD-1",
-  },
-  {
-    title: "Facebook Clone",
-    desc: "A sleek social experience connect, share, and engage with friends and communities, just like the original.",
-    tags: ["Social App", "UI Clone", "Web Design"],
-    type: "Figma",
-    status: "Completed",
-    link: "https://www.figma.com/design/Els0kit8BXfniyEsmdE48Y/HCIACtivity1?node-id=0-1&t=jXQKsUDKxx88GlDi-1",
-  },
-  {
-    title: "JIT (Jairo Institute of Technology) Design",
-    desc: "A creative division of JIT focused on innovative, user-centered design solutions that blend technology and aesthetics.",
-    tags: ["Education", "UI/UX", "Web Design"],
-    type: "Figma",
-    status: "Completed",
-    link: "https://www.figma.com/design/aMb9FTGYo8G0MlHldnoxxa/MVP-%7C-JIT?node-id=352-2321&t=7TiJ5HnhQp1ffiPJ-1",
-  },
-  {
-    title: "Jairosoft ELMS Designer",
-    desc: "A smart e-learning platform with tools for course management, student tracking, and interactive learning simple and effective.",
-    tags: ["E-Learning", "Dashboard", "UI Design"],
-    type: "Figma",
-    status: "Completed",
-    link: "",
-  },
-];
+import { projects } from "@/app/_lib/portfolio-data";
 
 const filters = ["All", "Web App", "Mobile", "Figma", "Docker"];
 
@@ -131,7 +57,7 @@ export default function Projects() {
         </div>
       </div>
 
-      <style>{`
+      <style suppressHydrationWarning>{`
         .projects-section {
           padding: 100px 32px;
         }
@@ -306,7 +232,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         </span>
       )}
 
-      <style>{`
+      <style suppressHydrationWarning>{`
         .project-card-head {
           display: flex;
           justify-content: space-between;

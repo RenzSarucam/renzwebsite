@@ -1,47 +1,5 @@
 "use client";
-
-const skillGroups = [
-  {
-    category: "Frontend",
-    icon: "Frontend",
-    skills: [
-      { name: "React / Next.js", level: 85 },
-      { name: "HTML / CSS", level: 90 },
-      { name: "TypeScript", level: 75 },
-      { name: "Tailwind CSS", level: 80 },
-    ],
-  },
-  {
-    category: "Backend",
-    icon: "Backend",
-    skills: [
-      { name: "Node.js / Express", level: 80 },
-      { name: "Python", level: 82 },
-      { name: "REST API Design", level: 85 },
-      { name: "PostgreSQL / MongoDB", level: 72 },
-    ],
-  },
-  {
-    category: "R&D / Embedded",
-    icon: "R&D",
-    skills: [
-      { name: "Arduino / C++", level: 78 },
-      { name: "IoT Systems", level: 74 },
-      { name: "Data Analysis", level: 76 },
-      { name: "ML Basics (sklearn)", level: 65 },
-    ],
-  },
-  {
-    category: "Tools & DevOps",
-    icon: "Tools",
-    skills: [
-      { name: "Git / GitHub", level: 88 },
-      { name: "Linux CLI", level: 72 },
-      { name: "Figma", level: 68 },
-      { name: "VS Code", level: 95 },
-    ],
-  },
-];
+import { skillGroups } from "@/app/_lib/portfolio-data";
 
 export default function Skills() {
   return (
@@ -169,7 +127,7 @@ export default function Skills() {
         </div>
       </div>
 
-      <style>{`
+      <style suppressHydrationWarning>{`
         .skills-section {
           padding: 100px 32px;
         }

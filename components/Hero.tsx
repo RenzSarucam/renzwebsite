@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { certificates } from "@/components/Certificates";
-import { projects } from "@/components/Projects";
+import { certificates, projects } from "@/app/_lib/portfolio-data";
 
 const roles = [
   "Junior R&D Engineer",
@@ -285,7 +284,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <style>{`
+      <style suppressHydrationWarning>{`
         @keyframes blink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.3; }

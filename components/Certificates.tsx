@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 
 const education = [
   {
@@ -37,26 +38,106 @@ const education = [
 
 export const certificates = [
   {
-    title: "Certificate 1 - Replace with your actual cert",
-    issuer: "Issuing Organization",
-    year: "2024",
+    title: "CSS, Bootstrap, JavaScript, Web Development Course",
+    issuer: "Udemy · Proper Dot Institute",
+    year: "2025",
     color: "#378add",
+    image: "/images/certificates/udemy-css-bootstrap-js.jpg",
   },
   {
-    title: "Certificate 2 - Replace with your actual cert",
-    issuer: "Issuing Organization",
+    title: "JavaScript 20 Projects In 20 Days HTML, CSS & JavaScript",
+    issuer: "Udemy · Vijay Kumar",
+    year: "2025",
+    color: "#5dcaa5",
+    image: "/images/certificates/udemy-js-20-projects.jpg",
+  },
+  {
+    title: "Java And C++ And PHP Crash Course All in One For Beginners",
+    issuer: "Udemy · Crunch Coding",
+    year: "2025",
+    color: "#7f77dd",
+    image: "/images/certificates/udemy-java-cpp-php.jpg",
+  },
+  {
+    title: "UIUX with Figma and Adobe XD",
+    issuer: "Udemy · Marcus Menti, Zechariah Tech",
+    year: "2025",
+    color: "#ef9f27",
+    image: "/images/certificates/udemy-uiux-figma-xd.jpg",
+  },
+  {
+    title: "Mobile App Design in Figma: From Concept to Prototype",
+    issuer: "Udemy · Anton Voroniuk",
+    year: "2025",
+    color: "#378add",
+    image: "/images/certificates/udemy-figma-mobile.jpg",
+  },
+  {
+    title: "Hands On React JS From Beginner to Expert",
+    issuer: "Udemy · Learnify IT",
+    year: "2025",
+    color: "#5dcaa5",
+    image: "/images/certificates/udemy-react-js.jpg",
+  },
+  {
+    title: "Learn PHP and MySQL for Web Application and Web Development",
+    issuer: "Udemy · Marcus Menti, Zechariah Tech",
+    year: "2025",
+    color: "#7f77dd",
+    image: "/images/certificates/udemy-php-mysql.jpg",
+  },
+  {
+    title: "Ethical Hacking: Hacker Methodology",
+    issuer: "Udemy · Peter A",
+    year: "2025",
+    color: "#ef9f27",
+    image: "/images/certificates/udemy-ethical-hacking.jpg",
+  },
+  {
+    title: "Advanced IT Troubleshooting for Helpdesk Support Technicians",
+    issuer: "Udemy · John Courtenay",
+    year: "2025",
+    color: "#378add",
+    image: "/images/certificates/udemy-it-troubleshooting.jpg",
+  },
+  {
+    title: "JavaScript Tutorial: Learn JavaScript Just in 1 Hour",
+    issuer: "Learnoverse",
     year: "2024",
     color: "#5dcaa5",
+    image: "/images/certificates/learnoverse-js.jpg",
   },
   {
-    title: "Certificate 3 - Replace with your actual cert",
-    issuer: "Issuing Organization",
-    year: "2023",
-    color: "#7f77dd",
+    title: "Build with AI Davao 2024 – Certificate of Participation",
+    issuer: "Google Developer Groups Davao",
+    year: "2024",
+    color: "#4285f4",
+    image: "/images/certificates/gdg-build-with-ai.jpg",
+  },
+  {
+    title: "Champion – Mobile Legends: Bang Bang Tournament (IT Day 2021)",
+    issuer: "Holy Cross of Davao College – ITS",
+    year: "2021",
+    color: "#ef9f27",
+    image: "/images/certificates/hcdc-mlbb-champion.jpg",
   },
 ];
 
 export default function Certificates() {
+  const [selected, setSelected] = useState<(typeof certificates)[0] | null>(null);
+
+  const openModal = (item: (typeof certificates)[0]) => {
+    setSelected(item);
+    document.body.classList.add("cert-modal-open");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeModal = () => {
+    setSelected(null);
+    document.body.classList.remove("cert-modal-open");
+    document.body.style.overflow = "";
+  };
+
   return (
     <section
       id="certificates"
@@ -229,6 +310,7 @@ export default function Certificates() {
                 <div
                   className="certificate-card"
                   key={item.title}
+                  onClick={() => openModal(item)}
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -237,6 +319,16 @@ export default function Certificates() {
                     border: "1px solid rgba(55,138,221,0.12)",
                     borderRadius: 12,
                     padding: "14px 18px",
+                    cursor: "pointer",
+                    transition: "background 0.18s, border-color 0.18s",
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLDivElement).style.background = "rgba(55,138,221,0.08)";
+                    (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(55,138,221,0.3)";
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.03)";
+                    (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(55,138,221,0.12)";
                   }}
                 >
                   <div
@@ -298,7 +390,136 @@ export default function Certificates() {
         </div>
       </div>
 
-      <style>{`
+      {selected && (
+        <div
+          onClick={() => closeModal()}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 1000,
+            background: "rgba(4,8,18,0.92)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "20px",
+            backdropFilter: "blur(12px)",
+            animation: "certFadeIn 0.2s ease",
+          }}
+        >
+          {/* Close button */}
+          <button
+            onClick={() => closeModal()}
+            style={{
+              position: "fixed",
+              top: 20,
+              right: 20,
+              width: 42,
+              height: 42,
+              borderRadius: "50%",
+              background: "rgba(232,244,255,0.1)",
+              border: "1px solid rgba(232,244,255,0.2)",
+              color: "#e8f4ff",
+              fontSize: 20,
+              fontWeight: 400,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 1001,
+              backdropFilter: "blur(8px)",
+              transition: "background 0.15s",
+            }}
+            onMouseEnter={e => (e.currentTarget.style.background = "rgba(232,244,255,0.2)")}
+            onMouseLeave={e => (e.currentTarget.style.background = "rgba(232,244,255,0.1)")}
+            aria-label="Close"
+          >
+            ✕
+          </button>
+
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              position: "relative",
+              maxWidth: 900,
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              gap: 16,
+              animation: "certSlideUp 0.25s ease",
+            }}
+          >
+            {/* Image frame */}
+            <div
+              style={{
+                borderRadius: 20,
+                overflow: "hidden",
+                boxShadow: `0 0 0 1px ${selected.color}30, 0 40px 100px rgba(0,0,0,0.85), 0 0 60px ${selected.color}15`,
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={selected.image}
+                alt={selected.title}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                  maxHeight: "78vh",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+
+            {/* Caption row */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 12,
+                padding: "0 4px",
+              }}
+            >
+              <div>
+                <p style={{ margin: 0, fontSize: 15, fontWeight: 600, color: "#e8f4ff", lineHeight: 1.4 }}>
+                  {selected.title}
+                </p>
+                <p style={{ margin: "3px 0 0", fontSize: 13, color: "rgba(200,220,255,0.45)" }}>
+                  {selected.issuer} · {selected.year}
+                </p>
+              </div>
+              <span
+                style={{
+                  flexShrink: 0,
+                  padding: "5px 14px",
+                  borderRadius: 999,
+                  background: `${selected.color}18`,
+                  border: `1px solid ${selected.color}40`,
+                  color: selected.color,
+                  fontSize: 12,
+                  fontFamily: "'Courier New', monospace",
+                  letterSpacing: "0.04em",
+                }}
+              >
+                {selected.year}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <style suppressHydrationWarning>{`
+        body.cert-modal-open nav {
+          display: none !important;
+        }
+        @keyframes certFadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes certSlideUp {
+          from { opacity: 0; transform: translateY(18px) scale(0.98); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
         .certs-section {
           padding: 100px 32px;
         }
