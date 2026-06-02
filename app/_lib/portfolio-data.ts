@@ -15,6 +15,15 @@ export type Certificate = {
   image: string;
 };
 
+export type WorkExperience = {
+  company: string;
+  location: string;
+  role: string;
+  period: string;
+  description: string;
+  tools: string[];
+};
+
 export type Education = {
   level: string;
   degree: string;
@@ -81,6 +90,89 @@ export const skillGroups: SkillGroup[] = [
       { name: "Docker", level: 92 },
       { name: "AI", level: 85 },
     ],
+  },
+];
+
+export const workExperiences: WorkExperience[] = [
+  {
+    company: "DSG Son's Group Inc.",
+    location: "Philippines",
+    role: "Junior Research And Development Engineer",
+    period: "April 2026 - Present",
+    description: "Currently working as a Junior R&D Engineer, contributing to research initiatives and development projects within the organization.",
+    tools: ["Linux CLI", "Docker", "Git / GitHub", "VS Code", "AI", "REST API", "Node.js", "Next.js"],
+  },
+  {
+    company: "DSG Son's Group Inc.",
+    location: "Philippines",
+    role: "Encoder",
+    period: "August 2025 - April 2026",
+    description: "Handled data encoding and processing tasks, ensuring accuracy and efficiency in data management operations.",
+    tools: [],
+  },
+  {
+    company: "Feinform",
+    location: "Germany",
+    role: "UI Designer",
+    period: "03/2025 - 06/2025",
+    description: "Developed wireframes, interactive prototypes, and high-fidelity visuals to support smooth and cohesive user experiences across web and mobile platforms.",
+    tools: ["Figma", "Canva"],
+  },
+  {
+    company: "Jairosoft Inc.",
+    location: "Davao City, Philippines",
+    role: "UI/UX Designer (Internship)",
+    period: "02/2025 - 05/2025",
+    description: "Designed intuitive, responsive user interfaces using UI/UX best practices, leveraging Next.js and Tailwind CSS to deliver clean, accessible, and user-centered experiences across all devices.",
+    tools: ["Next.js", "Tailwind CSS", "Figma", "Canva", "Nest JS", "Azure DevOps"],
+  },
+  {
+    company: "JARN Interactive",
+    location: "Davao City",
+    role: "UI/UX Designer",
+    period: "02/2025 - 05/2025",
+    description: "JARN Interactive is a digital solutions agency specializing in crafting engaging web experiences through innovative design and modern development technologies.",
+    tools: ["Figma", "Canva", "Google Icons"],
+  },
+  {
+    company: "Trackguard Mobile",
+    location: "Davao City",
+    role: "Assistant Programmer",
+    period: "09/2024 - 01/2025",
+    description: "Designed and developed a responsive mobile application for Track Guard, prioritizing intuitive navigation and real-time tracking capabilities.",
+    tools: ["React Native", "JavaScript", "Firebase"],
+  },
+  {
+    company: "Track Guard Website",
+    location: "Davao City",
+    role: "Head Programmer / Web Developer",
+    period: "09/2024 - 01/2025",
+    description: "Developed and maintained a responsive website for Track Guard, focusing on user-friendly navigation and real-time tracking functionality.",
+    tools: ["ReactJs", "HTML/CSS", "Javascript", "Firebase"],
+  },
+  {
+    company: "Clotify Ecomm",
+    location: "Davao City",
+    role: "Front End & Back End Developer",
+    period: "12/2023 - 03/2024",
+    description: "Managed and optimized the Clotify e-commerce platform, ensuring a seamless shopping experience. Developed and executed digital marketing strategies to drive online traffic and boost sales.",
+    tools: ["Python", "Django", "HTML", "CSS", "JavaScript"],
+  },
+  {
+    company: "Task Management System",
+    location: "Davao City",
+    role: "Front End Web Developer",
+    period: "05/2023 - 08/2023",
+    description: "Designed, implemented, and maintained a task management system to streamline workflow and enhance productivity.",
+    tools: ["PHP", "Javascript", "MySql", "CSS"],
+  },
+  {
+    company: "Good Taste Design",
+    location: "Davao City",
+    role: "UI/UX Designer",
+    period: "02/2023 - 05/2023",
+    description: "Conducted user research, wireframing, and prototyping to create visually appealing and functional designs.",
+    tools: ["Figma", "Canva"],
   },
 ];
 

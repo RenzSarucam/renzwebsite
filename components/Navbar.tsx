@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 const navLinks: [string, string][] = [
   ["Home", "about"],
   ["Projects", "projects"],
+  ["Experience", "experience"],
   ["Skills", "skills"],
   ["Credential", "certificates"],
   ["Contact", "contact"],
