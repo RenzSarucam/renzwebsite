@@ -170,6 +170,8 @@ export default function Contact() {
 
           <button
             type="submit"
+            onMouseEnter={e => { if (!sent) { (e.currentTarget as HTMLButtonElement).style.background = "#2d6fb5"; (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)"; (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 24px rgba(55,138,221,0.35)"; } }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = sent ? "rgba(29,158,117,0.2)" : "#378add"; (e.currentTarget as HTMLButtonElement).style.transform = "none"; (e.currentTarget as HTMLButtonElement).style.boxShadow = "none"; }}
             style={{
               padding: "12px 28px",
               borderRadius: 8,

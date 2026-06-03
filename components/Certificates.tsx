@@ -320,15 +320,21 @@ export default function Certificates() {
                     borderRadius: 12,
                     padding: "14px 18px",
                     cursor: "pointer",
-                    transition: "background 0.18s, border-color 0.18s",
+                    transition: "background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s",
                   }}
                   onMouseEnter={e => {
-                    (e.currentTarget as HTMLDivElement).style.background = "rgba(55,138,221,0.08)";
-                    (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(55,138,221,0.3)";
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.background = "rgba(55,138,221,0.08)";
+                    el.style.borderColor = "rgba(55,138,221,0.35)";
+                    el.style.transform = "translateY(-2px)";
+                    el.style.boxShadow = "0 8px 24px rgba(55,138,221,0.12)";
                   }}
                   onMouseLeave={e => {
-                    (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.03)";
-                    (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(55,138,221,0.12)";
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.background = "rgba(255,255,255,0.03)";
+                    el.style.borderColor = "rgba(55,138,221,0.12)";
+                    el.style.transform = "translateY(0)";
+                    el.style.boxShadow = "none";
                   }}
                 >
                   <div

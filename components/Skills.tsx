@@ -54,6 +54,19 @@ export default function Skills() {
                 border: "1px solid rgba(55,138,221,0.12)",
                 borderRadius: 14,
                 padding: "22px",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
+              }}
+              onMouseEnter={e => {
+                const el = e.currentTarget as HTMLDivElement;
+                el.style.transform = "translateY(-3px)";
+                el.style.boxShadow = "0 10px 30px rgba(55,138,221,0.12)";
+                el.style.borderColor = "rgba(55,138,221,0.3)";
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget as HTMLDivElement;
+                el.style.transform = "translateY(0)";
+                el.style.boxShadow = "none";
+                el.style.borderColor = "rgba(55,138,221,0.12)";
               }}
             >
               <div

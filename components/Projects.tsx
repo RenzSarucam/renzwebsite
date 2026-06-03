@@ -108,10 +108,8 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: hovered ? "rgba(55,138,221,0.06)" : "rgba(255,255,255,0.03)",
-        border: `1px solid ${
-          hovered ? "rgba(55,138,221,0.35)" : "rgba(55,138,221,0.12)"
-        }`,
+        background: hovered ? "rgba(55,138,221,0.07)" : "rgba(255,255,255,0.03)",
+        border: `1px solid ${hovered ? "rgba(55,138,221,0.4)" : "rgba(55,138,221,0.12)"}`,
         borderRadius: 14,
         padding: "22px 22px",
         transition: "all 0.25s ease",
@@ -121,6 +119,8 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         gap: 14,
         minWidth: 0,
         overflow: "hidden",
+        transform: hovered ? "translateY(-4px)" : "translateY(0)",
+        boxShadow: hovered ? "0 12px 40px rgba(55,138,221,0.15), 0 0 0 1px rgba(55,138,221,0.1)" : "none",
       }}
     >
       <div className="project-card-head">

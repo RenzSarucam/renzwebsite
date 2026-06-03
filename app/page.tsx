@@ -1,3 +1,4 @@
+import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
@@ -26,6 +27,7 @@ export default function Home() {
       }}
     >
 
+      <LoadingScreen />
       <Navbar />
       <Hero />
       <Projects />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { certificates, projects } from "@/app/_lib/portfolio-data";
 import ContribGraph from "@/components/ContribGraph";
 
@@ -35,6 +35,36 @@ const heroStats = [
   { val: `${projects.length}+`, label: "Projects done" },
   { val: `${certificates.length}+`, label: "Certificates" },
 ];
+
+function AnimatedCounter({ value, suffix = "", delay = 0 }: { value: number; suffix?: string; delay?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true;
+        setTimeout(() => {
+          let start = 0;
+          const step = Math.ceil(value / 30);
+          const timer = setInterval(() => {
+            start += step;
+            if (start >= value) { setCount(value); clearInterval(timer); }
+            else setCount(start);
+          }, 40);
+        }, delay);
+        observer.disconnect();
+      }
+    }, { threshold: 0.5 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [value, delay]);
+
+  return <div ref={ref} className="hero-stat-value">{count}{suffix}</div>;
+}
 
 export default function Hero() {
   const [roleIdx, setRoleIdx] = useState(0);
@@ -232,9 +262,9 @@ export default function Hero() {
 
               <div className="hero-right">
                 <div className="hero-stats">
-                {heroStats.map((item) => (
+                {heroStats.map((item, i) => (
                   <div className="hero-stat-card" key={item.label}>
-                    <div className="hero-stat-value">{item.val}</div>
+                    <AnimatedCounter value={parseInt(item.val)} suffix="+" delay={i * 200} />
                     <div className="hero-stat-label">{item.label}</div>
                   </div>
                 ))}
@@ -533,12 +563,47 @@ export default function Hero() {
           max-width: 100%;
           padding: 12px 20px;
           border-radius: 12px;
-          background: rgba(255,255,255,0.07);
-          border: 1px solid rgba(255,255,255,0.12);
+          background: rgba(55,138,221,0.06);
+          border: 1px solid rgba(55,138,221,0.22);
           color: #e8f4ff;
           font-size: 17px;
           font-weight: 600;
           text-decoration: none;
+          position: relative;
+          overflow: hidden;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+          box-shadow: 0 0 18px rgba(55,138,221,0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        .hero-actions a:hover {
+          transform: translateY(-3px);
+          background: rgba(55,138,221,0.12);
+          border-color: rgba(55,138,221,0.45);
+          box-shadow: 0 0 32px rgba(55,138,221,0.25), 0 8px 24px rgba(55,138,221,0.15), inset 0 1px 0 rgba(255,255,255,0.08);
+          opacity: 1;
+        }
+        .hero-actions a:active {
+          transform: translateY(-1px);
+        }
+        .hero-actions a::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(55,138,221,0.6), transparent);
+          animation: shimmer 3s infinite ease-in-out;
+        }
+        .hero-actions a:nth-child(2) {
+          border-color: rgba(93,202,165,0.22);
+          box-shadow: 0 0 18px rgba(93,202,165,0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        .hero-actions a:nth-child(2)::before {
+          background: linear-gradient(90deg, transparent, rgba(93,202,165,0.6), transparent);
+          animation-delay: 1.5s;
+        }
+        .hero-actions a:nth-child(2):hover {
+          border-color: rgba(93,202,165,0.45);
+          background: rgba(93,202,165,0.08);
+          box-shadow: 0 0 32px rgba(93,202,165,0.25), 0 8px 24px rgba(93,202,165,0.15), inset 0 1px 0 rgba(255,255,255,0.08);
         }
 
         .hero-footer {
@@ -570,11 +635,44 @@ export default function Hero() {
         }
 
         .hero-stat-card {
-          background: rgba(55,138,221,0.07);
-          border: 1px solid rgba(55,138,221,0.14);
+          background: rgba(55,138,221,0.06);
+          border: 1px solid rgba(55,138,221,0.22);
           border-radius: 14px;
           padding: 20px 22px;
           text-align: left;
+          position: relative;
+          overflow: hidden;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          box-shadow: 0 0 18px rgba(55,138,221,0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        .hero-stat-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 0 32px rgba(55,138,221,0.25), 0 0 64px rgba(55,138,221,0.08), inset 0 1px 0 rgba(255,255,255,0.08);
+          border-color: rgba(55,138,221,0.45);
+        }
+        .hero-stat-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(55,138,221,0.6), transparent);
+          animation: shimmer 3s infinite ease-in-out;
+        }
+        .hero-stat-card:nth-child(2)::before {
+          animation-delay: 1.5s;
+          background: linear-gradient(90deg, transparent, rgba(93,202,165,0.6), transparent);
+        }
+        .hero-stat-card:nth-child(2) {
+          border-color: rgba(93,202,165,0.22);
+          box-shadow: 0 0 18px rgba(93,202,165,0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        .hero-stat-card:nth-child(2):hover {
+          box-shadow: 0 0 32px rgba(93,202,165,0.25), 0 0 64px rgba(93,202,165,0.08), inset 0 1px 0 rgba(255,255,255,0.08);
+          border-color: rgba(93,202,165,0.45);
+        }
+        @keyframes shimmer {
+          0%,100% { opacity: 0; transform: scaleX(0.3); }
+          50%      { opacity: 1; transform: scaleX(1); }
         }
 
         .hero-stat-value {
@@ -582,6 +680,10 @@ export default function Hero() {
           font-weight: 700;
           color: #e8f4ff;
           font-family: "Courier New", monospace;
+          text-shadow: 0 0 20px rgba(55,138,221,0.5);
+        }
+        .hero-stat-card:nth-child(2) .hero-stat-value {
+          text-shadow: 0 0 20px rgba(93,202,165,0.5);
         }
 
         .hero-stat-label {

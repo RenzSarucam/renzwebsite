@@ -10,8 +10,8 @@ async function scrapeGitHub(year: number) {
 
   const res = await fetch(url, {
     headers: {
-      "User-Agent": "Mozilla/5.0 (compatible; portfolio-bot/1.0)",
-      Accept: "text/html",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+      Accept: "text/html,application/xhtml+xml",
     },
     next: { revalidate: 3600 },
   });
@@ -20,28 +20,50 @@ async function scrapeGitHub(year: number) {
 
   const html = await res.text();
 
-  // Extract each day: data-date="YYYY-MM-DD" ... <title>N contributions on ...</title>
   const dayMap: Record<string, number> = {};
-  const rectRegex = /data-date="(\d{4}-\d{2}-\d{2})"[^>]*>[\s\S]*?<title>([^<]*)<\/title>/g;
 
-  let match;
-  while ((match = rectRegex.exec(html)) !== null) {
-    const date  = match[1];
-    const title = match[2].trim();
+  // Format 1 — modern GitHub: <tool-tip for="...">N contributions on ...</tool-tip>
+  // First build a map of rect id → date
+  const idDateMap: Record<string, string> = {};
+  const rectIdRegex = /id="(contribution-day-[^"]+)"[^>]*data-date="(\d{4}-\d{2}-\d{2})"/g;
+  let m;
+  while ((m = rectIdRegex.exec(html)) !== null) {
+    idDateMap[m[1]] = m[2];
+  }
 
-    let count = 0;
-    if (title.startsWith("No contributions")) {
-      count = 0;
-    } else {
-      const num = title.match(/^(\d+)\s+contribution/);
-      if (num) count = parseInt(num[1], 10);
+  // Then parse tool-tip elements
+  const tooltipRegex = /<tool-tip[^>]+for="([^"]+)"[^>]*>([\s\S]*?)<\/tool-tip>/g;
+  while ((m = tooltipRegex.exec(html)) !== null) {
+    const id   = m[1];
+    const text = m[2].trim();
+    const date = idDateMap[id];
+    if (!date) continue;
+    const num = text.match(/^(\d+)\s+contribution/);
+    dayMap[date] = num ? parseInt(num[1], 10) : 0;
+  }
+
+  // Format 2 — old GitHub: <rect data-date="..."><title>N contributions...</title></rect>
+  if (Object.keys(dayMap).length === 0) {
+    const rectRegex = /data-date="(\d{4}-\d{2}-\d{2})"[^>]*>[\s\S]*?<title>([^<]*)<\/title>/g;
+    while ((m = rectRegex.exec(html)) !== null) {
+      const date = m[1];
+      const text = m[2].trim();
+      const num  = text.match(/^(\d+)\s+contribution/);
+      dayMap[date] = num ? parseInt(num[1], 10) : 0;
     }
+  }
 
-    dayMap[date] = count;
+  // Format 3 — data-level only (approximate from level 0-4)
+  if (Object.keys(dayMap).length === 0) {
+    const levelRegex = /data-date="(\d{4}-\d{2}-\d{2})"[^>]*data-level="(\d)"/g;
+    while ((m = levelRegex.exec(html)) !== null) {
+      const levels = [0, 1, 3, 6, 10];
+      dayMap[m[1]] = levels[parseInt(m[2], 10)] ?? 0;
+    }
   }
 
   if (Object.keys(dayMap).length === 0) {
-    console.error("[scrape] no days found");
+    console.error("[scrape] no days found — HTML might have changed");
     return null;
   }
 
