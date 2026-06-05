@@ -73,13 +73,14 @@ export default function WorkExperience() {
 
         .exp-card {
           background: rgba(255,255,255,0.03);
-          border: 1px solid rgba(55,138,221,0.12);
+          border: 1px solid rgba(55,138,221,0.25);
           border-radius: 14px;
           padding: 24px 28px;
           display: grid;
           grid-template-columns: 1fr auto;
           gap: 4px 16px;
           align-items: start;
+          box-shadow: 0 0 18px rgba(55,138,221,0.12), 0 0 6px rgba(55,138,221,0.08) inset;
         }
 
         .exp-main {

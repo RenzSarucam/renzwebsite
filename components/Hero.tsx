@@ -401,6 +401,13 @@ export default function Hero() {
           text-decoration: underline;
         }
 
+        .hero-nav-link:hover {
+          color: #61afff;
+          background: rgba(55,138,221,0.12);
+          box-shadow: 0 0 12px rgba(55,138,221,0.35), 0 0 4px rgba(55,138,221,0.2) inset;
+          transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        }
+
         .hero-hire-button {
           padding: 11px 24px;
           border-radius: 12px;
@@ -411,6 +418,13 @@ export default function Hero() {
           font-size: 15px;
           font-weight: 600;
           cursor: pointer;
+          transition: background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .hero-hire-button:hover {
+          background: rgba(55,138,221,0.12);
+          border-color: rgba(55,138,221,0.85);
+          box-shadow: 0 0 16px rgba(55,138,221,0.5), 0 0 6px rgba(55,138,221,0.25) inset;
         }
 
         .hero-menu-toggle {

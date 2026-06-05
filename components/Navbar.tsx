@@ -104,6 +104,7 @@ export default function Navbar() {
               <button
                 key={label}
                 onClick={() => scrollTo(id)}
+                className="navbar-link-btn"
                 style={{
                   background: "transparent",
                   border: "none",
@@ -113,6 +114,7 @@ export default function Navbar() {
                   fontSize: 15,
                   color: "rgba(200,220,255,0.6)",
                   fontFamily: "inherit",
+                  transition: "color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease",
                 }}
               >
                 {label}
@@ -136,6 +138,7 @@ export default function Navbar() {
                 cursor: "pointer",
                 fontFamily: "inherit",
                 whiteSpace: "nowrap",
+                transition: "background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
               }}
             >
               Hire me
@@ -219,6 +222,20 @@ export default function Navbar() {
       </div>
 
       <style suppressHydrationWarning>{`
+        /* Nav link hover glow */
+        .navbar-link-btn:hover {
+          color: #61afff !important;
+          background: rgba(55,138,221,0.12) !important;
+          box-shadow: 0 0 12px rgba(55,138,221,0.35), 0 0 4px rgba(55,138,221,0.2) inset !important;
+        }
+
+        /* Hire me button hover glow */
+        .navbar-hire:hover {
+          background: rgba(55,138,221,0.12) !important;
+          border-color: rgba(55,138,221,0.85) !important;
+          box-shadow: 0 0 16px rgba(55,138,221,0.5), 0 0 6px rgba(55,138,221,0.25) inset !important;
+        }
+
         /* Desktop: show links, hide hamburger */
         .navbar-links { display: flex !important; }
         .navbar-hire { display: block !important; }
