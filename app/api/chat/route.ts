@@ -230,8 +230,8 @@ function localReply(question: string): string {
       ? "Oo, fresh graduate si Renz — nagtapos siya ng BSIT noong 2025 sa Holy Cross of Davao College. Kahit fresh grad, may solid na work experience na siya mula sa iba't ibang companies."
       : "Yes, Renz is a fresh graduate — he finished his BSIT in 2025 at Holy Cross of Davao College. Despite being a fresh grad, he already has solid work experience from various companies.";
 
-  // Education — elementary
-  if (/(elementary|grade school|primary|paaralang|nag-elementary|nag elementary)/.test(n))
+  // Education — elementary (only if not asking about specific activities like awards/sports)
+  if (/(elementary|grade school|primary|paaralang|nag-elementary|nag elementary)/.test(n) && !/(award|sport|club|honor|achievement|extracurricular|activity|grado|grade)/.test(n))
     return fil
       ? "Nag-elementary si Renz sa Magsaysay Elementary School sa Magsaysay Carmen, Davao Del Norte (2007–2014)."
       : "Renz attended Magsaysay Elementary School in Magsaysay Carmen, Davao Del Norte (2007–2014).";
@@ -249,10 +249,10 @@ function localReply(question: string): string {
       : "Renz completed senior high at Assumption College of Davao (ICT strand), graduated 2020 with honors and is an NC II ICT Passer.";
 
   // Education — college / general
-  if (/(education|school|college|degree|graduate|graduat|bsit|information technology|holy cross|nag-aral|nag aral|pinag-aralan|nag-college|nag college)/.test(n))
+  if (/(education|school|college|degree|graduate|graduat|bsit|information technology|holy cross|nag-aral|nag aral|pinag-aralan|nag-college|nag college|educational background|edukasyon)/.test(n))
     return fil
-      ? "Nagtapos si Renz ng Bachelor of Science in Information Technology sa Holy Cross of Davao College noong 2025. Nag-senior high siya sa Assumption College of Davao (ICT strand, with honors)."
-      : "Renz graduated with a Bachelor of Science in Information Technology from Holy Cross of Davao College in 2025. He completed senior high at Assumption College of Davao (ICT strand, with honors).";
+      ? `Ito ang educational background ni Renz:\n\n• College: Bachelor of Science in Information Technology — Holy Cross of Davao College (2021–2025)\n• Senior High: ICT Strand — Assumption College of Davao (2018–2020), Graduated with Honors, NC II ICT Passer\n• Junior High: Don Manuel A. Javellana Memorial National High School, Panabo City (2014–2018)\n• Elementary: Magsaysay Elementary School, Magsaysay Carmen, Davao Del Norte (2007–2014)`
+      : `Here is Renz's educational background:\n\n• College: Bachelor of Science in Information Technology — Holy Cross of Davao College (2021–2025)\n• Senior High: ICT Strand — Assumption College of Davao (2018–2020), Graduated with Honors, NC II ICT Passer\n• Junior High: Don Manuel A. Javellana Memorial National High School, Panabo City (2014–2018)\n• Elementary: Magsaysay Elementary School, Magsaysay Carmen, Davao Del Norte (2007–2014)`;
 
   // Location — AFTER skill/education checks
   if (/(where|location|based|taga saan|taga-saan|nakatira|lugar|taga|nasa saan|saan siya nakatira|saan nakatira|saan siya|saan ba siya)/.test(n))
