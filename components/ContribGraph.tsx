@@ -24,13 +24,23 @@ export default function ContribGraph() {
   const [selectedYear, setSelectedYear] = useState(CURRENT_YEAR);
 
   useEffect(() => {
-    setLoading(true);
-    setData(null);
-    fetch(`/api/github?year=${selectedYear}`)
-      .then((r) => r.json())
-      .then((d) => { if (d.days) setData(d); })
-      .catch(() => {})
-      .finally(() => setLoading(false));
+    let cancelled = false;
+
+    const load = (showLoading: boolean) => {
+      if (showLoading) { setLoading(true); setData(null); }
+      fetch(`/api/github?year=${selectedYear}`)
+        .then((r) => r.json())
+        .then((d) => { if (!cancelled && d.days) setData(d); })
+        .catch(() => {})
+        .finally(() => { if (!cancelled) setLoading(false); });
+    };
+
+    load(true);
+
+    // Auto-refresh every 5 minutes in background (no loading spinner)
+    const interval = setInterval(() => load(false), 5 * 60 * 1000);
+
+    return () => { cancelled = true; clearInterval(interval); };
   }, [selectedYear]);
 
   if (loading) return (

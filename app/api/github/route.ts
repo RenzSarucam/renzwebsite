@@ -2,7 +2,11 @@ import { NextResponse } from "next/server";
 
 const GITHUB_USERNAME = "RenzSarucam";
 
-export const revalidate = 3600;
+export const revalidate = 300;
+
+// In-memory cache so dev mode doesn't hit GitHub on every request
+const memCache = new Map<number, { data: { total: number; dayMap: Record<string, number> }; at: number }>();
+const MEM_TTL = 300_000; // 5 minutes
 
 // Parse GitHub's public contribution page — exact same data as GitHub profile
 async function scrapeGitHub(year: number) {
@@ -123,6 +127,19 @@ export async function GET(req: Request) {
   const year  = Number(searchParams.get("year") ?? new Date().getFullYear());
   const token = process.env.GITHUB_TOKEN;
 
+  // Check in-memory cache first
+  const cached = memCache.get(year);
+  if (cached && Date.now() - cached.at < MEM_TTL) {
+    const { total, dayMap } = cached.data;
+    const days: { date: string; count: number }[] = [];
+    const end = new Date(Date.UTC(year, 11, 31));
+    for (let d = new Date(Date.UTC(year, 0, 1)); d <= end; d.setUTCDate(d.getUTCDate() + 1)) {
+      const dateStr = d.toISOString().slice(0, 10);
+      days.push({ date: dateStr, count: dayMap[dateStr] ?? 0 });
+    }
+    return NextResponse.json({ total, days, year });
+  }
+
   // 1. Try GraphQL (most accurate, includes private)
   let result = token ? await fromGraphQL(token, year) : null;
 
@@ -131,6 +148,8 @@ export async function GET(req: Request) {
     console.log("[GitHub] GraphQL failed — scraping github.com");
     result = await scrapeGitHub(year);
   }
+
+  if (result) memCache.set(year, { data: result, at: Date.now() });
 
   if (!result) return NextResponse.json({ error: "No data" }, { status: 500 });
 
