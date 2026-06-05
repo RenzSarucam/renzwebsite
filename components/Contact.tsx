@@ -13,7 +13,8 @@ export default function Contact() {
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
     );
-    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(contactEmail)}&su=${subject}&body=${body}`;
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
     setSent(true);
     window.setTimeout(() => setSent(false), 4000);
     setForm({ name: "", email: "", message: "" });
@@ -61,12 +62,13 @@ export default function Contact() {
           onSubmit={handleSubmit}
           style={{
             background: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(55,138,221,0.15)",
+            border: "1px solid rgba(55,138,221,0.28)",
             borderRadius: 16,
             padding: "32px",
             display: "flex",
             flexDirection: "column",
             gap: 18,
+            boxShadow: "0 0 28px rgba(55,138,221,0.13), 0 0 8px rgba(55,138,221,0.07) inset",
           }}
         >
           <div className="contact-form-grid">
@@ -185,7 +187,17 @@ export default function Contact() {
               alignSelf: "flex-start",
             }}
           >
-            {sent ? "Message Sent!" : "Send Message ->"}
+            {sent ? (
+              <>Message Sent! ✓</>
+            ) : (
+              <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                Send Message
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 2L11 13" />
+                  <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+                </svg>
+              </span>
+            )}
           </button>
         </form>
 
@@ -215,6 +227,11 @@ export default function Contact() {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 16px;
+        }
+        .contact-section input:focus,
+        .contact-section textarea:focus {
+          border-color: rgba(55,138,221,0.6) !important;
+          box-shadow: 0 0 12px rgba(55,138,221,0.25) !important;
         }
         @media (max-width: 640px) {
           .contact-section {

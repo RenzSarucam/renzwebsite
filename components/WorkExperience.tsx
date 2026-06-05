@@ -43,6 +43,12 @@ export default function WorkExperience() {
                 <div className="exp-header">
                   <h3 className="exp-role">{exp.role}</h3>
                   <span className="exp-company">{exp.company}</span>
+                  {exp.period.toLowerCase().includes("present") && (
+                    <span className="exp-current-badge">
+                      <span className="exp-current-dot" />
+                      Current
+                    </span>
+                  )}
                 </div>
 
                 <p className="exp-location">{exp.location}</p>
@@ -111,6 +117,36 @@ export default function WorkExperience() {
           border-radius: 6px;
           padding: 2px 8px;
           white-space: nowrap;
+        }
+
+        .exp-current-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 12px;
+          font-weight: 600;
+          color: #5dcaa5;
+          background: rgba(93,202,165,0.1);
+          border: 1px solid rgba(93,202,165,0.35);
+          border-radius: 999px;
+          padding: 2px 10px 2px 7px;
+          box-shadow: 0 0 10px rgba(93,202,165,0.25);
+          white-space: nowrap;
+        }
+
+        .exp-current-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #5dcaa5;
+          box-shadow: 0 0 6px #5dcaa5;
+          animation: exp-dot-pulse 1.8s ease-in-out infinite;
+          flex-shrink: 0;
+        }
+
+        @keyframes exp-dot-pulse {
+          0%, 100% { opacity: 1; box-shadow: 0 0 6px #5dcaa5; }
+          50% { opacity: 0.5; box-shadow: 0 0 12px #5dcaa5; }
         }
 
         .exp-location {
