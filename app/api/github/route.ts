@@ -1,14 +1,9 @@
 import { NextResponse } from "next/server";
+import { CONTRIB_TAG, memCache, MEM_TTL } from "./cache";
 
 const GITHUB_USERNAME = "RenzSarucam";
 
 export const revalidate = 0; // always dynamic; cache handled by fetch tags
-
-export const CONTRIB_TAG = "github-contributions";
-
-// In-memory cache so dev mode doesn't hit GitHub on every request
-export const memCache = new Map<number, { data: { total: number; dayMap: Record<string, number> }; at: number }>();
-const MEM_TTL = 300_000; // 5 minutes
 
 // Parse GitHub's public contribution page — exact same data as GitHub profile
 async function scrapeGitHub(year: number) {

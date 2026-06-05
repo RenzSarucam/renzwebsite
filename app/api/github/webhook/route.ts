@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { createHmac, timingSafeEqual } from "crypto";
-import { CONTRIB_TAG, memCache } from "../route";
+import { CONTRIB_TAG, memCache } from "../cache";
 
 export async function POST(req: Request) {
   const secret = process.env.GITHUB_WEBHOOK_SECRET;
