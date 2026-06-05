@@ -20,13 +20,20 @@ function renderMessage(content: string) {
       {lines.map((line, i) => {
         if (line.startsWith("• ")) {
           return (
-            <span key={i} style={{ display: "flex", gap: 7, alignItems: "flex-start", marginTop: i === 0 ? 0 : 4 }}>
-              <span style={{ color: "#378add", flexShrink: 0, marginTop: 1 }}>•</span>
-              <span>{line.slice(2)}</span>
+            <span key={i} style={{ display: "flex", gap: 7, alignItems: "flex-start", marginTop: i === 0 ? 0 : 10 }}>
+              <span style={{ color: "#378add", flexShrink: 0, marginTop: 2, fontSize: 16 }}>•</span>
+              <span style={{ fontWeight: 600, color: "#e8f4ff" }}>{line.slice(2)}</span>
             </span>
           );
         }
-        return <span key={i} style={{ display: "block", marginBottom: line === "" ? 4 : 0 }}>{line}</span>;
+        if (line.startsWith("  ")) {
+          return (
+            <span key={i} style={{ display: "block", paddingLeft: 23, fontSize: 13, color: "rgba(200,220,255,0.7)", marginTop: 2 }}>
+              {line.trim()}
+            </span>
+          );
+        }
+        return <span key={i} style={{ display: "block", marginBottom: line === "" ? 6 : 0 }}>{line}</span>;
       })}
     </span>
   );
