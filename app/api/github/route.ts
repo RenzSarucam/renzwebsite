@@ -127,9 +127,11 @@ export async function GET(req: Request) {
   const year  = Number(searchParams.get("year") ?? new Date().getFullYear());
   const token = process.env.GITHUB_TOKEN;
 
+  const force = searchParams.get("force") === "1";
+
   // Check in-memory cache first
   const cached = memCache.get(year);
-  if (cached && Date.now() - cached.at < MEM_TTL) {
+  if (!force && cached && Date.now() - cached.at < MEM_TTL) {
     const { total, dayMap } = cached.data;
     const days: { date: string; count: number }[] = [];
     const end = new Date(Date.UTC(year, 11, 31));

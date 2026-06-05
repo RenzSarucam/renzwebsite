@@ -21,27 +21,39 @@ function getColor(count: number, max: number) {
 export default function ContribGraph() {
   const [data, setData] = useState<{ total: number; days: Day[]; year: number } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [selectedYear, setSelectedYear] = useState(CURRENT_YEAR);
 
   useEffect(() => {
     let cancelled = false;
 
-    const load = (showLoading: boolean) => {
+    const load = (showLoading: boolean, force = false) => {
       if (showLoading) { setLoading(true); setData(null); }
-      fetch(`/api/github?year=${selectedYear}`)
+      fetch(`/api/github?year=${selectedYear}${force ? "&force=1" : ""}`)
         .then((r) => r.json())
-        .then((d) => { if (!cancelled && d.days) setData(d); })
+        .then((d) => { if (!cancelled && d.days) { setData(d); setLastUpdated(new Date()); } })
         .catch(() => {})
         .finally(() => { if (!cancelled) setLoading(false); });
     };
 
     load(true);
 
-    // Auto-refresh every 5 minutes in background (no loading spinner)
-    const interval = setInterval(() => load(false), 5 * 60 * 1000);
+    // Auto-refresh every 5 minutes in background
+    const interval = setInterval(() => load(false, true), 5 * 60 * 1000);
 
     return () => { cancelled = true; clearInterval(interval); };
   }, [selectedYear]);
+
+  const handleRefresh = () => {
+    if (refreshing) return;
+    setRefreshing(true);
+    fetch(`/api/github?year=${selectedYear}&force=1`)
+      .then((r) => r.json())
+      .then((d) => { if (d.days) { setData(d); setLastUpdated(new Date()); } })
+      .catch(() => {})
+      .finally(() => setRefreshing(false));
+  };
 
   if (loading) return (
     <div style={{ height: 100, display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -102,8 +114,8 @@ export default function ContribGraph() {
 
   return (
     <div style={{ width: "100%", overflowX: "hidden" }}>
-      {/* Year selector */}
-      <div style={{ display: "flex", gap: 6, marginBottom: 10, flexWrap: "wrap" }}>
+      {/* Year selector + refresh */}
+      <div style={{ display: "flex", gap: 6, marginBottom: 10, flexWrap: "wrap", alignItems: "center" }}>
         {YEARS.map((y) => (
           <button
             key={y}
@@ -124,7 +136,41 @@ export default function ContribGraph() {
             {y}
           </button>
         ))}
+
+        {/* Refresh button */}
+        <button
+          onClick={handleRefresh}
+          title={lastUpdated ? `Last updated: ${lastUpdated.toLocaleTimeString()}` : "Refresh contributions"}
+          style={{
+            marginLeft: "auto",
+            padding: "3px 8px",
+            borderRadius: 6,
+            border: "1px solid rgba(55,138,221,0.2)",
+            background: "transparent",
+            color: "rgba(200,220,255,0.4)",
+            fontSize: 12,
+            cursor: refreshing ? "default" : "pointer",
+            fontFamily: "'Courier New', monospace",
+            display: "flex",
+            alignItems: "center",
+            gap: 4,
+            transition: "all 0.15s",
+            opacity: refreshing ? 0.5 : 1,
+          }}
+        >
+          <svg
+            width="11" height="11" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+            style={{ animation: refreshing ? "spin 0.8s linear infinite" : "none" }}
+          >
+            <polyline points="23 4 23 10 17 10" />
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+          </svg>
+          {refreshing ? "Syncing..." : lastUpdated ? lastUpdated.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "Sync"}
+        </button>
       </div>
+
+      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
 
       <p style={{ margin: "0 0 8px 28px", fontSize: 12, color: "rgba(200,220,255,0.45)", fontFamily: "'Courier New', monospace" }}>
         {year} Contributions &nbsp;·&nbsp; <span style={{ color: "#39d353" }}>{total.toLocaleString()} total</span>
