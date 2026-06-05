@@ -189,8 +189,8 @@ function localReply(question: string): string {
   // Contact / hire
   if (/(contact|email|hire|get in touch|reach|available|open to work|looking for|recruit|kumontact|makipag-ugnayan|ma-hire|pwedeng i-hire|pwede ba siyang)/.test(n))
     return fil
-      ? `Pwede mong i-contact si Renz sa ${contactEmail}. Available siya para sa hiring at project inquiries.`
-      : `You can reach Renz at ${contactEmail}. He is open to hiring and project inquiries.`;
+      ? `Pwede mong i-contact si Renz sa:\n• Email: ${contactEmail}\n• Phone: 09266735768\n\nAvailable siya para sa hiring at project inquiries.`
+      : `You can reach Renz at:\n• Email: ${contactEmail}\n• Phone: 09266735768\n\nHe is open to hiring and project inquiries.`;
 
   // Phone
   if (/(phone|number|numero|telepono|cell|mobile number|contact number)/.test(n))
