@@ -2,10 +2,12 @@ import { NextResponse } from "next/server";
 
 const GITHUB_USERNAME = "RenzSarucam";
 
-export const revalidate = 300;
+export const revalidate = 0; // always dynamic; cache handled by fetch tags
+
+export const CONTRIB_TAG = "github-contributions";
 
 // In-memory cache so dev mode doesn't hit GitHub on every request
-const memCache = new Map<number, { data: { total: number; dayMap: Record<string, number> }; at: number }>();
+export const memCache = new Map<number, { data: { total: number; dayMap: Record<string, number> }; at: number }>();
 const MEM_TTL = 300_000; // 5 minutes
 
 // Parse GitHub's public contribution page — exact same data as GitHub profile
@@ -17,7 +19,7 @@ async function scrapeGitHub(year: number) {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
       Accept: "text/html,application/xhtml+xml",
     },
-    next: { revalidate: 3600 },
+    next: { tags: [CONTRIB_TAG] },
   });
 
   if (!res.ok) { console.error("[scrape] status", res.status); return null; }
@@ -101,7 +103,7 @@ async function fromGraphQL(token: string, year: number) {
         query: GQL_QUERY,
         variables: { username: GITHUB_USERNAME, from: `${year}-01-01T00:00:00Z`, to: `${year}-12-31T23:59:59Z` },
       }),
-      next: { revalidate: 3600 },
+      next: { tags: [CONTRIB_TAG] },
     });
 
     const json = await res.json();
