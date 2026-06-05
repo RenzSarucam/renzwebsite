@@ -184,7 +184,8 @@ export default function Contact() {
               fontWeight: 500,
               cursor: "pointer",
               transition: "all 0.25s",
-              alignSelf: "flex-start",
+              alignSelf: "stretch",
+              width: "100%",
             }}
           >
             {sent ? (

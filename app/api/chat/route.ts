@@ -141,7 +141,9 @@ function localReply(question: string): string {
 
   // Private / unavailable
   if (/(birthday|birth day|date of birth|kaarawan|kapanganakan)/.test(n))
-    return fil ? "Hindi available ang birthday ni Renz sa portfolio data." : "Renz's birthday is not available in his portfolio data.";
+    return fil
+      ? "Pina-private ni Renz ang kanyang birthday. Pero marami kang malalaman tungkol sa kanya! Pwede kang magtanong tungkol sa:\n• Kanyang work experience\n• Skills at tech stack\n• Mga projects\n• Education background"
+      : "Renz keeps his birthday private. But there's a lot you can learn about him!\n• Work experience & current role\n• Skills & tech stack\n• Projects he's built\n• Education background";
 
   if (/\b(age|edad|ilang taon|how old)\b/.test(n))
     return fil ? "Hindi available ang exact age ni Renz sa portfolio data." : "Renz's exact age is not available in his portfolio data.";

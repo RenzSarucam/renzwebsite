@@ -59,6 +59,7 @@ export default function Navbar() {
         padding: 0,
         transition: "all 0.3s ease",
       }}
+      className="main-navbar"
     >
       <div
         style={{
@@ -222,6 +223,10 @@ export default function Navbar() {
       </div>
 
       <style suppressHydrationWarning>{`
+        @media (max-width: 640px) {
+          .main-navbar { top: 4px !important; left: 4px !important; right: 4px !important; }
+        }
+
         /* Nav link hover glow */
         .navbar-link-btn:hover {
           color: #61afff !important;

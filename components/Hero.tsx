@@ -924,6 +924,14 @@ export default function Hero() {
             border-radius: 10px;
             overflow-x: hidden;
           }
+          .hero-right {
+            overflow-x: hidden;
+            max-width: 100%;
+          }
+          .hero-stats {
+            grid-template-columns: 1fr 1fr;
+            max-width: 100%;
+          }
           .hero-topbar {
             padding: 10px 12px;
             flex-direction: row;
