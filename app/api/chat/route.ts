@@ -156,7 +156,7 @@ function localReply(question: string): string {
       : "Hello! I'm Renz's portfolio assistant. Feel free to ask about his skills, projects, work experience, education, or contact details.";
 
   // Who is Renz / intro
-  if (/(who is renz|sino si renz|tell me about renz|introduce|about renz|ano ang trabaho|what does renz do|what is renz|anong ginagawa|anong work|anong role|ano siya)/.test(n) && !/(experience|work experience|trabaho|nagtrabaho|company|employer)/.test(n))
+  if (/(who is renz|sino si renz|tell me about renz|introduce|about renz|ano ang trabaho|what does renz do|what is renz|anong ginagawa|anong work|anong role|ano siya)/.test(n) && !/(experience|work experience|trabaho|nagtrabaho|company|employer|role|position|current)/.test(n))
     return fil
       ? `Si ${profile.fullName} ay isang Junior R&D Engineer at DevOps Engineer mula sa ${profile.location}. May background siya sa frontend at backend development, UI/UX design, at DevOps tools tulad ng Docker, Linux, at Nginx. Nagtapos siya ng BSIT sa Holy Cross of Davao College noong 2025.`
       : `${profile.fullName} is a Junior R&D Engineer and DevOps Engineer from ${profile.location}. He has a background in frontend and backend development, UI/UX design, and DevOps tools like Docker, Linux, and Nginx. He graduated with a BSIT from Holy Cross of Davao College in 2025.`;
@@ -179,10 +179,12 @@ function localReply(question: string): string {
   }
 
   // Current role / position title
-  if (/(ano.*role|mga role|what.*role|current role|current position|what is his role|anong role|anong position|what position|job title|titulo)/.test(n))
+  if (/(ano.*role|mga role|what.*role|current role|current position|what is his role|anong role|anong position|what position|job title|titulo)/.test(n)) {
+    const current = workExperiences[0];
     return fil
-      ? `Ang kasalukuyang role ni Renz ay Junior R&D Engineer at DevOps Engineer sa DSG Son's Group Inc. Dati siyang UI/UX Designer, Web Developer, at Assistant Programmer sa iba't ibang companies.`
-      : `Renz's current roles are Junior R&D Engineer and DevOps Engineer at DSG Son's Group Inc. He has previously worked as a UI/UX Designer, Web Developer, and Assistant Programmer across various companies.`;
+      ? `Si Renz ay kasalukuyang nagtatrabaho bilang ${current.role} sa ${current.company} simula ${current.period}.\n\n${current.description}\n\n• Gumagamit siya ng ${current.tools.slice(0, 4).join(", ")} at iba pa sa kanyang pang-araw-araw na trabaho.\n• Focused siya sa research, development, at systems infrastructure.\n• Open siya sa bagong opportunities at collaborations.`
+      : `Renz is currently working as a ${current.role} at ${current.company} since ${current.period}.\n\n${current.description}\n\n• Works with ${current.tools.slice(0, 4).join(", ")} and more on a daily basis.\n• Focused on research-driven development and systems infrastructure.\n• Open to new opportunities, freelance work, and collaborations.`;
+  }
 
   // Contact / hire
   if (/(contact|email|hire|get in touch|reach|available|open to work|looking for|recruit|kumontact|makipag-ugnayan|ma-hire|pwedeng i-hire|pwede ba siyang)/.test(n))
