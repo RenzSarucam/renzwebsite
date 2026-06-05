@@ -158,7 +158,7 @@ function localReply(question: string): string {
       : "Hello! I'm Renz's portfolio assistant. Feel free to ask about his skills, projects, work experience, education, or contact details.";
 
   // Who is Renz / intro
-  if (/(who is renz|sino si renz|tell me about renz|introduce|about renz|ano ang trabaho|what does renz do|what is renz|anong ginagawa|anong work|anong role|ano siya)/.test(n) && !/(experience|work experience|trabaho|nagtrabaho|company|employer|role|position|current)/.test(n))
+  if (/(who is renz|sino si renz|tell me about renz|introduce|about renz|ano ang trabaho|what does renz do|what is renz|anong ginagawa|anong work|anong role|ano siya)/.test(n) && !/(experience|work experience|trabaho|nagtrabaho|company|employer|role|position|current|education|background|school|degree|skill|project|contact|certificate)/.test(n))
     return fil
       ? `Si ${profile.fullName} ay isang Junior R&D Engineer at DevOps Engineer mula sa ${profile.location}. May background siya sa frontend at backend development, UI/UX design, at DevOps tools tulad ng Docker, Linux, at Nginx. Nagtapos siya ng BSIT sa Holy Cross of Davao College noong 2025.`
       : `${profile.fullName} is a Junior R&D Engineer and DevOps Engineer from ${profile.location}. He has a background in frontend and backend development, UI/UX design, and DevOps tools like Docker, Linux, and Nginx. He graduated with a BSIT from Holy Cross of Davao College in 2025.`;
