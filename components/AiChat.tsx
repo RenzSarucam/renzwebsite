@@ -13,6 +13,25 @@ const quickPrompts = [
   { icon: "📞", label: "Contact Renz",          text: "How can I contact Renz?" },
 ];
 
+function renderMessage(content: string) {
+  const lines = content.split("\n");
+  return (
+    <span style={{ display: "block" }}>
+      {lines.map((line, i) => {
+        if (line.startsWith("• ")) {
+          return (
+            <span key={i} style={{ display: "flex", gap: 7, alignItems: "flex-start", marginTop: i === 0 ? 0 : 4 }}>
+              <span style={{ color: "#378add", flexShrink: 0, marginTop: 1 }}>•</span>
+              <span>{line.slice(2)}</span>
+            </span>
+          );
+        }
+        return <span key={i} style={{ display: "block", marginBottom: line === "" ? 4 : 0 }}>{line}</span>;
+      })}
+    </span>
+  );
+}
+
 export default function AiChat() {
   const [open, setOpen]       = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -167,9 +186,11 @@ export default function AiChat() {
                       <div className="ai-bot-avatar">AI</div>
                     )}
                     <div className={`ai-bubble ${msg.role}`}>
-                      {msg.content || (loading && i === messages.length - 1
-                        ? <span className="ai-typing"><span/><span/><span/></span>
-                        : "")}
+                      {msg.content
+                        ? renderMessage(msg.content)
+                        : loading && i === messages.length - 1
+                          ? <span className="ai-typing"><span/><span/><span/></span>
+                          : ""}
                     </div>
                   </div>
                 ))}

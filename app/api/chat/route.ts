@@ -283,10 +283,10 @@ function localReply(question: string): string {
 
   // Projects general
   if (/(project|portfolio|built|gawa|ginawa|sample work|github|anong projects|ilang projects|ilan projects|mga projects)/.test(n)) {
-    const featured = projects.slice(0, 3).map((p) => p.title).join(", ");
+    const list = projects.map((p) => `• ${p.title} — ${p.type}`).join("\n");
     return fil
-      ? `May ${projects.length} documented projects si Renz. Ilan sa mga ito: ${featured}. Pwede kang magtanong tungkol sa specific project.`
-      : `Renz has ${projects.length} documented projects. Some include: ${featured}. Ask about a specific project for more details.`;
+      ? `May ${projects.length} documented projects si Renz:\n${list}`
+      : `Renz has ${projects.length} documented projects:\n${list}`;
   }
 
   // Specific company work experience
@@ -298,10 +298,10 @@ function localReply(question: string): string {
 
   // Work experience general
   if (/(work experience|experience|nagtrabaho|trabaho|company|employer|internship|intern|nag-intern|dsg|feinform|jairosoft|jarn|trackguard|clotify|task management|good taste|ilang company|ilan company|ilang trabaho|\bwork\b|position|mga work|ano.*work|ano.*position|roles?|job|naging|nag-work|nagwork|saan.*nagtrabaho|anong.*trabaho)/.test(n)) {
-    const recent = workExperiences.slice(0, 3).map((e) => `${e.role} at ${e.company}`).join(", ");
+    const list = workExperiences.map((e) => `• ${e.role} @ ${e.company} (${e.period})`).join("\n");
     return fil
-      ? `May ${workExperiences.length} documented work experience si Renz. Pinaka-recent: ${recent}. Pwede kang magtanong tungkol sa specific company o role.`
-      : `Renz has ${workExperiences.length} documented work experiences. Most recent: ${recent}. You can ask about a specific company or role.`;
+      ? `May ${workExperiences.length} documented work experience si Renz:\n${list}`
+      : `Renz has ${workExperiences.length} documented work experiences:\n${list}`;
   }
 
   // Skill — specific with knowledge check
@@ -318,10 +318,10 @@ function localReply(question: string): string {
 
   // Skills general
   if (/(skill|tech stack|technology|stack|ano ang alam|tools|programming|anong skills|ano ang skills|lahat ng skills|listahan|list of skills)/.test(n)) {
-    const summary = skillGroups.map((g) => `${g.category}: ${g.skills.map((s) => s.name).join(", ")}`).join(" | ");
+    const list = skillGroups.map((g) => `• ${g.category}: ${g.skills.map((s) => s.name).join(", ")}`).join("\n");
     return fil
-      ? `Ang tech stack ni Renz: ${summary}. Pati na rin React Native, Python, PHP, Django, Firebase, Figma, Nginx, at Arduino.`
-      : `Renz's tech stack: ${summary}. He also knows React Native, Python, PHP, Django, Firebase, Figma, Nginx, and Arduino.`;
+      ? `Ang tech stack ni Renz:\n${list}`
+      : `Renz's tech stack:\n${list}`;
   }
 
   // Specific certificate
@@ -332,10 +332,12 @@ function localReply(question: string): string {
       : `"${cert.title}" is one of Renz's certificates, issued by ${cert.issuer} in ${cert.year}.`;
 
   // Certificates general
-  if (/(certificate|certification|credential|training|udemy|course|anong certif|may certif|ilang certif)/.test(n))
+  if (/(certificate|certification|credential|training|udemy|course|anong certif|may certif|ilang certif)/.test(n)) {
+    const list = certificates.map((c) => `• ${c.title} — ${c.issuer} (${c.year})`).join("\n");
     return fil
-      ? `May ${certificates.length} documented certificates si Renz covering web development, JavaScript, React, UI/UX, PHP/MySQL, ethical hacking, at IT troubleshooting.`
-      : `Renz has ${certificates.length} documented certificates covering web development, JavaScript, React, UI/UX, PHP/MySQL, ethical hacking, and IT troubleshooting.`;
+      ? `May ${certificates.length} certificates si Renz:\n${list}`
+      : `Renz has ${certificates.length} certificates:\n${list}`;
+  }
 
   // Fallback
   return fil
