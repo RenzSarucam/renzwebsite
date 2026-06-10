@@ -211,7 +211,7 @@ export default function Contact() {
             fontFamily: "'Courier New', monospace",
           }}
         >
-          Designed by Renz Carljansen Sarucam - 2026
+          Built by Renz Carljansen Sarucam © 2026
         </p>
       </div>
 
