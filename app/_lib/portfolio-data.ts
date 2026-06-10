@@ -249,6 +249,14 @@ export const projects: Project[] = [
     status: "Completed",
     link: "",
   },
+  {
+    title: "Inventory Count Management System (ICMS)",
+    desc: "A full-blown, web-based inventory tracking system. Dockerized, deployed via Putty, and automated with a GitHub Actions self-hosted runner.",
+    tags: ["Docker", "GitHub Actions", "Inventory"],
+    type: "Docker",
+    status: "Completed",
+    link: "",
+  },
 ];
 
 export const education: Education[] = [
