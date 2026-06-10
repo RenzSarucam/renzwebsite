@@ -99,8 +99,8 @@ export const workExperiences: WorkExperience[] = [
     location: "Philippines",
     role: "Junior Research And Development Engineer",
     period: "April 2026 - Present",
-    description: "Currently working as a Junior R&D Engineer, contributing to research initiatives and development projects within the organization.",
-    tools: ["Linux CLI", "Docker", "Git / GitHub", "VS Code", "AI", "Node.js", "Next.js", "Nginx"],
+    description: "Currently working as a Junior R&D Engineer, responsible for designing and deploying multi-project server infrastructure using Docker and Docker Compose. Manages CI/CD pipelines via GitHub Actions self-hosted runners, administers Linux servers with multi-environment (testing/production) setups, and maintains shared database architecture across multiple internal applications.",
+    tools: ["Linux CLI", "Docker", "Git / GitHub", "VS Code", "AI", "Node.js", "Next.js", "Nginx", "Laravel", "React", "MySQL", "CI/CD", "GitHub Actions"],
   },
   {
     company: "DSG Son's Group Inc.",
