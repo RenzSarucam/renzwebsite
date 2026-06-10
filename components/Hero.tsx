@@ -213,9 +213,9 @@ export default function Hero() {
                 </div>
 
                 <p className="hero-bio">
-                  Junior R&D Engineer & Web Developer focused on building efficient systems and crafting clean web experiences.
+                  Junior R&D Engineer & Web Developer focused on building efficient server infrastructure and crafting clean web experiences.
                   <br />
-                  Combining research and web design in Davao City, PH.
+                  Combining DevOps and web development in Davao City, PH.
                 </p>
 
                 <div className="hero-actions">
