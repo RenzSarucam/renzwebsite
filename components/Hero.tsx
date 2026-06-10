@@ -22,6 +22,7 @@ const techStack = [
   { name: "Linux CLI", color: "#5dcaa5" },
   { name: "MySQL", color: "#00758f" },
   { name: "Nginx", color: "#009639" },
+  { name: "CI/CD Automation", color: "#378add" },
 ];
 
 const contribs = [
