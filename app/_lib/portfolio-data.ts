@@ -251,8 +251,8 @@ export const projects: Project[] = [
   },
   {
     title: "Inventory Count Management System (ICMS)",
-    desc: "A full-blown, web-based inventory tracking system. Dockerized, deployed via Putty, and automated with a GitHub Actions self-hosted runner.",
-    tags: ["Docker", "GitHub Actions", "Inventory"],
+    desc: "A web-based inventory system. Dockerized, deployed via SSH, and automated with GitHub Actions self-hosted runners for testing and production environments.",
+    tags: ["Docker", "GitHub Actions", "Laravel", "React", "Socket.IO", "Redis", "Nginx", "Linux", "CI/CD", "Inventory"],
     type: "Docker",
     status: "Completed",
     link: "",
