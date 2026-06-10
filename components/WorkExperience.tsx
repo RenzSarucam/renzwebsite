@@ -38,7 +38,7 @@ export default function WorkExperience() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           {workExperiences.map((exp, i) => (
-            <div key={i} className="exp-card">
+            <div key={i} className={`exp-card${exp.period.toLowerCase().includes("present") ? " exp-card-current" : ""}`}>
               <div className="exp-main">
                 <div className="exp-header">
                   <h3 className="exp-role">{exp.role}</h3>
@@ -87,6 +87,53 @@ export default function WorkExperience() {
           gap: 4px 16px;
           align-items: start;
           box-shadow: 0 0 18px rgba(55,138,221,0.12), 0 0 6px rgba(55,138,221,0.08) inset;
+          position: relative;
+        }
+
+        .exp-card-current {
+          background: rgba(93,202,165,0.04);
+          border-color: rgba(93,202,165,0.35);
+          box-shadow:
+            0 0 0 1px rgba(93,202,165,0.15),
+            0 0 24px rgba(93,202,165,0.18),
+            0 0 48px rgba(93,202,165,0.08),
+            inset 0 0 20px rgba(93,202,165,0.04);
+          animation: current-card-glow 2.8s ease-in-out infinite;
+        }
+
+        .exp-card-current::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 12%;
+          height: 76%;
+          width: 3px;
+          border-radius: 0 3px 3px 0;
+          background: linear-gradient(180deg, transparent, #5dcaa5 30%, #5dcaa5 70%, transparent);
+          box-shadow: 0 0 12px #5dcaa5, 0 0 24px rgba(93,202,165,0.6);
+          animation: current-bar-pulse 2.8s ease-in-out infinite;
+        }
+
+        @keyframes current-card-glow {
+          0%, 100% {
+            box-shadow:
+              0 0 0 1px rgba(93,202,165,0.15),
+              0 0 24px rgba(93,202,165,0.18),
+              0 0 48px rgba(93,202,165,0.08),
+              inset 0 0 20px rgba(93,202,165,0.04);
+          }
+          50% {
+            box-shadow:
+              0 0 0 1px rgba(93,202,165,0.28),
+              0 0 36px rgba(93,202,165,0.28),
+              0 0 64px rgba(93,202,165,0.14),
+              inset 0 0 28px rgba(93,202,165,0.07);
+          }
+        }
+
+        @keyframes current-bar-pulse {
+          0%, 100% { opacity: 0.75; box-shadow: 0 0 10px #5dcaa5, 0 0 20px rgba(93,202,165,0.5); }
+          50% { opacity: 1; box-shadow: 0 0 16px #5dcaa5, 0 0 32px rgba(93,202,165,0.8); }
         }
 
         .exp-main {
