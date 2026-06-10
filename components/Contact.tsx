@@ -191,7 +191,7 @@ export default function Contact() {
             {sent ? (
               <>Message Sent! ✓</>
             ) : (
-              <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
                 Send Message
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 2L11 13" />
