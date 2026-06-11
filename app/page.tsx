@@ -1,5 +1,6 @@
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
+import ScrollProgress from "@/components/ScrollProgress";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import WorkExperience from "@/components/WorkExperience";
@@ -27,6 +28,7 @@ export default function Home() {
       }}
     >
 
+      <ScrollProgress />
       <LoadingScreen />
       <Navbar />
       <Hero />

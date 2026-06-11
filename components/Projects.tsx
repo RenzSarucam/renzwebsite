@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { projects } from "@/app/_lib/portfolio-data";
+import { projects, type Project } from "@/app/_lib/portfolio-data";
 
 const filters = ["All", "Web App", "Mobile", "Figma", "Docker"];
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
   const [shuffledProjects, setShuffledProjects] = useState(projects);
+  const [selected, setSelected] = useState<Project | null>(null);
 
   useEffect(() => {
     setShuffledProjects([...projects].sort(() => Math.random() - 0.5));
@@ -57,9 +58,11 @@ export default function Projects() {
 
         <div className="project-grid">
           {shown.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+            <ProjectCard key={project.title} project={project} onOpen={() => setSelected(project)} />
           ))}
         </div>
+
+        {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}
       </div>
 
       <style suppressHydrationWarning>{`
@@ -104,12 +107,13 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ project }: { project: (typeof projects)[0] }) {
+function ProjectCard({ project, onOpen }: { project: (typeof projects)[0]; onOpen: () => void }) {
   const [hovered, setHovered] = useState(false);
 
   return (
     <div
       className="project-card"
+      onClick={onOpen}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -118,7 +122,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         borderRadius: 14,
         padding: "22px 22px",
         transition: "all 0.25s ease",
-        cursor: "default",
+        cursor: "pointer",
         display: "flex",
         flexDirection: "column",
         gap: 14,
@@ -288,6 +292,100 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
           }
         }
       `}</style>
+    </div>
+  );
+}
+
+function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed", inset: 0, zIndex: 9998,
+        background: "rgba(5,13,26,0.85)",
+        backdropFilter: "blur(6px)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        padding: "24px 16px",
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "#0b1829",
+          border: "1px solid rgba(55,138,221,0.28)",
+          borderRadius: 16,
+          padding: "28px 28px 24px",
+          maxWidth: 560,
+          width: "100%",
+          maxHeight: "90vh",
+          overflowY: "auto",
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+          boxShadow: "0 0 60px rgba(55,138,221,0.18)",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <span style={{ fontSize: 12, padding: "3px 9px", borderRadius: 4, background: "rgba(55,138,221,0.1)", color: "#378add", border: "1px solid rgba(55,138,221,0.2)" }}>
+              {project.type}
+            </span>
+            <span style={{
+              fontSize: 12, padding: "3px 9px", borderRadius: 100,
+              background: project.status === "Completed" ? "rgba(29,158,117,0.12)" : "rgba(239,159,39,0.12)",
+              color: project.status === "Completed" ? "#5dcaa5" : "#ef9f27",
+              border: `1px solid ${project.status === "Completed" ? "rgba(29,158,117,0.25)" : "rgba(239,159,39,0.25)"}`,
+            }}>
+              {project.status}
+            </span>
+          </div>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: "rgba(200,220,255,0.4)", cursor: "pointer", fontSize: 20, lineHeight: 1, padding: "0 2px" }}>✕</button>
+        </div>
+
+        <h3 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: "#e8f4ff" }}>{project.title}</h3>
+
+        {project.place && (
+          <span style={{ fontSize: 13, color: "rgba(200,220,255,0.45)", display: "inline-flex", alignItems: "center", gap: 5, marginTop: -8 }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            {project.place}
+          </span>
+        )}
+
+        <p style={{ margin: 0, fontSize: 15, color: "rgba(200,220,255,0.65)", lineHeight: 1.7 }}>{project.desc}</p>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+          {project.tags.map((tag) => (
+            <span key={tag} style={{ fontSize: 13, padding: "3px 9px", borderRadius: 4, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(200,220,255,0.65)" }}>
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {project.link ? (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 10, background: "rgba(55,138,221,0.1)", border: "1px solid rgba(55,138,221,0.3)", color: "#378add", fontSize: 14, fontWeight: 600, textDecoration: "none", alignSelf: "flex-start" }}
+          >
+            {project.type === "Figma" ? "View on Figma" : "View on GitHub"} →
+          </a>
+        ) : (
+          <span style={{ fontSize: 13, color: "rgba(200,220,255,0.35)", fontStyle: "italic" }}>Source is confidential</span>
+        )}
+      </div>
     </div>
   );
 }

@@ -6,6 +6,14 @@ import { contactEmail } from "@/app/_lib/portfolio-data";
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(contactEmail).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -52,10 +60,36 @@ export default function Contact() {
           >
             Get In Touch
           </h2>
-          <p style={{ fontSize: 17, color: "rgba(200,220,255,0.55)", lineHeight: 1.7, margin: 0 }}>
+          <p style={{ fontSize: 17, color: "rgba(200,220,255,0.55)", lineHeight: 1.7, margin: "0 0 16px" }}>
             Whether you have a project, collaboration, or just want to say hi -
             my inbox is always open.
           </p>
+          <button
+            onClick={copyEmail}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "9px 20px",
+              borderRadius: 8,
+              background: copied ? "rgba(29,158,117,0.12)" : "rgba(55,138,221,0.08)",
+              border: `1px solid ${copied ? "rgba(29,158,117,0.35)" : "rgba(55,138,221,0.25)"}`,
+              color: copied ? "#5dcaa5" : "#378add",
+              fontSize: 14,
+              fontWeight: 500,
+              cursor: "pointer",
+              transition: "all 0.2s",
+              fontFamily: "'Courier New', monospace",
+            }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              {copied
+                ? <polyline points="20 6 9 17 4 12" />
+                : <><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></>
+              }
+            </svg>
+            {copied ? "Copied!" : contactEmail}
+          </button>
         </div>
 
         <form

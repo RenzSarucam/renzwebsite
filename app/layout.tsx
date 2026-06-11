@@ -10,6 +10,12 @@ export const metadata: Metadata = {
     title: "Renz Carljansen Sarucam — Junior R&D Engineer",
     description: "Portfolio of Renz Carljansen Sarucam — building research-driven software solutions.",
     type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Renz Carljansen Sarucam — Junior R&D Engineer",
+    description: "Portfolio of Renz Carljansen Sarucam — building research-driven software solutions.",
   },
 };
 
