@@ -180,7 +180,7 @@ export const workExperiences: WorkExperience[] = [
 export const projects: Project[] = [
   {
     title: "TrackGuard Admin Panel",
-    desc: "Smart and secure control center for tracking, managing, and safeguarding your data all in one powerful dashboard.",
+    desc: "A full-featured web-based admin panel built for the TrackGuard system. It serves as the central control hub for managing users, monitoring real-time tracking data, and overseeing security events. The dashboard provides administrators with a clean, intuitive interface to view live device locations, manage access controls, and generate reports — all designed to keep sensitive data organized and protected.",
     tags: ["Admin Panel", "Dashboard", "Security"],
     type: "Web App",
     status: "Completed",
@@ -189,7 +189,7 @@ export const projects: Project[] = [
   },
   {
     title: "TrackGuard Mobile App",
-    desc: "Real-time tracking and smart protection right in your pocket. Stay connected, stay secure, anytime, anywhere.",
+    desc: "A cross-platform mobile application built for the TrackGuard ecosystem. It allows users to monitor live device locations, receive instant security alerts, and manage their tracking settings on the go. Designed with a focus on performance and reliability, the app ensures users stay connected and informed at all times — whether they're at home or on the move.",
     tags: ["Mobile App", "Tracking", "Security"],
     type: "Mobile",
     status: "Completed",
@@ -198,7 +198,7 @@ export const projects: Project[] = [
   },
   {
     title: "TrueNest Seekers Website Design",
-    desc: "A sleek real estate platform helping seekers find their perfect nest with ease, style, and smart location tools.",
+    desc: "A Figma-designed website for TrueNest Seekers, a real estate platform aimed at making property discovery simple and enjoyable. The design focuses on clear property listings, smart location filtering, and an approachable visual style that builds trust with users. Every screen was crafted with user flow in mind — from browsing listings to contacting agents — ensuring a smooth and confident property-seeking experience.",
     tags: ["UI/UX", "Real Estate", "Web Design"],
     type: "Figma",
     status: "Completed",
@@ -207,7 +207,7 @@ export const projects: Project[] = [
   },
   {
     title: "TrueNest Seekers Mobile Design",
-    desc: "A seamless real estate experience at your fingertips explore, discover, and secure your dream home with ease and elegance.",
+    desc: "The mobile counterpart to the TrueNest Seekers web design, built entirely in Figma with a mobile-first approach. The interface prioritizes thumb-friendly navigation, quick property previews, and a clean card-based layout for browsing listings on smaller screens. Location-based search and saved favorites were key features designed into the app flow to enhance the overall property discovery experience.",
     tags: ["Mobile UI", "Real Estate", "App Design"],
     type: "Mobile",
     status: "Completed",
@@ -216,7 +216,7 @@ export const projects: Project[] = [
   },
   {
     title: "Clotify Ecomm",
-    desc: "Style meets simplicity your personalized fashion destination with seamless shopping at your fingertips.",
+    desc: "A personal e-commerce project built to practice full-stack web development. Clotify is an online clothing store with product browsing, a shopping cart, and a checkout flow. The project was an opportunity to explore backend integration, database management, and building a polished storefront UI from scratch — combining clean design with functional shopping features.",
     tags: ["E-Commerce", "Fashion", "Web Design"],
     type: "Figma",
     status: "Completed",
@@ -225,7 +225,7 @@ export const projects: Project[] = [
   },
   {
     title: "Good Taste",
-    desc: "Curated elegance in every bite. Savor the finest flavors and elevate your dining experience.",
+    desc: "A mobile UI design project for a restaurant app called Good Taste. The design captures a premium dining atmosphere through rich typography, warm color palettes, and elegant food photography layouts. Key screens include menu browsing, dish detail views, and reservation booking — all crafted to feel upscale yet approachable, making the dining experience feel inviting before the customer even walks through the door.",
     tags: ["Restaurant", "Mobile UI", "Food App"],
     type: "Mobile",
     status: "Completed",
@@ -234,7 +234,7 @@ export const projects: Project[] = [
   },
   {
     title: "Facebook Clone",
-    desc: "A sleek social experience connect, share, and engage with friends and communities, just like the original.",
+    desc: "A high-fidelity Figma recreation of the Facebook web interface, designed as a UI/UX study project. The goal was to closely replicate the layout, component structure, and visual hierarchy of the original platform — including the news feed, sidebar, and navigation elements. This project sharpened skills in component design, spacing systems, and building consistent design patterns at scale.",
     tags: ["Social App", "UI Clone", "Web Design"],
     type: "Figma",
     status: "Completed",
@@ -243,7 +243,7 @@ export const projects: Project[] = [
   },
   {
     title: "JIT (Jairo Institute of Technology) Design",
-    desc: "A creative division of JIT focused on innovative, user-centered design solutions that blend technology and aesthetics.",
+    desc: "A full website MVP design for JIT (Jairo Institute of Technology), created during my internship at Jairosoft Inc. The design covers the institution's landing page, course catalog, and enrollment sections — built with a modern, tech-forward aesthetic. The goal was to make the platform feel credible and professional while being approachable for students exploring their educational options.",
     tags: ["Education", "UI/UX", "Web Design"],
     type: "Figma",
     status: "Completed",
@@ -252,7 +252,7 @@ export const projects: Project[] = [
   },
   {
     title: "Jairosoft ELMS Designer",
-    desc: "A smart e-learning platform with tools for course management, student tracking, and interactive learning simple and effective.",
+    desc: "A Figma design for Jairosoft's internal E-Learning Management System (ELMS). The platform was designed to support instructors and students with course creation tools, progress tracking dashboards, and a clean content viewer. The design prioritized clarity and ease of navigation, ensuring that both technical and non-technical users could interact with the platform without friction.",
     tags: ["E-Learning", "Dashboard", "UI Design"],
     type: "Figma",
     status: "Completed",
@@ -261,7 +261,7 @@ export const projects: Project[] = [
   },
   {
     title: "Inventory Count Management System (ICMS)",
-    desc: "A web-based inventory system. Dockerized, deployed via SSH, and automated with GitHub Actions self-hosted runners for testing and production environments.",
+    desc: "A production-grade web-based Inventory Count Management System built for DSG Son's Group Inc. The system was fully Dockerized using Docker Compose with separate testing and production environments, deployed to a Linux server via SSH. CI/CD pipelines were set up using GitHub Actions with self-hosted runners to automate testing and deployment. The backend is powered by Laravel and React with real-time capabilities via Socket.IO and Redis, served through Nginx — making it a robust and scalable internal tool.",
     tags: ["Docker", "GitHub Actions", "Laravel", "React", "Socket.IO", "Redis", "Nginx", "Linux", "CI/CD", "Inventory"],
     type: "Docker",
     status: "Completed",
