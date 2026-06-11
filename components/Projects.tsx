@@ -1,15 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { projects } from "@/app/_lib/portfolio-data";
 
 const filters = ["All", "Web App", "Mobile", "Figma", "Docker"];
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
+  const [shuffledProjects, setShuffledProjects] = useState(projects);
+
+  useEffect(() => {
+    setShuffledProjects([...projects].sort(() => Math.random() - 0.5));
+  }, []);
 
   const shown =
-    filter === "All" ? projects : projects.filter((project) => project.type === filter);
+    filter === "All" ? shuffledProjects : shuffledProjects.filter((project) => project.type === filter);
 
   return (
     <section
