@@ -268,6 +268,15 @@ export const projects: Project[] = [
     link: "",
     place: "DSG Son's Group Inc.",
   },
+  {
+    title: "ReOrderPro (ROP)",
+    desc: "A web-based merchandise reorder management system built for Gaisano Malls to simplify and automate the replenishment workflow. ROP integrates with legacy systems and provides barcode-based item inquiry, batch reorder processing, role-based workflows, approval management, and real-time request tracking. The system centralizes the entire reorder process — from item validation to approval routing — reducing manual effort and improving accuracy across departments. Like ICMS, it was fully Dockerized with separate testing and production environments, deployed via SSH, and automated through GitHub Actions self-hosted runners.",
+    tags: ["Docker", "GitHub Actions", "Laravel", "React", "Socket.IO", "Redis", "Nginx", "Linux", "CI/CD", "Barcode"],
+    type: "Docker",
+    status: "Completed",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
 ];
 
 export const education: Education[] = [
