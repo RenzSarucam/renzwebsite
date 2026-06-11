@@ -202,7 +202,7 @@ function ProjectCard({ project, onOpen }: { project: (typeof projects)[0]; onOpe
         </span>
       )}
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: "auto" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
         {project.tags.slice(0, 3).map((tag) => (
           <span key={tag} style={{ fontSize: 12, padding: "3px 9px", borderRadius: 4, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(200,220,255,0.55)" }}>
             {tag}
@@ -216,7 +216,7 @@ function ProjectCard({ project, onOpen }: { project: (typeof projects)[0]; onOpe
       </div>
 
       <div style={{
-        marginTop: 4,
+        marginTop: "auto",
         paddingTop: 12,
         borderTop: `1px solid ${hovered ? "rgba(55,138,221,0.15)" : "rgba(255,255,255,0.05)"}`,
         display: "flex",
