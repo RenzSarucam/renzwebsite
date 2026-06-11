@@ -7,15 +7,10 @@ const filters = ["All", "Web App", "Mobile", "Figma", "Docker"];
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
-  const [shuffledProjects, setShuffledProjects] = useState(projects);
   const [selected, setSelected] = useState<Project | null>(null);
 
-  useEffect(() => {
-    setShuffledProjects([...projects].sort(() => Math.random() - 0.5));
-  }, []);
-
   const shown =
-    filter === "All" ? shuffledProjects : shuffledProjects.filter((project) => project.type === filter);
+    filter === "All" ? projects : projects.filter((project) => project.type === filter);
 
   return (
     <section
