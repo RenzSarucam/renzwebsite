@@ -355,7 +355,12 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             {project.type === "Figma" ? "View on Figma" : "View on GitHub"} →
           </a>
         ) : (
-          <span style={{ fontSize: 13, color: "rgba(200,220,255,0.35)", fontStyle: "italic" }}>Source is confidential</span>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, color: "rgba(200,220,255,0.35)", fontStyle: "italic" }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            This project is under a confidentiality agreement
+          </span>
         )}
       </div>
     </div>
