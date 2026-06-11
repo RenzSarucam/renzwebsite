@@ -123,10 +123,10 @@ function ProjectCard({ project, onOpen }: { project: (typeof projects)[0]; onOpe
         padding: "22px 22px",
         transition: "all 0.25s ease",
         cursor: "pointer",
-        minHeight: 220,
+        height: 230,
         display: "flex",
         flexDirection: "column",
-        gap: 14,
+        gap: 12,
         minWidth: 0,
         overflow: "hidden",
         transform: hovered ? "translateY(-4px)" : "translateY(0)",
@@ -153,11 +153,15 @@ function ProjectCard({ project, onOpen }: { project: (typeof projects)[0]; onOpe
           <h3
             className="project-card-title"
             style={{
-              fontSize: 19,
+              fontSize: 18,
               fontWeight: 600,
               color: "#e8f4ff",
               margin: 0,
               overflowWrap: "anywhere",
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
             }}
           >
             {project.title}
