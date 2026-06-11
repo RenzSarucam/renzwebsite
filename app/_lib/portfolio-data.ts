@@ -5,6 +5,7 @@ export type Project = {
   type: string;
   status: string;
   link: string;
+  place?: string;
 };
 
 export type Certificate = {
@@ -184,6 +185,7 @@ export const projects: Project[] = [
     type: "Web App",
     status: "Completed",
     link: "https://github.com/TrackGuard/Trackguard-WebAdmin",
+    place: "Holy Cross of Davao College",
   },
   {
     title: "TrackGuard Mobile App",
@@ -192,6 +194,7 @@ export const projects: Project[] = [
     type: "Mobile",
     status: "Completed",
     link: "https://github.com/TrackGuard/trackguard-mobile",
+    place: "Holy Cross of Davao College",
   },
   {
     title: "TrueNest Seekers Website Design",
@@ -200,6 +203,7 @@ export const projects: Project[] = [
     type: "Figma",
     status: "Completed",
     link: "https://www.figma.com/design/yHev3Md58ibmab66ZDCBpw/Real-Estate%7C-TrueNest-Seekers?node-id=13-2&t=q48CBJJSDRO9OPQp-1",
+    place: "Jairosoft Inc.",
   },
   {
     title: "TrueNest Seekers Mobile Design",
@@ -208,6 +212,7 @@ export const projects: Project[] = [
     type: "Mobile",
     status: "Completed",
     link: "https://www.figma.com/design/yHev3Md58ibmab66ZDCBpw/Real-Estate%7C-TrueNest-Seekers?node-id=13-2&t=q48CBJJSDRO9OPQp-1",
+    place: "Jairosoft Inc.",
   },
   {
     title: "Clotify Ecomm",
@@ -216,6 +221,7 @@ export const projects: Project[] = [
     type: "Figma",
     status: "Completed",
     link: "https://github.com/RenzSarucam/Clothify-Ecomm",
+    place: "Personal Project",
   },
   {
     title: "Good Taste",
@@ -224,6 +230,7 @@ export const projects: Project[] = [
     type: "Mobile",
     status: "Completed",
     link: "https://www.figma.com/design/IPXOqKQOcXlH7s8wb1xK24/Good-Taste?node-id=0-1&t=dYubPY7NNZECtJVD-1",
+    place: "Personal Project",
   },
   {
     title: "Facebook Clone",
@@ -232,6 +239,7 @@ export const projects: Project[] = [
     type: "Figma",
     status: "Completed",
     link: "https://www.figma.com/design/Els0kit8BXfniyEsmdE48Y/HCIACtivity1?node-id=0-1&t=jXQKsUDKxx88GlDi-1",
+    place: "Personal Project",
   },
   {
     title: "JIT (Jairo Institute of Technology) Design",
@@ -240,6 +248,7 @@ export const projects: Project[] = [
     type: "Figma",
     status: "Completed",
     link: "https://www.figma.com/design/aMb9FTGYo8G0MlHldnoxxa/MVP-%7C-JIT?node-id=352-2321&t=7TiJ5HnhQp1ffiPJ-1",
+    place: "Jairosoft Inc.",
   },
   {
     title: "Jairosoft ELMS Designer",
@@ -248,6 +257,7 @@ export const projects: Project[] = [
     type: "Figma",
     status: "Completed",
     link: "",
+    place: "Jairosoft Inc.",
   },
   {
     title: "Inventory Count Management System (ICMS)",
@@ -256,6 +266,7 @@ export const projects: Project[] = [
     type: "Docker",
     status: "Completed",
     link: "",
+    place: "DSG Son's Group Inc.",
   },
 ];
 

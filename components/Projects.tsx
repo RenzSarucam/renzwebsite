@@ -178,6 +178,25 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         </span>
       </div>
 
+      {project.place && (
+        <span
+          style={{
+            fontSize: 12,
+            color: "rgba(200,220,255,0.45)",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 5,
+            marginTop: -6,
+          }}
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          {project.place}
+        </span>
+      )}
+
       <p style={{ fontSize: 15, color: "rgba(200,220,255,0.6)", lineHeight: 1.65, margin: 0 }}>
         {project.desc}
       </p>
