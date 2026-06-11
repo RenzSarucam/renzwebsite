@@ -123,6 +123,7 @@ function ProjectCard({ project, onOpen }: { project: (typeof projects)[0]; onOpe
         padding: "22px 22px",
         transition: "all 0.25s ease",
         cursor: "pointer",
+        minHeight: 220,
         display: "flex",
         flexDirection: "column",
         gap: 14,
@@ -188,16 +189,7 @@ function ProjectCard({ project, onOpen }: { project: (typeof projects)[0]; onOpe
       </div>
 
       {project.place && (
-        <span
-          style={{
-            fontSize: 12,
-            color: "rgba(200,220,255,0.45)",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 5,
-            marginTop: -6,
-          }}
-        >
+        <span style={{ fontSize: 12, color: "rgba(200,220,255,0.4)", display: "inline-flex", alignItems: "center", gap: 5, marginTop: -8 }}>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
             <circle cx="12" cy="10" r="3"/>
@@ -206,59 +198,35 @@ function ProjectCard({ project, onOpen }: { project: (typeof projects)[0]; onOpe
         </span>
       )}
 
-      <p style={{ fontSize: 15, color: "rgba(200,220,255,0.6)", lineHeight: 1.65, margin: 0 }}>
-        {project.desc}
-      </p>
-
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            style={{
-              fontSize: 13,
-              padding: "3px 9px",
-              borderRadius: 4,
-              background: "rgba(255,255,255,0.05)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              color: "rgba(200,220,255,0.65)",
-            }}
-          >
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: "auto" }}>
+        {project.tags.slice(0, 3).map((tag) => (
+          <span key={tag} style={{ fontSize: 12, padding: "3px 9px", borderRadius: 4, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(200,220,255,0.55)" }}>
             {tag}
           </span>
         ))}
+        {project.tags.length > 3 && (
+          <span style={{ fontSize: 12, padding: "3px 9px", borderRadius: 4, background: "rgba(55,138,221,0.06)", border: "1px solid rgba(55,138,221,0.15)", color: "rgba(55,138,221,0.7)" }}>
+            +{project.tags.length - 3} more
+          </span>
+        )}
       </div>
 
-      {project.link ? (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            fontSize: 14,
-            color: "#378add",
-            textDecoration: "none",
-            marginTop: "auto",
-          }}
-        >
-          {project.type === "Figma" ? "View on Figma" : "View on GitHub"} -{">"}
-        </a>
-      ) : (
-        <span
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            fontSize: 14,
-            color: "rgba(200,220,255,0.48)",
-            marginTop: "auto",
-          }}
-        >
-          Confidential
+      <div style={{
+        marginTop: 4,
+        paddingTop: 12,
+        borderTop: `1px solid ${hovered ? "rgba(55,138,221,0.15)" : "rgba(255,255,255,0.05)"}`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        transition: "border-color 0.25s",
+      }}>
+        <span style={{ fontSize: 13, color: hovered ? "#378add" : "rgba(200,220,255,0.35)", transition: "color 0.25s", fontWeight: 500 }}>
+          View project details
         </span>
-      )}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={hovered ? "#378add" : "rgba(200,220,255,0.3)"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transition: "stroke 0.25s, transform 0.25s", transform: hovered ? "translateX(3px)" : "translateX(0)" }}>
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
 
       <style suppressHydrationWarning>{`
         .project-card-head {
