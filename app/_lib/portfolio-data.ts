@@ -236,7 +236,7 @@ export const projects: Project[] = [
     title: "TrackGuard Admin Panel",
     desc: "A full-featured web-based admin panel built for the TrackGuard system. It serves as the central control hub for managing users, monitoring real-time tracking data, and overseeing security events. The dashboard provides administrators with a clean, intuitive interface to view live device locations, manage access controls, and generate reports — all designed to keep sensitive data organized and protected.",
     tags: ["Admin Panel", "Dashboard", "Security"],
-    type: "Web App",
+    type: "Website",
     status: "Completed",
     link: "https://github.com/TrackGuard/Trackguard-WebAdmin",
     place: "Holy Cross of Davao College",
