@@ -18,12 +18,27 @@ function getColor(count: number, max: number) {
   return "#4ae168";                      // max
 }
 
+function usePHTime() {
+  const [time, setTime] = useState<string>("");
+
+  useEffect(() => {
+    const tick = () =>
+      setTime(new Date().toLocaleTimeString("en-PH", { timeZone: "Asia/Manila", hour: "2-digit", minute: "2-digit", second: "2-digit" }));
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return time;
+}
+
 export default function ContribGraph() {
   const [data, setData] = useState<{ total: number; days: Day[]; year: number } | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [selectedYear, setSelectedYear] = useState(CURRENT_YEAR);
+  const phTime = usePHTime();
 
   useEffect(() => {
     let cancelled = false;
@@ -114,6 +129,15 @@ export default function ContribGraph() {
 
   return (
     <div style={{ width: "100%", overflowX: "hidden" }}>
+      {/* PH Time clock */}
+      {phTime && (
+        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#378add", boxShadow: "0 0 6px #378add", display: "inline-block", flexShrink: 0 }} />
+          <span style={{ fontSize: 11, color: "rgba(200,220,255,0.4)", fontFamily: "'Courier New', monospace", letterSpacing: "0.06em", textTransform: "uppercase" }}>PH Time</span>
+          <span style={{ fontSize: 13, color: "#61afff", fontFamily: "'Courier New', monospace", fontWeight: 600, letterSpacing: "0.04em" }}>{phTime}</span>
+        </div>
+      )}
+
       {/* Year selector + refresh */}
       <div style={{ display: "flex", gap: 6, marginBottom: 10, flexWrap: "wrap", alignItems: "center" }}>
         {YEARS.map((y) => (
