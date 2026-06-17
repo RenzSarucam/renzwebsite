@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
-import { certificates, projects } from "@/app/_lib/portfolio-data";
+import { certificates, projects, techStack } from "@/app/_lib/portfolio-data";
 import ContribGraph from "@/components/ContribGraph";
 
 const roles = [
@@ -9,20 +9,6 @@ const roles = [
   "DevOps Engineer",
   "Web Designer",
   "Web Developer",
-];
-
-const techStack = [
-  { name: "JavaScript", color: "#f7df1e" },
-  { name: "React", color: "#61dafb" },
-  { name: "Node.js", color: "#1d9e75" },
-  { name: "HTML/CSS", color: "#e34c26" },
-  { name: "Next.js", color: "#e8f4ff" },
-  { name: "Docker", color: "#2496ed" },
-  { name: "Git/GitHub", color: "#f05032" },
-  { name: "Linux CLI", color: "#5dcaa5" },
-  { name: "MySQL", color: "#00758f" },
-  { name: "Nginx", color: "#009639" },
-  { name: "CI/CD Automation", color: "#378add" },
 ];
 
 const contribs = [
@@ -294,7 +280,7 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  github.com/RenzSarucam →
+                  github.com/RenzSarucam â†’
                 </a>
               </div>
             </div>
@@ -790,7 +776,7 @@ export default function Hero() {
           word-break: break-word;
         }
 
-        /* ── Tablet: single-column grid ── */
+        /* â”€â”€ Tablet: single-column grid â”€â”€ */
         @media (max-width: 1100px) {
           .hero-grid {
             grid-template-columns: 1fr;
@@ -805,7 +791,7 @@ export default function Hero() {
           }
         }
 
-        /* ── Tablet narrow (820px) ── */
+        /* â”€â”€ Tablet narrow (820px) â”€â”€ */
         @media (max-width: 820px) {
           .hero-wrapper {
             padding: 10px;
@@ -915,7 +901,7 @@ export default function Hero() {
           .hero-link { font-size: 13px; }
         }
 
-        /* ── Phone (640px and below) ── */
+        /* â”€â”€ Phone (640px and below) â”€â”€ */
         @media (max-width: 640px) {
           .hero-wrapper {
             padding: 6px;
@@ -1110,3 +1096,5 @@ function ResumeIcon() {
     </svg>
   );
 }
+
+

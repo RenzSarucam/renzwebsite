@@ -48,6 +48,25 @@ export type SkillGroup = {
 
 export const contactEmail = "renzcarljansen@gmail.com";
 
+export const techStack = [
+  { name: "JavaScript", color: "#f7df1e" },
+  { name: "React", color: "#61dafb" },
+  { name: "Node.js", color: "#1d9e75" },
+  { name: "HTML/CSS", color: "#e34c26" },
+  { name: "Next.js", color: "#e8f4ff" },
+  { name: "Docker", color: "#2496ed" },
+  { name: "Git/GitHub", color: "#f05032" },
+  { name: "Linux CLI", color: "#5dcaa5" },
+  { name: "MySQL", color: "#00758f" },
+  { name: "Nginx", color: "#009639" },
+  { name: "CI/CD Automation", color: "#378add" },
+  { name: "Redis", color: "#dc382d" },
+  { name: "Socket.IO", color: "#e8f4ff" },
+  { name: "Figma", color: "#f24e1e" },
+  { name: "React Native", color: "#61dafb" },
+  { name: "Firebase", color: "#ffca28" },
+];
+
 export const profile = {
   fullName: "Renz Carljansen Sarucam",
   firstName: "Renz",

@@ -1,13 +1,9 @@
-import { profile, contactEmail, workExperiences, education, skillGroups, certificates } from "@/app/_lib/portfolio-data";
+import { profile, contactEmail, workExperiences, education, certificates, techStack } from "@/app/_lib/portfolio-data";
 import PrintButton from "./PrintButton";
 
 export const metadata = { title: "Resume – Renz Carljansen Sarucam" };
 
-const extraSkills = ["React Native", "Python", "PHP", "Django", "Firebase", "Figma", "Canva", "Arduino", "C++", "Nginx"];
-const allSkills = [
-  ...skillGroups.flatMap((g) => g.skills.map((s) => s.name)),
-  ...extraSkills,
-];
+const allSkills = techStack.map((s) => s.name);
 
 export default function ResumePage() {
   return (
