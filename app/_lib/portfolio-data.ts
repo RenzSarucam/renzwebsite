@@ -179,6 +179,15 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "ScheduleLink",
+    desc: "A web-based resource booking and scheduling system built for Gaisano Malls under DSG Son's Group Inc. ScheduleLink streamlines the reservation of shared assets — including conference rooms and company vehicles — through an intuitive dashboard with real-time booking summaries, approval workflows, and a full calendar view (day, week, month). It features role-based access control, department filtering, organization and account management, and a permission system to ensure only authorized users can create or approve reservations. Like ICMS and ROP, it was fully Dockerized with separate testing and production environments, deployed to a Linux server via SSH, and automated through GitHub Actions self-hosted runners.",
+    tags: ["Docker", "GitHub Actions", "Laravel", "React", "Socket.IO", "Redis", "Nginx", "Linux", "CI/CD", "Scheduling"],
+    type: "Docker",
+    status: "Completed",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
     title: "ReOrderPro (ROP)",
     desc: "A web-based merchandise reorder management system built for Gaisano Malls to simplify and automate the replenishment workflow. ROP integrates with legacy systems and provides barcode-based item inquiry, batch reorder processing, role-based workflows, approval management, and real-time request tracking. The system centralizes the entire reorder process — from item validation to approval routing — reducing manual effort and improving accuracy across departments. Like ICMS, it was fully Dockerized with separate testing and production environments, deployed via SSH, and automated through GitHub Actions self-hosted runners.",
     tags: ["Docker", "GitHub Actions", "Laravel", "React", "Socket.IO", "Redis", "Nginx", "Linux", "CI/CD", "Barcode"],
