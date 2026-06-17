@@ -5,7 +5,7 @@ import {
   contactEmail,
   profile,
   projects,
-  skillGroups,
+  techStack,
   workExperiences,
 } from "@/app/_lib/portfolio-data";
 
@@ -322,7 +322,7 @@ function localReply(question: string): string {
 
   // Skills general
   if (/(skill|tech stack|technology|stack|ano ang alam|tools|programming|anong skills|ano ang skills|lahat ng skills|listahan|list of skills)/.test(n)) {
-    const list = skillGroups.map((g) => `• ${g.category}: ${g.skills.map((s) => s.name).join(", ")}`).join("\n");
+    const list = techStack.map((s) => `• ${s.name}`).join("\n");
     return fil
       ? `Ang tech stack ni Renz:\n${list}`
       : `Renz's tech stack:\n${list}`;
