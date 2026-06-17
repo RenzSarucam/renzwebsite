@@ -55,6 +55,12 @@ export default function WorkExperience() {
 
                 <p className="exp-desc">{exp.description}</p>
 
+                {exp.projects && (
+                  <p className="exp-projects">
+                    <span className="exp-projects-label">Projects: </span>{exp.projects}
+                  </p>
+                )}
+
                 {exp.tools.length > 0 && (
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                     {exp.tools.map((tool) => (
@@ -208,6 +214,19 @@ export default function WorkExperience() {
           color: rgba(200,220,255,0.65);
           margin: 0 0 16px;
           line-height: 1.65;
+        }
+
+        .exp-projects {
+          font-size: 13px;
+          color: rgba(200,220,255,0.55);
+          margin: 0 0 14px;
+          font-family: 'Courier New', monospace;
+          line-height: 1.6;
+        }
+
+        .exp-projects-label {
+          color: #378add;
+          font-weight: 600;
         }
 
         .exp-tool {

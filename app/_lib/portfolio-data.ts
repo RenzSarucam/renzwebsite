@@ -22,6 +22,7 @@ export type WorkExperience = {
   role: string;
   period: string;
   description: string;
+  projects?: string;
   tools: string[];
 };
 
@@ -101,6 +102,7 @@ export const workExperiences: WorkExperience[] = [
     role: "Junior Research And Development Engineer",
     period: "April 2026 - Present",
     description: "Currently working as a Junior R&D Engineer, responsible for designing and deploying multi-project server infrastructure using Docker and Docker Compose. Manages CI/CD pipelines via GitHub Actions self-hosted runners, administers Linux servers with multi-environment (testing/production) setups, and maintains shared database architecture across multiple internal applications.",
+    projects: "ScheduleLink, ReOrderPro (ROP), Inventory Count Management System (ICMS)",
     tools: ["Linux CLI", "Docker", "Git / GitHub", "VS Code", "AI", "Node.js", "Next.js", "Nginx", "Laravel", "React", "MySQL", "CI/CD", "GitHub Actions"],
   },
   {
@@ -117,6 +119,7 @@ export const workExperiences: WorkExperience[] = [
     role: "UI Designer",
     period: "03/2025 - 06/2025",
     description: "Developed wireframes, interactive prototypes, and high-fidelity visuals to support smooth and cohesive user experiences across web and mobile platforms.",
+    projects: "Feinform Website Design",
     tools: ["Figma", "Canva"],
   },
   {
@@ -125,6 +128,7 @@ export const workExperiences: WorkExperience[] = [
     role: "UI/UX Designer (Internship)",
     period: "02/2025 - 05/2025",
     description: "Designed intuitive, responsive user interfaces using UI/UX best practices, leveraging Next.js and Tailwind CSS to deliver clean, accessible, and user-centered experiences across all devices.",
+    projects: "TrueNest Seekers Website Design, TrueNest Seekers Mobile Design, JIT (Jairo Institute of Technology) Design, Jairosoft ELMS Designer",
     tools: ["Next.js", "Tailwind CSS", "Figma", "Canva", "Nest JS", "Azure DevOps"],
   },
   {
@@ -133,6 +137,7 @@ export const workExperiences: WorkExperience[] = [
     role: "UI/UX Designer",
     period: "02/2025 - 05/2025",
     description: "JARN Interactive is a digital solutions agency specializing in crafting engaging web experiences through innovative design and modern development technologies.",
+    projects: "Good Taste Restaurant App Design",
     tools: ["Figma", "Canva", "Google Icons"],
   },
   {
@@ -141,6 +146,7 @@ export const workExperiences: WorkExperience[] = [
     role: "Assistant Programmer",
     period: "09/2024 - 01/2025",
     description: "Designed and developed a responsive mobile application for Track Guard, prioritizing intuitive navigation and real-time tracking capabilities.",
+    projects: "TrackGuard Mobile App",
     tools: ["React Native", "JavaScript", "Firebase"],
   },
   {
@@ -149,6 +155,7 @@ export const workExperiences: WorkExperience[] = [
     role: "Head Programmer / Web Developer",
     period: "09/2024 - 01/2025",
     description: "Developed and maintained a responsive website for Track Guard, focusing on user-friendly navigation and real-time tracking functionality.",
+    projects: "TrackGuard Admin Panel",
     tools: ["ReactJs", "HTML/CSS", "Javascript", "Firebase"],
   },
   {
@@ -157,6 +164,7 @@ export const workExperiences: WorkExperience[] = [
     role: "Front End & Back End Developer",
     period: "12/2023 - 03/2024",
     description: "Managed and optimized the Clotify e-commerce platform, ensuring a seamless shopping experience. Developed and executed digital marketing strategies to drive online traffic and boost sales.",
+    projects: "Clotify Ecomm",
     tools: ["Python", "Django", "HTML", "CSS", "JavaScript"],
   },
   {
@@ -165,6 +173,7 @@ export const workExperiences: WorkExperience[] = [
     role: "Front End Web Developer",
     period: "05/2023 - 08/2023",
     description: "Designed, implemented, and maintained a task management system to streamline workflow and enhance productivity.",
+    projects: "Task Management System",
     tools: ["PHP", "Javascript", "MySql", "CSS"],
   },
   {
@@ -173,6 +182,7 @@ export const workExperiences: WorkExperience[] = [
     role: "UI/UX Designer",
     period: "02/2023 - 05/2023",
     description: "Conducted user research, wireframing, and prototyping to create visually appealing and functional designs.",
+    projects: "Good Taste Restaurant App Design",
     tools: ["Figma", "Canva"],
   },
 ];

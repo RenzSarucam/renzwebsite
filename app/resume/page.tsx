@@ -54,6 +54,8 @@ export default function ResumePage() {
         .exp-company { font-size: 10pt; color: #1a73e8; font-weight: 600; }
         .exp-period { font-size: 9pt; color: #666; white-space: nowrap; }
         .exp-desc { font-size: 9.5pt; color: #333; margin-top: 3px; line-height: 1.5; }
+        .exp-projects { margin-top: 3px; font-size: 9pt; color: #333; }
+        .exp-projects-label { font-weight: 600; color: #1a73e8; }
         .exp-tools { margin-top: 4px; font-size: 9pt; color: #555; font-style: italic; }
 
         /* ── Education rows ── */
@@ -116,6 +118,11 @@ export default function ResumePage() {
                 <span className="exp-period">{exp.period}</span>
               </div>
               <div className="exp-desc">{exp.description}</div>
+              {exp.projects && (
+                <div className="exp-projects">
+                  <span className="exp-projects-label">Projects: </span>{exp.projects}
+                </div>
+              )}
               {exp.tools.length > 0 && (
                 <div className="exp-tools">Tools: {exp.tools.join(", ")}</div>
               )}
