@@ -468,8 +468,8 @@ export default function Hero() {
         .hero-right {
           display: flex;
           flex-direction: column;
-          gap: 16px;
-          padding: 28px 22px 0;
+          gap: 10px;
+          padding: 18px 22px 0;
           min-width: 0;
         }
 
@@ -632,14 +632,14 @@ export default function Hero() {
         .hero-stats {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 12px;
+          gap: 10px;
         }
 
         .hero-stat-card {
           background: rgba(55,138,221,0.06);
           border: 1px solid rgba(55,138,221,0.22);
-          border-radius: 14px;
-          padding: 20px 22px;
+          border-radius: 12px;
+          padding: 14px 18px;
           text-align: left;
           position: relative;
           overflow: hidden;
@@ -677,7 +677,7 @@ export default function Hero() {
         }
 
         .hero-stat-value {
-          font-size: 32px;
+          font-size: 26px;
           font-weight: 700;
           color: #e8f4ff;
           font-family: "Courier New", monospace;
@@ -688,21 +688,21 @@ export default function Hero() {
         }
 
         .hero-stat-label {
-          margin-top: 6px;
-          font-size: 13px;
+          margin-top: 4px;
+          font-size: 12px;
           color: rgba(200,220,255,0.42);
         }
 
         .hero-panel {
           background: rgba(255,255,255,0.025);
           border: 1px solid rgba(55,138,221,0.12);
-          border-radius: 14px;
-          padding: 20px 20px 16px;
+          border-radius: 12px;
+          padding: 14px 16px 12px;
         }
 
         .hero-panel-title {
-          margin: 0 0 16px;
-          font-size: 11px;
+          margin: 0 0 10px;
+          font-size: 10px;
           color: rgba(200,220,255,0.35);
           letter-spacing: 0.12em;
           text-transform: uppercase;
@@ -711,25 +711,25 @@ export default function Hero() {
         .hero-chip-grid {
           display: flex;
           flex-wrap: wrap;
-          gap: 8px;
-          max-width: 560px;
+          gap: 6px;
+          max-width: 100%;
         }
 
         .hero-chip {
           display: inline-flex;
           align-items: center;
-          gap: 7px;
-          padding: 7px 12px;
-          border-radius: 10px;
+          gap: 5px;
+          padding: 4px 10px;
+          border-radius: 8px;
           background: rgba(255,255,255,0.05);
           border: 1px solid rgba(255,255,255,0.08);
-          font-size: 13px;
+          font-size: 12px;
           color: rgba(200,220,255,0.75);
         }
 
         .hero-chip-dot {
-          width: 10px;
-          height: 10px;
+          width: 8px;
+          height: 8px;
           border-radius: 999px;
           flex-shrink: 0;
         }
