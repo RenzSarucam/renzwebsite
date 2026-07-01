@@ -208,6 +208,32 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "E-JO (Electronic Job Order)",
+    desc: "A comprehensive web-based Electronic Job Order system developed for the ICT Department to streamline job order management, automate the approval process, and eliminate manual forms. This system is a modernized upgrade of an existing application, redesigned to be more user-friendly and efficient. Deployed using Docker with a focus on performance monitoring and stability — proactive measures were implemented to prevent system lag and ensure smooth operations for end-users.",
+    tags: ["Docker", "Laravel", "React", "Nginx", "Linux", "Monitoring", "CI/CD"],
+    type: "Docker Deploy",
+    status: "In Progress",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
+    title: "WEB-IDC (Web Inventory Data Capture)",
+    desc: "A comprehensive web-based Inventory Data Capture system designed to serve as a reliable, user-friendly solution for recording and managing inventory data in real-time. WEB-IDC helps reduce errors in the data validation process and enhances overall business operations through an intuitive interface and easy integration capabilities. Deployed using Docker Containerization with remote developer access from the ICT department.",
+    tags: ["Docker", "Laravel", "React", "Nginx", "Linux", "Inventory", "Real-time"],
+    type: "Docker Deploy",
+    status: "In Progress",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
+    title: "Davao Tours (Book-Tour)",
+    desc: "A full-stack vehicle rental and tour booking web application designed for Davao City. Customers can browse vehicles and tour packages, register, book vehicles, and manage their profiles and booking history. An admin panel handles fleet management, booking and driver management, tour package management, and customer accounts. Built with Next.js App Router, TypeScript, Prisma ORM with MariaDB, JWT authentication (separate flows for admin and customer), and Tailwind CSS — with a clean green-themed interface inspired by modern booking platforms.",
+    tags: ["Next.js", "TypeScript", "Prisma", "MariaDB", "JWT", "Tailwind CSS", "Booking", "Admin Panel"],
+    type: "Full Stack",
+    status: "In Progress",
+    link: "https://github.com/RenzSarucam/davao-tours",
+  },
+  {
     title: "ScheduleLink",
     desc: "A comprehensive web-based asset management platform built for Gaisano Malls under DSG Son's Group Inc. ScheduLink streamlines the management of shared organizational assets — including conference rooms and company vehicles — through an intuitive interface that handles recurring reservations and automated approval workflows. It eliminates double-booking and manual errors, ensuring optimized asset availability across the organization. The system features role-based access control, department filtering, real-time booking summaries, and a full calendar view. Like ICMS and ROP, it was fully Dockerized with separate testing and production environments, deployed to a Linux server via SSH, and automated through GitHub Actions self-hosted runners.",
     tags: ["Docker", "GitHub Actions", "Laravel", "React", "Socket.IO", "Redis", "Nginx", "Linux", "CI/CD", "Scheduling"],
