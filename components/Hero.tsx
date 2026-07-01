@@ -19,8 +19,8 @@ const contribs = [
 const sections = ["about", "projects", "experience", "skills", "certificates", "contact"];
 const navLabels = ["Home", "Projects", "Experience", "Skills", "Credential", "Contact"];
 const heroStats = [
-  { val: `${projects.length}+`, label: "Projects done" },
-  { val: `${certificates.length}+`, label: "Certificates" },
+  { val: `${projects.length}`, label: "Projects done" },
+  { val: `${certificates.length}`, label: "Certificates" },
 ];
 
 function AnimatedCounter({ value, suffix = "", delay = 0 }: { value: number; suffix?: string; delay?: number }) {
