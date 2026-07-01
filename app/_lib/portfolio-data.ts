@@ -232,6 +232,7 @@ export const projects: Project[] = [
     type: "Full Stack",
     status: "In Progress",
     link: "https://github.com/RenzSarucam/davao-tours",
+    place: "Davao City",
   },
   {
     title: "ScheduleLink",
