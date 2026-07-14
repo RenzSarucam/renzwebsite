@@ -251,7 +251,7 @@ export default function Hero() {
                 <div className="hero-stats">
                 {heroStats.map((item, i) => (
                   <div className="hero-stat-card" key={item.label}>
-                    <AnimatedCounter value={parseInt(item.val)} suffix="+" delay={i * 200} />
+                    <AnimatedCounter value={parseInt(item.val)} delay={i * 200} />
                     <div className="hero-stat-label">{item.label}</div>
                   </div>
                 ))}

@@ -208,6 +208,15 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "WPI (Web-based Price Inquiry)",
+    desc: "A web-based version of the existing price inquiry system developed by the ICT Department, making it accessible directly on the browser without requiring any software installation on terminals. The new version supports customizable background colors, logos, and advertisements, while maintaining security through terminal whitelisting — only allowed terminals can access the application. The system fetches data directly from the server, resulting in a more efficient and responsive experience compared to its predecessor. Deployed on allocated servers with remote developer access from the ICT department.",
+    tags: ["Web App", "Laravel", "PHP", "Linux", "Security", "Customization"],
+    type: "Website",
+    status: "Completed",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
     title: "E-JO (Electronic Job Order)",
     desc: "A comprehensive web-based Electronic Job Order system developed for the ICT Department to streamline job order management, automate the approval process, and eliminate manual forms. This system is a modernized upgrade of an existing application, redesigned to be more user-friendly and efficient. Deployed using Docker with a focus on performance monitoring and stability — proactive measures were implemented to prevent system lag and ensure smooth operations for end-users.",
     tags: ["Docker", "Laravel", "React", "Nginx", "Linux", "Monitoring", "CI/CD"],
