@@ -208,6 +208,15 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "GEMS (G-Export Management System)",
+    desc: "A full-stack export management and reporting system built for Gaisano Malls under DSG Son's Group Inc. GEMS automates the entire report lifecycle — from extracting data via ODBC connections to legacy and external databases, compiling customizable report templates, generating exports in Excel and PDF formats, and securely delivering them to remote servers via SFTP. The system features a scheduler powered by Laravel's task scheduler with cron expressions, full execution and transfer logging, and a dynamic template naming convention engine. Built with Laravel 11, React 18, Inertia.js, and Tailwind CSS on the frontend, with MySQL/PostgreSQL as the primary database and ODBC drivers for external data integration.",
+    tags: ["Laravel", "React", "Inertia.js", "Tailwind CSS", "MySQL", "ODBC", "SFTP", "Scheduler", "Excel/PDF", "Vite"],
+    type: "Full Stack",
+    status: "Completed",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
     title: "WPI (Web-based Price Inquiry)",
     desc: "A web-based version of the existing price inquiry system developed by the ICT Department, making it accessible directly on the browser without requiring any software installation on terminals. The new version supports customizable background colors, logos, and advertisements, while maintaining security through terminal whitelisting — only allowed terminals can access the application. The system fetches data directly from the server, resulting in a more efficient and responsive experience compared to its predecessor. Deployed on allocated servers with remote developer access from the ICT department.",
     tags: ["Web App", "Laravel", "PHP", "Linux", "Security", "Customization"],
