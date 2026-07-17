@@ -277,30 +277,11 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
   return (
     <div
       onClick={onClose}
-      style={{
-        position: "fixed", inset: 0, zIndex: 9998,
-        background: "rgba(5,13,26,0.85)",
-        backdropFilter: "blur(6px)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        padding: "24px 16px",
-      }}
+      className="modal-overlay"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        style={{
-          background: "#0b1829",
-          border: "1px solid rgba(55,138,221,0.28)",
-          borderRadius: 16,
-          padding: "28px 28px 24px",
-          maxWidth: 560,
-          width: "100%",
-          maxHeight: "90vh",
-          overflowY: "auto",
-          display: "flex",
-          flexDirection: "column",
-          gap: 16,
-          boxShadow: "0 0 60px rgba(55,138,221,0.18)",
-        }}
+        className="modal-box"
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -316,7 +297,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               {project.status}
             </span>
           </div>
-          <button onClick={onClose} style={{ background: "none", border: "none", color: "rgba(200,220,255,0.4)", cursor: "pointer", fontSize: 20, lineHeight: 1, padding: "0 2px" }}>✕</button>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: "rgba(200,220,255,0.4)", cursor: "pointer", fontSize: 20, lineHeight: 1, padding: "0 2px", flexShrink: 0 }}>✕</button>
         </div>
 
         <h3 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: "#e8f4ff" }}>{project.title}</h3>
@@ -358,6 +339,49 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           </span>
         )}
       </div>
+
+      <style suppressHydrationWarning>{`
+        .modal-overlay {
+          position: fixed;
+          inset: 0;
+          z-index: 9998;
+          background: rgba(5,13,26,0.85);
+          backdrop-filter: blur(6px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 32px 24px;
+          overflow-y: auto;
+        }
+        .modal-box {
+          background: #0b1829;
+          border: 1px solid rgba(55,138,221,0.28);
+          border-radius: 16px;
+          padding: 28px 28px 24px;
+          max-width: 560px;
+          width: 100%;
+          max-height: 85vh;
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          box-shadow: 0 0 60px rgba(55,138,221,0.18);
+          margin: auto;
+        }
+        @media (max-width: 640px) {
+          .modal-overlay {
+            align-items: flex-start;
+            padding: 16px 12px 24px;
+          }
+          .modal-box {
+            padding: 20px 18px 20px;
+            border-radius: 14px;
+            max-height: none;
+            gap: 14px;
+            margin: 0;
+          }
+        }
+      `}</style>
     </div>
   );
 }
