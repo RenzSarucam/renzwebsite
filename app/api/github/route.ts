@@ -3,7 +3,7 @@ import { CONTRIB_TAG, memCache, MEM_TTL } from "./cache";
 
 const GITHUB_USERNAME = "RenzSarucam";
 
-export const revalidate = 300; // fallback cache; webhook invalidates on push
+export const dynamic = "force-dynamic"; // never cache this route at the CDN/edge level
 
 // Parse GitHub's public contribution page — exact same data as GitHub profile
 async function scrapeGitHub(year: number, force = false) {
