@@ -63,16 +63,19 @@ async function scrapeGitHub(year: number) {
     }
   }
 
-  // Fallback per-day: use data-level for any day that was missed or has 0 but level > 0
-  // This catches today's cell which GitHub renders differently (no tool-tip yet)
-  const levelFallbackRegex = /data-date="(\d{4}-\d{2}-\d{2})"[^>]*data-level="([1-4])"/g;
-  while ((m = levelFallbackRegex.exec(html)) !== null) {
-    const date = m[1];
-    const level = parseInt(m[2], 10);
-    if (!dayMap[date] || dayMap[date] === 0) {
-      const LEVEL_MIN = [0, 1, 4, 8, 12];
-      dayMap[date] = LEVEL_MIN[level] ?? 1;
-    }
+  // Per-day level fallback — today's cell often lacks a tool-tip in GitHub's HTML.
+  // Try both attribute orderings since GitHub's HTML may vary.
+  const LEVEL_MIN = [0, 1, 4, 8, 12];
+  const dateBeforeLevel = /data-date="(\d{4}-\d{2}-\d{2})"[^>]*data-level="(\d)"/g;
+  const levelBeforeDate = /data-level="(\d)"[^>]*data-date="(\d{4}-\d{2}-\d{2})"/g;
+  let lm;
+  while ((lm = dateBeforeLevel.exec(html)) !== null) {
+    const date = lm[1]; const level = parseInt(lm[2], 10);
+    if (level > 0 && (!dayMap[date] || dayMap[date] === 0)) dayMap[date] = LEVEL_MIN[level] ?? 1;
+  }
+  while ((lm = levelBeforeDate.exec(html)) !== null) {
+    const level = parseInt(lm[1], 10); const date = lm[2];
+    if (level > 0 && (!dayMap[date] || dayMap[date] === 0)) dayMap[date] = LEVEL_MIN[level] ?? 1;
   }
 
   if (Object.keys(dayMap).length === 0) {
