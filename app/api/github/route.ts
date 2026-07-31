@@ -24,13 +24,14 @@ async function scrapeGitHub(year: number, force = false) {
   const dayMap: Record<string, number> = {};
 
   // Format 1 — modern GitHub: <tool-tip for="...">N contributions on ...</tool-tip>
-  // First build a map of rect id → date
+  // Build a map of contribution-day id → date. GitHub HTML has the attributes in
+  // either order (id before data-date, or data-date before id), so handle both.
   const idDateMap: Record<string, string> = {};
-  const rectIdRegex = /id="(contribution-day-[^"]+)"[^>]*data-date="(\d{4}-\d{2}-\d{2})"/g;
   let m;
-  while ((m = rectIdRegex.exec(html)) !== null) {
-    idDateMap[m[1]] = m[2];
-  }
+  const idFirstRegex  = /id="(contribution-day-[^"]+)"[^>]*data-date="(\d{4}-\d{2}-\d{2})"/g;
+  const dateFirstRegex = /data-date="(\d{4}-\d{2}-\d{2})"[^>]*id="(contribution-day-[^"]+)"/g;
+  while ((m = idFirstRegex.exec(html))   !== null) idDateMap[m[1]] = m[2];
+  while ((m = dateFirstRegex.exec(html)) !== null) idDateMap[m[2]] = m[1];
 
   // Then parse tool-tip elements
   const tooltipRegex = /<tool-tip[^>]+for="([^"]+)"[^>]*>([\s\S]*?)<\/tool-tip>/g;
