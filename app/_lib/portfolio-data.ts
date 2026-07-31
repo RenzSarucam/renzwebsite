@@ -208,6 +208,15 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "GTMS (Gaisano Task Management System)",
+    desc: "An internal task management system built for Gaisano Malls under DSG Son's Group Inc., designed to streamline department-level task coordination across three roles: Super Admin, Admin, and User. The system features a full task lifecycle (Pending → Accepted → In Progress → Waiting Approval → Completed) with a drag-and-drop Kanban board for managers and a view-only board for users, plus a Calendar view. It includes two-tier authentication with department-admin approval on sign-up, forced password change on first login, and email-based password reset. Other highlights include comments with @mention autocomplete and emoji reactions, real file uploads for task completion proof, per-type notification toggles, department-wide and company-wide announcements, Excel/PDF reports, a performance leaderboard, login logs, and a system-wide audit trail. Built with React 19, TypeScript, Tailwind CSS v4, shadcn/ui, TanStack Query, and @dnd-kit on the frontend, powered by a Laravel 12 + Sanctum REST API with MySQL on the backend.",
+    tags: ["React 19", "TypeScript", "Tailwind CSS", "shadcn/ui", "Laravel 12", "Sanctum", "MySQL", "TanStack Query", "Vite", "Kanban", "ApexCharts"],
+    type: "Full Stack",
+    status: "Completed",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
     title: "GEMS (G-Export Management System)",
     desc: "A full-stack export management and reporting system built for Gaisano Malls under DSG Son's Group Inc. GEMS automates the entire report lifecycle — from extracting data via ODBC connections to legacy and external databases, compiling customizable report templates, generating exports in Excel and PDF formats, and securely delivering them to remote servers via SFTP. The system features a scheduler powered by Laravel's task scheduler with cron expressions, full execution and transfer logging, and a dynamic template naming convention engine. Built with Laravel 11, React 18, Inertia.js, and Tailwind CSS on the frontend, with MySQL/PostgreSQL as the primary database and ODBC drivers for external data integration.",
     tags: ["Laravel", "React", "Inertia.js", "Tailwind CSS", "MySQL", "ODBC", "SFTP", "Scheduler", "Excel/PDF", "Vite"],
