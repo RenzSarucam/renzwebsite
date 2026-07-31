@@ -6,7 +6,7 @@ const GITHUB_USERNAME = "RenzSarucam";
 export const revalidate = 300; // fallback cache; webhook invalidates on push
 
 // Parse GitHub's public contribution page — exact same data as GitHub profile
-async function scrapeGitHub(year: number) {
+async function scrapeGitHub(year: number, force = false) {
   const url = `https://github.com/users/${GITHUB_USERNAME}/contributions?from=${year}-01-01&to=${year}-12-31`;
 
   const res = await fetch(url, {
@@ -14,7 +14,7 @@ async function scrapeGitHub(year: number) {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
       Accept: "text/html,application/xhtml+xml",
     },
-    next: { tags: [CONTRIB_TAG] },
+    ...(force ? { cache: "no-store" } : { next: { tags: [CONTRIB_TAG] } }),
   });
 
   if (!res.ok) { console.error("[scrape] status", res.status); return null; }
@@ -160,7 +160,7 @@ export async function GET(req: Request) {
   // 2. Scrape GitHub public page (matches exactly what GitHub shows)
   if (!result) {
     console.log("[GitHub] GraphQL failed — scraping github.com");
-    result = await scrapeGitHub(year);
+    result = await scrapeGitHub(year, force);
   }
 
   if (result) memCache.set(year, { data: result, at: Date.now() });
