@@ -63,6 +63,18 @@ async function scrapeGitHub(year: number) {
     }
   }
 
+  // Fallback per-day: use data-level for any day that was missed or has 0 but level > 0
+  // This catches today's cell which GitHub renders differently (no tool-tip yet)
+  const levelFallbackRegex = /data-date="(\d{4}-\d{2}-\d{2})"[^>]*data-level="([1-4])"/g;
+  while ((m = levelFallbackRegex.exec(html)) !== null) {
+    const date = m[1];
+    const level = parseInt(m[2], 10);
+    if (!dayMap[date] || dayMap[date] === 0) {
+      const LEVEL_MIN = [0, 1, 4, 8, 12];
+      dayMap[date] = LEVEL_MIN[level] ?? 1;
+    }
+  }
+
   if (Object.keys(dayMap).length === 0) {
     console.error("[scrape] no days found — HTML might have changed");
     return null;
