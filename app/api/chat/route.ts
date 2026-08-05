@@ -282,8 +282,8 @@ function localReply(question: string): string {
   const project = findProject(question);
   if (project)
     return fil
-      ? `Ang ${project.title} ay isa sa projects ni Renz — isang ${project.type.toLowerCase()} project. ${project.desc}${project.link ? ` Link: ${project.link}` : ""}`
-      : `${project.title} is one of Renz's projects — a ${project.type.toLowerCase()} project. ${project.desc}${project.link ? ` Link: ${project.link}` : ""}`;
+      ? `Ang ${project.title} ay isa sa projects ni Renz — isang ${Array.isArray(project.type) ? project.type.join(" / ") : project.type} project. ${project.desc}${project.link ? ` Link: ${project.link}` : ""}`
+      : `${project.title} is one of Renz's projects — a ${Array.isArray(project.type) ? project.type.join(" / ") : project.type} project. ${project.desc}${project.link ? ` Link: ${project.link}` : ""}`;
 
   // Projects general
   if (/(project|portfolio|built|gawa|ginawa|sample work|github|anong projects|ilang projects|ilan projects|mga projects)/.test(n)) {
