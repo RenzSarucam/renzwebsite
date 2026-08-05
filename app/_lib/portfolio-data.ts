@@ -210,7 +210,7 @@ export const workExperiences: WorkExperience[] = [
 export const projects: Project[] = [
   {
     title: "Money Lending App",
-    desc: "A loan tracking PWA for informal lenders managing Arawan (daily-collection) and Paluwagan (monthly interest-only, balloon principal) loans. The admin dashboard provides per-loan-type filtering, search, progress tracking, a Collect tab for recording daily and monthly payments with automatic due-amount calculation, and reports covering total lent, interest earned, monthly collection trends, and late borrowers — with CSV export. Borrowers can view their own loan balance, payment history, and edit their profile. Auth is handled via Supabase with email/password, forgot/reset password flow, and auto-linking new accounts to existing borrower records by email. Built with React 19, Vite, React Router, and Supabase (Postgres, Auth, Row Level Security) — installable as a PWA on phone or desktop.",
+    desc: "A loan tracking PWA for informal lenders managing Arawan (daily-collection) and Paluwagan (monthly interest-only, balloon principal) loans. Features an admin dashboard with per-loan-type filtering, a Collect tab for recording payments with automatic due-amount calculation, reports (total lent, interest earned, late borrowers), and CSV export. Borrowers can view their balance, payment history, and edit their profile. Auth via Supabase with email/password and forgot/reset password flow. Installable as a PWA on phone or desktop.",
     tags: ["React 19", "Vite", "Supabase", "PWA", "Postgres", "RLS", "React Router", "Loan Tracking"],
     type: ["Full Stack", "Mobile"],
     status: "Completed",

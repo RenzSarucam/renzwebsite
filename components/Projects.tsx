@@ -354,7 +354,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 24px 16px;
+          padding: 20px 16px;
           overflow-y: auto;
         }
         .modal-box {
@@ -362,16 +362,16 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           border: 1px solid rgba(55,138,221,0.28);
           border-radius: 16px;
           padding: 28px 28px 24px;
-          max-width: min(560px, 100%);
+          max-width: 560px;
           width: 100%;
-          max-height: 88vh;
+          max-height: 80vh;
           overflow-y: auto;
           display: flex;
           flex-direction: column;
           gap: 16px;
           box-shadow: 0 0 60px rgba(55,138,221,0.18);
-          margin: auto;
           box-sizing: border-box;
+          flex-shrink: 0;
         }
         .modal-box h3 {
           font-size: clamp(16px, 4vw, 22px);
@@ -389,15 +389,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           .modal-box {
             padding: 18px 16px 18px;
             border-radius: 12px;
-            max-height: none;
+            max-height: calc(100dvh - 24px);
             gap: 12px;
-            margin: 0;
-          }
-        }
-        @media (min-width: 641px) and (max-width: 900px) {
-          .modal-box {
-            max-width: min(520px, 90vw);
-            padding: 24px 22px 20px;
           }
         }
       `}</style>
