@@ -35,7 +35,7 @@ export default function Skills() {
             My Expertise
           </h2>
           <p style={{ fontSize: 17, color: "rgba(200,220,255,0.55)", maxWidth: 500, margin: 0 }}>
-            Technologies and tools I work with as a Junior R&D Engineer.
+            Technologies and tools I work with as a Full Stack Developer & R&D Engineer.
           </p>
         </div>
 

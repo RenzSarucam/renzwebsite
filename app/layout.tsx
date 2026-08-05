@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Renz Carljansen Sarucam — Junior R&D Engineer",
+  title: "Renz Carljansen Sarucam — Full Stack Developer & R&D Engineer",
   description:
-    "Portfolio of Renz Carljansen Sarucam, a Junior Research & Development Engineer based in Davao City, Philippines.",
-  keywords: ["Renz Sarucam", "Junior R&D Engineer", "Davao City", "Software Developer", "Portfolio"],
+    "Portfolio of Renz Carljansen Sarucam, a Full Stack Developer, R&D Engineer, and DevOps Engineer based in Davao City, Philippines.",
+  keywords: ["Renz Sarucam", "Full Stack Developer", "R&D Engineer", "DevOps Engineer", "Davao City", "Software Developer", "Portfolio"],
   authors: [{ name: "Renz Carljansen Sarucam" }],
   openGraph: {
-    title: "Renz Carljansen Sarucam — Full Stack Developer &R&D Engineer",
+    title: "Renz Carljansen Sarucam — Full Stack Developer & R&D Engineer",
     description: "Portfolio of Renz Carljansen Sarucam — building research-driven software solutions.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Renz Carljansen Sarucam — Junior R&D Engineer",
+    title: "Renz Carljansen Sarucam — Full Stack Developer & R&D Engineer",
     description: "Portfolio of Renz Carljansen Sarucam — building research-driven software solutions.",
   },
 };
