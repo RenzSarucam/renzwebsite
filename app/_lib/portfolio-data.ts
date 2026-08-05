@@ -2,7 +2,7 @@ export type Project = {
   title: string;
   desc: string;
   tags: string[];
-  type: string;
+  type: string | string[];
   status: string;
   link: string;
   place?: string;
@@ -229,7 +229,7 @@ export const projects: Project[] = [
     title: "WPI (Web-based Price Inquiry)",
     desc: "A web-based version of the existing price inquiry system developed by the ICT Department, making it accessible directly on the browser without requiring any software installation on terminals. The new version supports customizable background colors, logos, and advertisements, while maintaining security through terminal whitelisting — only allowed terminals can access the application. The system fetches data directly from the server, resulting in a more efficient and responsive experience compared to its predecessor. Deployed on allocated servers with remote developer access from the ICT department.",
     tags: ["Web App", "Laravel", "PHP", "Linux", "Security", "Customization"],
-    type: "Website",
+    type: "Docker Deploy",
     status: "Completed",
     link: "",
     place: "DSG Son's Group Inc.",
@@ -301,7 +301,7 @@ export const projects: Project[] = [
     title: "TrueNest Seekers Mobile Design",
     desc: "The mobile counterpart to the TrueNest Seekers web design, built entirely in Figma with a mobile-first approach. The interface prioritizes thumb-friendly navigation, quick property previews, and a clean card-based layout for browsing listings on smaller screens. Location-based search and saved favorites were key features designed into the app flow to enhance the overall property discovery experience.",
     tags: ["Mobile UI", "Real Estate", "App Design"],
-    type: "Mobile",
+    type: ["Mobile", "Figma"],
     status: "Completed",
     link: "https://www.figma.com/design/yHev3Md58ibmab66ZDCBpw/Real-Estate%7C-TrueNest-Seekers?node-id=13-2&t=q48CBJJSDRO9OPQp-1",
     place: "Jairosoft Inc.",
@@ -355,7 +355,7 @@ export const projects: Project[] = [
     title: "Good Taste",
     desc: "A mobile UI design project for a restaurant app called Good Taste. The design captures a premium dining atmosphere through rich typography, warm color palettes, and elegant food photography layouts. Key screens include menu browsing, dish detail views, and reservation booking — all crafted to feel upscale yet approachable, making the dining experience feel inviting before the customer even walks through the door.",
     tags: ["Restaurant", "Mobile UI", "Food App"],
-    type: "Mobile",
+    type: ["Mobile", "Figma"],
     status: "Completed",
     link: "https://www.figma.com/design/IPXOqKQOcXlH7s8wb1xK24/Good-Taste?node-id=0-1&t=dYubPY7NNZECtJVD-1",
     place: "Personal Project",

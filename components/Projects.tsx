@@ -10,7 +10,11 @@ export default function Projects() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   const shown =
-    filter === "All" ? projects : projects.filter((project) => project.type === filter);
+    filter === "All"
+      ? projects
+      : projects.filter((p) =>
+          Array.isArray(p.type) ? p.type.includes(filter) : p.type === filter
+        );
 
   return (
     <section
@@ -143,7 +147,7 @@ function ProjectCard({ project, onOpen }: { project: (typeof projects)[0]; onOpe
               letterSpacing: "0.06em",
             }}
           >
-            {project.type}
+            {Array.isArray(project.type) ? project.type.join(" / ") : project.type}
           </span>
           <h3
             className="project-card-title"
@@ -286,7 +290,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             <span style={{ fontSize: 12, padding: "3px 9px", borderRadius: 4, background: "rgba(55,138,221,0.1)", color: "#378add", border: "1px solid rgba(55,138,221,0.2)" }}>
-              {project.type}
+              {Array.isArray(project.type) ? project.type.join(" / ") : project.type}
             </span>
             <span style={{
               fontSize: 12, padding: "3px 9px", borderRadius: 100,
@@ -328,7 +332,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             rel="noopener noreferrer"
             style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 10, background: "rgba(55,138,221,0.1)", border: "1px solid rgba(55,138,221,0.3)", color: "#378add", fontSize: 14, fontWeight: 600, textDecoration: "none", alignSelf: "flex-start" }}
           >
-            {project.type === "Figma" ? "View on Figma" : "View on GitHub"} →
+            {(Array.isArray(project.type) ? project.type.includes("Figma") : project.type === "Figma") ? "View on Figma" : "View on GitHub"} →
           </a>
         ) : (
           <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, color: "rgba(200,220,255,0.35)", fontStyle: "italic" }}>
