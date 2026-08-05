@@ -105,7 +105,7 @@ const GQL_QUERY = `
   }
 `;
 
-async function fromGraphQL(token: string, year: number) {
+async function fromGraphQL(token: string, year: number, force = false) {
   try {
     const res = await fetch("https://api.github.com/graphql", {
       method: "POST",
@@ -114,7 +114,7 @@ async function fromGraphQL(token: string, year: number) {
         query: GQL_QUERY,
         variables: { username: GITHUB_USERNAME, from: `${year}-01-01T00:00:00Z`, to: `${year}-12-31T23:59:59Z` },
       }),
-      next: { tags: [CONTRIB_TAG] },
+      ...(force ? { cache: "no-store" } : { next: { tags: [CONTRIB_TAG] } }),
     });
 
     const json = await res.json();
@@ -156,7 +156,7 @@ export async function GET(req: Request) {
   }
 
   // 1. Try GraphQL (most accurate, includes private)
-  let result = token ? await fromGraphQL(token, year) : null;
+  let result = token ? await fromGraphQL(token, year, force) : null;
 
   // 2. Scrape GitHub public page (matches exactly what GitHub shows)
   if (!result) {
