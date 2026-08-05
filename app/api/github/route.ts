@@ -112,7 +112,8 @@ async function fromGraphQL(token: string, year: number, force = false) {
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         query: GQL_QUERY,
-        variables: { username: GITHUB_USERNAME, from: `${year}-01-01T00:00:00Z`, to: `${year}-12-31T23:59:59Z` },
+        // Use PH timezone (UTC+8): shift by -8h so Jan 1 00:00 PH = Dec 31 16:00 UTC
+        variables: { username: GITHUB_USERNAME, from: `${year - 1}-12-31T16:00:00Z`, to: `${year}-12-31T15:59:59Z` },
       }),
       ...(force ? { cache: "no-store" } : { next: { tags: [CONTRIB_TAG] } }),
     });
