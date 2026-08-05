@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   keywords: ["Renz Sarucam", "Junior R&D Engineer", "Davao City", "Software Developer", "Portfolio"],
   authors: [{ name: "Renz Carljansen Sarucam" }],
   openGraph: {
-    title: "Renz Carljansen Sarucam — Junior R&D Engineer",
+    title: "Renz Carljansen Sarucam — Full Stack Developer &R&D Engineer",
     description: "Portfolio of Renz Carljansen Sarucam — building research-driven software solutions.",
     type: "website",
     locale: "en_US",

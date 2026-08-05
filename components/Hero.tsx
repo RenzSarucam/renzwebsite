@@ -5,10 +5,10 @@ import { certificates, projects, techStack } from "@/app/_lib/portfolio-data";
 import ContribGraph from "@/components/ContribGraph";
 
 const roles = [
-  "Junior R&D Engineer",
+  "Full Stack Developer",
   "DevOps Engineer",
-  "Web Designer",
-  "Web Developer",
+  "Research & Development Engineer",
+  "Web & Mobile Designer",
 ];
 
 const contribs = [
@@ -200,9 +200,9 @@ export default function Hero() {
                 </div>
 
                 <p className="hero-bio">
-                  Junior R&D Engineer & Web Developer focused on building efficient server infrastructure and crafting clean web experiences.
+                  Full Stack Developer & R&D Engineer focused on building efficient server infrastructure and crafting clean web experiences.
                   <br />
-                  Combining DevOps and web development in Davao City, PH.
+                  Combining DevOps and full stack development in Davao City, PH.
                 </p>
 
                 <div className="hero-actions">
