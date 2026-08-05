@@ -348,7 +348,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         .modal-overlay {
           position: fixed;
           inset: 0;
-          z-index: 9998;
+          z-index: 99999;
           background: rgba(5,13,26,0.85);
           backdrop-filter: blur(6px);
           display: flex;
