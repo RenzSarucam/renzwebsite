@@ -354,7 +354,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 32px 24px;
+          padding: 24px 16px;
           overflow-y: auto;
         }
         .modal-box {
@@ -362,27 +362,42 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           border: 1px solid rgba(55,138,221,0.28);
           border-radius: 16px;
           padding: 28px 28px 24px;
-          max-width: 560px;
+          max-width: min(560px, 100%);
           width: 100%;
-          max-height: 85vh;
+          max-height: 88vh;
           overflow-y: auto;
           display: flex;
           flex-direction: column;
           gap: 16px;
           box-shadow: 0 0 60px rgba(55,138,221,0.18);
           margin: auto;
+          box-sizing: border-box;
+        }
+        .modal-box h3 {
+          font-size: clamp(16px, 4vw, 22px);
+          word-break: break-word;
+        }
+        .modal-box p {
+          font-size: clamp(13px, 2vw, 15px);
+          line-height: 1.7;
         }
         @media (max-width: 640px) {
           .modal-overlay {
             align-items: flex-start;
-            padding: 16px 12px 24px;
+            padding: 12px 10px 20px;
           }
           .modal-box {
-            padding: 20px 18px 20px;
-            border-radius: 14px;
+            padding: 18px 16px 18px;
+            border-radius: 12px;
             max-height: none;
-            gap: 14px;
+            gap: 12px;
             margin: 0;
+          }
+        }
+        @media (min-width: 641px) and (max-width: 900px) {
+          .modal-box {
+            max-width: min(520px, 90vw);
+            padding: 24px 22px 20px;
           }
         }
       `}</style>
