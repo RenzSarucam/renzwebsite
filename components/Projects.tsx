@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { projects, type Project } from "@/app/_lib/portfolio-data";
 
-const filters = ["All", "Full Stack", "Website", "Mobile", "Figma", "Docker Deploy"];
+const filters = ["All", "Full Stack", "Mobile", "Figma", "Docker Deploy"];
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");

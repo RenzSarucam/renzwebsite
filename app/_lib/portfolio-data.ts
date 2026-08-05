@@ -209,6 +209,15 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "Money Lending App",
+    desc: "A loan tracking PWA for informal lenders managing Arawan (daily-collection) and Paluwagan (monthly interest-only, balloon principal) loans. The admin dashboard provides per-loan-type filtering, search, progress tracking, a Collect tab for recording daily and monthly payments with automatic due-amount calculation, and reports covering total lent, interest earned, monthly collection trends, and late borrowers — with CSV export. Borrowers can view their own loan balance, payment history, and edit their profile. Auth is handled via Supabase with email/password, forgot/reset password flow, and auto-linking new accounts to existing borrower records by email. Built with React 19, Vite, React Router, and Supabase (Postgres, Auth, Row Level Security) — installable as a PWA on phone or desktop.",
+    tags: ["React 19", "Vite", "Supabase", "PWA", "Postgres", "RLS", "React Router", "Loan Tracking"],
+    type: ["Full Stack", "Mobile"],
+    status: "Completed",
+    link: "https://github.com/RenzSarucam/money-lending-app",
+    place: "Personal Project",
+  },
+  {
     title: "GTMS (Gaisano Task Management System)",
     desc: "An internal task management system for Gaisano Malls with three roles (Super Admin, Admin, User) and a full task lifecycle: Pending → Accepted → In Progress → Waiting Approval → Completed. Features drag-and-drop Kanban and Calendar views, two-tier auth with department-admin approval, @mention comments with emoji reactions, file uploads for completion proof, notification toggles, announcements, Excel/PDF reports, a performance leaderboard, and a system-wide audit trail. Built with React 19, TypeScript, Tailwind CSS v4, shadcn/ui, and Laravel 12 + Sanctum.",
     tags: ["React 19", "TypeScript", "Tailwind CSS", "shadcn/ui", "Laravel 12", "Sanctum", "MySQL", "TanStack Query", "Vite", "Kanban", "ApexCharts"],
@@ -329,7 +338,7 @@ export const projects: Project[] = [
     title: "TrackGuard Admin Panel",
     desc: "A full-featured web-based admin panel built for the TrackGuard system. It serves as the central control hub for managing users, monitoring real-time tracking data, and overseeing security events. The dashboard provides administrators with a clean, intuitive interface to view live device locations, manage access controls, and generate reports — all designed to keep sensitive data organized and protected.",
     tags: ["Admin Panel", "Dashboard", "Security"],
-    type: "Website",
+    type: "Full Stack",
     status: "Completed",
     link: "https://github.com/TrackGuard/Trackguard-WebAdmin",
     place: "Holy Cross of Davao College",
