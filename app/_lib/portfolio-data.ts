@@ -23,6 +23,7 @@ export type WorkExperience = {
   period: string;
   description: string;
   projects?: string;
+  autoProjectsFromPlace?: string;
   tools: string[];
 };
 
@@ -70,7 +71,7 @@ export const techStack = [
 export const profile = {
   fullName: "Renz Carljansen Sarucam",
   firstName: "Renz",
-  role: "Junior R&D Engineer · DevOps Engineer",
+  role: "Full Stack Developer · R&D Engineer · DevOps Engineer",
   location: "Davao City, Philippines",
   college: "Holy Cross of Davao College",
   degree: "Bachelor of Science in Information Technology",
@@ -118,10 +119,10 @@ export const workExperiences: WorkExperience[] = [
   {
     company: "DSG Son's Group Inc.",
     location: "Philippines",
-    role: "Junior Research And Development Engineer",
+    role: "Research And Development Engineer",
     period: "April 2026 - Present",
-    description: "Currently working as a Junior R&D Engineer, responsible for designing and deploying multi-project server infrastructure using Docker and Docker Compose. Manages CI/CD pipelines via GitHub Actions self-hosted runners, administers Linux servers with multi-environment (testing/production) setups, and maintains shared database architecture across multiple internal applications.",
-    projects: "ScheduleLink, ReOrderPro (ROP), Inventory Count Management System (ICMS)",
+    description: "Working as an R&D Engineer responsible for designing and deploying multi-project server infrastructure using Docker and Docker Compose. Manages CI/CD pipelines via GitHub Actions self-hosted runners, administers Linux servers with multi-environment (testing/production) setups, maintains shared database architecture, and develops full stack internal web applications across multiple business units.",
+    autoProjectsFromPlace: "DSG Son's Group Inc.",
     tools: ["Linux CLI", "Docker", "Git / GitHub", "VS Code", "AI", "Node.js", "Next.js", "Nginx", "Laravel", "React", "MySQL", "CI/CD", "GitHub Actions"],
   },
   {

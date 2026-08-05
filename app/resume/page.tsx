@@ -1,4 +1,4 @@
-import { profile, contactEmail, workExperiences, education, certificates, techStack } from "@/app/_lib/portfolio-data";
+import { profile, contactEmail, workExperiences, education, certificates, techStack, projects } from "@/app/_lib/portfolio-data";
 import PrintButton from "./PrintButton";
 
 export const metadata = { title: "Resume – Renz Carljansen Sarucam" };
@@ -114,14 +114,40 @@ export default function ResumePage() {
                 <span className="exp-period">{exp.period}</span>
               </div>
               <div className="exp-desc">{exp.description}</div>
-              {exp.projects && (
+              {(exp.projects || exp.autoProjectsFromPlace) && (
                 <div className="exp-projects">
-                  <span className="exp-projects-label">Projects: </span>{exp.projects}
+                  <span className="exp-projects-label">Projects: </span>
+                  {exp.autoProjectsFromPlace
+                    ? projects.filter((p) => p.place === exp.autoProjectsFromPlace).map((p) => p.title).join(", ")
+                    : exp.projects}
                 </div>
               )}
               {exp.tools.length > 0 && (
                 <div className="exp-tools">Tools: {exp.tools.join(", ")}</div>
               )}
+            </div>
+          ))}
+        </div>
+
+        {/* ── Projects ── */}
+        <div className="section">
+          <div className="section-title">Projects</div>
+          {projects.map((project) => (
+            <div key={project.title} style={{ marginBottom: 8 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 4 }}>
+                <div>
+                  <span style={{ fontWeight: 700, fontSize: "10.5pt" }}>{project.title}</span>
+                  {project.place && (
+                    <span style={{ fontSize: "9.5pt", color: "#555" }}> · {project.place}</span>
+                  )}
+                </div>
+                <span style={{ fontSize: "9pt", color: "#1a73e8", fontWeight: 600 }}>
+                  {Array.isArray(project.type) ? project.type.join(" / ") : project.type}
+                </span>
+              </div>
+              <div style={{ fontSize: "9pt", color: "#555", fontStyle: "italic", marginTop: 1 }}>
+                {project.tags.join(", ")}
+              </div>
             </div>
           ))}
         </div>
