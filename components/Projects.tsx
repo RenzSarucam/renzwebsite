@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { projects, type Project } from "@/app/_lib/portfolio-data";
 
 const filters = ["All", "Full Stack", "Mobile", "Figma", "Docker Deploy"];
@@ -278,7 +279,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
     };
   }, [onClose]);
 
-  return (
+  return createPortal(
     <div
       onClick={onClose}
       className="modal-overlay"
@@ -394,7 +395,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           }
         }
       `}</style>
-    </div>
+    </div>,
+    document.body
   );
 }
 
