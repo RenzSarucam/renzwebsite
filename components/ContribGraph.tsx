@@ -55,7 +55,7 @@ export default function ContribGraph() {
     load(true);
 
     // Auto-refresh every 5 minutes in background
-    const interval = setInterval(() => load(false, true), 5 * 60 * 1000);
+    const interval = setInterval(() => load(false, true), 60 * 1000);
 
     return () => { cancelled = true; clearInterval(interval); };
   }, [selectedYear]);
