@@ -87,15 +87,22 @@ export default function Navbar() {
         >
           {/* Brand */}
           <div style={{ display: "flex", alignItems: "center", gap: 9, flexShrink: 0 }}>
-            <div
+            <span
               style={{
-                width: 9,
-                height: 9,
+                width: 22,
+                height: 22,
                 borderRadius: "50%",
                 background: "#378add",
                 boxShadow: "0 0 8px #378add",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 13,
+                fontWeight: 800,
+                color: "#fff",
+                flexShrink: 0,
               }}
-            />
+            >R</span>
             <span style={{ color: "#e8f4ff", fontSize: 16, fontWeight: 700 }}>RCS.dev</span>
           </div>
 

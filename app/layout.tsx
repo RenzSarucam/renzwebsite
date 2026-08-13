@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "Renz Carljansen Sarucam — Full Stack Developer & R&D Engineer",
@@ -42,6 +43,7 @@ export default function RootLayout({
           scrollBehavior: "smooth",
         }}
       >
+        <ScrollToTop />
         {children}
       </body>
     </html>
