@@ -209,6 +209,15 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "BookStack (Wiki & Documentation Platform)",
+    desc: "Deployed and administered BookStack — an open-source, Laravel-based wiki system — as an internal knowledge management and documentation platform. BookStack provides an intuitive book/chapter/page hierarchy for organizing documentation, with role-based permissions, a built-in REST API, WYSIWYG and Markdown editors, diagram support via Diagrams.net, and multi-language support. Set up with Docker, configured for the organization's environment, and maintained for internal use.",
+    tags: ["Docker", "Laravel", "PHP", "Linux", "Nginx", "Wiki", "Documentation", "Self-hosted"],
+    type: "Docker Deploy",
+    status: "Completed",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
     title: "Money Lending App",
     desc: "A loan tracking PWA for informal lenders managing Arawan (daily-collection) and Paluwagan (monthly interest-only, balloon principal) loans. Features an admin dashboard with per-loan-type filtering, a Collect tab for recording payments with automatic due-amount calculation, reports (total lent, interest earned, late borrowers), and CSV export. Borrowers can view their balance, payment history, and edit their profile. Auth via Supabase with email/password and forgot/reset password flow. Installable as a PWA on phone or desktop.",
     tags: ["React 19", "Vite", "Supabase", "PWA", "Postgres", "RLS", "React Router", "Loan Tracking"],
