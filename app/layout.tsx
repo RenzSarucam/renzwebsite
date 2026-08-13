@@ -7,6 +7,11 @@ export const metadata: Metadata = {
     "Portfolio of Renz Carljansen Sarucam, a Full Stack Developer, R&D Engineer, and DevOps Engineer based in Davao City, Philippines.",
   keywords: ["Renz Sarucam", "Full Stack Developer", "R&D Engineer", "DevOps Engineer", "Davao City", "Software Developer", "Portfolio"],
   authors: [{ name: "Renz Carljansen Sarucam" }],
+  icons: {
+    icon: "/favicon-r.svg",
+    shortcut: "/favicon-r.svg",
+    apple: "/favicon-r.svg",
+  },
   openGraph: {
     title: "Renz Carljansen Sarucam — Full Stack Developer & R&D Engineer",
     description: "Portfolio of Renz Carljansen Sarucam — building research-driven software solutions.",
@@ -29,6 +34,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/svg+xml" href="/favicon-r.svg" />
+        <link rel="shortcut icon" href="/favicon-r.svg" />
       </head>
       <body
         suppressHydrationWarning
