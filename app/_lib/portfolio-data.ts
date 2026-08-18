@@ -245,6 +245,15 @@ export const projects: Project[] = [
     place: "DSG Son's Group Inc.",
   },
   {
+    title: "PMES (Performance Management and Evaluation System)",
+    desc: "A web-based Performance Management and Evaluation System developed by the ICT Department for Gaisano Mall employees. PMES provides a structured digital framework for the entire performance evaluation lifecycle — from setting objectives and conducting evaluations to identifying areas for improvement and recognizing employee achievements. The system supports informed decision-making for promotions, training and development programs, and overall performance management across the organization.",
+    tags: ["Laravel", "React", "MySQL", "Web App", "HR System", "Evaluation", "Dashboard"],
+    type: "Full Stack",
+    status: "Completed",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
     title: "WPI (Web-based Price Inquiry)",
     desc: "A web-based version of the existing price inquiry system developed by the ICT Department, making it accessible directly on the browser without requiring any software installation on terminals. The new version supports customizable background colors, logos, and advertisements, while maintaining security through terminal whitelisting — only allowed terminals can access the application. The system fetches data directly from the server, resulting in a more efficient and responsive experience compared to its predecessor. Deployed on allocated servers with remote developer access from the ICT department.",
     tags: ["Web App", "Laravel", "PHP", "Linux", "Security", "Customization"],
