@@ -209,6 +209,15 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "PMES (Performance Management and Evaluation System)",
+    desc: "A web-based Performance Management and Evaluation System developed by the ICT Department for Gaisano Mall employees. PMES provides a structured digital framework for the entire performance evaluation lifecycle — from setting objectives and conducting evaluations to identifying areas for improvement and recognizing employee achievements. The system supports informed decision-making for promotions, training and development programs, and overall performance management across the organization.",
+    tags: ["Laravel", "React", "MySQL", "Web App", "HR System", "Evaluation", "Dashboard"],
+    type: "Full Stack",
+    status: "Completed",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
     title: "BookStack (Wiki & Documentation Platform)",
     desc: "Deployed and administered BookStack — an open-source, Laravel-based wiki system — as an internal knowledge management and documentation platform. BookStack provides an intuitive book/chapter/page hierarchy for organizing documentation, with role-based permissions, a built-in REST API, WYSIWYG and Markdown editors, diagram support via Diagrams.net, and multi-language support. Set up with Docker, configured for the organization's environment, and maintained for internal use.",
     tags: ["Docker", "Laravel", "PHP", "Linux", "Nginx", "Wiki", "Documentation", "Self-hosted"],
@@ -239,15 +248,6 @@ export const projects: Project[] = [
     title: "GEMS (G-Export Management System)",
     desc: "A full-stack export management and reporting system built for Gaisano Malls under DSG Son's Group Inc. GEMS automates the entire report lifecycle — from extracting data via ODBC connections to legacy and external databases, compiling customizable report templates, generating exports in Excel and PDF formats, and securely delivering them to remote servers via SFTP. The system features a scheduler powered by Laravel's task scheduler with cron expressions, full execution and transfer logging, and a dynamic template naming convention engine. Built with Laravel 11, React 18, Inertia.js, and Tailwind CSS on the frontend, with MySQL/PostgreSQL as the primary database and ODBC drivers for external data integration.",
     tags: ["Laravel", "React", "Inertia.js", "Tailwind CSS", "MySQL", "ODBC", "SFTP", "Scheduler", "Excel/PDF", "Vite"],
-    type: "Full Stack",
-    status: "Completed",
-    link: "",
-    place: "DSG Son's Group Inc.",
-  },
-  {
-    title: "PMES (Performance Management and Evaluation System)",
-    desc: "A web-based Performance Management and Evaluation System developed by the ICT Department for Gaisano Mall employees. PMES provides a structured digital framework for the entire performance evaluation lifecycle — from setting objectives and conducting evaluations to identifying areas for improvement and recognizing employee achievements. The system supports informed decision-making for promotions, training and development programs, and overall performance management across the organization.",
-    tags: ["Laravel", "React", "MySQL", "Web App", "HR System", "Evaluation", "Dashboard"],
     type: "Full Stack",
     status: "Completed",
     link: "",
