@@ -211,8 +211,8 @@ export const projects: Project[] = [
   {
     title: "PMES (Performance Management and Evaluation System)",
     desc: "A web-based Performance Management and Evaluation System developed by the ICT Department for Gaisano Mall employees. PMES provides a structured digital framework for the entire performance evaluation lifecycle — from setting objectives and conducting evaluations to identifying areas for improvement and recognizing employee achievements. The system supports informed decision-making for promotions, training and development programs, and overall performance management across the organization.",
-    tags: ["Laravel", "React", "MySQL", "Web App", "HR System", "Evaluation", "Dashboard"],
-    type: "Full Stack",
+    tags: ["Laravel", "Blade", "PHP", "MySQL", "Docker", "Web App", "HR System", "Evaluation", "Dashboard"],
+    type: "Docker Deploy",
     status: "Completed",
     link: "",
     place: "DSG Son's Group Inc.",
