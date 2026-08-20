@@ -8,9 +8,13 @@ const quickPrompts = [
   { icon: "💼", label: "Work experience",      text: "What is Renz's work experience?" },
   { icon: "🛠️", label: "Skills & tech stack",  text: "What are Renz's skills and tech stack?" },
   { icon: "🚀", label: "Current role",          text: "What is Renz's current role?" },
-  { icon: "📁", label: "View projects",         text: "What projects has Renz built?" },
+  { icon: "🆕", label: "Recent projects",       text: "What are Renz's most recent projects?" },
   { icon: "🎓", label: "Education",             text: "What is Renz's educational background?" },
   { icon: "📞", label: "Contact Renz",          text: "How can I contact Renz?" },
+  { icon: "💡", label: "Best skill",            text: "What is Renz's strongest skill?" },
+  { icon: "🐳", label: "Docker projects",       text: "What projects did Renz deploy with Docker?" },
+  { icon: "📱", label: "Mobile projects",       text: "What mobile apps has Renz built?" },
+  { icon: "🤝", label: "Open to hire?",         text: "Is Renz open to work or freelance?" },
 ];
 
 function renderMessage(content: string) {

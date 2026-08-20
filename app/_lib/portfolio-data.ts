@@ -209,6 +209,15 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "QRGen",
+    desc: "A fast, offline-first QR code generator and scanner for Android and iOS built with Flutter and Material 3. Generate QR codes from Text, URL, Phone, or Email input with automatic normalization (e.g. example.com → https://example.com). Scan QR codes via device camera, then copy, share via the native share sheet, or download as PNG. Features an animated Lottie splash screen, segmented type selector, smooth result transitions, and full light/dark theme support. 100% offline — no backend, no accounts, no network calls.",
+    tags: ["Flutter", "Dart", "Material 3", "Mobile", "QR Code", "Offline-first", "iOS", "Android"],
+    type: "Mobile",
+    status: "Completed",
+    link: "https://github.com/RenzSarucam/qrgen",
+    place: "Personal Project",
+  },
+  {
     title: "PMES (Performance Management and Evaluation System)",
     desc: "A web-based Performance Management and Evaluation System developed by the ICT Department for Gaisano Mall employees. PMES provides a structured digital framework for the entire performance evaluation lifecycle — from setting objectives and conducting evaluations to identifying areas for improvement and recognizing employee achievements. The system supports informed decision-making for promotions, training and development programs, and overall performance management across the organization.",
     tags: ["Laravel", "Blade", "PHP", "MySQL", "Docker", "Web App", "HR System", "Evaluation", "Dashboard"],
