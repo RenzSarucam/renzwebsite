@@ -218,6 +218,15 @@ export const projects: Project[] = [
     place: "Personal Project",
   },
   {
+    title: "EPA (Electronic Purchase Authorization)",
+    desc: "A web-based Electronic Purchase Authorization system developed for Gaisano Malls to digitize and centralize the Purchase Order (PO) management process. EPA provides a structured listing of all POs across stores and locations — displaying PO numbers, suppliers, manufacturer vendors, amounts, buyer details, and approval statuses in a searchable, paginated interface. The system streamlines the procurement workflow by replacing manual paper-based PO tracking with a real-time, role-based web platform accessible to authorized personnel. Built with Laravel and Blade templating, with JavaScript for dynamic interactions, and deployed via Docker on the organization's internal server infrastructure.",
+    tags: ["Laravel", "PHP", "Blade", "JavaScript", "MySQL", "Docker", "Procurement", "Purchase Order", "Internal System"],
+    type: "Docker Deploy",
+    status: "Completed",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
     title: "QRGen",
     desc: "A fast, offline-first QR code generator and scanner for Android and iOS built with Flutter and Material 3. Generate QR codes from Text, URL, Phone, or Email input with automatic normalization (e.g. example.com → https://example.com). Scan QR codes via device camera, then copy, share via the native share sheet, or download as PNG. Features an animated Lottie splash screen, segmented type selector, smooth result transitions, and full light/dark theme support. 100% offline — no backend, no accounts, no network calls.",
     tags: ["Flutter", "Dart", "Material 3", "Mobile", "QR Code", "Offline-first", "iOS", "Android"],
