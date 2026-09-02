@@ -218,6 +218,15 @@ export const projects: Project[] = [
     place: "Personal Project",
   },
   {
+    title: "BIP & SLS (Barcode Interface Program & Shelf Label System)",
+    desc: "A unified web-based system merging the existing Barcode Interface Program (BIP) and a newly proposed Shelf Label System (SLS) for Gaisano Malls. BIP was the original application for printing barcodes on product tags, but recurring performance issues — caused by fetching data directly from MMS — led to slow load times and crashes. The solution shifts data retrieval to a local source to eliminate latency. The merged system introduces a smart auto-print algorithm that determines barcode dimensions and layout based on tag type, consolidating multi-printer setups into a single printer per user. SLS automates the manual shelf labeling process, reducing human error and streamlining store operations. The system also integrates a Change Price Notice module — a user-friendly interface for printing price updates across all product categories — improving accuracy and operational efficiency throughout the pricing workflow.",
+    tags: ["Laravel", "PHP", "MySQL", "Docker", "Barcode", "Printing", "Internal System", "MMS Integration", "Shelf Label"],
+    type: "Docker Deploy",
+    status: "Completed",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
     title: "EPA (Electronic Purchase Authorization)",
     desc: "A web-based Electronic Purchase Authorization system developed for Gaisano Malls to digitize and centralize the Purchase Order (PO) management process. EPA provides a structured listing of all POs across stores and locations — displaying PO numbers, suppliers, manufacturer vendors, amounts, buyer details, and approval statuses in a searchable, paginated interface. The system streamlines the procurement workflow by replacing manual paper-based PO tracking with a real-time, role-based web platform accessible to authorized personnel. Built with Laravel and Blade templating, with JavaScript for dynamic interactions, and deployed via Docker on the organization's internal server infrastructure.",
     tags: ["Laravel", "PHP", "Blade", "JavaScript", "MySQL", "Docker", "Procurement", "Purchase Order", "Internal System"],
