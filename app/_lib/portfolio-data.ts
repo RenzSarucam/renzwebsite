@@ -410,7 +410,7 @@ export const projects: Project[] = [
     title: "Clotify Ecomm",
     desc: "A personal e-commerce project built to practice full-stack web development. Clotify is an online clothing store with product browsing, a shopping cart, and a checkout flow. The project was an opportunity to explore backend integration, database management, and building a polished storefront UI from scratch — combining clean design with functional shopping features.",
     tags: ["E-Commerce", "Fashion", "Web Design"],
-    type: "Figma",
+    type: "Full Stack",
     status: "Completed",
     link: "https://github.com/RenzSarucam/Clothify-Ecomm",
     place: "Personal Project",
