@@ -98,16 +98,20 @@ export const skillGroups: SkillGroup[] = [
       { name: "HTML / CSS", level: 90 },
       { name: "TypeScript", level: 75 },
       { name: "Tailwind CSS", level: 80 },
+      { name: "shadcn/ui", level: 78 },
+      { name: "Figma / Canva", level: 88 },
     ],
   },
   {
     category: "Backend",
     icon: "Backend",
     skills: [
+      { name: "Laravel / PHP", level: 85 },
       { name: "Node.js / Express", level: 80 },
       { name: "MySQL", level: 82 },
-      { name: "REST API Design", level: 85 },
-      { name: "PostgreSQL / MongoDB", level: 72 },
+      { name: "PostgreSQL", level: 72 },
+      { name: "Python / Django", level: 72 },
+      { name: "Flutter / Dart", level: 70 },
     ],
   },
   {
@@ -116,9 +120,22 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       { name: "Linux CLI", level: 80 },
       { name: "Git / GitHub", level: 88 },
-      { name: "VS Code", level: 95 },
       { name: "Docker", level: 92 },
-      { name: "AI", level: 85 },
+      { name: "GitHub Actions", level: 85 },
+      { name: "Nginx", level: 80 },
+      { name: "CI/CD Automation", level: 85 },
+    ],
+  },
+  {
+    category: "APIs & Integrations",
+    icon: "API",
+    skills: [
+      { name: "REST API", level: 88 },
+      { name: "Socket.IO", level: 78 },
+      { name: "GitHub GraphQL API", level: 75 },
+      { name: "Firebase API", level: 75 },
+      { name: "Supabase API", level: 74 },
+      { name: "ODBC / SFTP", level: 72 },
     ],
   },
 ];
