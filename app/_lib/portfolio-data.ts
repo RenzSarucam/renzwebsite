@@ -126,12 +126,28 @@ export const workExperiences: WorkExperience[] = [
     tools: ["Linux CLI", "Docker", "Git / GitHub", "VS Code", "AI", "Node.js", "Next.js", "Nginx", "Laravel", "React", "MySQL", "CI/CD", "GitHub Actions"],
   },
   {
+    company: "Confidential Client",
+    location: "Australia",
+    role: "Web Developer",
+    period: "June 2025 – May 2026",
+    description: "Developed and maintained a responsive web application for an Australian client, designed to streamline internal business processes and improve accessibility of operational information. Converted UI/UX designs into functional web pages, built reusable frontend components, integrated REST APIs, and implemented form validation and interactive features. Collaborated with stakeholders to translate business requirements into technical solutions and performed ongoing bug fixing, testing, and performance optimization. Client information and source code are confidential.",
+    tools: ["React.js", "TypeScript", "Tailwind CSS", "REST API", "MySQL", "Git"],
+  },
+  {
     company: "DSG Son's Group Inc.",
     location: "Philippines",
     role: "Encoder",
     period: "August 2025 - April 2026",
     description: "Handled data encoding and processing tasks, ensuring accuracy and efficiency in data management operations.",
     tools: [],
+  },
+  {
+    company: "Confidential Client",
+    location: "United States",
+    role: "Full-Stack Developer",
+    period: "November 2024 – November 2025",
+    description: "Designed and developed a full-stack business management platform for a US-based client, centralizing operational workflows, data management, and reporting into a single web-based system. Built RESTful APIs, designed database structures and relationships, implemented authentication with role-based access control, and developed CRUD functionality for core business workflows. Optimized database queries, performed testing and debugging, and managed deployments. Maintained and enhanced existing system modules based on evolving business requirements. Client name, production data, source code, and proprietary business logic are confidential.",
+    tools: ["Laravel", "PHP", "React.js", "TypeScript", "MySQL", "Tailwind CSS", "REST API", "Git", "Docker"],
   },
   {
     company: "Feinform",
