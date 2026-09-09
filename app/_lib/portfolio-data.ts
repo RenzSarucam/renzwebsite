@@ -96,9 +96,9 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       { name: "React / Next.js", level: 85 },
       { name: "HTML / CSS", level: 90 },
-      { name: "TypeScript", level: 75 },
+      { name: "TypeScript", level: 80 },
       { name: "Tailwind CSS", level: 80 },
-      { name: "shadcn/ui", level: 78 },
+      { name: "shadcn/ui", level: 80 },
       { name: "Figma / Canva", level: 88 },
     ],
   },
@@ -109,9 +109,9 @@ export const skillGroups: SkillGroup[] = [
       { name: "Laravel / PHP", level: 85 },
       { name: "Node.js / Express", level: 80 },
       { name: "MySQL", level: 82 },
-      { name: "PostgreSQL", level: 72 },
-      { name: "Python / Django", level: 72 },
-      { name: "Flutter / Dart", level: 70 },
+      { name: "PostgreSQL", level: 77 },
+      { name: "Python / Django", level: 83 },
+      { name: "Flutter / Dart", level: 75 },
     ],
   },
   {
@@ -135,7 +135,7 @@ export const skillGroups: SkillGroup[] = [
       { name: "GitHub GraphQL API", level: 75 },
       { name: "Firebase API", level: 75 },
       { name: "Supabase API", level: 74 },
-      { name: "ODBC / SFTP", level: 72 },
+      { name: "ODBC / SFTP", level: 75 },
     ],
   },
 ];
