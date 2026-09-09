@@ -19,8 +19,9 @@ const contribs = [
 const sections = ["about", "projects", "experience", "skills", "certificates", "contact"];
 const navLabels = ["Home", "Projects", "Experience", "Skills", "Credential", "Contact"];
 const heroStats = [
-  { val: `${projects.length}`, label: "Projects done" },
-  { val: `${certificates.length}`, label: "Certificates" },
+  { val: `${projects.length}`, suffix: "+", label: "Projects shipped" },
+  { val: `${certificates.length}`, suffix: "+", label: "Certifications" },
+  { val: `${techStack.length}`, suffix: "+", label: "Technologies used" },
 ];
 
 function AnimatedCounter({ value, suffix = "", delay = 0 }: { value: number; suffix?: string; delay?: number }) {
@@ -251,7 +252,7 @@ export default function Hero() {
                 <div className="hero-stats">
                 {heroStats.map((item, i) => (
                   <div className="hero-stat-card" key={item.label}>
-                    <AnimatedCounter value={parseInt(item.val)} delay={i * 200} />
+                    <AnimatedCounter value={parseInt(item.val)} suffix={item.suffix} delay={i * 200} />
                     <div className="hero-stat-label">{item.label}</div>
                   </div>
                 ))}
