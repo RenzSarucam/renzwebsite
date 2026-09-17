@@ -259,6 +259,15 @@ export const projects: Project[] = [
     place: "Personal Project",
   },
   {
+    title: "Gap Finder",
+    desc: "A web-based audit and gap analysis mini-application developed for Gaisano Malls' ICT Department to identify discrepancies in store transaction data. Gap Finder connects to legacy Topspeed (TPS) database files via ODBC drivers, importing and reconciling transaction records across multiple store locations. The system uses a per-store ODBC naming convention and a background job dispatcher that iterates through all store codes — staggering imports to avoid overload — making it possible to audit data from dozens of branches in a single run. Built with Laravel and PHP 8.2 on a 32-bit runtime to maintain compatibility with legacy Topspeed ODBC drivers, served through Nginx with PHP-FPM, and connected to MySQL for processed data storage. Deployed via Docker on the organization's internal server infrastructure.",
+    tags: ["Laravel", "PHP", "MySQL", "Nginx", "Docker", "ODBC", "Topspeed", "Audit", "TPS", "Internal System", "Queue Jobs"],
+    type: "Docker Deploy",
+    status: "Completed",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
     title: "MRS (Mobile Receiving System)",
     desc: "A web-based Mobile Receiving System developed by the ICT Department for Gaisano Malls to modernize and accelerate the Purchase Order receiving process. MRS enables checkers and supervisors to scan QR codes containing PO numbers directly from mobile devices, eliminating manual lookup and significantly reducing processing time. The system is designed to increase productivity on the receiving floor by digitizing the PO validation workflow. Deployed via Docker on allocated internal servers with remote developer access provided from the ICT department.",
     tags: ["Laravel", "PHP", "MySQL", "Docker", "QR Code", "Mobile Web", "Internal System", "PO Receiving"],
