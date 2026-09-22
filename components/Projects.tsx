@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { projects, type Project } from "@/app/_lib/portfolio-data";
 
-const filters = ["All", "Full Stack", "Mobile", "Figma", "Docker Deploy"];
+const filters = ["All", "Full Stack", "Mobile", "Figma", "Docker"];
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");

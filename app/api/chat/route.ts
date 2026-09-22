@@ -293,7 +293,7 @@ function localReply(question: string): string {
 
   // Docker projects
   if (/(docker project|deployed with docker|docker deploy|docker.*built|docker.*system|what.*docker|anong.*docker|docker.*gawa|mga.*docker)/.test(n)) {
-    const dockerProjects = projects.filter((p) => (Array.isArray(p.type) ? p.type.includes("Docker Deploy") : p.type === "Docker Deploy"));
+    const dockerProjects = projects.filter((p) => (Array.isArray(p.type) ? p.type.includes("Docker") : p.type === "Docker"));
     const list = dockerProjects.map((p) => `• ${p.title}`).join("\n");
     return fil
       ? `May ${dockerProjects.length} Docker-deployed projects si Renz:\n${list}`
