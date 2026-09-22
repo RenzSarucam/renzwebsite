@@ -115,8 +115,8 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    category: "R&D Engineer",
-    icon: "R&D",
+    category: "DevOps",
+    icon: "DevOps",
     skills: [
       { name: "Linux CLI", level: 80 },
       { name: "Git / GitHub", level: 88 },
