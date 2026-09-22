@@ -251,7 +251,7 @@ export default function Contact() {
 
       <style suppressHydrationWarning>{`
         .contact-section {
-          padding: 40px 32px 40px;
+          padding: 40px 32px 200px;
           min-height: 100vh;
           display: flex;
           flex-direction: column;
