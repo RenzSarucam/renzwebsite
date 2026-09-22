@@ -104,21 +104,21 @@ export default function LoadingScreen() {
 
         {/* Logo */}
         <div style={{ display: "flex", justifyContent: "center", marginBottom: 40 }}>
-          <div className="bh-wrap">
-            {/* Accretion disk rings */}
-            <div className="bh-disk bh-disk-1"><div className="bh-particle p1" /></div>
-            <div className="bh-disk bh-disk-2"><div className="bh-particle p2" /></div>
-            <div className="bh-disk bh-disk-3"><div className="bh-particle p3" /></div>
-            <div className="bh-disk bh-disk-4" />
-            {/* Gravitational wave pulses */}
-            <div className="bh-pulse bh-pulse-1" />
-            <div className="bh-pulse bh-pulse-2" />
-            <div className="bh-pulse bh-pulse-3" />
-            {/* Photon ring */}
-            <div className="bh-photon" />
-            {/* Singularity */}
-            <div className="bh-singularity">
-              <div className="bh-inner-glow" />
+          <div className="dev-wrap">
+            {/* Orbit ring 1 — horizontal */}
+            <div className="dev-ring dev-ring-1"><div className="dev-dot dd-1" /></div>
+            {/* Orbit ring 2 — tilted 60° */}
+            <div className="dev-ring dev-ring-2"><div className="dev-dot dd-2" /></div>
+            {/* Orbit ring 3 — tilted -60° */}
+            <div className="dev-ring dev-ring-3"><div className="dev-dot dd-3" /></div>
+            {/* Outer pulse rings */}
+            <div className="dev-pulse dev-pulse-1" />
+            <div className="dev-pulse dev-pulse-2" />
+            {/* Center badge */}
+            <div className="dev-center">
+              <span className="dev-bracket dev-lt">&lt;</span>
+              <span className="dev-slash">/</span>
+              <span className="dev-bracket dev-gt">&gt;</span>
             </div>
           </div>
         </div>
@@ -211,119 +211,95 @@ export default function LoadingScreen() {
           to   { transform: translate(40px, 30px) scale(1.1); }
         }
 
-        /* ── Black hole logo ── */
-        .bh-wrap {
+        /* ── Developer atom logo ── */
+        .dev-wrap {
           position: relative;
           width: 160px; height: 160px;
           display: flex; align-items: center; justify-content: center;
         }
 
-        /* Tilted accretion disk rings */
-        .bh-disk {
+        /* Elliptical orbit rings */
+        .dev-ring {
           position: absolute;
+          width: 156px; height: 56px;
           border-radius: 50%;
-          border: 1.5px solid transparent;
+          border: 1.5px solid rgba(55,138,221,0.35);
           top: 50%; left: 50%;
-          transform-style: preserve-3d;
+          margin: -28px 0 0 -78px;
         }
-        .bh-disk-1 {
-          width: 158px; height: 158px;
-          margin: -79px 0 0 -79px;
-          border-color: rgba(55,138,221,0.45);
-          transform: rotateX(72deg) rotateZ(0deg);
-          animation: diskSpin1 3s linear infinite;
-        }
-        .bh-disk-2 {
-          width: 124px; height: 124px;
-          margin: -62px 0 0 -62px;
-          border-color: rgba(93,202,165,0.4);
-          transform: rotateX(72deg) rotateZ(60deg);
-          animation: diskSpin2 2.2s linear infinite reverse;
-        }
-        .bh-disk-3 {
-          width: 96px; height: 96px;
-          margin: -48px 0 0 -48px;
-          border-color: rgba(97,175,255,0.35);
-          transform: rotateX(72deg) rotateZ(120deg);
-          animation: diskSpin3 1.6s linear infinite;
-        }
-        .bh-disk-4 {
-          width: 70px; height: 70px;
-          margin: -35px 0 0 -35px;
-          border: 1px solid rgba(55,138,221,0.2);
-          transform: rotateX(72deg);
-          animation: diskSpin1 4s linear infinite reverse;
-        }
+        .dev-ring-1 { transform: rotateZ(0deg);   animation: devSpin 3.2s linear infinite; }
+        .dev-ring-2 { transform: rotateZ(60deg);  animation: devSpin 2.6s linear infinite reverse; border-color: rgba(93,202,165,0.35); }
+        .dev-ring-3 { transform: rotateZ(-60deg); animation: devSpin 4s linear infinite; border-color: rgba(97,175,255,0.3); }
+        @keyframes devSpin { from { transform: rotateZ(var(--rz,0deg)) rotateX(var(--rx,0deg)); } }
 
-        @keyframes diskSpin1 { from{transform:rotateX(72deg) rotateZ(0deg)}   to{transform:rotateX(72deg) rotateZ(360deg)} }
-        @keyframes diskSpin2 { from{transform:rotateX(72deg) rotateZ(60deg)}  to{transform:rotateX(72deg) rotateZ(420deg)} }
-        @keyframes diskSpin3 { from{transform:rotateX(72deg) rotateZ(120deg)} to{transform:rotateX(72deg) rotateZ(480deg)} }
+        /* Override with 3D tilt via individual ring keyframes */
+        .dev-ring-1 { animation: ring1Spin 3.2s linear infinite; }
+        .dev-ring-2 { animation: ring2Spin 2.6s linear infinite; }
+        .dev-ring-3 { animation: ring3Spin 4s linear infinite; }
+        @keyframes ring1Spin { from{transform:rotateZ(0deg)}   to{transform:rotateZ(360deg)} }
+        @keyframes ring2Spin { from{transform:rotateZ(60deg)}  to{transform:rotateZ(420deg)} }
+        @keyframes ring3Spin { from{transform:rotateZ(-60deg)} to{transform:rotateZ(300deg)} }
 
-        /* Particles on rings */
-        .bh-particle {
+        /* Orbiting dots */
+        .dev-dot {
           position: absolute;
           border-radius: 50%;
           top: -5px; left: 50%;
           transform: translateX(-50%);
         }
-        .p1 { width: 9px; height: 9px; background: #378add; box-shadow: 0 0 12px #378add, 0 0 24px rgba(55,138,221,0.8); }
-        .p2 { width: 7px; height: 7px; background: #5dcaa5; box-shadow: 0 0 10px #5dcaa5, 0 0 20px rgba(93,202,165,0.8); }
-        .p3 { width: 6px; height: 6px; background: #61afff; box-shadow: 0 0 8px #61afff, 0 0 16px rgba(97,175,255,0.8); }
+        .dd-1 { width: 9px; height: 9px; background: #378add; box-shadow: 0 0 10px #378add, 0 0 22px rgba(55,138,221,0.7); }
+        .dd-2 { width: 8px; height: 8px; background: #5dcaa5; box-shadow: 0 0 10px #5dcaa5, 0 0 20px rgba(93,202,165,0.7); }
+        .dd-3 { width: 7px; height: 7px; background: #61afff; box-shadow: 0 0 8px #61afff, 0 0 18px rgba(97,175,255,0.7); }
 
-        /* Gravitational wave pulses — ripple outward */
-        .bh-pulse {
+        /* Pulse ripples */
+        .dev-pulse {
           position: absolute;
           border-radius: 50%;
-          border: 1px solid rgba(55,138,221,0.5);
+          border: 1px solid rgba(55,138,221,0.4);
           top: 50%; left: 50%;
-          transform: translate(-50%, -50%) scale(0);
-          animation: gravityPulse 3s ease-out infinite;
+          transform: translate(-50%,-50%) scale(0.5);
+          animation: devPulse 3s ease-out infinite;
         }
-        .bh-pulse-1 { width: 60px; height: 60px; animation-delay: 0s; }
-        .bh-pulse-2 { width: 60px; height: 60px; animation-delay: 1s;  border-color: rgba(93,202,165,0.4); }
-        .bh-pulse-3 { width: 60px; height: 60px; animation-delay: 2s;  border-color: rgba(97,175,255,0.3); }
-        @keyframes gravityPulse {
-          0%   { transform: translate(-50%,-50%) scale(0.4); opacity: 0.8; }
-          100% { transform: translate(-50%,-50%) scale(3.2); opacity: 0; }
-        }
-
-        /* Photon ring — bright halo */
-        .bh-photon {
-          position: absolute;
-          width: 52px; height: 52px;
-          border-radius: 50%;
-          background: transparent;
-          border: 2px solid transparent;
-          box-shadow:
-            0 0 0 1px rgba(55,138,221,0.6),
-            0 0 14px 4px rgba(55,138,221,0.5),
-            0 0 30px 8px rgba(55,138,221,0.2),
-            inset 0 0 12px rgba(93,202,165,0.15);
-          animation: photonSpin 6s linear infinite, photonPulse 2s ease-in-out infinite;
-        }
-        @keyframes photonSpin  { to { transform: rotate(360deg); } }
-        @keyframes photonPulse {
-          0%,100% { box-shadow: 0 0 0 1px rgba(55,138,221,0.6), 0 0 14px 4px rgba(55,138,221,0.5), 0 0 30px 8px rgba(55,138,221,0.2); }
-          50%     { box-shadow: 0 0 0 1px rgba(93,202,165,0.7), 0 0 20px 6px rgba(93,202,165,0.5), 0 0 45px 12px rgba(93,202,165,0.2); }
+        .dev-pulse-1 { width: 80px; height: 80px; animation-delay: 0s; }
+        .dev-pulse-2 { width: 80px; height: 80px; animation-delay: 1.5s; border-color: rgba(93,202,165,0.35); }
+        @keyframes devPulse {
+          0%   { transform: translate(-50%,-50%) scale(0.5); opacity: 0.8; }
+          100% { transform: translate(-50%,-50%) scale(2.2); opacity: 0; }
         }
 
-        /* Singularity — pure dark center */
-        .bh-singularity {
+        /* Center badge */
+        .dev-center {
           position: absolute;
-          width: 36px; height: 36px;
+          width: 64px; height: 64px;
           border-radius: 50%;
-          background: radial-gradient(circle, #010608 55%, #041420 100%);
-          display: flex; align-items: center; justify-content: center;
+          background: radial-gradient(circle at 40% 35%, #0d2040, #050e1c);
+          border: 1.5px solid rgba(55,138,221,0.4);
+          display: flex; align-items: center; justify-content: center; gap: 0;
+          box-shadow: 0 0 24px rgba(55,138,221,0.3), 0 0 60px rgba(55,138,221,0.1), inset 0 1px 0 rgba(255,255,255,0.06);
+          animation: centerPulse 2.5s ease-in-out infinite;
+          font-family: 'Courier New', monospace;
+          font-weight: 900;
         }
-        .bh-inner-glow {
-          width: 12px; height: 12px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(93,202,165,0.6) 0%, rgba(55,138,221,0.3) 60%, transparent 100%);
-          animation: singularityBreath 2s ease-in-out infinite;
+        @keyframes centerPulse {
+          0%,100% { box-shadow: 0 0 24px rgba(55,138,221,0.3), 0 0 60px rgba(55,138,221,0.1); }
+          50%     { box-shadow: 0 0 36px rgba(93,202,165,0.45), 0 0 80px rgba(55,138,221,0.2); }
         }
-        @keyframes singularityBreath {
-          0%,100% { transform: scale(0.7); opacity: 0.5; }
-          50%     { transform: scale(1.4); opacity: 1; }
+        .dev-bracket {
+          font-size: 18px; line-height: 1;
+          background: linear-gradient(160deg, #61afff, #5dcaa5);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: bracketGlow 2.5s ease-in-out infinite;
+        }
+        .dev-slash {
+          font-size: 14px; line-height: 1;
+          color: rgba(255,255,255,0.55);
+          margin: 0 1px;
+          animation: bracketGlow 2.5s ease-in-out infinite 0.5s;
+        }
+        @keyframes bracketGlow {
+          0%,100% { filter: brightness(0.9) drop-shadow(0 0 3px rgba(55,138,221,0.5)); }
+          50%     { filter: brightness(1.4) drop-shadow(0 0 8px rgba(93,202,165,0.8)); }
         }
 
         /* ── Terminal line enter ── */
