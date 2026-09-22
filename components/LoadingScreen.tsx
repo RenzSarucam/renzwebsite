@@ -104,20 +104,19 @@ export default function LoadingScreen() {
 
         {/* Logo */}
         <div style={{ display: "flex", justifyContent: "center", marginBottom: 40 }}>
-          <div className="logo-wrap">
-            {/* Outer orbit ring */}
-            <div className="orbit-ring orbit-outer">
-              <div className="orbit-dot" />
-            </div>
-            {/* Inner orbit ring */}
-            <div className="orbit-ring orbit-inner">
-              <div className="orbit-dot orbit-dot-small" />
-            </div>
-            {/* Core badge */}
-            <div className="logo-core">
-              <span className="logo-tag logo-open">&lt;</span>
+          <div className="bh-wrap">
+            {/* Accretion disk rings */}
+            <div className="bh-disk bh-disk-1"><div className="bh-particle p1" /></div>
+            <div className="bh-disk bh-disk-2"><div className="bh-particle p2" /></div>
+            <div className="bh-disk bh-disk-3"><div className="bh-particle p3" /></div>
+            <div className="bh-disk bh-disk-4" />
+            {/* Event horizon glow */}
+            <div className="bh-horizon" />
+            {/* Core */}
+            <div className="bh-core">
+              <span className="logo-tag">&lt;</span>
               <span className="logo-initials">RCS</span>
-              <span className="logo-tag logo-close">/&gt;</span>
+              <span className="logo-tag">/&gt;</span>
             </div>
           </div>
         </div>
@@ -210,97 +209,104 @@ export default function LoadingScreen() {
           to   { transform: translate(40px, 30px) scale(1.1); }
         }
 
-        /* ── Logo ── */
-        .logo-wrap {
+        /* ── Black hole logo ── */
+        .bh-wrap {
           position: relative;
-          width: 110px; height: 110px;
+          width: 160px; height: 160px;
           display: flex; align-items: center; justify-content: center;
         }
 
-        /* Orbit rings */
-        .orbit-ring {
+        /* Tilted accretion disk rings */
+        .bh-disk {
           position: absolute;
           border-radius: 50%;
-          border: 1px solid transparent;
+          border: 1.5px solid transparent;
+          top: 50%; left: 50%;
+          transform-style: preserve-3d;
         }
-        .orbit-outer {
-          width: 110px; height: 110px;
-          border-color: rgba(55,138,221,0.3);
-          animation: orbitSpin 4s linear infinite;
+        .bh-disk-1 {
+          width: 158px; height: 158px;
+          margin: -79px 0 0 -79px;
+          border-color: rgba(55,138,221,0.45);
+          transform: rotateX(72deg) rotateZ(0deg);
+          animation: diskSpin1 3s linear infinite;
         }
-        .orbit-inner {
-          width: 84px; height: 84px;
-          border-color: rgba(93,202,165,0.25);
-          animation: orbitSpin 3s linear infinite reverse;
+        .bh-disk-2 {
+          width: 124px; height: 124px;
+          margin: -62px 0 0 -62px;
+          border-color: rgba(93,202,165,0.4);
+          transform: rotateX(72deg) rotateZ(60deg);
+          animation: diskSpin2 2.2s linear infinite reverse;
         }
-        .orbit-dot {
-          position: absolute;
-          top: -4px; left: 50%;
-          transform: translateX(-50%);
-          width: 8px; height: 8px;
-          border-radius: 50%;
-          background: #378add;
-          box-shadow: 0 0 10px #378add, 0 0 20px rgba(55,138,221,0.6);
+        .bh-disk-3 {
+          width: 96px; height: 96px;
+          margin: -48px 0 0 -48px;
+          border-color: rgba(97,175,255,0.35);
+          transform: rotateX(72deg) rotateZ(120deg);
+          animation: diskSpin3 1.6s linear infinite;
         }
-        .orbit-dot-small {
-          width: 6px; height: 6px;
-          background: #5dcaa5;
-          box-shadow: 0 0 8px #5dcaa5, 0 0 16px rgba(93,202,165,0.6);
-        }
-        @keyframes orbitSpin {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(360deg); }
+        .bh-disk-4 {
+          width: 70px; height: 70px;
+          margin: -35px 0 0 -35px;
+          border: 1px solid rgba(55,138,221,0.2);
+          transform: rotateX(72deg);
+          animation: diskSpin1 4s linear infinite reverse;
         }
 
-        /* Core badge */
-        .logo-core {
-          position: relative;
-          width: 72px; height: 72px;
-          border-radius: 16px;
-          background: linear-gradient(135deg, #0d1f35, #112840);
-          border: 1px solid rgba(55,138,221,0.35);
+        @keyframes diskSpin1 { from{transform:rotateX(72deg) rotateZ(0deg)}   to{transform:rotateX(72deg) rotateZ(360deg)} }
+        @keyframes diskSpin2 { from{transform:rotateX(72deg) rotateZ(60deg)}  to{transform:rotateX(72deg) rotateZ(420deg)} }
+        @keyframes diskSpin3 { from{transform:rotateX(72deg) rotateZ(120deg)} to{transform:rotateX(72deg) rotateZ(480deg)} }
+
+        /* Particles on rings */
+        .bh-particle {
+          position: absolute;
+          border-radius: 50%;
+          top: -5px; left: 50%;
+          transform: translateX(-50%);
+        }
+        .p1 { width: 9px; height: 9px; background: #378add; box-shadow: 0 0 12px #378add, 0 0 24px rgba(55,138,221,0.8); }
+        .p2 { width: 7px; height: 7px; background: #5dcaa5; box-shadow: 0 0 10px #5dcaa5, 0 0 20px rgba(93,202,165,0.8); }
+        .p3 { width: 6px; height: 6px; background: #61afff; box-shadow: 0 0 8px #61afff, 0 0 16px rgba(97,175,255,0.8); }
+
+        /* Event horizon */
+        .bh-horizon {
+          position: absolute;
+          width: 56px; height: 56px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #020a14 40%, rgba(55,138,221,0.15) 100%);
+          box-shadow:
+            0 0 0 2px rgba(55,138,221,0.25),
+            0 0 20px rgba(55,138,221,0.4),
+            0 0 50px rgba(55,138,221,0.2),
+            0 0 90px rgba(55,138,221,0.08);
+          animation: horizonPulse 2s ease-in-out infinite;
+        }
+        @keyframes horizonPulse {
+          0%,100% { box-shadow: 0 0 0 2px rgba(55,138,221,0.25), 0 0 20px rgba(55,138,221,0.4), 0 0 50px rgba(55,138,221,0.2); }
+          50%      { box-shadow: 0 0 0 2px rgba(93,202,165,0.35), 0 0 30px rgba(93,202,165,0.5), 0 0 70px rgba(55,138,221,0.3); }
+        }
+
+        /* Core text */
+        .bh-core {
+          position: absolute;
           display: flex; flex-direction: column;
           align-items: center; justify-content: center;
           gap: 0;
-          animation: corePulse 2.5s ease-in-out infinite;
-          box-shadow: 0 0 0 1px rgba(55,138,221,0.1), inset 0 1px 0 rgba(255,255,255,0.06);
         }
-        @keyframes corePulse {
-          0%,100% { box-shadow: 0 0 20px rgba(55,138,221,0.3), 0 0 50px rgba(55,138,221,0.1), inset 0 1px 0 rgba(255,255,255,0.06); }
-          50%      { box-shadow: 0 0 35px rgba(55,138,221,0.55), 0 0 80px rgba(55,138,221,0.2), inset 0 1px 0 rgba(255,255,255,0.06); }
-        }
-
         .logo-tag {
           font-family: 'Courier New', monospace;
-          font-size: 9px;
-          font-weight: 600;
-          line-height: 1;
-          color: #5dcaa5;
-          opacity: 0.8;
-          animation: tagFade 2.5s ease-in-out infinite;
+          font-size: 8px; font-weight: 700; line-height: 1;
+          color: #5dcaa5; opacity: 0.85;
+          animation: tagFade 2s ease-in-out infinite;
         }
-        .logo-open  { align-self: flex-start; padding-left: 10px; }
-        .logo-close { align-self: flex-end; padding-right: 8px; }
-        @keyframes tagFade {
-          0%,100% { opacity: 0.6; }
-          50%      { opacity: 1; }
-        }
-
+        @keyframes tagFade { 0%,100%{opacity:0.6} 50%{opacity:1} }
         .logo-initials {
-          font-size: 20px;
-          font-weight: 900;
+          font-size: 17px; font-weight: 900;
           font-family: 'Segoe UI', system-ui, sans-serif;
           background: linear-gradient(135deg, #61afff, #5dcaa5);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          letter-spacing: 1px;
-          line-height: 1;
-          animation: initialsShimmer 2.5s ease-in-out infinite;
-        }
-        @keyframes initialsShimmer {
-          0%,100% { filter: brightness(1); }
-          50%      { filter: brightness(1.3); }
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+          background-clip: text; letter-spacing: 2px; line-height: 1;
+          animation: tagFade 2s ease-in-out infinite;
         }
 
         /* ── Terminal line enter ── */
