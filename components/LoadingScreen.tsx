@@ -110,13 +110,15 @@ export default function LoadingScreen() {
             <div className="bh-disk bh-disk-2"><div className="bh-particle p2" /></div>
             <div className="bh-disk bh-disk-3"><div className="bh-particle p3" /></div>
             <div className="bh-disk bh-disk-4" />
-            {/* Event horizon glow */}
-            <div className="bh-horizon" />
-            {/* Core */}
-            <div className="bh-core">
-              <span className="logo-tag">&lt;</span>
-              <span className="logo-initials">RCS</span>
-              <span className="logo-tag">/&gt;</span>
+            {/* Gravitational wave pulses */}
+            <div className="bh-pulse bh-pulse-1" />
+            <div className="bh-pulse bh-pulse-2" />
+            <div className="bh-pulse bh-pulse-3" />
+            {/* Photon ring */}
+            <div className="bh-photon" />
+            {/* Singularity */}
+            <div className="bh-singularity">
+              <div className="bh-inner-glow" />
             </div>
           </div>
         </div>
@@ -268,45 +270,60 @@ export default function LoadingScreen() {
         .p2 { width: 7px; height: 7px; background: #5dcaa5; box-shadow: 0 0 10px #5dcaa5, 0 0 20px rgba(93,202,165,0.8); }
         .p3 { width: 6px; height: 6px; background: #61afff; box-shadow: 0 0 8px #61afff, 0 0 16px rgba(97,175,255,0.8); }
 
-        /* Event horizon */
-        .bh-horizon {
+        /* Gravitational wave pulses — ripple outward */
+        .bh-pulse {
           position: absolute;
-          width: 56px; height: 56px;
           border-radius: 50%;
-          background: radial-gradient(circle, #020a14 40%, rgba(55,138,221,0.15) 100%);
-          box-shadow:
-            0 0 0 2px rgba(55,138,221,0.25),
-            0 0 20px rgba(55,138,221,0.4),
-            0 0 50px rgba(55,138,221,0.2),
-            0 0 90px rgba(55,138,221,0.08);
-          animation: horizonPulse 2s ease-in-out infinite;
+          border: 1px solid rgba(55,138,221,0.5);
+          top: 50%; left: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          animation: gravityPulse 3s ease-out infinite;
         }
-        @keyframes horizonPulse {
-          0%,100% { box-shadow: 0 0 0 2px rgba(55,138,221,0.25), 0 0 20px rgba(55,138,221,0.4), 0 0 50px rgba(55,138,221,0.2); }
-          50%      { box-shadow: 0 0 0 2px rgba(93,202,165,0.35), 0 0 30px rgba(93,202,165,0.5), 0 0 70px rgba(55,138,221,0.3); }
+        .bh-pulse-1 { width: 60px; height: 60px; animation-delay: 0s; }
+        .bh-pulse-2 { width: 60px; height: 60px; animation-delay: 1s;  border-color: rgba(93,202,165,0.4); }
+        .bh-pulse-3 { width: 60px; height: 60px; animation-delay: 2s;  border-color: rgba(97,175,255,0.3); }
+        @keyframes gravityPulse {
+          0%   { transform: translate(-50%,-50%) scale(0.4); opacity: 0.8; }
+          100% { transform: translate(-50%,-50%) scale(3.2); opacity: 0; }
         }
 
-        /* Core text */
-        .bh-core {
+        /* Photon ring — bright halo */
+        .bh-photon {
           position: absolute;
-          display: flex; flex-direction: column;
-          align-items: center; justify-content: center;
-          gap: 0;
+          width: 52px; height: 52px;
+          border-radius: 50%;
+          background: transparent;
+          border: 2px solid transparent;
+          box-shadow:
+            0 0 0 1px rgba(55,138,221,0.6),
+            0 0 14px 4px rgba(55,138,221,0.5),
+            0 0 30px 8px rgba(55,138,221,0.2),
+            inset 0 0 12px rgba(93,202,165,0.15);
+          animation: photonSpin 6s linear infinite, photonPulse 2s ease-in-out infinite;
         }
-        .logo-tag {
-          font-family: 'Courier New', monospace;
-          font-size: 8px; font-weight: 700; line-height: 1;
-          color: #5dcaa5; opacity: 0.85;
-          animation: tagFade 2s ease-in-out infinite;
+        @keyframes photonSpin  { to { transform: rotate(360deg); } }
+        @keyframes photonPulse {
+          0%,100% { box-shadow: 0 0 0 1px rgba(55,138,221,0.6), 0 0 14px 4px rgba(55,138,221,0.5), 0 0 30px 8px rgba(55,138,221,0.2); }
+          50%     { box-shadow: 0 0 0 1px rgba(93,202,165,0.7), 0 0 20px 6px rgba(93,202,165,0.5), 0 0 45px 12px rgba(93,202,165,0.2); }
         }
-        @keyframes tagFade { 0%,100%{opacity:0.6} 50%{opacity:1} }
-        .logo-initials {
-          font-size: 17px; font-weight: 900;
-          font-family: 'Segoe UI', system-ui, sans-serif;
-          background: linear-gradient(135deg, #61afff, #5dcaa5);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-          background-clip: text; letter-spacing: 2px; line-height: 1;
-          animation: tagFade 2s ease-in-out infinite;
+
+        /* Singularity — pure dark center */
+        .bh-singularity {
+          position: absolute;
+          width: 36px; height: 36px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #010608 55%, #041420 100%);
+          display: flex; align-items: center; justify-content: center;
+        }
+        .bh-inner-glow {
+          width: 12px; height: 12px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(93,202,165,0.6) 0%, rgba(55,138,221,0.3) 60%, transparent 100%);
+          animation: singularityBreath 2s ease-in-out infinite;
+        }
+        @keyframes singularityBreath {
+          0%,100% { transform: scale(0.7); opacity: 0.5; }
+          50%     { transform: scale(1.4); opacity: 1; }
         }
 
         /* ── Terminal line enter ── */
