@@ -86,15 +86,15 @@ export default function Navbar() {
           }}
         >
           {/* Brand */}
-          <div style={{ display: "flex", alignItems: "center", gap: 9, flexShrink: 0 }}>
-            <div className="nav-logo-wrap">
-              {/* Spinning border */}
-              <div className="nav-logo-ring" />
-              {/* Center */}
-              <div className="nav-logo-core">
-                <span className="nav-logo-bracket">&lt;</span>
-                <span className="nav-logo-slash">/</span>
-                <span className="nav-logo-bracket">&gt;</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+            <div className="nav-atom">
+              <div className="nav-orbit nav-orbit-1"><div className="nav-orb no-1" /></div>
+              <div className="nav-orbit nav-orbit-2"><div className="nav-orb no-2" /></div>
+              <div className="nav-orbit nav-orbit-3"><div className="nav-orb no-3" /></div>
+              <div className="nav-atom-core">
+                <span className="nav-atom-lt">&lt;</span>
+                <span className="nav-atom-sl">/</span>
+                <span className="nav-atom-gt">&gt;</span>
               </div>
             </div>
             <span style={{ color: "#e8f4ff", fontSize: 16, fontWeight: 700 }}>RCS.dev</span>
@@ -224,49 +224,61 @@ export default function Navbar() {
       </div>
 
       <style suppressHydrationWarning>{`
-        /* ── Nav logo ── */
-        .nav-logo-wrap {
+        /* ── Nav atom logo ── */
+        .nav-atom {
           position: relative;
-          width: 38px; height: 38px;
+          width: 44px; height: 44px;
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
         }
-        .nav-logo-ring {
+        /* Elliptical orbit rings */
+        .nav-orbit {
           position: absolute;
-          inset: 0;
+          width: 42px; height: 16px;
           border-radius: 50%;
-          border: 2px solid transparent;
-          border-top-color: #378add;
-          border-right-color: rgba(93,202,165,0.7);
-          animation: navRingSpin 1.8s linear infinite;
+          top: 50%; left: 50%;
+          margin: -8px 0 0 -21px;
         }
-        @keyframes navRingSpin { to { transform: rotate(360deg); } }
-        .nav-logo-core {
-          position: relative;
-          width: 30px; height: 30px;
+        .nav-orbit-1 { border: 1.5px solid rgba(55,138,221,0.6);  animation: navOrbit1 2.4s linear infinite; }
+        .nav-orbit-2 { border: 1.5px solid rgba(93,202,165,0.55); animation: navOrbit2 1.9s linear infinite; }
+        .nav-orbit-3 { border: 1.5px solid rgba(97,175,255,0.45); animation: navOrbit3 3.1s linear infinite; }
+        @keyframes navOrbit1 { from{transform:rotateZ(0deg)}   to{transform:rotateZ(360deg)} }
+        @keyframes navOrbit2 { from{transform:rotateZ(60deg)}  to{transform:rotateZ(420deg)} }
+        @keyframes navOrbit3 { from{transform:rotateZ(-60deg)} to{transform:rotateZ(300deg)} }
+        /* Orbiting dots */
+        .nav-orb {
+          position: absolute;
           border-radius: 50%;
-          background: linear-gradient(135deg, #0d1f35, #0a1828);
-          border: 1px solid rgba(55,138,221,0.35);
+          top: -3px; left: 50%;
+          transform: translateX(-50%);
+        }
+        .no-1 { width: 6px; height: 6px; background: #378add; box-shadow: 0 0 6px #378add, 0 0 12px rgba(55,138,221,0.8); }
+        .no-2 { width: 5px; height: 5px; background: #5dcaa5; box-shadow: 0 0 6px #5dcaa5, 0 0 10px rgba(93,202,165,0.8); }
+        .no-3 { width: 4px; height: 4px; background: #61afff; box-shadow: 0 0 5px #61afff, 0 0 9px rgba(97,175,255,0.8); }
+        /* Center core */
+        .nav-atom-core {
+          position: absolute;
+          width: 22px; height: 22px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #0d2040, #050e1c);
+          border: 1px solid rgba(55,138,221,0.4);
           display: flex; align-items: center; justify-content: center;
-          gap: 0;
-          box-shadow: 0 0 10px rgba(55,138,221,0.45);
+          font-family: 'Courier New', monospace; font-weight: 900;
           animation: navCorePulse 2.5s ease-in-out infinite;
         }
         @keyframes navCorePulse {
           0%,100% { box-shadow: 0 0 8px rgba(55,138,221,0.4); }
-          50%     { box-shadow: 0 0 16px rgba(93,202,165,0.55); }
+          50%     { box-shadow: 0 0 16px rgba(93,202,165,0.6); }
         }
-        .nav-logo-bracket {
-          font-family: 'Courier New', monospace;
-          font-size: 10px; font-weight: 900; line-height: 1;
+        .nav-atom-lt, .nav-atom-gt {
+          font-size: 8px; line-height: 1;
           background: linear-gradient(135deg, #61afff, #5dcaa5);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent;
           background-clip: text;
         }
-        .nav-logo-slash {
-          font-family: 'Courier New', monospace;
-          font-size: 9px; font-weight: 700; line-height: 1;
-          color: rgba(255,255,255,0.6);
+        .nav-atom-sl {
+          font-size: 7px; line-height: 1;
+          color: rgba(255,255,255,0.65);
         }
 
         @media (max-width: 640px) {
