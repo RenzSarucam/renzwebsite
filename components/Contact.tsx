@@ -251,12 +251,11 @@ export default function Contact() {
 
       <style suppressHydrationWarning>{`
         .contact-section {
-          padding: 40px 32px 200px;
+          padding: 20px 32px 120px;
           min-height: 100vh;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          padding-top: 80px;
         }
         .contact-form-grid {
           display: grid;
