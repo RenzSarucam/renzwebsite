@@ -87,22 +87,16 @@ export default function Navbar() {
         >
           {/* Brand */}
           <div style={{ display: "flex", alignItems: "center", gap: 9, flexShrink: 0 }}>
-            <span
-              style={{
-                width: 22,
-                height: 22,
-                borderRadius: "50%",
-                background: "#378add",
-                boxShadow: "0 0 8px #378add",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 13,
-                fontWeight: 800,
-                color: "#fff",
-                flexShrink: 0,
-              }}
-            >R</span>
+            <div className="nav-logo-wrap">
+              {/* Spinning border */}
+              <div className="nav-logo-ring" />
+              {/* Center */}
+              <div className="nav-logo-core">
+                <span className="nav-logo-bracket">&lt;</span>
+                <span className="nav-logo-slash">/</span>
+                <span className="nav-logo-bracket">&gt;</span>
+              </div>
+            </div>
             <span style={{ color: "#e8f4ff", fontSize: 16, fontWeight: 700 }}>RCS.dev</span>
           </div>
 
@@ -230,6 +224,51 @@ export default function Navbar() {
       </div>
 
       <style suppressHydrationWarning>{`
+        /* ── Nav logo ── */
+        .nav-logo-wrap {
+          position: relative;
+          width: 28px; height: 28px;
+          display: flex; align-items: center; justify-content: center;
+          flex-shrink: 0;
+        }
+        .nav-logo-ring {
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          border: 1.5px solid transparent;
+          border-top-color: #378add;
+          border-right-color: rgba(93,202,165,0.6);
+          animation: navRingSpin 1.8s linear infinite;
+        }
+        @keyframes navRingSpin { to { transform: rotate(360deg); } }
+        .nav-logo-core {
+          position: relative;
+          width: 22px; height: 22px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #0d1f35, #0a1828);
+          border: 1px solid rgba(55,138,221,0.3);
+          display: flex; align-items: center; justify-content: center;
+          gap: 0;
+          box-shadow: 0 0 8px rgba(55,138,221,0.4);
+          animation: navCorePulse 2.5s ease-in-out infinite;
+        }
+        @keyframes navCorePulse {
+          0%,100% { box-shadow: 0 0 6px rgba(55,138,221,0.35); }
+          50%     { box-shadow: 0 0 12px rgba(93,202,165,0.5); }
+        }
+        .nav-logo-bracket {
+          font-family: 'Courier New', monospace;
+          font-size: 7px; font-weight: 900; line-height: 1;
+          background: linear-gradient(135deg, #61afff, #5dcaa5);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        .nav-logo-slash {
+          font-family: 'Courier New', monospace;
+          font-size: 6px; font-weight: 700; line-height: 1;
+          color: rgba(255,255,255,0.5);
+        }
+
         @media (max-width: 640px) {
           .main-navbar { top: 4px !important; left: 4px !important; right: 4px !important; }
         }
