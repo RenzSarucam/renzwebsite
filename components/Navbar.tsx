@@ -227,7 +227,7 @@ export default function Navbar() {
         /* ── Nav logo ── */
         .nav-logo-wrap {
           position: relative;
-          width: 28px; height: 28px;
+          width: 38px; height: 38px;
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
         }
@@ -235,38 +235,38 @@ export default function Navbar() {
           position: absolute;
           inset: 0;
           border-radius: 50%;
-          border: 1.5px solid transparent;
+          border: 2px solid transparent;
           border-top-color: #378add;
-          border-right-color: rgba(93,202,165,0.6);
+          border-right-color: rgba(93,202,165,0.7);
           animation: navRingSpin 1.8s linear infinite;
         }
         @keyframes navRingSpin { to { transform: rotate(360deg); } }
         .nav-logo-core {
           position: relative;
-          width: 22px; height: 22px;
+          width: 30px; height: 30px;
           border-radius: 50%;
           background: linear-gradient(135deg, #0d1f35, #0a1828);
-          border: 1px solid rgba(55,138,221,0.3);
+          border: 1px solid rgba(55,138,221,0.35);
           display: flex; align-items: center; justify-content: center;
           gap: 0;
-          box-shadow: 0 0 8px rgba(55,138,221,0.4);
+          box-shadow: 0 0 10px rgba(55,138,221,0.45);
           animation: navCorePulse 2.5s ease-in-out infinite;
         }
         @keyframes navCorePulse {
-          0%,100% { box-shadow: 0 0 6px rgba(55,138,221,0.35); }
-          50%     { box-shadow: 0 0 12px rgba(93,202,165,0.5); }
+          0%,100% { box-shadow: 0 0 8px rgba(55,138,221,0.4); }
+          50%     { box-shadow: 0 0 16px rgba(93,202,165,0.55); }
         }
         .nav-logo-bracket {
           font-family: 'Courier New', monospace;
-          font-size: 7px; font-weight: 900; line-height: 1;
+          font-size: 10px; font-weight: 900; line-height: 1;
           background: linear-gradient(135deg, #61afff, #5dcaa5);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent;
           background-clip: text;
         }
         .nav-logo-slash {
           font-family: 'Courier New', monospace;
-          font-size: 6px; font-weight: 700; line-height: 1;
-          color: rgba(255,255,255,0.5);
+          font-size: 9px; font-weight: 700; line-height: 1;
+          color: rgba(255,255,255,0.6);
         }
 
         @media (max-width: 640px) {
