@@ -67,7 +67,8 @@ function RadarChart({ skills, color }: { skills: { name: string; level: number }
         const dx = p.x - cx;
         const dy = p.y - cy;
         const anchor = Math.abs(dx) < 5 ? "middle" : dx > 0 ? "start" : "end";
-        const name = skills[i].name.split("/")[0].trim();
+        const raw = skills[i].name.split("/")[0].trim();
+        const name = raw.length > 10 ? raw.slice(0, 9) + "…" : raw;
         return (
           <text
             key={i}
@@ -113,9 +114,9 @@ export default function Skills() {
 
                 {/* Card header */}
                 <div className="skill-card-header" style={{ borderColor: `${color}30` }}>
-                  <span style={{ fontSize: 14, color, fontFamily: "'Courier New', monospace" }}>{group.icon}</span>
-                  <h3 style={{ margin: 0, fontSize: 15, fontWeight: 700, color: "#e8f4ff" }}>{group.category}</h3>
-                  <span className="skill-avg-badge" style={{ background: `${color}18`, color, border: `1px solid ${color}30` }}>
+                  <span style={{ fontSize: 13, color, fontFamily: "'Courier New', monospace", flexShrink: 0 }}>{group.icon}</span>
+                  <h3 style={{ margin: 0, fontSize: group.category.length > 10 ? 13 : 15, fontWeight: 700, color: "#e8f4ff", lineHeight: 1.2 }}>{group.category}</h3>
+                  <span className="skill-avg-badge" style={{ background: `${color}18`, color, border: `1px solid ${color}30`, whiteSpace: "nowrap" }}>
                     {Math.round(group.skills.reduce((s, k) => s + k.level, 0) / group.skills.length)}% avg
                   </span>
                 </div>
@@ -169,12 +170,16 @@ export default function Skills() {
           display: flex; align-items: center; gap: 8px;
           padding: 16px 18px 14px;
           border-bottom: 1px solid;
+          flex-wrap: nowrap;
+          min-width: 0;
         }
+        .skill-card-header h3 { min-width: 0; flex: 1; }
         .skill-avg-badge {
-          margin-left: auto;
+          margin-left: auto; flex-shrink: 0;
           font-size: 11px; font-weight: 700;
           padding: 2px 8px; border-radius: 100px;
           font-family: 'Courier New', monospace;
+          white-space: nowrap;
         }
 
         .skill-list {
