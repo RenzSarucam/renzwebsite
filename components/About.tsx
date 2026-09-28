@@ -84,9 +84,14 @@ export default function About() {
             <div className="about-avatar-card">
               {/* Glow ring */}
               <div className="about-avatar-ring" />
-              {/* Avatar circle */}
+              {/* Photo */}
               <div className="about-avatar">
-                <span className="about-avatar-initials">RCS</span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/renz-profile.png"
+                  alt="Renz Carljansen Sarucam"
+                  className="about-avatar-img"
+                />
                 {/* Orbiting dot */}
                 <div className="about-orbit">
                   <div className="about-orbit-dot" />
@@ -191,11 +196,12 @@ export default function About() {
           position: relative; margin-bottom: 16px;
           box-shadow: 0 0 0 4px rgba(55,138,221,0.08), 0 0 28px rgba(55,138,221,0.25);
         }
-        .about-avatar-initials {
-          font-size: 22px; font-weight: 800; letter-spacing: 0.05em;
-          background: linear-gradient(135deg, #61afff, #5dcaa5);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-          font-family: 'Courier New', monospace;
+        .about-avatar-img {
+          width: 100%; height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+          object-position: center top;
+          display: block;
         }
         .about-orbit {
           position: absolute; width: 100%; height: 100%;
