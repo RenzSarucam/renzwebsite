@@ -123,30 +123,69 @@ export default function LoadingScreen() {
           </div>
         </div>
 
-        {/* Progress */}
-        <div className="ls-progress-wrap">
-          <div className="ls-progress-labels">
-            <span className="ls-progress-label">INITIALIZING PORTFOLIO</span>
-            <span className="ls-progress-pct" style={{ color: progress === 100 ? "#5dcaa5" : "#61afff" }}>{progress}%</span>
-          </div>
-          <div className="ls-progress-track">
-            <div className="ls-progress-fill" style={{ width: `${progress}%` }}>
-              <div className="ls-progress-shine" />
+        {/* Progress — circular arc */}
+        <div className="ls-ring-wrap">
+          {/* Left: arc ring */}
+          <div className="ls-ring-area">
+            <svg width="110" height="110" viewBox="0 0 110 110" style={{ transform: "rotate(-90deg)" }}>
+              <defs>
+                <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%"   stopColor="#378add" />
+                  <stop offset="50%"  stopColor="#5dcaa5" />
+                  <stop offset="100%" stopColor="#c678dd" />
+                </linearGradient>
+                <filter id="arcGlow">
+                  <feGaussianBlur stdDeviation="2.5" result="blur" />
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              {/* Track */}
+              <circle cx="55" cy="55" r="46" fill="none" stroke="rgba(55,138,221,0.1)" strokeWidth="5" />
+              {/* Filled arc */}
+              <circle
+                cx="55" cy="55" r="46" fill="none"
+                stroke="url(#arcGrad)" strokeWidth="5"
+                strokeLinecap="round"
+                strokeDasharray={`${2 * Math.PI * 46}`}
+                strokeDashoffset={`${2 * Math.PI * 46 * (1 - progress / 100)}`}
+                filter="url(#arcGlow)"
+                style={{ transition: "stroke-dashoffset 0.45s ease" }}
+              />
+            </svg>
+            {/* Center label */}
+            <div className="ls-ring-center">
+              <span className="ls-ring-pct" style={{ color: progress === 100 ? "#5dcaa5" : "#61afff" }}>
+                {progress}
+              </span>
+              <span className="ls-ring-sym">%</span>
             </div>
           </div>
-          {/* Step dots */}
-          <div className="ls-progress-dots">
-            {BOOT_LINES.map((_, i) => (
-              <div
-                key={i}
-                className="ls-step-dot"
-                style={{
-                  background: i < lineCount ? (i === BOOT_LINES.length - 1 ? "#5dcaa5" : "#378add") : "rgba(55,138,221,0.15)",
-                  boxShadow: i < lineCount ? `0 0 6px ${i === BOOT_LINES.length - 1 ? "#5dcaa5" : "#378add"}` : "none",
-                  transform: i === lineCount - 1 ? "scale(1.4)" : "scale(1)",
-                }}
-              />
-            ))}
+
+          {/* Right: label + segment bar */}
+          <div className="ls-ring-right">
+            <span className="ls-ring-label">INITIALIZING PORTFOLIO</span>
+            <div className="ls-segments">
+              {BOOT_LINES.map((_, i) => (
+                <div
+                  key={i}
+                  className="ls-seg"
+                  style={{
+                    background: i < lineCount
+                      ? i === BOOT_LINES.length - 1
+                        ? "linear-gradient(90deg,#5dcaa5,#61afff)"
+                        : "linear-gradient(90deg,#378add,#5dcaa5)"
+                      : "rgba(55,138,221,0.1)",
+                    boxShadow: i < lineCount
+                      ? `0 0 8px ${i === BOOT_LINES.length - 1 ? "#5dcaa5" : "#378add"}88`
+                      : "none",
+                    transform: i === lineCount - 1 ? "scaleY(1.5)" : "scaleY(1)",
+                  }}
+                />
+              ))}
+            </div>
+            <span className="ls-ring-status">
+              {progress === 100 ? "✓ Ready" : BOOT_LINES[lineCount - 1]?.text ?? "Starting..."}
+            </span>
           </div>
         </div>
 
@@ -346,57 +385,59 @@ export default function LoadingScreen() {
         }
         @keyframes lsBlink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-        /* ── Progress ── */
-        .ls-progress-wrap { width: 100%; display: flex; flex-direction: column; gap: 8px; }
-        .ls-progress-labels {
-          display: flex; justify-content: space-between; align-items: center;
+        /* ── Ring progress ── */
+        .ls-ring-wrap {
+          width: 100%; display: flex; align-items: center; gap: 20px;
+          background: rgba(8,17,31,0.6);
+          border: 1px solid rgba(55,138,221,0.12);
+          border-radius: 16px; padding: 18px 22px;
+          box-shadow: 0 4px 24px rgba(0,0,0,0.3);
         }
-        .ls-progress-label {
-          font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-          color: rgba(200,220,255,0.3); font-family: 'Courier New', monospace;
+        .ls-ring-area {
+          position: relative; flex-shrink: 0;
+          width: 110px; height: 110px;
+          display: flex; align-items: center; justify-content: center;
         }
-        .ls-progress-pct {
-          font-size: 12px; font-weight: 800;
+        .ls-ring-center {
+          position: absolute; inset: 0;
+          display: flex; align-items: center; justify-content: center;
+          flex-direction: row; gap: 1px;
+        }
+        .ls-ring-pct {
+          font-size: 26px; font-weight: 900;
           font-family: 'Courier New', monospace;
           transition: color 0.4s;
+          line-height: 1;
         }
-        .ls-progress-track {
-          height: 4px; border-radius: 99px;
-          background: rgba(55,138,221,0.08);
-          overflow: hidden;
-        }
-        .ls-progress-fill {
-          height: 100%; border-radius: 99px;
-          background: linear-gradient(90deg, #378add, #5dcaa5, #c678dd);
-          background-size: 200% 100%;
-          transition: width 0.4s ease;
-          position: relative;
-          box-shadow: 0 0 12px rgba(93,202,165,0.6);
-          animation: shimmer 2s linear infinite;
-        }
-        @keyframes shimmer {
-          from { background-position: 200% 0; }
-          to   { background-position: -200% 0; }
-        }
-        .ls-progress-shine {
-          position: absolute; top: 0; right: 0; bottom: 0;
-          width: 40px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-          animation: shineSlide 1.5s ease-in-out infinite;
-        }
-        @keyframes shineSlide {
-          from { transform: translateX(40px); opacity: 0; }
-          50%  { opacity: 1; }
-          to   { transform: translateX(-120px); opacity: 0; }
+        .ls-ring-sym {
+          font-size: 13px; font-weight: 700;
+          color: rgba(200,220,255,0.4);
+          font-family: 'Courier New', monospace;
+          align-self: flex-end; margin-bottom: 3px;
         }
 
-        /* Step dots */
-        .ls-progress-dots {
-          display: flex; justify-content: center; gap: 8px; padding-top: 2px;
+        .ls-ring-right {
+          flex: 1; min-width: 0;
+          display: flex; flex-direction: column; gap: 10px;
         }
-        .ls-step-dot {
-          width: 5px; height: 5px; border-radius: 50%;
+        .ls-ring-label {
+          font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+          text-transform: uppercase; color: rgba(200,220,255,0.28);
+          font-family: 'Courier New', monospace;
+        }
+        .ls-segments {
+          display: flex; gap: 4px; align-items: flex-end; height: 24px;
+        }
+        .ls-seg {
+          flex: 1; border-radius: 3px; height: 100%;
           transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+          transform-origin: bottom;
+        }
+        .ls-ring-status {
+          font-size: 11px; color: rgba(200,220,255,0.35);
+          font-family: 'Courier New', monospace;
+          white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+          transition: color 0.3s;
         }
       `}</style>
     </div>
