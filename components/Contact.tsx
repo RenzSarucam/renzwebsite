@@ -52,35 +52,29 @@ export default function Contact() {
       <div className="contact-orb contact-orb-2" />
 
       <div className="contact-inner">
-
-        {/* Section label */}
-        <div style={{ textAlign: "center", marginBottom: 56 }}>
-          <p style={{ fontSize: 14, color: "#378add", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
-            05. Contact
-          </p>
-          <h2 style={{ fontSize: "clamp(32px,4vw,46px)", fontWeight: 700, color: "#e8f4ff", margin: "0 0 12px", lineHeight: 1.15 }}>
-            Let&apos;s Work Together
-          </h2>
-          <p style={{ fontSize: 17, color: "rgba(200,220,255,0.5)", margin: 0 }}>
-            Have a project in mind? I&apos;d love to hear about it.
-          </p>
-        </div>
-
         <div className="contact-grid">
 
           {/* ── Left panel ── */}
           <div className="contact-left">
+
+            {/* Section label */}
+            <p style={{ fontSize: 13, color: "#378add", fontFamily: "'Courier New', monospace", margin: "0 0 14px", letterSpacing: "0.06em" }}>
+              05. Contact
+            </p>
+
+            <h2 style={{ fontSize: "clamp(28px,3.5vw,40px)", fontWeight: 700, color: "#e8f4ff", margin: "0 0 14px", lineHeight: 1.2 }}>
+              Let&apos;s Work<br />Together
+            </h2>
+
+            <p className="contact-left-sub">
+              Whether you have a project, a collaboration idea, or just want to say hi — my inbox is always open. I&apos;ll get back to you within 24 hours.
+            </p>
 
             {/* Availability badge */}
             <div className="avail-badge">
               <span className="avail-dot" />
               <span>Available for new projects</span>
             </div>
-
-            <h3 className="contact-left-heading">Get in touch</h3>
-            <p className="contact-left-sub">
-              Whether you have a project, a collaboration idea, or just want to say hi — my inbox is always open. I&apos;ll get back to you within 24 hours.
-            </p>
 
             {/* Info cards */}
             <div className="contact-info-list">
@@ -290,7 +284,7 @@ export default function Contact() {
         .contact-grid {
           display: grid;
           grid-template-columns: 1fr 1.15fr;
-          gap: 48px;
+          gap: 56px;
           align-items: start;
           position: relative; z-index: 1;
         }
@@ -304,7 +298,7 @@ export default function Contact() {
           background: rgba(93,202,165,0.1);
           border: 1px solid rgba(93,202,165,0.25);
           color: #5dcaa5; font-size: 13px; font-weight: 500;
-          width: fit-content; margin-bottom: 22px;
+          width: fit-content; margin-bottom: 20px; margin-top: 20px;
         }
         .avail-dot {
           width: 7px; height: 7px; border-radius: 50%;
@@ -317,10 +311,6 @@ export default function Contact() {
           50% { box-shadow: 0 0 0 5px rgba(93,202,165,0.1); }
         }
 
-        .contact-left-heading {
-          font-size: 26px; font-weight: 700; color: #e8f4ff;
-          margin: 0 0 12px; line-height: 1.3;
-        }
         .contact-left-sub {
           font-size: 15px; color: rgba(200,220,255,0.5);
           line-height: 1.75; margin: 0 0 28px;
