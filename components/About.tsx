@@ -83,7 +83,7 @@ const modalInfo = [
       </svg>
     ),
     label: "Phone",
-    value: "+63 XXX XXX XXXX",
+    value: "+63 926 673 5768",
     color: "#e5a44b",
   },
   {

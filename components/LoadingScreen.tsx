@@ -368,14 +368,16 @@ export default function LoadingScreen() {
           border-radius: 16px; padding: 16px 22px;
         }
         .ls-ring-area {
-          position: relative; flex-shrink: 0;
+          flex-shrink: 0;
           width: 68px; height: 68px;
-          display: flex; align-items: center; justify-content: center;
+          display: grid;
+          place-items: center;
         }
+        .ls-ring-area > * { grid-area: 1 / 1; }
         .ls-ring-center {
-          position: absolute; inset: 0;
           display: flex; align-items: center; justify-content: center;
-          flex-direction: column;
+          width: 68px; height: 68px;
+          pointer-events: none;
         }
         .ls-ring-pct {
           font-size: 18px; font-weight: 900;
