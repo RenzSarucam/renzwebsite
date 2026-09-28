@@ -3,17 +3,19 @@
 import { useState, useEffect } from "react";
 
 const navLinks: [string, string][] = [
-  ["Home", "about"],
-  ["Projects", "projects"],
+  ["Home",       "about"],
+  ["About",      "about-section"],
+  ["Projects",   "projects"],
   ["Experience", "experience"],
-  ["Skills", "skills"],
+  ["Skills",     "skills"],
   ["Credential", "certificates"],
-  ["Contact", "contact"],
+  ["Contact",    "contact"],
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string>("about");
 
   useEffect(() => {
     const onScroll = () => {
@@ -22,6 +24,22 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = navLinks.map(([, id]) => id);
+    const observers: IntersectionObserver[] = [];
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveId(id); },
+        { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach(o => o.disconnect());
   }, []);
 
   if (!scrolled) return null;
@@ -101,27 +119,45 @@ export default function Navbar() {
           </div>
 
           {/* Desktop nav links */}
-          <div className="navbar-links" style={{ display: "flex", gap: 4, flexWrap: "wrap", justifyContent: "center" }}>
-            {navLinks.map(([label, id]) => (
-              <button
-                key={label}
-                onClick={() => scrollTo(id)}
-                className="navbar-link-btn"
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: "8px 14px",
-                  borderRadius: 999,
-                  fontSize: 15,
-                  color: "rgba(200,220,255,0.6)",
-                  fontFamily: "inherit",
-                  transition: "color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease",
-                }}
-              >
-                {label}
-              </button>
-            ))}
+          <div className="navbar-links" style={{ display: "flex", gap: 2, flexWrap: "wrap", justifyContent: "center" }}>
+            {navLinks.map(([label, id]) => {
+              const isActive = activeId === id;
+              return (
+                <button
+                  key={label}
+                  onClick={() => scrollTo(id)}
+                  className={`navbar-link-btn${isActive ? " navbar-link-active" : ""}`}
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "8px 13px",
+                    borderRadius: 999,
+                    fontSize: 14,
+                    color: isActive ? "#61afff" : "rgba(200,220,255,0.55)",
+                    fontFamily: "inherit",
+                    fontWeight: isActive ? 600 : 400,
+                    transition: "color 0.2s, background 0.2s, box-shadow 0.2s",
+                    position: "relative",
+                  }}
+                >
+                  {label}
+                  {isActive && (
+                    <span style={{
+                      position: "absolute",
+                      bottom: 3,
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      width: 20,
+                      height: 2,
+                      borderRadius: 99,
+                      background: "linear-gradient(90deg, #61afff, #5dcaa5)",
+                      boxShadow: "0 0 6px rgba(97,175,255,0.7)",
+                    }} />
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           {/* Right side: hire btn + hamburger */}

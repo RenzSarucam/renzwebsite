@@ -16,8 +16,8 @@ const contribs = [
   13, 8,
 ];
 
-const sections = ["about", "projects", "experience", "skills", "certificates", "contact"];
-const navLabels = ["Home", "Projects", "Experience", "Skills", "Credential", "Contact"];
+const sections = ["about", "about-section", "projects", "experience", "skills", "certificates", "contact"];
+const navLabels = ["Home", "About", "Projects", "Experience", "Skills", "Credential", "Contact"];
 const heroStats = [
   { val: `${projects.length}`, suffix: "+", label: "Projects shipped" },
   { val: `${certificates.length}`, suffix: "+", label: "Certifications" },
