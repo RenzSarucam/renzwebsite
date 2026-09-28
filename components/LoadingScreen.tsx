@@ -126,7 +126,7 @@ export default function LoadingScreen() {
         {/* Progress — arc ring */}
         <div className="ls-ring-wrap">
           <div className="ls-ring-area">
-            <svg width="100" height="100" viewBox="0 0 100 100" style={{ transform: "rotate(-90deg)" }}>
+            <svg width="68" height="68" viewBox="0 0 68 68" style={{ transform: "rotate(-90deg)" }}>
               <defs>
                 <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%"   stopColor="#378add" />
@@ -138,13 +138,13 @@ export default function LoadingScreen() {
                   <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
                 </filter>
               </defs>
-              <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(55,138,221,0.08)" strokeWidth="4" />
+              <circle cx="34" cy="34" r="28" fill="none" stroke="rgba(55,138,221,0.08)" strokeWidth="3.5" />
               <circle
-                cx="50" cy="50" r="42" fill="none"
-                stroke="url(#arcGrad)" strokeWidth="4"
+                cx="34" cy="34" r="28" fill="none"
+                stroke="url(#arcGrad)" strokeWidth="3.5"
                 strokeLinecap="round"
-                strokeDasharray={`${2 * Math.PI * 42}`}
-                strokeDashoffset={`${2 * Math.PI * 42 * (1 - progress / 100)}`}
+                strokeDasharray={`${2 * Math.PI * 28}`}
+                strokeDashoffset={`${2 * Math.PI * 28 * (1 - progress / 100)}`}
                 filter="url(#arcGlow)"
                 style={{ transition: "stroke-dashoffset 0.45s ease" }}
               />
@@ -370,7 +370,7 @@ export default function LoadingScreen() {
         }
         .ls-ring-area {
           position: relative; flex-shrink: 0;
-          width: 100px; height: 100px;
+          width: 68px; height: 68px;
           display: flex; align-items: center; justify-content: center;
         }
         .ls-ring-center {
@@ -379,15 +379,15 @@ export default function LoadingScreen() {
           flex-direction: column;
         }
         .ls-ring-pct {
-          font-size: 26px; font-weight: 900;
+          font-size: 18px; font-weight: 900;
           font-family: 'Courier New', monospace;
           transition: color 0.4s; line-height: 1;
         }
         .ls-ring-sym {
-          font-size: 10px; font-weight: 700;
+          font-size: 9px; font-weight: 700;
           color: rgba(200,220,255,0.3);
           font-family: 'Courier New', monospace;
-          margin-top: 2px;
+          margin-top: 1px;
         }
 
         .ls-ring-info {
