@@ -255,7 +255,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Laravel 12", "PHP", "MySQL", "Docker", "GitHub Actions", "PWA", "Leaflet", "TanStack Query", "Recharts", "Sanctum", "Offline-first", "IndexedDB"],
     type: ["Full Stack", "Docker"],
     status: "Completed",
-    link: "",
+    link: "https://github.com/RenzSarucam/CRISISMESH",
     place: "Personal Project",
   },
   {
@@ -264,7 +264,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Laravel 12", "Sanctum", "MySQL", "Docker", "Recharts", "Monitoring", "Self-hosted"],
     type: ["Full Stack", "Docker"],
     status: "In Progress",
-    link: "",
+    link: "https://github.com/RenzSarucam/OPSORA",
     place: "Personal Project",
   },
   {
