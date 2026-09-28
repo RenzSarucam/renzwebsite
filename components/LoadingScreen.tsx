@@ -123,66 +123,44 @@ export default function LoadingScreen() {
           </div>
         </div>
 
-        {/* Progress — circular arc */}
+        {/* Progress — arc ring */}
         <div className="ls-ring-wrap">
-          {/* Left: arc ring */}
           <div className="ls-ring-area">
-            <svg width="110" height="110" viewBox="0 0 110 110" style={{ transform: "rotate(-90deg)" }}>
+            <svg width="100" height="100" viewBox="0 0 100 100" style={{ transform: "rotate(-90deg)" }}>
               <defs>
-                <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%"   stopColor="#378add" />
                   <stop offset="50%"  stopColor="#5dcaa5" />
                   <stop offset="100%" stopColor="#c678dd" />
                 </linearGradient>
-                <filter id="arcGlow">
-                  <feGaussianBlur stdDeviation="2.5" result="blur" />
+                <filter id="arcGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2" result="blur" />
                   <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
                 </filter>
               </defs>
-              {/* Track */}
-              <circle cx="55" cy="55" r="46" fill="none" stroke="rgba(55,138,221,0.1)" strokeWidth="5" />
-              {/* Filled arc */}
+              <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(55,138,221,0.08)" strokeWidth="4" />
               <circle
-                cx="55" cy="55" r="46" fill="none"
-                stroke="url(#arcGrad)" strokeWidth="5"
+                cx="50" cy="50" r="42" fill="none"
+                stroke="url(#arcGrad)" strokeWidth="4"
                 strokeLinecap="round"
-                strokeDasharray={`${2 * Math.PI * 46}`}
-                strokeDashoffset={`${2 * Math.PI * 46 * (1 - progress / 100)}`}
+                strokeDasharray={`${2 * Math.PI * 42}`}
+                strokeDashoffset={`${2 * Math.PI * 42 * (1 - progress / 100)}`}
                 filter="url(#arcGlow)"
                 style={{ transition: "stroke-dashoffset 0.45s ease" }}
               />
             </svg>
-            {/* Center label */}
             <div className="ls-ring-center">
               <span className="ls-ring-pct" style={{ color: progress === 100 ? "#5dcaa5" : "#61afff" }}>{progress}</span>
               <span className="ls-ring-sym">%</span>
             </div>
           </div>
 
-          {/* Right: label + segment bar */}
-          <div className="ls-ring-right">
+          <div className="ls-ring-info">
             <span className="ls-ring-label">INITIALIZING PORTFOLIO</span>
-            <div className="ls-segments">
-              {BOOT_LINES.map((_, i) => (
-                <div
-                  key={i}
-                  className="ls-seg"
-                  style={{
-                    background: i < lineCount
-                      ? i === BOOT_LINES.length - 1
-                        ? "linear-gradient(90deg,#5dcaa5,#61afff)"
-                        : "linear-gradient(90deg,#378add,#5dcaa5)"
-                      : "rgba(55,138,221,0.1)",
-                    boxShadow: i < lineCount
-                      ? `0 0 8px ${i === BOOT_LINES.length - 1 ? "#5dcaa5" : "#378add"}88`
-                      : "none",
-                    transform: i === lineCount - 1 ? "scaleY(1.5)" : "scaleY(1)",
-                  }}
-                />
-              ))}
-            </div>
             <span className="ls-ring-status">
-              {progress === 100 ? "✓ Ready" : BOOT_LINES[lineCount - 1]?.text ?? "Starting..."}
+              {progress === 100
+                ? <span style={{ color: "#5dcaa5" }}>✓ Launch sequence complete</span>
+                : BOOT_LINES[lineCount - 1]?.text ?? "Starting..."}
             </span>
           </div>
         </div>
@@ -386,56 +364,44 @@ export default function LoadingScreen() {
         /* ── Ring progress ── */
         .ls-ring-wrap {
           width: 100%; display: flex; align-items: center; gap: 20px;
-          background: rgba(8,17,31,0.6);
-          border: 1px solid rgba(55,138,221,0.12);
-          border-radius: 16px; padding: 18px 22px;
-          box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+          background: rgba(8,17,31,0.55);
+          border: 1px solid rgba(55,138,221,0.1);
+          border-radius: 16px; padding: 16px 22px;
         }
         .ls-ring-area {
           position: relative; flex-shrink: 0;
-          width: 110px; height: 110px;
+          width: 100px; height: 100px;
           display: flex; align-items: center; justify-content: center;
         }
         .ls-ring-center {
           position: absolute; inset: 0;
           display: flex; align-items: center; justify-content: center;
-          flex-direction: column; gap: 0;
+          flex-direction: column;
         }
         .ls-ring-pct {
-          font-size: 28px; font-weight: 900;
+          font-size: 26px; font-weight: 900;
           font-family: 'Courier New', monospace;
-          transition: color 0.4s;
-          line-height: 1; text-align: center;
+          transition: color 0.4s; line-height: 1;
         }
         .ls-ring-sym {
-          font-size: 11px; font-weight: 700;
-          color: rgba(200,220,255,0.35);
+          font-size: 10px; font-weight: 700;
+          color: rgba(200,220,255,0.3);
           font-family: 'Courier New', monospace;
-          text-align: center; margin-top: 2px;
+          margin-top: 2px;
         }
 
-        .ls-ring-right {
+        .ls-ring-info {
           flex: 1; min-width: 0;
-          display: flex; flex-direction: column; gap: 10px;
+          display: flex; flex-direction: column; gap: 6px;
         }
         .ls-ring-label {
           font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
-          text-transform: uppercase; color: rgba(200,220,255,0.28);
-          font-family: 'Courier New', monospace;
-        }
-        .ls-segments {
-          display: flex; gap: 4px; align-items: flex-end; height: 24px;
-        }
-        .ls-seg {
-          flex: 1; border-radius: 3px; height: 100%;
-          transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
-          transform-origin: bottom;
+          color: rgba(200,220,255,0.25); font-family: 'Courier New', monospace;
         }
         .ls-ring-status {
-          font-size: 11px; color: rgba(200,220,255,0.35);
+          font-size: 12px; color: rgba(200,220,255,0.45);
           font-family: 'Courier New', monospace;
-          white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-          transition: color 0.3s;
+          overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
         }
       `}</style>
     </div>
