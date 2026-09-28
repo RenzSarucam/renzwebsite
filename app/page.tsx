@@ -2,6 +2,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
 import Projects from "@/components/Projects";
 import WorkExperience from "@/components/WorkExperience";
 import Skills from "@/components/Skills";
@@ -32,6 +33,7 @@ export default function Home() {
       <LoadingScreen />
       <Navbar />
       <Hero />
+      <About />
       <Projects />
       <WorkExperience />
       <Skills />

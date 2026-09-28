@@ -17,11 +17,22 @@ export const metadata: Metadata = {
     description: "Portfolio of Renz Carljansen Sarucam — building research-driven software solutions.",
     type: "website",
     locale: "en_US",
+    url: "https://renzcarljansensarucam.vercel.app",
+    siteName: "RCS.dev",
+    images: [
+      {
+        url: "https://renzcarljansensarucam.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Renz Carljansen Sarucam — Full Stack Developer & R&D Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Renz Carljansen Sarucam — Full Stack Developer & R&D Engineer",
     description: "Portfolio of Renz Carljansen Sarucam — building research-driven software solutions.",
+    images: ["https://renzcarljansensarucam.vercel.app/og-image.png"],
   },
 };
 
