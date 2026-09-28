@@ -293,7 +293,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
     <div className="drawer-overlay" style={{ opacity: visible ? 1 : 0 }} onClick={handleClose}>
       <div
         className="drawer-panel"
-        style={{ transform: visible ? "translateX(0)" : "translateX(100%)" }}
+        style={{ transform: visible ? "scale(1)" : "scale(0.94)", opacity: visible ? 1 : 0 }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -375,19 +375,23 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
       <style suppressHydrationWarning>{`
         .drawer-overlay {
           position: fixed; inset: 0; z-index: 99999;
-          background: rgba(2,8,18,0.75);
-          backdrop-filter: blur(4px);
+          background: rgba(2,8,18,0.78);
+          backdrop-filter: blur(6px);
           transition: opacity 0.3s ease;
+          display: flex; align-items: center; justify-content: center;
+          padding: 20px 16px;
         }
         .drawer-panel {
-          position: fixed; top: 0; right: 0; bottom: 0;
-          width: min(480px, 100vw);
+          width: min(560px, 100%);
+          max-height: 88vh;
           background: #08111f;
-          border-left: 1px solid rgba(55,138,221,0.2);
-          box-shadow: -24px 0 80px rgba(0,0,0,0.5);
+          border: 1px solid rgba(55,138,221,0.22);
+          border-radius: 20px;
+          box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(55,138,221,0.06);
           display: flex; flex-direction: column;
-          transition: transform 0.3s cubic-bezier(0.32,0.72,0,1);
+          transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease;
           overflow: hidden;
+          position: relative;
         }
         /* Header */
         .drawer-header {
@@ -455,8 +459,9 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         }
         .drawer-back-btn:hover { background: rgba(255,255,255,0.07); color: rgba(200,220,255,0.7); }
         @media (max-width: 640px) {
-          .drawer-panel { width: 100vw; border-left: none; border-top: 1px solid rgba(55,138,221,0.2); border-radius: 16px 16px 0 0; top: auto; height: 88dvh; }
-          .drawer-body { padding: 18px 18px; }
+          .drawer-overlay { padding: 12px; align-items: flex-end; }
+          .drawer-panel { width: 100%; max-height: 90dvh; border-radius: 16px; }
+          .drawer-body { padding: 18px; }
           .drawer-header { padding: 16px 18px 14px; }
           .drawer-footer { padding: 14px 18px 20px; }
         }
