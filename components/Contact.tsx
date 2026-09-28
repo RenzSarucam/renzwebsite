@@ -324,6 +324,8 @@ export default function Contact() {
           background: rgba(255,255,255,0.025);
           border: 1px solid rgba(55,138,221,0.1);
           text-align: left; width: 100%;
+          box-sizing: border-box;
+          -webkit-appearance: none; appearance: none;
           cursor: pointer;
           transition: border-color 0.2s, background 0.2s;
           font-family: inherit;
