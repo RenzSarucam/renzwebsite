@@ -3,18 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 
 const BOOT_LINES = [
-  "Initializing system...",
-  "Loading modules: React · Next.js · TypeScript",
-  "Connecting to DevOps pipeline...",
-  "Mounting Docker containers...",
-  "Syncing GitHub repository...",
-  "Configuring Nginx proxy...",
-  "Building portfolio assets...",
-  "Launch sequence complete.",
+  { text: "Initializing system...",                    color: "rgba(200,220,255,0.5)" },
+  { text: "Loading modules: React · Next.js · TypeScript", color: "rgba(200,220,255,0.5)" },
+  { text: "Connecting to DevOps pipeline...",          color: "rgba(200,220,255,0.5)" },
+  { text: "Mounting Docker containers...",             color: "#5dcaa5" },
+  { text: "Syncing GitHub repository...",              color: "rgba(200,220,255,0.5)" },
+  { text: "Configuring Nginx proxy...",                color: "rgba(200,220,255,0.5)" },
+  { text: "Building portfolio assets...",              color: "#378add" },
+  { text: "Launch sequence complete.",                 color: "#5dcaa5" },
 ];
-
-const BINARY = "10110100101101001011010010110100101101001011010010110100101101001011010010110100101101001011010010110100101101001011010010";
-const BINARY_GRID = BINARY.slice(0, 120).split("");
 
 export default function LoadingScreen() {
   const [mounted, setMounted]     = useState(false);
@@ -22,25 +19,29 @@ export default function LoadingScreen() {
   const [fading, setFading]       = useState(false);
   const [progress, setProgress]   = useState(0);
   const [lineCount, setLineCount] = useState(0);
+  const [nameIn, setNameIn]       = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   useEffect(() => {
     setMounted(true);
 
-    const totalDuration = 2800;
+    const t0 = setTimeout(() => setNameIn(true), 300);
+    timerRef.current.push(t0);
+
+    const totalDuration = 3000;
     const lineInterval  = totalDuration / BOOT_LINES.length;
 
     BOOT_LINES.forEach((_, i) => {
       const t = setTimeout(() => {
         setLineCount(i + 1);
         setProgress(Math.round(((i + 1) / BOOT_LINES.length) * 100));
-      }, i * lineInterval);
+      }, 400 + i * lineInterval);
       timerRef.current.push(t);
     });
 
-    const t1 = setTimeout(() => setFading(true),  totalDuration + 200);
-    const t2 = setTimeout(() => setVisible(false), totalDuration + 800);
-    timerRef.current.push(t1, t2);
+    const t1 = setTimeout(() => setFading(true),  totalDuration + 600);
+    const t2 = setTimeout(() => setVisible(false), totalDuration + 1400);
+    timerRef.current.push(t0, t1, t2);
 
     return () => timerRef.current.forEach(clearTimeout);
   }, []);
@@ -50,111 +51,72 @@ export default function LoadingScreen() {
   return (
     <div
       suppressHydrationWarning
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 9999,
-        background: "#020a14",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        opacity: fading ? 0 : 1,
-        transition: "opacity 0.7s ease",
-        overflow: "hidden",
-      }}
+      className={`ls-root${fading ? " ls-fading" : ""}`}
     >
-      {/* Binary grid background */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          display: "grid",
-          gridTemplateColumns: "repeat(20, 1fr)",
-          opacity: 0.05,
-          pointerEvents: "none",
-          fontFamily: "'Courier New', monospace",
-          fontSize: 11,
-          color: "#378add",
-          padding: 8,
-          gap: 2,
-        }}
-      >
-        {BINARY_GRID.map((bit, i) => (
-          <span key={i} className={`bin-cell bin-${i % 5}`}>{bit}</span>
-        ))}
-      </div>
+      {/* ── Layered background ── */}
+      <div className="ls-bg-grid" />
+      <div className="ls-bg-orb ls-orb-1" />
+      <div className="ls-bg-orb ls-orb-2" />
+      <div className="ls-bg-orb ls-orb-3" />
+      <div className="ls-scanlines" />
 
-      {/* Scanline overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(55,138,221,0.012) 2px, rgba(55,138,221,0.012) 4px)",
-          pointerEvents: "none",
-        }}
-      />
+      {/* ── Content ── */}
+      <div className="ls-content">
 
-      {/* Ambient glow blobs */}
-      <div className="glow-blob glow-1" />
-      <div className="glow-blob glow-2" />
+        {/* Atom */}
+        <div className="ls-atom-wrap">
+          {/* Outer glow rings */}
+          <div className="ls-glow-ring ls-gr-1" />
+          <div className="ls-glow-ring ls-gr-2" />
 
-      {/* Content */}
-      <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 480, padding: "0 24px" }}>
+          {/* Orbit rings */}
+          <div className="ls-orbit ls-orbit-1"><div className="ls-dot ls-dot-1" /></div>
+          <div className="ls-orbit ls-orbit-2"><div className="ls-dot ls-dot-2" /></div>
+          <div className="ls-orbit ls-orbit-3"><div className="ls-dot ls-dot-3" /></div>
 
-        {/* Logo */}
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: 40 }}>
-          <div className="dev-wrap">
-            {/* Orbit ring 1 — horizontal */}
-            <div className="dev-ring dev-ring-1"><div className="dev-dot dd-1" /></div>
-            {/* Orbit ring 2 — tilted 60° */}
-            <div className="dev-ring dev-ring-2"><div className="dev-dot dd-2" /></div>
-            {/* Orbit ring 3 — tilted -60° */}
-            <div className="dev-ring dev-ring-3"><div className="dev-dot dd-3" /></div>
-            {/* Outer pulse rings */}
-            <div className="dev-pulse dev-pulse-1" />
-            <div className="dev-pulse dev-pulse-2" />
-            {/* Center badge */}
-            <div className="dev-center">
-              <span className="dev-bracket dev-lt">&lt;</span>
-              <span className="dev-slash">/</span>
-              <span className="dev-bracket dev-gt">&gt;</span>
-            </div>
+          {/* Core */}
+          <div className="ls-core">
+            <span className="ls-core-lt">&lt;</span>
+            <span className="ls-core-sl">/</span>
+            <span className="ls-core-gt">&gt;</span>
           </div>
         </div>
 
+        {/* Name block */}
+        <div className={`ls-name-block${nameIn ? " ls-name-in" : ""}`}>
+          <h1 className="ls-name">Renz Carljansen Sarucam</h1>
+          <p className="ls-role">
+            <span className="ls-role-chip">Full Stack</span>
+            <span className="ls-role-dot">·</span>
+            <span className="ls-role-chip">DevOps</span>
+            <span className="ls-role-dot">·</span>
+            <span className="ls-role-chip">R&amp;D Engineer</span>
+          </p>
+        </div>
+
         {/* Terminal */}
-        <div
-          style={{
-            background: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(55,138,221,0.18)",
-            borderRadius: 12,
-            padding: "16px 20px",
-            fontFamily: "'Courier New', monospace",
-            fontSize: 12,
-            marginBottom: 24,
-            minHeight: 160,
-            boxShadow: "0 0 24px rgba(55,138,221,0.06)",
-          }}
-        >
-          {/* Terminal dots */}
-          <div style={{ display: "flex", gap: 6, marginBottom: 12 }}>
-            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#ff5f57" }} />
-            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#febc2e" }} />
-            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#28c840" }} />
-            <span style={{ marginLeft: 8, fontSize: 10, color: "rgba(200,220,255,0.3)" }}>renz@portfolio ~ boot</span>
+        <div className="ls-terminal">
+          {/* Window chrome */}
+          <div className="ls-term-chrome">
+            <span className="ls-term-dot" style={{ background: "#ff5f57" }} />
+            <span className="ls-term-dot" style={{ background: "#febc2e" }} />
+            <span className="ls-term-dot" style={{ background: "#28c840" }} />
+            <span className="ls-term-title">renz@portfolio ~ boot</span>
           </div>
 
           {/* Lines */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+          <div className="ls-term-body">
             {BOOT_LINES.slice(0, lineCount).map((line, i) => (
-              <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start" }} className={i === lineCount - 1 ? "line-enter" : ""}>
-                <span style={{ color: "#5dcaa5", flexShrink: 0 }}>{">"}</span>
-                <span style={{ color: i === lineCount - 1 ? "#e8f4ff" : "rgba(200,220,255,0.5)" }}>
-                  {line}
+              <div
+                key={i}
+                className={`ls-term-line${i === lineCount - 1 ? " ls-term-line-enter" : ""}`}
+              >
+                <span className="ls-term-prompt">&gt;</span>
+                <span style={{ color: i === lineCount - 1 ? line.color : "rgba(200,220,255,0.4)" }}>
+                  {line.text}
                 </span>
                 {i === lineCount - 1 && progress < 100 && (
-                  <span className="blink" style={{ color: "#378add" }}>▋</span>
+                  <span className="ls-cursor">▋</span>
                 )}
               </div>
             ))}
@@ -162,164 +124,280 @@ export default function LoadingScreen() {
         </div>
 
         {/* Progress */}
-        <div>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-            <span style={{ fontSize: 11, color: "rgba(200,220,255,0.35)", fontFamily: "'Courier New', monospace", letterSpacing: "0.08em" }}>
-              LOADING PORTFOLIO
-            </span>
-            <span style={{ fontSize: 11, color: "#5dcaa5", fontFamily: "'Courier New', monospace", fontWeight: 700 }}>
-              {progress}%
-            </span>
+        <div className="ls-progress-wrap">
+          <div className="ls-progress-labels">
+            <span className="ls-progress-label">INITIALIZING PORTFOLIO</span>
+            <span className="ls-progress-pct" style={{ color: progress === 100 ? "#5dcaa5" : "#61afff" }}>{progress}%</span>
           </div>
-          <div style={{ height: 3, background: "rgba(55,138,221,0.1)", borderRadius: 99, overflow: "hidden" }}>
-            <div
-              style={{
-                height: "100%",
-                width: `${progress}%`,
-                background: "linear-gradient(90deg, #378add, #5dcaa5)",
-                borderRadius: 99,
-                transition: "width 0.35s ease",
-                boxShadow: "0 0 12px rgba(93,202,165,0.7)",
-              }}
-            />
+          <div className="ls-progress-track">
+            <div className="ls-progress-fill" style={{ width: `${progress}%` }}>
+              <div className="ls-progress-shine" />
+            </div>
+          </div>
+          {/* Step dots */}
+          <div className="ls-progress-dots">
+            {BOOT_LINES.map((_, i) => (
+              <div
+                key={i}
+                className="ls-step-dot"
+                style={{
+                  background: i < lineCount ? (i === BOOT_LINES.length - 1 ? "#5dcaa5" : "#378add") : "rgba(55,138,221,0.15)",
+                  boxShadow: i < lineCount ? `0 0 6px ${i === BOOT_LINES.length - 1 ? "#5dcaa5" : "#378add"}` : "none",
+                  transform: i === lineCount - 1 ? "scale(1.4)" : "scale(1)",
+                }}
+              />
+            ))}
           </div>
         </div>
+
       </div>
 
       <style suppressHydrationWarning>{`
-        /* ── Ambient glow ── */
-        .glow-blob {
-          position: absolute;
-          border-radius: 50%;
+        /* ── Root ── */
+        .ls-root {
+          position: fixed; inset: 0; z-index: 99999;
+          background: #020c1b;
+          display: flex; align-items: center; justify-content: center;
+          overflow: hidden;
+          transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
+        }
+        .ls-fading {
+          opacity: 0;
+          transform: scale(1.03);
+          filter: blur(4px);
           pointer-events: none;
-          filter: blur(80px);
-        }
-        .glow-1 {
-          width: 400px; height: 400px;
-          background: rgba(55,138,221,0.12);
-          top: -100px; left: -100px;
-          animation: blobDrift 6s ease-in-out infinite alternate;
-        }
-        .glow-2 {
-          width: 300px; height: 300px;
-          background: rgba(93,202,165,0.1);
-          bottom: -80px; right: -80px;
-          animation: blobDrift 8s ease-in-out infinite alternate-reverse;
-        }
-        @keyframes blobDrift {
-          from { transform: translate(0,0) scale(1); }
-          to   { transform: translate(40px, 30px) scale(1.1); }
         }
 
-        /* ── Developer atom logo ── */
-        .dev-wrap {
+        /* ── Backgrounds ── */
+        .ls-bg-grid {
+          position: absolute; inset: 0;
+          background-image:
+            linear-gradient(rgba(55,138,221,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(55,138,221,0.04) 1px, transparent 1px);
+          background-size: 48px 48px;
+          mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+          pointer-events: none;
+        }
+        .ls-bg-orb {
+          position: absolute; border-radius: 50%;
+          pointer-events: none; filter: blur(100px);
+        }
+        .ls-orb-1 { width: 600px; height: 600px; background: rgba(55,138,221,0.1);  top: -150px; left: -150px; animation: orbDrift 8s ease-in-out infinite alternate; }
+        .ls-orb-2 { width: 500px; height: 500px; background: rgba(93,202,165,0.08); bottom: -120px; right: -120px; animation: orbDrift 10s ease-in-out infinite alternate-reverse; }
+        .ls-orb-3 { width: 300px; height: 300px; background: rgba(198,120,221,0.06); top: 40%; left: 60%; animation: orbDrift 7s ease-in-out infinite alternate; }
+        @keyframes orbDrift {
+          from { transform: translate(0,0) scale(1); }
+          to   { transform: translate(30px, 20px) scale(1.08); }
+        }
+        .ls-scanlines {
+          position: absolute; inset: 0; pointer-events: none;
+          background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(55,138,221,0.008) 3px, rgba(55,138,221,0.008) 4px);
+        }
+
+        /* ── Content ── */
+        .ls-content {
+          position: relative; z-index: 1;
+          width: 100%; max-width: 520px;
+          padding: 0 24px;
+          display: flex; flex-direction: column;
+          align-items: center; gap: 28px;
+        }
+
+        /* ── Atom ── */
+        .ls-atom-wrap {
           position: relative;
-          width: 160px; height: 160px;
+          width: 180px; height: 180px;
           display: flex; align-items: center; justify-content: center;
         }
 
-        /* Elliptical orbit rings */
-        .dev-ring {
+        /* Outer glow rings */
+        .ls-glow-ring {
+          position: absolute; border-radius: 50%; border: 1px solid;
+          top: 50%; left: 50%; transform: translate(-50%,-50%);
+        }
+        .ls-gr-1 {
+          width: 160px; height: 160px;
+          border-color: rgba(55,138,221,0.12);
+          animation: grPulse 3s ease-in-out infinite;
+        }
+        .ls-gr-2 {
+          width: 200px; height: 200px;
+          border-color: rgba(93,202,165,0.08);
+          animation: grPulse 3s ease-in-out infinite 1.5s;
+        }
+        @keyframes grPulse {
+          0%,100% { opacity: 0.5; transform: translate(-50%,-50%) scale(1); }
+          50%      { opacity: 1;   transform: translate(-50%,-50%) scale(1.06); }
+        }
+
+        /* Orbit rings */
+        .ls-orbit {
           position: absolute;
-          width: 156px; height: 56px;
+          width: 170px; height: 60px;
           border-radius: 50%;
-          border: 1.5px solid rgba(55,138,221,0.35);
           top: 50%; left: 50%;
-          margin: -28px 0 0 -78px;
+          margin: -30px 0 0 -85px;
         }
-        .dev-ring-1 { transform: rotateZ(0deg);   animation: devSpin 3.2s linear infinite; }
-        .dev-ring-2 { transform: rotateZ(60deg);  animation: devSpin 2.6s linear infinite reverse; border-color: rgba(93,202,165,0.35); }
-        .dev-ring-3 { transform: rotateZ(-60deg); animation: devSpin 4s linear infinite; border-color: rgba(97,175,255,0.3); }
-        @keyframes devSpin { from { transform: rotateZ(var(--rz,0deg)) rotateX(var(--rx,0deg)); } }
+        .ls-orbit-1 { border: 1.5px solid rgba(55,138,221,0.5);  animation: lsOrbit1 3.2s linear infinite; }
+        .ls-orbit-2 { border: 1.5px solid rgba(93,202,165,0.45); animation: lsOrbit2 2.4s linear infinite; }
+        .ls-orbit-3 { border: 1.5px solid rgba(97,175,255,0.35); animation: lsOrbit3 4.2s linear infinite; }
+        @keyframes lsOrbit1 { from{transform:rotateZ(0deg)}   to{transform:rotateZ(360deg)} }
+        @keyframes lsOrbit2 { from{transform:rotateZ(60deg)}  to{transform:rotateZ(420deg)} }
+        @keyframes lsOrbit3 { from{transform:rotateZ(-60deg)} to{transform:rotateZ(300deg)} }
 
-        /* Override with 3D tilt via individual ring keyframes */
-        .dev-ring-1 { animation: ring1Spin 3.2s linear infinite; }
-        .dev-ring-2 { animation: ring2Spin 2.6s linear infinite; }
-        .dev-ring-3 { animation: ring3Spin 4s linear infinite; }
-        @keyframes ring1Spin { from{transform:rotateZ(0deg)}   to{transform:rotateZ(360deg)} }
-        @keyframes ring2Spin { from{transform:rotateZ(60deg)}  to{transform:rotateZ(420deg)} }
-        @keyframes ring3Spin { from{transform:rotateZ(-60deg)} to{transform:rotateZ(300deg)} }
+        /* Dots */
+        .ls-dot {
+          position: absolute; border-radius: 50%;
+          top: -5px; left: 50%; transform: translateX(-50%);
+        }
+        .ls-dot-1 { width: 10px; height: 10px; background: #378add; box-shadow: 0 0 12px #378add, 0 0 28px rgba(55,138,221,0.7); }
+        .ls-dot-2 { width: 9px;  height: 9px;  background: #5dcaa5; box-shadow: 0 0 12px #5dcaa5, 0 0 24px rgba(93,202,165,0.7); }
+        .ls-dot-3 { width: 8px;  height: 8px;  background: #c678dd; box-shadow: 0 0 10px #c678dd, 0 0 20px rgba(198,120,221,0.7); }
 
-        /* Orbiting dots */
-        .dev-dot {
+        /* Core */
+        .ls-core {
           position: absolute;
-          border-radius: 50%;
-          top: -5px; left: 50%;
-          transform: translateX(-50%);
+          width: 72px; height: 72px; border-radius: 50%;
+          background: radial-gradient(circle at 38% 35%, #0d2040, #050e1c);
+          border: 1.5px solid rgba(55,138,221,0.45);
+          display: flex; align-items: center; justify-content: center; gap: 1px;
+          font-family: 'Courier New', monospace; font-weight: 900;
+          animation: coreGlow 2.8s ease-in-out infinite;
+          box-shadow: 0 0 0 6px rgba(55,138,221,0.05), 0 0 40px rgba(55,138,221,0.2), inset 0 1px 0 rgba(255,255,255,0.07);
         }
-        .dd-1 { width: 9px; height: 9px; background: #378add; box-shadow: 0 0 10px #378add, 0 0 22px rgba(55,138,221,0.7); }
-        .dd-2 { width: 8px; height: 8px; background: #5dcaa5; box-shadow: 0 0 10px #5dcaa5, 0 0 20px rgba(93,202,165,0.7); }
-        .dd-3 { width: 7px; height: 7px; background: #61afff; box-shadow: 0 0 8px #61afff, 0 0 18px rgba(97,175,255,0.7); }
-
-        /* Pulse ripples */
-        .dev-pulse {
-          position: absolute;
-          border-radius: 50%;
-          border: 1px solid rgba(55,138,221,0.4);
-          top: 50%; left: 50%;
-          transform: translate(-50%,-50%) scale(0.5);
-          animation: devPulse 3s ease-out infinite;
+        @keyframes coreGlow {
+          0%,100% { box-shadow: 0 0 0 6px rgba(55,138,221,0.05), 0 0 40px rgba(55,138,221,0.2); border-color: rgba(55,138,221,0.45); }
+          50%      { box-shadow: 0 0 0 8px rgba(93,202,165,0.08), 0 0 60px rgba(55,138,221,0.3); border-color: rgba(93,202,165,0.6); }
         }
-        .dev-pulse-1 { width: 80px; height: 80px; animation-delay: 0s; }
-        .dev-pulse-2 { width: 80px; height: 80px; animation-delay: 1.5s; border-color: rgba(93,202,165,0.35); }
-        @keyframes devPulse {
-          0%   { transform: translate(-50%,-50%) scale(0.5); opacity: 0.8; }
-          100% { transform: translate(-50%,-50%) scale(2.2); opacity: 0; }
-        }
-
-        /* Center badge */
-        .dev-center {
-          position: absolute;
-          width: 64px; height: 64px;
-          border-radius: 50%;
-          background: radial-gradient(circle at 40% 35%, #0d2040, #050e1c);
-          border: 1.5px solid rgba(55,138,221,0.4);
-          display: flex; align-items: center; justify-content: center; gap: 0;
-          box-shadow: 0 0 24px rgba(55,138,221,0.3), 0 0 60px rgba(55,138,221,0.1), inset 0 1px 0 rgba(255,255,255,0.06);
-          animation: centerPulse 2.5s ease-in-out infinite;
-          font-family: 'Courier New', monospace;
-          font-weight: 900;
-        }
-        @keyframes centerPulse {
-          0%,100% { box-shadow: 0 0 24px rgba(55,138,221,0.3), 0 0 60px rgba(55,138,221,0.1); }
-          50%     { box-shadow: 0 0 36px rgba(93,202,165,0.45), 0 0 80px rgba(55,138,221,0.2); }
-        }
-        .dev-bracket {
-          font-size: 18px; line-height: 1;
+        .ls-core-lt, .ls-core-gt {
+          font-size: 22px; line-height: 1;
           background: linear-gradient(160deg, #61afff, #5dcaa5);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-          background-clip: text;
-          animation: bracketGlow 2.5s ease-in-out infinite;
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .dev-slash {
-          font-size: 14px; line-height: 1;
-          color: rgba(255,255,255,0.55);
-          margin: 0 1px;
-          animation: bracketGlow 2.5s ease-in-out infinite 0.5s;
+        .ls-core-sl { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1; }
+
+        /* ── Name block ── */
+        .ls-name-block {
+          text-align: center;
+          opacity: 0; transform: translateY(16px);
+          transition: opacity 0.7s ease, transform 0.7s ease;
         }
-        @keyframes bracketGlow {
-          0%,100% { filter: brightness(0.9) drop-shadow(0 0 3px rgba(55,138,221,0.5)); }
-          50%     { filter: brightness(1.4) drop-shadow(0 0 8px rgba(93,202,165,0.8)); }
+        .ls-name-in { opacity: 1; transform: translateY(0); }
+
+        .ls-name {
+          font-size: clamp(20px,4vw,26px); font-weight: 800;
+          color: #e8f4ff; margin: 0 0 10px; letter-spacing: -0.01em;
+          line-height: 1.2;
+        }
+        .ls-role {
+          display: flex; align-items: center; justify-content: center;
+          gap: 8px; flex-wrap: wrap;
+          margin: 0;
+        }
+        .ls-role-chip {
+          font-size: 12px; font-weight: 600;
+          background: rgba(55,138,221,0.1);
+          border: 1px solid rgba(55,138,221,0.22);
+          border-radius: 100px; padding: 3px 11px;
+          color: #61afff; font-family: 'Courier New', monospace;
+        }
+        .ls-role-dot { color: rgba(200,220,255,0.2); font-size: 14px; }
+
+        /* ── Terminal ── */
+        .ls-terminal {
+          width: 100%;
+          background: rgba(8,17,31,0.85);
+          border: 1px solid rgba(55,138,221,0.18);
+          border-radius: 14px;
+          overflow: hidden;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(55,138,221,0.06);
+        }
+        .ls-term-chrome {
+          display: flex; align-items: center; gap: 6px;
+          padding: 10px 14px;
+          background: rgba(255,255,255,0.025);
+          border-bottom: 1px solid rgba(55,138,221,0.1);
+        }
+        .ls-term-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .ls-term-title {
+          margin-left: 8px; font-size: 11px;
+          color: rgba(200,220,255,0.3);
+          font-family: 'Courier New', monospace;
+        }
+        .ls-term-body {
+          padding: 14px 16px;
+          display: flex; flex-direction: column; gap: 6px;
+          min-height: 140px;
+        }
+        .ls-term-line {
+          display: flex; gap: 9px; align-items: flex-start;
+          font-size: 12px; font-family: 'Courier New', monospace;
+          line-height: 1.5;
+        }
+        .ls-term-line-enter { animation: termLineIn 0.22s ease-out; }
+        @keyframes termLineIn {
+          from { opacity: 0; transform: translateX(-6px); }
+          to   { opacity: 1; transform: none; }
+        }
+        .ls-term-prompt { color: #5dcaa5; flex-shrink: 0; font-weight: 700; }
+        .ls-cursor {
+          color: #378add;
+          animation: lsBlink 0.9s step-end infinite;
+        }
+        @keyframes lsBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        /* ── Progress ── */
+        .ls-progress-wrap { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+        .ls-progress-labels {
+          display: flex; justify-content: space-between; align-items: center;
+        }
+        .ls-progress-label {
+          font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+          color: rgba(200,220,255,0.3); font-family: 'Courier New', monospace;
+        }
+        .ls-progress-pct {
+          font-size: 12px; font-weight: 800;
+          font-family: 'Courier New', monospace;
+          transition: color 0.4s;
+        }
+        .ls-progress-track {
+          height: 4px; border-radius: 99px;
+          background: rgba(55,138,221,0.08);
+          overflow: hidden;
+        }
+        .ls-progress-fill {
+          height: 100%; border-radius: 99px;
+          background: linear-gradient(90deg, #378add, #5dcaa5, #c678dd);
+          background-size: 200% 100%;
+          transition: width 0.4s ease;
+          position: relative;
+          box-shadow: 0 0 12px rgba(93,202,165,0.6);
+          animation: shimmer 2s linear infinite;
+        }
+        @keyframes shimmer {
+          from { background-position: 200% 0; }
+          to   { background-position: -200% 0; }
+        }
+        .ls-progress-shine {
+          position: absolute; top: 0; right: 0; bottom: 0;
+          width: 40px;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+          animation: shineSlide 1.5s ease-in-out infinite;
+        }
+        @keyframes shineSlide {
+          from { transform: translateX(40px); opacity: 0; }
+          50%  { opacity: 1; }
+          to   { transform: translateX(-120px); opacity: 0; }
         }
 
-        /* ── Terminal line enter ── */
-        .line-enter { animation: lineSlide 0.25s ease-out; }
-        @keyframes lineSlide {
-          from { opacity: 0; transform: translateX(-8px); }
-          to   { opacity: 1; transform: translateX(0); }
+        /* Step dots */
+        .ls-progress-dots {
+          display: flex; justify-content: center; gap: 8px; padding-top: 2px;
         }
-
-        /* ── Binary bg ── */
-        .bin-cell { animation: blink 2s infinite; }
-        .bin-0 { animation-delay: 0s; }
-        .bin-1 { animation-delay: 0.4s; }
-        .bin-2 { animation-delay: 0.8s; }
-        .bin-3 { animation-delay: 1.2s; }
-        .bin-4 { animation-delay: 1.6s; }
-
-        /* ── Blink cursor ── */
-        .blink { animation: blink 1s step-end infinite; }
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+        .ls-step-dot {
+          width: 5px; height: 5px; border-radius: 50%;
+          transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
       `}</style>
     </div>
   );
