@@ -151,7 +151,6 @@ export default function LoadingScreen() {
             </svg>
             <div className="ls-ring-center">
               <span className="ls-ring-pct" style={{ color: progress === 100 ? "#5dcaa5" : "#61afff" }}>{progress}</span>
-              <span className="ls-ring-sym">%</span>
             </div>
           </div>
 
