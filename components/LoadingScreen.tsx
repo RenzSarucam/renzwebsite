@@ -154,9 +154,7 @@ export default function LoadingScreen() {
             </svg>
             {/* Center label */}
             <div className="ls-ring-center">
-              <span className="ls-ring-pct" style={{ color: progress === 100 ? "#5dcaa5" : "#61afff" }}>
-                {progress}
-              </span>
+              <span className="ls-ring-pct" style={{ color: progress === 100 ? "#5dcaa5" : "#61afff" }}>{progress}</span>
               <span className="ls-ring-sym">%</span>
             </div>
           </div>
@@ -401,19 +399,19 @@ export default function LoadingScreen() {
         .ls-ring-center {
           position: absolute; inset: 0;
           display: flex; align-items: center; justify-content: center;
-          flex-direction: row; gap: 1px;
+          flex-direction: column; gap: 0;
         }
         .ls-ring-pct {
-          font-size: 26px; font-weight: 900;
+          font-size: 28px; font-weight: 900;
           font-family: 'Courier New', monospace;
           transition: color 0.4s;
-          line-height: 1;
+          line-height: 1; text-align: center;
         }
         .ls-ring-sym {
-          font-size: 13px; font-weight: 700;
-          color: rgba(200,220,255,0.4);
+          font-size: 11px; font-weight: 700;
+          color: rgba(200,220,255,0.35);
           font-family: 'Courier New', monospace;
-          align-self: flex-end; margin-bottom: 3px;
+          text-align: center; margin-top: 2px;
         }
 
         .ls-ring-right {
