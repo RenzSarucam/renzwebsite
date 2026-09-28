@@ -269,130 +269,196 @@ function ProjectCard({ project, onOpen }: { project: (typeof projects)[0]; onOpe
 }
 
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  const [visible, setVisible] = useState(false);
+
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    requestAnimationFrame(() => setVisible(true));
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") handleClose(); };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [onClose]);
+  }, []);
+
+  const handleClose = () => {
+    setVisible(false);
+    setTimeout(onClose, 300);
+  };
+
+  const isFigma = Array.isArray(project.type) ? project.type.includes("Figma") : project.type === "Figma";
 
   return createPortal(
-    <div
-      onClick={onClose}
-      className="modal-overlay"
-    >
+    <div className="drawer-overlay" style={{ opacity: visible ? 1 : 0 }} onClick={handleClose}>
       <div
+        className="drawer-panel"
+        style={{ transform: visible ? "translateX(0)" : "translateX(100%)" }}
         onClick={(e) => e.stopPropagation()}
-        className="modal-box"
       >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 12, padding: "3px 9px", borderRadius: 4, background: "rgba(55,138,221,0.1)", color: "#378add", border: "1px solid rgba(55,138,221,0.2)" }}>
+        {/* Header */}
+        <div className="drawer-header">
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", flex: 1, minWidth: 0 }}>
+            <span className="drawer-badge drawer-badge-type">
               {Array.isArray(project.type) ? project.type.join(" / ") : project.type}
             </span>
-            <span style={{
-              fontSize: 12, padding: "3px 9px", borderRadius: 100,
-              background: project.status === "Completed" ? "rgba(29,158,117,0.12)" : "rgba(239,159,39,0.12)",
-              color: project.status === "Completed" ? "#5dcaa5" : "#ef9f27",
-              border: `1px solid ${project.status === "Completed" ? "rgba(29,158,117,0.25)" : "rgba(239,159,39,0.25)"}`,
-            }}>
+            <span className={`drawer-badge drawer-badge-status ${project.status === "Completed" ? "status-done" : "status-wip"}`}>
               {project.status}
             </span>
           </div>
-          <button onClick={onClose} style={{ background: "none", border: "none", color: "rgba(200,220,255,0.4)", cursor: "pointer", fontSize: 20, lineHeight: 1, padding: "0 2px", flexShrink: 0 }}>✕</button>
+          <button className="drawer-close" onClick={handleClose} aria-label="Close">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+          </button>
         </div>
 
-        <h3 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: "#e8f4ff" }}>{project.title}</h3>
+        {/* Scrollable body */}
+        <div className="drawer-body">
+          {/* Title + place */}
+          <div className="drawer-title-block">
+            <h3 className="drawer-title">{project.title}</h3>
+            {project.place && (
+              <span className="drawer-place">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+                {project.place}
+              </span>
+            )}
+          </div>
 
-        {project.place && (
-          <span style={{ fontSize: 13, color: "rgba(200,220,255,0.45)", display: "inline-flex", alignItems: "center", gap: 5, marginTop: -8 }}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-            </svg>
-            {project.place}
-          </span>
-        )}
+          <div className="drawer-divider" />
 
-        <p style={{ margin: 0, fontSize: 15, color: "rgba(200,220,255,0.65)", lineHeight: 1.7 }}>{project.desc}</p>
+          {/* Description */}
+          <div>
+            <p className="drawer-section-label">About</p>
+            <p className="drawer-desc">{project.desc}</p>
+          </div>
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-          {project.tags.map((tag) => (
-            <span key={tag} style={{ fontSize: 13, padding: "3px 9px", borderRadius: 4, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(200,220,255,0.65)" }}>
-              {tag}
+          <div className="drawer-divider" />
+
+          {/* Tags */}
+          <div>
+            <p className="drawer-section-label">Tech Stack</p>
+            <div className="drawer-tags">
+              {project.tags.map((tag) => (
+                <span key={tag} className="drawer-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="drawer-footer">
+          {project.link ? (
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="drawer-cta">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+              {isFigma ? "View on Figma" : "View on GitHub"}
+            </a>
+          ) : (
+            <span className="drawer-confidential">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              Confidentiality agreement
             </span>
-          ))}
+          )}
+          <button className="drawer-back-btn" onClick={handleClose}>
+            Close
+          </button>
         </div>
-
-        {project.link ? (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 10, background: "rgba(55,138,221,0.1)", border: "1px solid rgba(55,138,221,0.3)", color: "#378add", fontSize: 14, fontWeight: 600, textDecoration: "none", alignSelf: "flex-start" }}
-          >
-            {(Array.isArray(project.type) ? project.type.includes("Figma") : project.type === "Figma") ? "View on Figma" : "View on GitHub"} →
-          </a>
-        ) : (
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, color: "rgba(200,220,255,0.35)", fontStyle: "italic" }}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
-            This project is under a confidentiality agreement
-          </span>
-        )}
       </div>
 
       <style suppressHydrationWarning>{`
-        .modal-overlay {
-          position: fixed;
-          inset: 0;
-          z-index: 99999;
-          background: rgba(5,13,26,0.85);
-          backdrop-filter: blur(6px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 20px 16px;
-          overflow-y: auto;
+        .drawer-overlay {
+          position: fixed; inset: 0; z-index: 99999;
+          background: rgba(2,8,18,0.75);
+          backdrop-filter: blur(4px);
+          transition: opacity 0.3s ease;
         }
-        .modal-box {
-          background: #0b1829;
-          border: 1px solid rgba(55,138,221,0.28);
-          border-radius: 16px;
-          padding: 28px 28px 24px;
-          max-width: 560px;
-          width: 100%;
-          max-height: 80vh;
-          overflow-y: auto;
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-          box-shadow: 0 0 60px rgba(55,138,221,0.18);
-          box-sizing: border-box;
+        .drawer-panel {
+          position: fixed; top: 0; right: 0; bottom: 0;
+          width: min(480px, 100vw);
+          background: #08111f;
+          border-left: 1px solid rgba(55,138,221,0.2);
+          box-shadow: -24px 0 80px rgba(0,0,0,0.5);
+          display: flex; flex-direction: column;
+          transition: transform 0.3s cubic-bezier(0.32,0.72,0,1);
+          overflow: hidden;
+        }
+        /* Header */
+        .drawer-header {
+          display: flex; align-items: center; gap: 12;
+          padding: 20px 24px 16px;
+          border-bottom: 1px solid rgba(55,138,221,0.1);
           flex-shrink: 0;
         }
-        .modal-box h3 {
-          font-size: clamp(16px, 4vw, 22px);
-          word-break: break-word;
+        .drawer-close {
+          width: 32px; height: 32px; border-radius: 8px;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.08);
+          color: rgba(200,220,255,0.5);
+          cursor: pointer; display: flex; align-items: center; justify-content: center;
+          flex-shrink: 0; transition: all 0.2s;
         }
-        .modal-box p {
-          font-size: clamp(13px, 2vw, 15px);
-          line-height: 1.7;
+        .drawer-close:hover { background: rgba(55,138,221,0.12); color: #61afff; border-color: rgba(55,138,221,0.3); }
+        /* Badges */
+        .drawer-badge { font-size: 12px; padding: 3px 10px; border-radius: 5px; font-weight: 500; }
+        .drawer-badge-type { background: rgba(55,138,221,0.1); color: #378add; border: 1px solid rgba(55,138,221,0.22); }
+        .status-done { background: rgba(29,158,117,0.12); color: #5dcaa5; border: 1px solid rgba(29,158,117,0.25); border-radius: 100px !important; }
+        .status-wip  { background: rgba(239,159,39,0.12);  color: #ef9f27; border: 1px solid rgba(239,159,39,0.25);  border-radius: 100px !important; }
+        /* Body */
+        .drawer-body {
+          flex: 1; overflow-y: auto; padding: 24px;
+          display: flex; flex-direction: column; gap: 20px;
+          scrollbar-width: thin;
+          scrollbar-color: rgba(55,138,221,0.2) transparent;
         }
+        .drawer-body::-webkit-scrollbar { width: 4px; }
+        .drawer-body::-webkit-scrollbar-track { background: transparent; }
+        .drawer-body::-webkit-scrollbar-thumb { background: rgba(55,138,221,0.2); border-radius: 99px; }
+        .drawer-title-block { display: flex; flex-direction: column; gap: 8px; }
+        .drawer-title { margin: 0; font-size: clamp(20px,4vw,26px); font-weight: 700; color: #e8f4ff; line-height: 1.25; word-break: break-word; }
+        .drawer-place { font-size: 13px; color: rgba(200,220,255,0.42); display: inline-flex; align-items: center; gap: 5px; }
+        .drawer-divider { height: 1px; background: rgba(55,138,221,0.08); }
+        .drawer-section-label { margin: 0 0 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: rgba(55,138,221,0.7); text-transform: uppercase; font-family: 'Courier New', monospace; }
+        .drawer-desc { margin: 0; font-size: 14.5px; color: rgba(200,220,255,0.62); line-height: 1.75; }
+        .drawer-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+        .drawer-tag { font-size: 12px; padding: 4px 10px; border-radius: 5px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: rgba(200,220,255,0.6); }
+        /* Footer */
+        .drawer-footer {
+          padding: 16px 24px 24px;
+          border-top: 1px solid rgba(55,138,221,0.1);
+          display: flex; align-items: center; gap: 12;
+          flex-shrink: 0;
+        }
+        .drawer-cta {
+          display: inline-flex; align-items: center; gap: 8px;
+          padding: 10px 20px; border-radius: 10px;
+          background: rgba(55,138,221,0.12); border: 1px solid rgba(55,138,221,0.32);
+          color: #61afff; font-size: 14px; font-weight: 600;
+          text-decoration: none; transition: all 0.2s; flex: 1; justify-content: center;
+        }
+        .drawer-cta:hover { background: rgba(55,138,221,0.2); border-color: rgba(55,138,221,0.6); }
+        .drawer-confidential {
+          display: inline-flex; align-items: center; gap: 6px;
+          font-size: 13px; color: rgba(200,220,255,0.3); font-style: italic; flex: 1;
+        }
+        .drawer-back-btn {
+          padding: 10px 20px; border-radius: 10px;
+          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+          color: rgba(200,220,255,0.45); font-size: 14px; font-weight: 500;
+          cursor: pointer; transition: all 0.2s; font-family: inherit;
+        }
+        .drawer-back-btn:hover { background: rgba(255,255,255,0.07); color: rgba(200,220,255,0.7); }
         @media (max-width: 640px) {
-          .modal-overlay {
-            align-items: flex-start;
-            padding: 12px 10px 20px;
-          }
-          .modal-box {
-            padding: 18px 16px 18px;
-            border-radius: 12px;
-            max-height: calc(100dvh - 24px);
-            gap: 12px;
-          }
+          .drawer-panel { width: 100vw; border-left: none; border-top: 1px solid rgba(55,138,221,0.2); border-radius: 16px 16px 0 0; top: auto; height: 88dvh; }
+          .drawer-body { padding: 18px 18px; }
+          .drawer-header { padding: 16px 18px 14px; }
+          .drawer-footer { padding: 14px 18px 20px; }
         }
       `}</style>
     </div>,
