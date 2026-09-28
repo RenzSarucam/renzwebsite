@@ -436,28 +436,29 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         .drawer-footer {
           padding: 16px 24px 24px;
           border-top: 1px solid rgba(55,138,221,0.1);
-          display: flex; align-items: center; gap: 12;
+          display: flex; align-items: center; gap: 10px;
           flex-shrink: 0;
         }
         .drawer-cta {
-          display: inline-flex; align-items: center; gap: 8px;
-          padding: 10px 20px; border-radius: 10px;
-          background: rgba(55,138,221,0.12); border: 1px solid rgba(55,138,221,0.32);
-          color: #61afff; font-size: 14px; font-weight: 600;
-          text-decoration: none; transition: all 0.2s; flex: 1; justify-content: center;
+          display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+          padding: 11px 22px; border-radius: 10px;
+          background: #378add; border: none;
+          color: #fff; font-size: 14px; font-weight: 600;
+          text-decoration: none; transition: all 0.2s; flex: 1;
+          box-shadow: 0 4px 16px rgba(55,138,221,0.35);
         }
-        .drawer-cta:hover { background: rgba(55,138,221,0.2); border-color: rgba(55,138,221,0.6); }
+        .drawer-cta:hover { background: #2d6fb5; box-shadow: 0 6px 22px rgba(55,138,221,0.5); transform: translateY(-1px); }
         .drawer-confidential {
           display: inline-flex; align-items: center; gap: 6px;
           font-size: 13px; color: rgba(200,220,255,0.3); font-style: italic; flex: 1;
         }
         .drawer-back-btn {
-          padding: 10px 20px; border-radius: 10px;
-          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-          color: rgba(200,220,255,0.45); font-size: 14px; font-weight: 500;
-          cursor: pointer; transition: all 0.2s; font-family: inherit;
+          padding: 11px 20px; border-radius: 10px;
+          background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+          color: rgba(200,220,255,0.5); font-size: 14px; font-weight: 500;
+          cursor: pointer; transition: all 0.2s; font-family: inherit; flex-shrink: 0;
         }
-        .drawer-back-btn:hover { background: rgba(255,255,255,0.07); color: rgba(200,220,255,0.7); }
+        .drawer-back-btn:hover { background: rgba(255,255,255,0.09); color: rgba(200,220,255,0.8); border-color: rgba(255,255,255,0.18); }
         @media (max-width: 640px) {
           .drawer-overlay { padding: 12px; align-items: flex-end; }
           .drawer-panel { width: 100%; max-height: 90dvh; border-radius: 16px; }
