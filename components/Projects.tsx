@@ -58,6 +58,22 @@ export default function Projects() {
           ))}
         </div>
 
+        {/* Legend */}
+        <div className="pf-legend">
+          <span className="pfl-label">Color key:</span>
+          {[
+            { color: "#378add", label: "Full Stack" },
+            { color: "#5dcaa5", label: "Mobile" },
+            { color: "#c678dd", label: "Figma / Design" },
+            { color: "#e5a44b", label: "Docker" },
+          ].map(({ color, label }) => (
+            <span key={label} className="pfl-item">
+              <span className="pfl-dot" style={{ background: color, boxShadow: `0 0 6px ${color}88` }} />
+              {label}
+            </span>
+          ))}
+        </div>
+
         {/* Grid */}
         <div className="project-grid">
           {shown.map((project, idx) => (
@@ -101,6 +117,28 @@ export default function Projects() {
           border-radius: 999px; padding: 1px 7px;
           font-family: 'Courier New', monospace;
           color: inherit;
+        }
+
+        /* Legend */
+        .pf-legend {
+          display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+          margin-bottom: 24px;
+          padding: 10px 16px;
+          background: rgba(255,255,255,0.02);
+          border: 1px solid rgba(55,138,221,0.09);
+          border-radius: 10px;
+        }
+        .pfl-label {
+          font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+          text-transform: uppercase; color: rgba(200,220,255,0.3);
+          font-family: 'Courier New', monospace; flex-shrink: 0;
+        }
+        .pfl-item {
+          display: inline-flex; align-items: center; gap: 7px;
+          font-size: 12.5px; color: rgba(200,220,255,0.5);
+        }
+        .pfl-dot {
+          width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0;
         }
 
         /* Grid */
