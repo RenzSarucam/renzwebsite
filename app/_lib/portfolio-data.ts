@@ -250,6 +250,15 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "CrisisMesh",
+    desc: "An emergency communication and coordination platform for communities and first responders operating where internet connectivity is unreliable, congested, or disrupted. Citizens can report incidents and send SOS requests entirely offline — reports queue locally via IndexedDB and sync automatically when the network returns. A command center gives responders and admins a live operational picture: real-time map, incident and SOS management, resource and evacuation-center tracking, analytics, audit logs, and a full verification workflow. Built as an offline-first PWA with Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, TanStack Query, Leaflet + OpenStreetMap, Dexie, Laravel 12, and MySQL — deployed via Docker Compose with GitHub Actions CI.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Laravel 12", "PHP", "MySQL", "Docker", "GitHub Actions", "PWA", "Leaflet", "TanStack Query", "Recharts", "Sanctum", "Offline-first", "IndexedDB"],
+    type: ["Full Stack", "Docker"],
+    status: "Completed",
+    link: "",
+    place: "Personal Project",
+  },
+  {
     title: "Opsora (Infrastructure & Application Monitoring Platform)",
     desc: "A self-hosted internal monitoring platform that gives administrators a single dark-themed dashboard to track application health, uptime, and response times across deployed services. Opsora centralizes monitoring for web applications, servers, and Docker containers — showing which services are online, warning, or offline, with deduplication alerts and an activity log. Built with Next.js App Router + TypeScript frontend, Laravel 12 backend with Sanctum session auth, MySQL, and Docker Compose. MVP features include rate-limited login with lockout, protected routes, dashboard stat cards, and full Docker-based deployment. Currently in active development with Projects CRUD, HTTP health checks, server metrics, and container management on the roadmap.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Laravel 12", "Sanctum", "MySQL", "Docker", "Recharts", "Monitoring", "Self-hosted"],
