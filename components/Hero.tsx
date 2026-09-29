@@ -194,7 +194,7 @@ export default function Hero() {
                   <span>Open to opportunities</span>
                 </div>
 
-                <div className="hero-name-eyebrow">// full_stack_engineer</div>
+                <div className="hero-name-eyebrow">// Full Stack Developer</div>
                 <h1 className="hero-title">
                   <span className="hero-title-line">
                     <span className="hero-title-word">Renz</span>
