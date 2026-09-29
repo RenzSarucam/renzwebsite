@@ -206,7 +206,12 @@ export default function ResumePage() {
             width: 100%;
             min-height: unset;
           }
+
+          /* Sidebar — compact + force dark bg */
           .sidebar {
+            width: 60mm;
+            padding: 10mm 5mm 10mm;
+            gap: 10px;
             background: #0d1b2e !important;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
@@ -216,6 +221,50 @@ export default function ResumePage() {
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
           }
+          .sb-name { font-size: 12pt; }
+          .sb-subtitle { font-size: 6.5pt; line-height: 1.65; margin-top: 4px; }
+          .sb-section-title { font-size: 5.5pt; margin-bottom: 5px; }
+          .sb-contact-item { font-size: 6.5pt; margin-bottom: 3px; gap: 5px; }
+          .sb-icon { font-size: 8pt; }
+          .sb-skills { gap: 3px; }
+          .sb-skill-tag { font-size: 5.5pt; padding: 0 4px; }
+          .sb-lang-item { font-size: 7pt; margin-bottom: 2px; padding-left: 6px; }
+          .sb-cert-item { margin-bottom: 4px; padding: 2px 5px; }
+          .sb-cert-name { font-size: 6.5pt; }
+          .sb-cert-meta { font-size: 5.5pt; margin-top: 1px; }
+
+          /* Main — compact */
+          .main { padding: 10mm 8mm 10mm 7mm; font-size: 8.5pt; }
+          .section { margin-bottom: 10px; }
+          .section-title { font-size: 7pt; margin-bottom: 6px; padding-bottom: 2px; }
+
+          .exp-item { margin-bottom: 8px; }
+          .exp-title { font-size: 9pt; }
+          .exp-company { font-size: 8.5pt; }
+          .exp-location { font-size: 7.5pt; }
+          .exp-period { font-size: 7.5pt; }
+          .exp-desc { font-size: 8pt; line-height: 1.4; margin-top: 2px; }
+          .exp-projects { font-size: 7.5pt; margin-top: 1px; }
+          .exp-tools { font-size: 7.5pt; margin-top: 2px; }
+
+          /* Projects — 2 columns to halve vertical space */
+          .projects-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 14px;
+          }
+          .project-item { margin-bottom: 3px; }
+          .project-title { font-size: 8pt; }
+          .project-place { font-size: 7.5pt; }
+          .project-type { font-size: 7.5pt; }
+          .project-tags { font-size: 6.5pt; margin-top: 0; }
+
+          .edu-item { margin-bottom: 6px; }
+          .edu-degree { font-size: 9pt; }
+          .edu-school { font-size: 8.5pt; }
+          .edu-period { font-size: 7.5pt; }
+          .edu-note { font-size: 7.5pt; margin-top: 1px; }
+
           .no-print { display: none !important; }
           .exp-item { break-inside: avoid; page-break-inside: avoid; }
           .edu-item { break-inside: avoid; page-break-inside: avoid; }
@@ -331,6 +380,7 @@ export default function ResumePage() {
           {/* Projects */}
           <div className="section">
             <div className="section-title">Projects</div>
+            <div className="projects-list">
             {projects.map((project) => (
               <div className="project-item" key={project.title}>
                 <div className="project-header">
@@ -347,6 +397,7 @@ export default function ResumePage() {
                 <div className="project-tags">{project.tags.join(", ")}</div>
               </div>
             ))}
+            </div>
           </div>
 
           {/* Education */}
