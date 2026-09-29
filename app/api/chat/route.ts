@@ -206,6 +206,24 @@ function localReply(question: string): string {
       ? "Nagsasalita si Renz ng Tagalog, Bisaya, at English."
       : "Renz speaks Tagalog, Bisaya, and English.";
 
+  // Docker projects — BEFORE DevOps so "deploy with docker" doesn't get caught early
+  if (/(docker project|docker.*deploy|deploy.*docker|what.*docker|mga.*docker|anong.*docker|docker.*built|docker.*gawa|docker.*system|list.*docker)/.test(n)) {
+    const dockerProjects = projects.filter((p) => (Array.isArray(p.type) ? p.type.includes("Docker") : p.type === "Docker"));
+    const list = dockerProjects.map((p) => `• ${p.title}`).join("\n");
+    return fil
+      ? `May ${dockerProjects.length} Docker-deployed projects si Renz:\n${list}`
+      : `Renz has ${dockerProjects.length} Docker-deployed projects:\n${list}`;
+  }
+
+  // Mobile projects — BEFORE Mobile development so "mobile project" doesn't get caught early
+  if (/(mobile project|mobile.*built|mobile.*gawa|what.*mobile|anong.*mobile|mga.*mobile|flutter|react native.*project|list.*mobile)/.test(n)) {
+    const mobileProjects = projects.filter((p) => Array.isArray(p.type) ? p.type.includes("Mobile") : p.type === "Mobile");
+    const list = mobileProjects.map((p) => `• ${p.title} — ${Array.isArray(p.type) ? p.type.join(", ") : p.type}`).join("\n");
+    return fil
+      ? `Ito ang mga mobile projects ni Renz:\n${list}`
+      : `Here are Renz's mobile projects:\n${list}`;
+  }
+
   // DevOps specific
   if (/(devops|deployment|deploy|server|infrastructure|ci.cd|pipeline|sysadmin|system admin)/.test(n))
     return fil
@@ -218,11 +236,11 @@ function localReply(question: string): string {
       ? "Oo, may UI/UX design experience si Renz. Gumagamit siya ng Figma (88%) at Canva (85%). Nagtrabaho siya bilang UI/UX Designer sa Feinform (Germany), Jairosoft Inc., at JARN Interactive."
       : "Yes, Renz has UI/UX design experience. He uses Figma (88%) and Canva (85%). He worked as a UI/UX Designer at Feinform (Germany), Jairosoft Inc., and JARN Interactive.";
 
-  // Mobile development
+  // Mobile development capability
   if (/(mobile app|react native|android|ios|mobile development|mobile dev|mobile application)/.test(n))
     return fil
-      ? "Oo, may mobile development experience si Renz gamit ang React Native (78%). Nagtrabaho siya sa Trackguard Mobile bilang Assistant Programmer kung saan nag-develop siya ng responsive mobile app."
-      : "Yes, Renz has mobile development experience using React Native (78%). He worked at Trackguard Mobile as an Assistant Programmer where he developed a responsive mobile app.";
+      ? "Oo, may mobile development experience si Renz gamit ang React Native (78%) at Flutter/Dart. Nagtrabaho siya sa Trackguard Mobile bilang Assistant Programmer at nakapagtayo ng QRGen (Flutter) para sa iOS at Android."
+      : "Yes, Renz has mobile development experience using React Native (78%) and Flutter/Dart. He worked at Trackguard Mobile as Assistant Programmer and built QRGen (Flutter) for iOS and Android.";
 
   // Fresh graduate / entry level
   if (/(fresh graduate|fresh grad|bagong graduate|entry level|junior|baguhan)/.test(n))
@@ -290,24 +308,6 @@ function localReply(question: string): string {
     return fil
       ? `Oo, open si Renz sa bagong opportunities!\n\n• Available siya para sa full-time, part-time, at freelance work\n• Open din siya sa remote at on-site na trabaho\n• Pwede kang makipag-ugnayan sa kanya sa:\n  📧 ${contactEmail}\n  📞 09266735768`
       : `Yes, Renz is open to new opportunities!\n\n• Available for full-time, part-time, and freelance work\n• Open to both remote and on-site roles\n• You can reach him at:\n  📧 ${contactEmail}\n  📞 09266735768`;
-
-  // Docker projects
-  if (/(docker project|deployed with docker|docker deploy|docker.*built|docker.*system|what.*docker|anong.*docker|docker.*gawa|mga.*docker)/.test(n)) {
-    const dockerProjects = projects.filter((p) => (Array.isArray(p.type) ? p.type.includes("Docker") : p.type === "Docker"));
-    const list = dockerProjects.map((p) => `• ${p.title}`).join("\n");
-    return fil
-      ? `May ${dockerProjects.length} Docker-deployed projects si Renz:\n${list}`
-      : `Renz has ${dockerProjects.length} Docker-deployed projects:\n${list}`;
-  }
-
-  // Mobile projects
-  if (/(mobile app|mobile project|mobile.*built|mobile.*gawa|what.*mobile|anong.*mobile|mga.*mobile|flutter|react native.*project)/.test(n)) {
-    const mobileProjects = projects.filter((p) => Array.isArray(p.type) ? p.type.includes("Mobile") : p.type === "Mobile");
-    const list = mobileProjects.map((p) => `• ${p.title} — ${Array.isArray(p.type) ? p.type.join(", ") : p.type}`).join("\n");
-    return fil
-      ? `Ito ang mga mobile projects ni Renz:\n${list}`
-      : `Here are Renz's mobile projects:\n${list}`;
-  }
 
   // GitHub
   if (/(github|source code|repo|repository|open source|code link|github profile|github account)/.test(n))
@@ -410,7 +410,7 @@ function localReply(question: string): string {
 }
 
 // ── Route gate ────────────────────────────────────────────────────────────────
-const LOCAL_PATTERNS = /(recent project|latest project|newest project|pinakabago.*project|bagong project|bag-ong project|most recent|open to work|open to hire|available for hire|freelance|remote work|for hire|accepting.*project|docker project|docker deploy|docker.*built|mobile app|mobile project|flutter|github|source code|repo|repository|how many year|years of experience|ilang taon.*experience|gaano katagal|full stack.*project|fullstack.*project|full stack|fullstack|front.*back|hi|hello|hey|kumusta|kamusta|musta|helo|yo|sup|birthday|kaarawan|age|edad|ilang taon|how old|salary|sahod|rate|magkano|bayad|contact|email|hire|reach|available|open to work|recruit|kumontact|makipag-ugnayan|where|location|based|saan|taga|nakatira|lugar|phone|numero|cell|language|wika|sinasalita|speak|fluent|dialect|strongest|best skill|best at|top skill|pinakamahusay|mas magaling|pinaka.magaling|pinaka magaling|magaling siya|saan magaling|saan mas|specializ|ano ang pinaka|anong pinaka|devops|deploy|server|infrastructure|pipeline|sysadmin|ui.ux|ui\/ux|figma|canva|design|prototype|wireframe|mobile app|react native|android|ios|fresh grad|fresh graduate|bagong graduate|entry level|baguhan|elementary|grade school|primary|junior high|jhs|secondary|senior high|shs|assumption|ncii|nc ii|education|school|college|degree|graduate|bsit|information technology|holy cross|nag-aral|nag aral|pinag-aralan|recent work|current work|latest work|current job|present job|kasalukuyan.*work|kasalukuyang trabaho|work experience|experience|nagtrabaho|trabaho|company|employer|internship|nag-intern|dsg|feinform|jairosoft|jarn|trackguard|clotify|task management|good taste|\bwork\b|position|mga work|nag-work|nagwork|job|roles|ano.*role|mga role|job title|titulo|current role|current position|skill|tech stack|technology|stack|tools|programming|anong skills|ano ang skills|project|portfolio|built|gawa|ginawa|github|mga projects|ilang projects|certificate|certification|credential|training|udemy|who is renz|sino si renz|tell me about|introduce|about renz|what does renz|ano siya|anong ginagawa|sino|name|pangalan)/i;
+const LOCAL_PATTERNS = /(recent project|latest project|newest project|pinakabago.*project|bagong project|bag-ong project|most recent|open to work|open to hire|available for hire|freelance|remote work|for hire|accepting.*project|docker project|docker.*deploy|deploy.*docker|what.*docker|mga.*docker|docker.*built|list.*docker|mobile project|mobile.*built|what.*mobile|mga.*mobile|list.*mobile|mobile app|flutter|github|source code|repo|repository|how many year|years of experience|ilang taon.*experience|gaano katagal|full stack.*project|fullstack.*project|full stack|fullstack|front.*back|hi|hello|hey|kumusta|kamusta|musta|helo|yo|sup|birthday|kaarawan|age|edad|ilang taon|how old|salary|sahod|rate|magkano|bayad|contact|email|hire|reach|available|open to work|recruit|kumontact|makipag-ugnayan|where|location|based|saan|taga|nakatira|lugar|phone|numero|cell|language|wika|sinasalita|speak|fluent|dialect|strongest|best skill|best at|top skill|pinakamahusay|mas magaling|pinaka.magaling|pinaka magaling|magaling siya|saan magaling|saan mas|specializ|ano ang pinaka|anong pinaka|devops|deploy|server|infrastructure|pipeline|sysadmin|ui.ux|ui\/ux|figma|canva|design|prototype|wireframe|mobile app|react native|android|ios|fresh grad|fresh graduate|bagong graduate|entry level|baguhan|elementary|grade school|primary|junior high|jhs|secondary|senior high|shs|assumption|ncii|nc ii|education|school|college|degree|graduate|bsit|information technology|holy cross|nag-aral|nag aral|pinag-aralan|recent work|current work|latest work|current job|present job|kasalukuyan.*work|kasalukuyang trabaho|work experience|experience|nagtrabaho|trabaho|company|employer|internship|nag-intern|dsg|feinform|jairosoft|jarn|trackguard|clotify|task management|good taste|\bwork\b|position|mga work|nag-work|nagwork|job|roles|ano.*role|mga role|job title|titulo|current role|current position|skill|tech stack|technology|stack|tools|programming|anong skills|ano ang skills|project|portfolio|built|gawa|ginawa|github|mga projects|ilang projects|certificate|certification|credential|training|udemy|who is renz|sino si renz|tell me about|introduce|about renz|what does renz|ano siya|anong ginagawa|sino|name|pangalan)/i;
 
 function shouldUseLocalReply(q: string) {
   return LOCAL_PATTERNS.test(normalize(q));
