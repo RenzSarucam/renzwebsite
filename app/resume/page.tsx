@@ -10,204 +10,363 @@ export default function ResumePage() {
     <>
       <style suppressHydrationWarning>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: #f0f0f0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background: #060d1a; font-family: 'Segoe UI', Arial, sans-serif; }
 
         .page {
           width: 210mm;
           min-height: 297mm;
-          margin: 24px auto;
+          margin: 28px auto;
+          display: flex;
+          box-shadow: 0 16px 56px rgba(0,0,0,0.65), 0 0 0 1px rgba(55,138,221,0.18);
+          border-radius: 6px;
+          overflow: hidden;
+        }
+
+        /* ── Sidebar ── */
+        .sidebar {
+          width: 70mm;
+          flex-shrink: 0;
+          background: linear-gradient(170deg, #0d1b2e 0%, #091320 100%);
+          padding: 13mm 7mm 12mm;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .sb-accent-bar {
+          width: 32px;
+          height: 3px;
+          background: linear-gradient(90deg, #378add, #5dcaa5);
+          border-radius: 2px;
+          margin-bottom: 8px;
+        }
+
+        .sb-name {
+          font-size: 14.5pt;
+          font-weight: 800;
+          color: #fff;
+          line-height: 1.2;
+          letter-spacing: -0.3px;
+        }
+
+        .sb-subtitle {
+          margin-top: 6px;
+          font-size: 7.5pt;
+          color: rgba(255,255,255,0.48);
+          line-height: 1.85;
+        }
+
+        .sb-divider {
+          height: 1px;
+          background: rgba(55,138,221,0.14);
+        }
+
+        .sb-section-title {
+          font-size: 6.5pt;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          color: #5dcaa5;
+          margin-bottom: 8px;
+        }
+
+        .sb-contact-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 6px;
+          font-size: 7.5pt;
+          color: rgba(255,255,255,0.7);
+          margin-bottom: 5px;
+          line-height: 1.45;
+          word-break: break-all;
+        }
+
+        .sb-icon {
+          flex-shrink: 0;
+          font-size: 9pt;
+        }
+
+        .sb-skills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
+        }
+
+        .sb-skill-tag {
+          background: rgba(55,138,221,0.09);
+          border: 1px solid rgba(55,138,221,0.22);
+          color: rgba(255,255,255,0.72);
+          border-radius: 3px;
+          padding: 1px 5px;
+          font-size: 6.5pt;
+          line-height: 1.7;
+        }
+
+        .sb-lang-item {
+          font-size: 8pt;
+          color: rgba(255,255,255,0.7);
+          margin-bottom: 4px;
+          padding-left: 8px;
+          border-left: 2px solid rgba(93,202,165,0.4);
+        }
+
+        .sb-cert-item {
+          margin-bottom: 7px;
+          padding: 4px 7px;
+          border-left: 2px solid rgba(55,138,221,0.35);
+        }
+
+        .sb-cert-name {
+          font-size: 7.5pt;
+          color: rgba(255,255,255,0.68);
+          line-height: 1.4;
+        }
+
+        .sb-cert-meta {
+          font-size: 6.5pt;
+          color: rgba(255,255,255,0.32);
+          margin-top: 2px;
+        }
+
+        /* ── Main ── */
+        .main {
+          flex: 1;
           background: #fff;
-          padding: 18mm 16mm 14mm;
+          padding: 13mm 11mm 12mm 9mm;
           color: #1a1a1a;
-          font-size: 10.5pt;
+          font-size: 10pt;
           line-height: 1.5;
-          box-shadow: 0 4px 24px rgba(0,0,0,0.12);
         }
 
-        /* ── Header ── */
-        .header { border-bottom: 2px solid #1a73e8; padding-bottom: 10px; margin-bottom: 14px; }
-        .header h1 { font-size: 22pt; font-weight: 700; color: #1a1a1a; letter-spacing: -0.3px; }
-        .header .meta {
-          display: flex; flex-wrap: wrap; gap: 14px;
-          margin-top: 5px; font-size: 9.5pt; color: #444;
-        }
+        .section { margin-bottom: 13px; }
 
-        /* ── Sections ── */
-        .section { margin-bottom: 16px; }
         .section-title {
-          font-size: 10pt; font-weight: 700; text-transform: uppercase;
-          letter-spacing: 0.08em; color: #1a73e8;
-          border-bottom: 1px solid #d0e4fa; padding-bottom: 3px; margin-bottom: 10px;
+          font-size: 8pt;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.11em;
+          color: #1a73e8;
+          border-bottom: 1.5px solid #d0e4fa;
+          padding-bottom: 3px;
+          margin-bottom: 9px;
         }
 
-        /* ── Experience rows ── */
-        .exp-item { margin-bottom: 11px; }
+        /* ── Experience ── */
+        .exp-item { margin-bottom: 10px; }
         .exp-header {
-          display: flex; justify-content: space-between; align-items: baseline;
-          flex-wrap: wrap; gap: 4px;
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          flex-wrap: wrap;
+          gap: 2px;
         }
-        .exp-title { font-weight: 700; font-size: 10.5pt; }
-        .exp-company { font-size: 10pt; color: #1a73e8; font-weight: 600; }
-        .exp-period { font-size: 9pt; color: #666; white-space: nowrap; }
-        .exp-desc { font-size: 9.5pt; color: #333; margin-top: 3px; line-height: 1.5; }
-        .exp-projects { margin-top: 3px; font-size: 9pt; color: #333; }
+        .exp-title { font-weight: 700; font-size: 10pt; }
+        .exp-company { font-size: 9.5pt; color: #1a73e8; font-weight: 600; }
+        .exp-location { font-size: 9pt; color: #666; }
+        .exp-period { font-size: 8.5pt; color: #666; white-space: nowrap; }
+        .exp-desc { font-size: 9pt; color: #333; margin-top: 3px; line-height: 1.5; }
+        .exp-projects { margin-top: 2px; font-size: 8.5pt; color: #333; }
         .exp-projects-label { font-weight: 600; color: #1a73e8; }
-        .exp-tools { margin-top: 4px; font-size: 9pt; color: #555; font-style: italic; }
+        .exp-tools { margin-top: 3px; font-size: 8.5pt; color: #555; font-style: italic; }
 
-        /* ── Education rows ── */
-        .edu-item { margin-bottom: 9px; }
-        .edu-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
-        .edu-degree { font-weight: 700; font-size: 10.5pt; }
-        .edu-school { font-size: 10pt; color: #1a73e8; font-weight: 600; }
-        .edu-period { font-size: 9pt; color: #666; }
-        .edu-note { font-size: 9pt; color: #555; margin-top: 2px; font-style: italic; }
-
-        /* ── Skills ── */
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 6px; }
-        .skill-tag {
-          background: #e8f0fe; color: #1a73e8;
-          border-radius: 4px; padding: 2px 8px;
-          font-size: 9pt; font-weight: 500;
+        /* ── Education ── */
+        .edu-item { margin-bottom: 8px; }
+        .edu-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          flex-wrap: wrap;
         }
+        .edu-degree { font-weight: 700; font-size: 10pt; }
+        .edu-school { font-size: 9.5pt; color: #1a73e8; font-weight: 600; }
+        .edu-period { font-size: 8.5pt; color: #666; }
+        .edu-note { font-size: 8.5pt; color: #555; margin-top: 2px; font-style: italic; }
 
-        /* ── Languages ── */
-        .lang-list { display: flex; gap: 16px; font-size: 10pt; }
+        /* ── Projects ── */
+        .project-item { margin-bottom: 7px; }
+        .project-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          flex-wrap: wrap;
+          gap: 4px;
+        }
+        .project-title { font-weight: 700; font-size: 9.5pt; }
+        .project-place { font-size: 9pt; color: #555; }
+        .project-type { font-size: 8.5pt; color: #1a73e8; font-weight: 600; }
+        .project-tags { font-size: 8pt; color: #666; font-style: italic; margin-top: 1px; }
 
         /* ── Print ── */
         @media print {
           body { background: #fff; }
-          .page { margin: 0; box-shadow: none; width: 100%; padding: 0; }
+          .page {
+            margin: 0;
+            box-shadow: none;
+            border-radius: 0;
+            width: 100%;
+            min-height: unset;
+          }
+          .sidebar {
+            background: #0d1b2e !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+          }
+          .sb-accent-bar {
+            background: linear-gradient(90deg, #378add, #5dcaa5) !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+          }
           .no-print { display: none !important; }
           .exp-item { break-inside: avoid; page-break-inside: avoid; }
           .edu-item { break-inside: avoid; page-break-inside: avoid; }
-          @page { size: A4; margin: 18mm 16mm; }
+          .project-item { break-inside: avoid; page-break-inside: avoid; }
+          @page { size: A4; margin: 0; }
         }
       `}</style>
 
       <PrintButton />
 
       <div className="page">
-        {/* ── Header ── */}
-        <div className="header">
-          <h1>{profile.fullName}</h1>
-          <div className="meta">
-            <span>📞 09266735768</span>
-            <span>✉ {contactEmail}</span>
-            <span>📍 {profile.location}</span>
-            <span>💼 {profile.role}</span>
+        {/* ── Sidebar ── */}
+        <div className="sidebar">
+          {/* Profile */}
+          <div>
+            <div className="sb-accent-bar" />
+            <div className="sb-name">{profile.fullName}</div>
+            <div className="sb-subtitle">
+              Full Stack Developer<br />
+              R&amp;D Engineer<br />
+              DevOps Engineer
+            </div>
           </div>
-        </div>
 
-        {/* ── Work Experience ── */}
-        <div className="section">
-          <div className="section-title">Experience</div>
-          {workExperiences.map((exp, i) => (
-            <div className="exp-item" key={i}>
-              <div className="exp-header">
-                <div>
-                  <span className="exp-title">{exp.role}</span>
-                  {" · "}
-                  <span className="exp-company">{exp.company}</span>
-                  {" · "}
-                  <span style={{ fontSize: "9.5pt", color: "#555" }}>{exp.location}</span>
-                </div>
-                <span className="exp-period">{exp.period}</span>
-              </div>
-              <div className="exp-desc">{exp.description}</div>
-              {(exp.projects || exp.autoProjectsFromPlace) && (
-                <div className="exp-projects">
-                  <span className="exp-projects-label">Projects: </span>
-                  {exp.autoProjectsFromPlace
-                    ? projects.filter((p) => p.place === exp.autoProjectsFromPlace).map((p) => p.title).join(", ")
-                    : exp.projects}
-                </div>
-              )}
-              {exp.tools.length > 0 && (
-                <div className="exp-tools">Tools: {exp.tools.join(", ")}</div>
-              )}
+          <div className="sb-divider" />
+
+          {/* Contact */}
+          <div>
+            <div className="sb-section-title">Contact</div>
+            <div className="sb-contact-item">
+              <span className="sb-icon">📞</span>
+              <span>09266735768</span>
             </div>
-          ))}
-        </div>
-
-        {/* ── Projects ── */}
-        <div className="section">
-          <div className="section-title">Projects</div>
-          {projects.map((project) => (
-            <div key={project.title} style={{ marginBottom: 8 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 4 }}>
-                <div>
-                  <span style={{ fontWeight: 700, fontSize: "10.5pt" }}>{project.title}</span>
-                  {project.place && (
-                    <span style={{ fontSize: "9.5pt", color: "#555" }}> · {project.place}</span>
-                  )}
-                </div>
-                <span style={{ fontSize: "9pt", color: "#1a73e8", fontWeight: 600 }}>
-                  {Array.isArray(project.type) ? project.type.join(" / ") : project.type}
-                </span>
-              </div>
-              <div style={{ fontSize: "9pt", color: "#555", fontStyle: "italic", marginTop: 1 }}>
-                {project.tags.join(", ")}
-              </div>
+            <div className="sb-contact-item">
+              <span className="sb-icon">✉</span>
+              <span>{contactEmail}</span>
             </div>
-          ))}
-        </div>
-
-        {/* ── Education ── */}
-        <div className="section">
-          <div className="section-title">Education</div>
-          {education.map((edu, i) => (
-            <div className="edu-item" key={i}>
-              <div className="edu-header">
-                <div>
-                  <span className="edu-degree">{edu.degree}</span>
-                  {" · "}
-                  <span className="edu-school">{edu.school}</span>
-                </div>
-                <span className="edu-period">{edu.period}</span>
-              </div>
-              {edu.highlights.length > 0 && (
-                <div className="edu-note">{edu.highlights.join(" · ")}</div>
-              )}
+            <div className="sb-contact-item">
+              <span className="sb-icon">📍</span>
+              <span>{profile.location}</span>
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* ── Skills ── */}
-        <div className="section">
-          <div className="section-title">Skills</div>
-          <div className="skills-grid">
-            {allSkills.map((skill) => (
-              <span className="skill-tag" key={skill}>{skill}</span>
+          <div className="sb-divider" />
+
+          {/* Skills */}
+          <div>
+            <div className="sb-section-title">Skills</div>
+            <div className="sb-skills">
+              {allSkills.map((skill) => (
+                <span className="sb-skill-tag" key={skill}>{skill}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="sb-divider" />
+
+          {/* Languages */}
+          <div>
+            <div className="sb-section-title">Languages</div>
+            {["Tagalog", "Bisaya", "English"].map((lang) => (
+              <div className="sb-lang-item" key={lang}>{lang}</div>
             ))}
           </div>
-        </div>
 
-        {/* ── Certificates ── */}
-        <div className="section">
-          <div className="section-title">Certificates</div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+          <div className="sb-divider" />
+
+          {/* Certificates */}
+          <div>
+            <div className="sb-section-title">Certificates</div>
             {certificates.map((cert) => (
-              <span
-                key={cert.title}
-                style={{
-                  fontSize: "9pt", background: "#f5f5f5",
-                  border: "1px solid #ddd", borderRadius: "4px",
-                  padding: "2px 8px", color: "#333",
-                }}
-              >
-                {cert.title} ({cert.year})
-              </span>
+              <div className="sb-cert-item" key={cert.title}>
+                <div className="sb-cert-name">{cert.title}</div>
+                <div className="sb-cert-meta">{cert.issuer} · {cert.year}</div>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* ── Languages ── */}
-        <div className="section">
-          <div className="section-title">Languages</div>
-          <div className="lang-list">
-            <span>Tagalog</span>
-            <span>Bisaya</span>
-            <span>English</span>
+        {/* ── Main ── */}
+        <div className="main">
+          {/* Experience */}
+          <div className="section">
+            <div className="section-title">Experience</div>
+            {workExperiences.map((exp, i) => (
+              <div className="exp-item" key={i}>
+                <div className="exp-header">
+                  <div>
+                    <span className="exp-title">{exp.role}</span>
+                    {" · "}
+                    <span className="exp-company">{exp.company}</span>
+                    {" · "}
+                    <span className="exp-location">{exp.location}</span>
+                  </div>
+                  <span className="exp-period">{exp.period}</span>
+                </div>
+                <div className="exp-desc">{exp.description}</div>
+                {(exp.projects || exp.autoProjectsFromPlace) && (
+                  <div className="exp-projects">
+                    <span className="exp-projects-label">Projects: </span>
+                    {exp.autoProjectsFromPlace
+                      ? projects.filter((p) => p.place === exp.autoProjectsFromPlace).map((p) => p.title).join(", ")
+                      : exp.projects}
+                  </div>
+                )}
+                {exp.tools.length > 0 && (
+                  <div className="exp-tools">Tools: {exp.tools.join(", ")}</div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Projects */}
+          <div className="section">
+            <div className="section-title">Projects</div>
+            {projects.map((project) => (
+              <div className="project-item" key={project.title}>
+                <div className="project-header">
+                  <div>
+                    <span className="project-title">{project.title}</span>
+                    {project.place && (
+                      <span className="project-place"> · {project.place}</span>
+                    )}
+                  </div>
+                  <span className="project-type">
+                    {Array.isArray(project.type) ? project.type.join(" / ") : project.type}
+                  </span>
+                </div>
+                <div className="project-tags">{project.tags.join(", ")}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Education */}
+          <div className="section">
+            <div className="section-title">Education</div>
+            {education.map((edu, i) => (
+              <div className="edu-item" key={i}>
+                <div className="edu-header">
+                  <div>
+                    <span className="edu-degree">{edu.degree}</span>
+                    {" · "}
+                    <span className="edu-school">{edu.school}</span>
+                  </div>
+                  <span className="edu-period">{edu.period}</span>
+                </div>
+                {edu.highlights.length > 0 && (
+                  <div className="edu-note">{edu.highlights.join(" · ")}</div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
