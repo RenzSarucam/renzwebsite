@@ -269,7 +269,7 @@ export default function ResumePage() {
           .exp-item { break-inside: avoid; page-break-inside: avoid; }
           .edu-item { break-inside: avoid; page-break-inside: avoid; }
           .project-item { break-inside: avoid; page-break-inside: avoid; }
-          @page { size: A4; margin: 0; }
+          @page { size: A4; margin: 10mm 12mm; }
         }
       `}</style>
 
