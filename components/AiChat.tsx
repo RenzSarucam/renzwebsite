@@ -139,6 +139,13 @@ export default function AiChat() {
         <div className="ai-overlay" onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}>
           <div className="ai-modal">
 
+            {/* Gradient top accent bar */}
+            <div className="ai-accent-bar" />
+
+            {/* Background orbs */}
+            <div className="ai-orb ai-orb-1" />
+            <div className="ai-orb ai-orb-2" />
+
             {/* Header */}
             <div className="ai-header">
               <div className="ai-header-left">
@@ -162,24 +169,26 @@ export default function AiChat() {
                   </p>
                 </div>
               </div>
-              <button className="ai-close" onClick={() => setOpen(false)}>✕</button>
+              <button className="ai-close" onClick={() => setOpen(false)}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
             </div>
 
             {/* Body */}
             {isEmpty ? (
               <div className="ai-welcome">
                 <div className="ai-welcome-icon">
-                  <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
-                    <rect x="3" y="6" width="18" height="14" rx="4" fill="url(#grad)"/>
+                  <svg width="38" height="38" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="6" width="18" height="14" rx="4" fill="url(#grad2)"/>
                     <circle cx="8.5" cy="12" r="2" fill="white" opacity=".9"/>
                     <circle cx="15.5" cy="12" r="2" fill="white" opacity=".9"/>
                     <rect x="7.5" y="15.5" width="9" height="1.8" rx="0.9" fill="white" opacity=".7"/>
-                    <line x1="12" y1="6" x2="12" y2="3" stroke="url(#grad)" strokeWidth="2" strokeLinecap="round"/>
+                    <line x1="12" y1="6" x2="12" y2="3" stroke="#5dcaa5" strokeWidth="2" strokeLinecap="round"/>
                     <circle cx="12" cy="2.2" r="1.2" fill="#5dcaa5"/>
                     <rect x="1" y="9.5" width="2" height="5" rx="1" fill="#378add" opacity=".5"/>
                     <rect x="21" y="9.5" width="2" height="5" rx="1" fill="#378add" opacity=".5"/>
                     <defs>
-                      <linearGradient id="grad" x1="3" y1="6" x2="21" y2="20" gradientUnits="userSpaceOnUse">
+                      <linearGradient id="grad2" x1="3" y1="6" x2="21" y2="20" gradientUnits="userSpaceOnUse">
                         <stop stopColor="#378add"/>
                         <stop offset="1" stopColor="#5dcaa5"/>
                       </linearGradient>
@@ -194,7 +203,15 @@ export default function AiChat() {
                 {messages.map((msg, i) => (
                   <div key={i} className={`ai-msg-row ${msg.role === "user" ? "user" : "bot"}`}>
                     {msg.role === "assistant" && (
-                      <div className="ai-bot-avatar">AI</div>
+                      <div className="ai-bot-avatar">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                          <rect x="4" y="7" width="16" height="12" rx="3" fill="white" opacity=".9"/>
+                          <circle cx="9" cy="12" r="1.4" fill="#378add"/>
+                          <circle cx="15" cy="12" r="1.4" fill="#378add"/>
+                          <line x1="12" y1="7" x2="12" y2="4.5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                          <circle cx="12" cy="3.5" r="1" fill="white"/>
+                        </svg>
+                      </div>
                     )}
                     <div className={`ai-bubble ${msg.role}`}>
                       {msg.content
@@ -211,152 +228,233 @@ export default function AiChat() {
 
             {/* Quick prompts */}
             <div className="ai-prompts">
-              <p className="ai-prompts-label">QUICK PROMPTS <span>∧</span></p>
+              <p className="ai-prompts-label">Quick Prompts</p>
               <div className="ai-prompts-grid">
                 {quickPrompts.map((p) => (
                   <button key={p.text} className="ai-prompt-btn" onClick={() => send(p.text)} disabled={loading}>
-                    <span>{p.icon}</span> {p.label}
+                    <span className="ai-prompt-icon">{p.icon}</span>
+                    <span className="ai-prompt-label">{p.label}</span>
                   </button>
                 ))}
               </div>
             </div>
 
             {/* Input */}
-            <div className="ai-input-wrap">
-              <input
-                ref={inputRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
-                placeholder="Ask anything about Renz..."
-                className="ai-input"
-              />
-              <button
-                onClick={() => send()}
-                disabled={loading || !input.trim()}
-                className="ai-send"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9L22 2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
+            <div className="ai-input-row">
+              <div className="ai-input-wrap">
+                <input
+                  ref={inputRef}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
+                  placeholder="Ask anything about Renz..."
+                  className="ai-input"
+                />
+                <button
+                  onClick={() => send()}
+                  disabled={loading || !input.trim()}
+                  className="ai-send"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9L22 2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <p className="ai-disclaimer">Responses are based on Renz&apos;s portfolio data only.</p>
             </div>
-            <p className="ai-disclaimer">Responses are based on Renz's portfolio data only.</p>
           </div>
         </div>
       )}
 
       <style suppressHydrationWarning>{`
-        /* FAB */
+        /* ── FAB ── */
         .ai-fab {
           position: fixed; bottom: 28px; right: 28px;
-          width: 56px; height: 56px; border-radius: 50%;
+          width: 58px; height: 58px; border-radius: 50%;
           background: linear-gradient(135deg, #378add, #5dcaa5);
           border: none; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
-          z-index: 900; box-shadow: 0 8px 28px rgba(55,138,221,0.4);
-          transition: transform 0.2s ease;
+          z-index: 900;
+          box-shadow: 0 8px 32px rgba(55,138,221,0.45), 0 0 0 1px rgba(93,202,165,0.2);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .ai-fab:hover { transform: scale(1.07); }
+        .ai-fab:hover {
+          transform: scale(1.08);
+          box-shadow: 0 12px 40px rgba(55,138,221,0.6), 0 0 0 1px rgba(93,202,165,0.3);
+        }
+        .ai-fab::after {
+          content: '';
+          position: absolute;
+          inset: -5px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, rgba(55,138,221,0.4), rgba(93,202,165,0.4));
+          z-index: -1;
+          animation: fabPulse 2.8s ease-in-out infinite;
+        }
+        @keyframes fabPulse {
+          0% { transform: scale(1); opacity: 0.5; }
+          70% { transform: scale(1.5); opacity: 0; }
+          100% { transform: scale(1.5); opacity: 0; }
+        }
 
-        /* Overlay */
+        /* ── Overlay ── */
         .ai-overlay {
           position: fixed; inset: 0;
-          background: rgba(0,0,0,0.55);
-          backdrop-filter: blur(5px);
+          background: rgba(0,0,0,0.6);
+          backdrop-filter: blur(8px);
           z-index: 1000;
           display: flex; align-items: center; justify-content: center;
           padding: 16px;
         }
 
-        /* Modal */
+        /* ── Modal ── */
         .ai-modal {
-          width: 100%; max-width: 460px;
+          position: relative;
+          width: 100%; max-width: 470px;
           height: min(700px, 92vh);
-          background: #0b1220;
-          border: 1px solid rgba(55,138,221,0.18);
-          border-radius: 22px;
-          box-shadow: 0 32px 80px rgba(0,0,0,0.65);
+          background: linear-gradient(160deg, #0a1525 0%, #080f1c 100%);
+          border: 1px solid rgba(55,138,221,0.2);
+          border-radius: 24px;
+          box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(55,138,221,0.06) inset;
           display: flex; flex-direction: column;
           overflow: hidden;
-          animation: aiIn 0.22s ease;
+          animation: aiIn 0.24s cubic-bezier(.22,.68,0,1.2);
         }
         @keyframes aiIn {
-          from { opacity: 0; transform: scale(0.95) translateY(12px); }
+          from { opacity: 0; transform: scale(0.93) translateY(16px); }
           to   { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* Header */
-        .ai-header {
-          display: flex; align-items: center; justify-content: space-between;
-          padding: 16px 18px;
-          background: rgba(255,255,255,0.03);
-          border-bottom: 1px solid rgba(55,138,221,0.1);
-        }
-        .ai-header-left { display: flex; align-items: center; gap: 12px; }
-        .ai-avatar {
-          width: 42px; height: 42px; border-radius: 12px;
-          background: linear-gradient(135deg, #378add, #5dcaa5);
-          display: flex; align-items: center; justify-content: center;
+        /* Accent bar */
+        .ai-accent-bar {
+          height: 3px;
+          background: linear-gradient(90deg, #378add 0%, #5dcaa5 50%, #c678dd 100%);
           flex-shrink: 0;
         }
-        .ai-header-name { margin: 0; font-size: 15px; font-weight: 700; color: #e8f4ff; }
-        .ai-header-status { margin: 0; font-size: 11px; color: rgba(200,220,255,0.5); display: flex; align-items: center; gap: 5px; margin-top: 2px; }
-        .ai-status-dot { width: 7px; height: 7px; border-radius: 50%; background: #5dcaa5; display: inline-block; box-shadow: 0 0 6px #5dcaa5; }
-        .ai-close {
-          background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 8px; color: rgba(200,220,255,0.5);
-          width: 30px; height: 30px; cursor: pointer;
-          display: flex; align-items: center; justify-content: center; font-size: 14px;
-        }
-        .ai-close:hover { background: rgba(255,255,255,0.1); color: #e8f4ff; }
 
-        /* Welcome */
+        /* Background orbs */
+        .ai-orb {
+          position: absolute; border-radius: 50%;
+          pointer-events: none; filter: blur(70px); z-index: 0;
+        }
+        .ai-orb-1 {
+          width: 220px; height: 220px;
+          background: rgba(55,138,221,0.12);
+          top: -60px; right: -50px;
+        }
+        .ai-orb-2 {
+          width: 180px; height: 180px;
+          background: rgba(93,202,165,0.09);
+          bottom: 120px; left: -50px;
+        }
+
+        /* ── Header ── */
+        .ai-header {
+          position: relative; z-index: 1;
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 16px 20px;
+          background: rgba(255,255,255,0.025);
+          border-bottom: 1px solid rgba(55,138,221,0.1);
+          backdrop-filter: blur(4px);
+        }
+        .ai-header-left { display: flex; align-items: center; gap: 13px; }
+        .ai-avatar {
+          width: 44px; height: 44px; border-radius: 13px;
+          background: linear-gradient(135deg, #1a5ba8, #378add 50%, #2ca882);
+          display: flex; align-items: center; justify-content: center;
+          flex-shrink: 0;
+          box-shadow: 0 4px 16px rgba(55,138,221,0.35);
+        }
+        .ai-header-name { margin: 0; font-size: 15px; font-weight: 700; color: #e8f4ff; letter-spacing: 0.01em; }
+        .ai-header-status {
+          margin: 0; margin-top: 3px; font-size: 11px;
+          color: rgba(200,220,255,0.5);
+          display: flex; align-items: center; gap: 5px;
+        }
+        .ai-status-dot {
+          width: 7px; height: 7px; border-radius: 50%;
+          background: #5dcaa5; display: inline-block;
+          box-shadow: 0 0 8px #5dcaa5;
+          animation: statusPulse 2s ease-in-out infinite;
+        }
+        @keyframes statusPulse {
+          0%, 100% { box-shadow: 0 0 6px #5dcaa5; }
+          50% { box-shadow: 0 0 14px #5dcaa5; }
+        }
+        .ai-close {
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 9px; color: rgba(200,220,255,0.45);
+          width: 32px; height: 32px; cursor: pointer;
+          display: flex; align-items: center; justify-content: center;
+          transition: background 0.2s, color 0.2s;
+        }
+        .ai-close:hover { background: rgba(255,255,255,0.12); color: #e8f4ff; }
+
+        /* ── Welcome ── */
         .ai-welcome {
+          position: relative; z-index: 1;
           flex: 1; display: flex; flex-direction: column;
           align-items: center; justify-content: center;
-          gap: 10px; padding: 24px;
+          gap: 10px; padding: 28px 24px 16px;
         }
         .ai-welcome-icon {
-          width: 72px; height: 72px; border-radius: 20px;
-          background: linear-gradient(135deg, rgba(55,138,221,0.15), rgba(93,202,165,0.15));
-          border: 1px solid rgba(55,138,221,0.2);
+          width: 82px; height: 82px; border-radius: 22px;
+          background: linear-gradient(135deg, rgba(55,138,221,0.14), rgba(93,202,165,0.14));
+          border: 1px solid rgba(55,138,221,0.25);
           display: flex; align-items: center; justify-content: center;
-          margin-bottom: 8px;
+          margin-bottom: 10px;
+          box-shadow: 0 0 40px rgba(55,138,221,0.15), 0 0 80px rgba(93,202,165,0.08);
+          animation: iconFloat 3.5s ease-in-out infinite;
         }
-        .ai-welcome-title { margin: 0; font-size: 20px; font-weight: 700; color: #e8f4ff; }
-        .ai-welcome-sub { margin: 0; font-size: 13px; color: rgba(200,220,255,0.45); text-align: center; }
+        @keyframes iconFloat {
+          0%, 100% { transform: translateY(0); box-shadow: 0 0 40px rgba(55,138,221,0.15); }
+          50% { transform: translateY(-5px); box-shadow: 0 10px 48px rgba(55,138,221,0.28); }
+        }
+        .ai-welcome-title {
+          margin: 0; font-size: 21px; font-weight: 800;
+          color: #e8f4ff; letter-spacing: -0.3px;
+        }
+        .ai-welcome-sub {
+          margin: 0; font-size: 13px;
+          color: rgba(200,220,255,0.42); text-align: center;
+          max-width: 280px; line-height: 1.6;
+        }
 
-        /* Messages */
+        /* ── Messages ── */
         .ai-messages {
-          flex: 1; overflow-y: auto; padding: 16px 18px;
+          position: relative; z-index: 1;
+          flex: 1; overflow-y: auto; padding: 18px 20px;
           display: flex; flex-direction: column; gap: 12px;
         }
         .ai-messages::-webkit-scrollbar { width: 4px; }
         .ai-messages::-webkit-scrollbar-track { background: transparent; }
-        .ai-messages::-webkit-scrollbar-thumb { background: rgba(55,138,221,0.25); border-radius: 99px; }
+        .ai-messages::-webkit-scrollbar-thumb { background: rgba(55,138,221,0.2); border-radius: 99px; }
         .ai-msg-row { display: flex; gap: 8px; align-items: flex-end; }
         .ai-msg-row.user { justify-content: flex-end; }
         .ai-bot-avatar {
-          width: 28px; height: 28px; border-radius: 8px;
-          background: linear-gradient(135deg, #378add, #5dcaa5);
+          width: 28px; height: 28px; border-radius: 9px;
+          background: linear-gradient(135deg, #1a5ba8, #378add 60%, #2ca882);
           display: flex; align-items: center; justify-content: center;
-          font-size: 10px; font-weight: 700; color: white; flex-shrink: 0;
+          flex-shrink: 0;
+          box-shadow: 0 3px 10px rgba(55,138,221,0.3);
         }
         .ai-bubble {
-          max-width: 78%; padding: 10px 14px;
-          font-size: 14px; line-height: 1.65;
+          max-width: 78%; padding: 11px 15px;
+          font-size: 14px; line-height: 1.68;
           white-space: pre-wrap;
         }
         .ai-bubble.user {
-          background: linear-gradient(135deg, #378add, #2d6fb5);
-          color: #fff; border-radius: 16px 16px 4px 16px;
+          background: linear-gradient(135deg, #1f6bbf, #378add 60%, #2ca882);
+          color: #fff; border-radius: 18px 18px 4px 18px;
+          box-shadow: 0 4px 16px rgba(55,138,221,0.25);
         }
         .ai-bubble.assistant {
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(55,138,221,0.12);
+          background: rgba(255,255,255,0.045);
+          border: 1px solid rgba(55,138,221,0.14);
+          border-left: 2px solid rgba(93,202,165,0.35);
           color: rgba(220,235,255,0.9);
-          border-radius: 16px 16px 16px 4px;
+          border-radius: 18px 18px 18px 4px;
         }
         .ai-typing { display: flex; gap: 4px; padding: 4px 0; }
         .ai-typing span {
@@ -368,70 +466,93 @@ export default function AiChat() {
         .ai-typing span:nth-child(3) { animation-delay: 0.4s; }
         @keyframes aiDot {
           0%,80%,100% { transform: scale(0.7); opacity: 0.4; }
-          40% { transform: scale(1); opacity: 1; }
+          40% { transform: scale(1.1); opacity: 1; }
         }
 
-        /* Quick prompts */
+        /* ── Quick prompts ── */
         .ai-prompts {
-          padding: 10px 18px 6px;
-          border-top: 1px solid rgba(55,138,221,0.08);
+          position: relative; z-index: 1;
+          padding: 10px 20px 8px;
+          border-top: 1px solid rgba(55,138,221,0.09);
+          background: rgba(0,0,0,0.12);
         }
         .ai-prompts-label {
-          margin: 0 0 8px; font-size: 10px; font-weight: 700;
-          color: rgba(200,220,255,0.35); letter-spacing: 0.08em;
-          display: flex; justify-content: space-between;
+          margin: 0 0 9px; font-size: 9.5px; font-weight: 700;
+          color: rgba(200,220,255,0.3); letter-spacing: 0.12em;
+          text-transform: uppercase;
         }
         .ai-prompts-grid {
           display: grid; grid-template-columns: 1fr 1fr;
           gap: 6px;
         }
         .ai-prompt-btn {
-          display: flex; align-items: center; gap: 7px;
-          padding: 8px 12px; border-radius: 10px;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(55,138,221,0.14);
-          color: rgba(220,235,255,0.75); font-size: 12.5px;
+          display: flex; align-items: center; gap: 8px;
+          padding: 8px 10px; border-radius: 11px;
+          background: rgba(255,255,255,0.035);
+          border: 1px solid rgba(55,138,221,0.13);
+          color: rgba(220,235,255,0.7); font-size: 12px;
           cursor: pointer; font-family: inherit;
-          transition: background 0.15s, border-color 0.15s;
+          transition: background 0.15s, border-color 0.15s, transform 0.15s, color 0.15s;
           text-align: left;
         }
+        .ai-prompt-icon {
+          width: 24px; height: 24px; border-radius: 7px;
+          background: rgba(55,138,221,0.12);
+          display: flex; align-items: center; justify-content: center;
+          font-size: 13px; flex-shrink: 0;
+        }
+        .ai-prompt-label { flex: 1; line-height: 1.3; }
         .ai-prompt-btn:hover:not(:disabled) {
           background: rgba(55,138,221,0.1);
           border-color: rgba(55,138,221,0.3);
           color: #e8f4ff;
+          transform: translateY(-1px);
         }
-        .ai-prompt-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .ai-prompt-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
-        /* Input */
+        /* ── Input row ── */
+        .ai-input-row {
+          position: relative; z-index: 1;
+          padding: 10px 20px 4px;
+          border-top: 1px solid rgba(55,138,221,0.09);
+          background: rgba(0,0,0,0.15);
+        }
         .ai-input-wrap {
           display: flex; gap: 8px;
-          padding: 10px 18px 8px;
-          border-top: 1px solid rgba(55,138,221,0.08);
         }
         .ai-input {
-          flex: 1; padding: 11px 14px;
-          border-radius: 12px;
+          flex: 1; padding: 12px 16px;
+          border-radius: 13px;
           border: 1px solid rgba(55,138,221,0.2);
-          background: rgba(255,255,255,0.04);
+          background: rgba(255,255,255,0.045);
           color: #e8f4ff; font-size: 13.5px;
           outline: none; font-family: inherit;
+          transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .ai-input::placeholder { color: rgba(200,220,255,0.35); }
-        .ai-input:focus { border-color: rgba(55,138,221,0.45); }
+        .ai-input::placeholder { color: rgba(200,220,255,0.3); }
+        .ai-input:focus {
+          border-color: rgba(55,138,221,0.5);
+          box-shadow: 0 0 0 3px rgba(55,138,221,0.1);
+        }
         .ai-send {
-          width: 42px; height: 42px; border-radius: 12px;
-          background: #378add; border: none; cursor: pointer;
+          width: 44px; height: 44px; border-radius: 13px;
+          background: linear-gradient(135deg, #1f6bbf, #378add 60%, #2ca882);
+          border: none; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
-          flex-shrink: 0; transition: background 0.2s;
+          flex-shrink: 0;
+          box-shadow: 0 4px 14px rgba(55,138,221,0.3);
+          transition: transform 0.2s, box-shadow 0.2s;
         }
-        .ai-send:disabled { background: rgba(55,138,221,0.2); cursor: not-allowed; }
-        .ai-send:not(:disabled):hover { background: #2d6fb5; }
+        .ai-send:disabled { background: rgba(55,138,221,0.18); box-shadow: none; cursor: not-allowed; }
+        .ai-send:not(:disabled):hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 22px rgba(55,138,221,0.45);
+        }
 
         /* Disclaimer */
         .ai-disclaimer {
-          margin: 0; padding: 0 18px 12px;
-          font-size: 10.5px; color: rgba(200,220,255,0.28);
-          text-align: center;
+          margin: 7px 0 10px; font-size: 10px;
+          color: rgba(200,220,255,0.22); text-align: center;
         }
       `}</style>
     </>
