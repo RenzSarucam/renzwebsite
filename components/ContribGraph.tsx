@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 
@@ -72,7 +72,7 @@ export default function ContribGraph() {
 
   if (loading) return (
     <div style={{ height: 100, display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <span style={{ fontSize: 12, color: "rgba(200,220,255,0.3)", fontFamily: "'Courier New', monospace" }}>
+      <span style={{ fontSize: 12, color: "rgba(200,195,240,0.3)", fontFamily: "'Courier New', monospace" }}>
         Loading contributions...
       </span>
     </div>
@@ -132,9 +132,9 @@ export default function ContribGraph() {
       {/* PH Time clock */}
       {phTime && (
         <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
-          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#378add", boxShadow: "0 0 6px #378add", display: "inline-block", flexShrink: 0 }} />
-          <span style={{ fontSize: 11, color: "rgba(200,220,255,0.4)", fontFamily: "'Courier New', monospace", letterSpacing: "0.06em", textTransform: "uppercase" }}>PH Time</span>
-          <span style={{ fontSize: 13, color: "#61afff", fontFamily: "'Courier New', monospace", fontWeight: 600, letterSpacing: "0.04em" }}>{phTime}</span>
+          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#8b7cf8", boxShadow: "0 0 6px #8b7cf8", display: "inline-block", flexShrink: 0 }} />
+          <span style={{ fontSize: 11, color: "rgba(200,195,240,0.4)", fontFamily: "'Courier New', monospace", letterSpacing: "0.06em", textTransform: "uppercase" }}>PH Time</span>
+          <span style={{ fontSize: 13, color: "#b09ffc", fontFamily: "'Courier New', monospace", fontWeight: 600, letterSpacing: "0.04em" }}>{phTime}</span>
         </div>
       )}
 
@@ -147,9 +147,9 @@ export default function ContribGraph() {
             style={{
               padding: "3px 12px",
               borderRadius: 6,
-              border: `1px solid ${selectedYear === y ? "#378add" : "rgba(55,138,221,0.2)"}`,
-              background: selectedYear === y ? "#378add" : "transparent",
-              color: selectedYear === y ? "#fff" : "rgba(200,220,255,0.5)",
+              border: `1px solid ${selectedYear === y ? "#8b7cf8" : "rgba(139,124,248,0.2)"}`,
+              background: selectedYear === y ? "#8b7cf8" : "transparent",
+              color: selectedYear === y ? "#fff" : "rgba(200,195,240,0.5)",
               fontSize: 12,
               cursor: "pointer",
               fontFamily: "'Courier New', monospace",
@@ -169,9 +169,9 @@ export default function ContribGraph() {
             marginLeft: "auto",
             padding: "3px 8px",
             borderRadius: 6,
-            border: "1px solid rgba(55,138,221,0.2)",
+            border: "1px solid rgba(139,124,248,0.2)",
             background: "transparent",
-            color: "rgba(200,220,255,0.4)",
+            color: "rgba(200,195,240,0.4)",
             fontSize: 12,
             cursor: refreshing ? "default" : "pointer",
             fontFamily: "'Courier New', monospace",
@@ -196,7 +196,7 @@ export default function ContribGraph() {
 
       <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
 
-      <p style={{ margin: "0 0 8px 28px", fontSize: 12, color: "rgba(200,220,255,0.45)", fontFamily: "'Courier New', monospace" }}>
+      <p style={{ margin: "0 0 8px 28px", fontSize: 12, color: "rgba(200,195,240,0.45)", fontFamily: "'Courier New', monospace" }}>
         {year} Contributions &nbsp;·&nbsp; <span style={{ color: "#39d353" }}>{total.toLocaleString()} total</span>
       </p>
 
@@ -209,7 +209,7 @@ export default function ContribGraph() {
               style={{
                 height: CELL,
                 fontSize: 9,
-                color: "rgba(200,220,255,0.3)",
+                color: "rgba(200,195,240,0.3)",
                 fontFamily: "'Courier New', monospace",
                 lineHeight: `${CELL}px`,
                 visibility: d % 2 === 1 ? "visible" : "hidden",
@@ -231,7 +231,7 @@ export default function ContribGraph() {
                   position: "absolute",
                   left: weekIdx * STEP,
                   fontSize: 10,
-                  color: "rgba(200,220,255,0.4)",
+                  color: "rgba(200,195,240,0.4)",
                   fontFamily: "'Courier New', monospace",
                   whiteSpace: "nowrap",
                 }}
@@ -267,11 +267,11 @@ export default function ContribGraph() {
 
       {/* Legend */}
       <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 8, marginLeft: 28, justifyContent: "flex-end" }}>
-        <span style={{ fontSize: 10, color: "rgba(200,220,255,0.3)", fontFamily: "'Courier New', monospace" }}>Less</span>
+        <span style={{ fontSize: 10, color: "rgba(200,195,240,0.3)", fontFamily: "'Courier New', monospace" }}>Less</span>
         {["rgba(255,255,255,0.05)", "#0e4429", "#006d32", "#26a641", "#39d353"].map((c) => (
           <div key={c} style={{ width: 10, height: 10, borderRadius: 2, background: c, border: "1px solid rgba(255,255,255,0.06)" }} />
         ))}
-        <span style={{ fontSize: 10, color: "rgba(200,220,255,0.3)", fontFamily: "'Courier New', monospace" }}>More</span>
+        <span style={{ fontSize: 10, color: "rgba(200,195,240,0.3)", fontFamily: "'Courier New', monospace" }}>More</span>
       </div>
     </div>
   );

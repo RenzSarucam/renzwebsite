@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 
 const education = [
@@ -37,24 +37,24 @@ const education = [
 ];
 
 export const certificates = [
-  { title: "CSS, Bootstrap, JavaScript, Web Development Course",        issuer: "Udemy · Proper Dot Institute",         year: "2025", color: "#378add", image: "/images/certificates/udemy-css-bootstrap-js.jpg" },
-  { title: "JavaScript 20 Projects In 20 Days HTML, CSS & JavaScript", issuer: "Udemy · Vijay Kumar",                  year: "2025", color: "#5dcaa5", image: "/images/certificates/udemy-js-20-projects.jpg" },
+  { title: "CSS, Bootstrap, JavaScript, Web Development Course",        issuer: "Udemy · Proper Dot Institute",         year: "2025", color: "#8b7cf8", image: "/images/certificates/udemy-css-bootstrap-js.jpg" },
+  { title: "JavaScript 20 Projects In 20 Days HTML, CSS & JavaScript", issuer: "Udemy · Vijay Kumar",                  year: "2025", color: "#2dd4bf", image: "/images/certificates/udemy-js-20-projects.jpg" },
   { title: "Java And C++ And PHP Crash Course All in One For Beginners",issuer: "Udemy · Crunch Coding",               year: "2025", color: "#7f77dd", image: "/images/certificates/udemy-java-cpp-php.jpg" },
   { title: "UIUX with Figma and Adobe XD",                             issuer: "Udemy · Marcus Menti, Zechariah Tech", year: "2025", color: "#ef9f27", image: "/images/certificates/udemy-uiux-figma-xd.jpg" },
-  { title: "Mobile App Design in Figma: From Concept to Prototype",    issuer: "Udemy · Anton Voroniuk",              year: "2025", color: "#378add", image: "/images/certificates/udemy-figma-mobile.jpg" },
-  { title: "Hands On React JS From Beginner to Expert",                issuer: "Udemy · Learnify IT",                  year: "2025", color: "#5dcaa5", image: "/images/certificates/udemy-react-js.jpg" },
+  { title: "Mobile App Design in Figma: From Concept to Prototype",    issuer: "Udemy · Anton Voroniuk",              year: "2025", color: "#8b7cf8", image: "/images/certificates/udemy-figma-mobile.jpg" },
+  { title: "Hands On React JS From Beginner to Expert",                issuer: "Udemy · Learnify IT",                  year: "2025", color: "#2dd4bf", image: "/images/certificates/udemy-react-js.jpg" },
   { title: "Learn PHP and MySQL for Web Application and Web Development",issuer: "Udemy · Marcus Menti, Zechariah Tech",year: "2025", color: "#7f77dd", image: "/images/certificates/udemy-php-mysql.jpg" },
   { title: "Ethical Hacking: Hacker Methodology",                      issuer: "Udemy · Peter A",                     year: "2025", color: "#ef9f27", image: "/images/certificates/udemy-ethical-hacking.jpg" },
-  { title: "Advanced IT Troubleshooting for Helpdesk Support Technicians",issuer: "Udemy · John Courtenay",           year: "2025", color: "#378add", image: "/images/certificates/udemy-it-troubleshooting.jpg" },
-  { title: "JavaScript Tutorial: Learn JavaScript Just in 1 Hour",     issuer: "Learnoverse",                         year: "2024", color: "#5dcaa5", image: "/images/certificates/learnoverse-js.jpg" },
+  { title: "Advanced IT Troubleshooting for Helpdesk Support Technicians",issuer: "Udemy · John Courtenay",           year: "2025", color: "#8b7cf8", image: "/images/certificates/udemy-it-troubleshooting.jpg" },
+  { title: "JavaScript Tutorial: Learn JavaScript Just in 1 Hour",     issuer: "Learnoverse",                         year: "2024", color: "#2dd4bf", image: "/images/certificates/learnoverse-js.jpg" },
   { title: "Build with AI Davao 2024 – Certificate of Participation",  issuer: "Google Developer Groups Davao",        year: "2024", color: "#4285f4", image: "/images/certificates/gdg-build-with-ai.jpg" },
   { title: "Champion – Mobile Legends: Bang Bang Tournament (IT Day 2021)", issuer: "Holy Cross of Davao College – ITS", year: "2021", color: "#ef9f27", image: "/images/certificates/hcdc-mlbb-champion.jpg" },
 ];
 
 const statusStyle = (status: string) => {
-  if (status === "Graduated with Honors") return { bg: "rgba(29,158,117,0.12)", color: "#5dcaa5", border: "rgba(29,158,117,0.25)" };
-  if (status === "Graduated") return { bg: "rgba(55,138,221,0.12)", color: "#61afff", border: "rgba(55,138,221,0.25)" };
-  return { bg: "rgba(255,255,255,0.06)", color: "rgba(200,220,255,0.5)", border: "rgba(255,255,255,0.1)" };
+  if (status === "Graduated with Honors") return { bg: "rgba(29,158,117,0.12)", color: "#2dd4bf", border: "rgba(29,158,117,0.25)" };
+  if (status === "Graduated") return { bg: "rgba(139,124,248,0.12)", color: "#b09ffc", border: "rgba(139,124,248,0.25)" };
+  return { bg: "rgba(255,255,255,0.06)", color: "rgba(200,195,240,0.5)", border: "rgba(255,255,255,0.1)" };
 };
 
 export default function Certificates() {
@@ -70,13 +70,13 @@ export default function Certificates() {
 
         {/* Header */}
         <div style={{ marginBottom: 56 }}>
-          <p style={{ fontSize: 14, color: "#378add", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
+          <p style={{ fontSize: 14, color: "#8b7cf8", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
             04. Credentials
           </p>
-          <h2 style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 700, color: "#e8f4ff", margin: "0 0 12px" }}>
+          <h2 style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 700, color: "#ede8fd", margin: "0 0 12px" }}>
             Education &amp; Certificates
           </h2>
-          <p style={{ fontSize: 17, color: "rgba(200,220,255,0.5)", margin: 0 }}>
+          <p style={{ fontSize: 17, color: "rgba(200,195,240,0.5)", margin: 0 }}>
             Academic background and professional certifications.
           </p>
         </div>
@@ -93,7 +93,7 @@ export default function Certificates() {
                   <div key={item.school} className="edu-item">
                     {/* Timeline spine */}
                     <div className="edu-spine">
-                      <div className="edu-dot" style={{ boxShadow: `0 0 0 3px rgba(55,138,221,0.15), 0 0 12px rgba(55,138,221,0.3)` }} />
+                      <div className="edu-dot" style={{ boxShadow: `0 0 0 3px rgba(139,124,248,0.15), 0 0 12px rgba(139,124,248,0.3)` }} />
                       {idx < education.length - 1 && <div className="edu-line" />}
                     </div>
 
@@ -127,7 +127,7 @@ export default function Certificates() {
 
           {/* ── Certificates Grid ── */}
           <div>
-            <p className="creds-section-label">Certificates <span style={{ color: "rgba(55,138,221,0.5)", fontSize: 11 }}>— click to view</span></p>
+            <p className="creds-section-label">Certificates <span style={{ color: "rgba(139,124,248,0.5)", fontSize: 11 }}>— click to view</span></p>
             <div className="cert-grid">
               {certificates.map((item) => (
                 <div
@@ -136,7 +136,7 @@ export default function Certificates() {
                   onClick={() => openModal(item)}
                   onMouseEnter={() => setHovered(item.title)}
                   onMouseLeave={() => setHovered(null)}
-                  style={{ borderColor: hovered === item.title ? `${item.color}50` : "rgba(55,138,221,0.1)" }}
+                  style={{ borderColor: hovered === item.title ? `${item.color}50` : "rgba(139,124,248,0.1)" }}
                 >
                   {/* Top accent bar */}
                   <div className="cert-accent" style={{ background: `linear-gradient(90deg, ${item.color}, ${item.color}55)` }} />
@@ -199,7 +199,7 @@ export default function Certificates() {
 
         .creds-section-label {
           font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
-          text-transform: uppercase; color: rgba(55,138,221,0.6);
+          text-transform: uppercase; color: rgba(139,124,248,0.6);
           font-family: 'Courier New', monospace;
           margin: 0 0 20px;
         }
@@ -218,25 +218,25 @@ export default function Certificates() {
         .edu-spine { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; padding-top: 4px; }
         .edu-dot {
           width: 12px; height: 12px; border-radius: 50%;
-          background: #378add; flex-shrink: 0;
+          background: #8b7cf8; flex-shrink: 0;
           position: relative; z-index: 1;
         }
         .edu-line {
           width: 1px; flex: 1; min-height: 24px;
-          background: linear-gradient(to bottom, rgba(55,138,221,0.4), rgba(55,138,221,0.08));
+          background: linear-gradient(to bottom, rgba(139,124,248,0.4), rgba(139,124,248,0.08));
           margin: 6px 0;
         }
         .edu-card {
           flex: 1; padding-bottom: 28px;
           background: rgba(255,255,255,0.025);
-          border: 1px solid rgba(55,138,221,0.1);
+          border: 1px solid rgba(139,124,248,0.1);
           border-radius: 14px;
           padding: 18px 20px 18px;
           margin-bottom: 16px;
           transition: border-color 0.2s, box-shadow 0.2s;
         }
         .edu-card:hover {
-          border-color: rgba(55,138,221,0.28);
+          border-color: rgba(139,124,248,0.28);
           box-shadow: 0 8px 28px rgba(0,0,0,0.2);
         }
         .edu-card-top {
@@ -245,22 +245,22 @@ export default function Certificates() {
         }
         .edu-level {
           font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-          text-transform: uppercase; color: #378add;
+          text-transform: uppercase; color: #8b7cf8;
           font-family: 'Courier New', monospace;
-          background: rgba(55,138,221,0.1);
+          background: rgba(139,124,248,0.1);
           padding: 2px 8px; border-radius: 4px;
-          border: 1px solid rgba(55,138,221,0.2);
+          border: 1px solid rgba(139,124,248,0.2);
         }
         .edu-period {
-          font-size: 12px; color: rgba(200,220,255,0.4);
+          font-size: 12px; color: rgba(200,195,240,0.4);
           font-family: 'Courier New', monospace;
         }
         .edu-degree {
-          font-size: 15px; font-weight: 600; color: #e8f4ff;
+          font-size: 15px; font-weight: 600; color: #ede8fd;
           margin: 0 0 8px; line-height: 1.4;
         }
         .edu-school {
-          font-size: 13px; color: rgba(200,220,255,0.5);
+          font-size: 13px; color: rgba(200,195,240,0.5);
           margin: 0 0 12px; display: flex; align-items: center; gap: 6px;
         }
         .edu-card-footer { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
@@ -268,7 +268,7 @@ export default function Certificates() {
           font-size: 11px; padding: 3px 9px; border-radius: 100px; font-weight: 500;
         }
         .edu-highlight {
-          font-size: 11px; color: rgba(200,220,255,0.4);
+          font-size: 11px; color: rgba(200,195,240,0.4);
           padding: 3px 8px; border-radius: 4px;
           background: rgba(255,255,255,0.04);
           border: 1px solid rgba(255,255,255,0.07);
@@ -307,7 +307,7 @@ export default function Certificates() {
           padding: 0 14px 10px; flex: 1;
         }
         .cert-title {
-          font-size: 12.5px; font-weight: 600; color: #e8f4ff;
+          font-size: 12.5px; font-weight: 600; color: #ede8fd;
           margin: 0 0 5px; line-height: 1.45;
           display: -webkit-box;
           -webkit-line-clamp: 3;
@@ -315,7 +315,7 @@ export default function Certificates() {
           overflow: hidden;
         }
         .cert-issuer {
-          font-size: 11px; color: rgba(200,220,255,0.4);
+          font-size: 11px; color: rgba(200,195,240,0.4);
           margin: 0; line-height: 1.4;
           display: -webkit-box;
           -webkit-line-clamp: 2;
@@ -324,7 +324,7 @@ export default function Certificates() {
         }
         .cert-footer {
           padding: 10px 14px 12px;
-          border-top: 1px solid rgba(55,138,221,0.07);
+          border-top: 1px solid rgba(139,124,248,0.07);
           display: flex; align-items: center; justify-content: space-between;
         }
         .cert-year {
@@ -350,7 +350,7 @@ export default function Certificates() {
           width: 40px; height: 40px; border-radius: 50%;
           background: rgba(232,244,255,0.08);
           border: 1px solid rgba(232,244,255,0.15);
-          color: #e8f4ff; cursor: pointer;
+          color: #ede8fd; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
           z-index: 10000; transition: background 0.15s;
         }
@@ -369,8 +369,8 @@ export default function Certificates() {
           display: flex; align-items: center;
           justify-content: space-between; gap: 12px; padding: 0 4px;
         }
-        .cert-modal-title { margin: 0; font-size: 15px; font-weight: 600; color: #e8f4ff; line-height: 1.4; }
-        .cert-modal-sub   { margin: 3px 0 0; font-size: 13px; color: rgba(200,220,255,0.45); }
+        .cert-modal-title { margin: 0; font-size: 15px; font-weight: 600; color: #ede8fd; line-height: 1.4; }
+        .cert-modal-sub   { margin: 3px 0 0; font-size: 13px; color: rgba(200,195,240,0.45); }
         .cert-modal-year  { flex-shrink: 0; padding: 5px 14px; border-radius: 999px; font-size: 12px; font-family: 'Courier New', monospace; }
 
         @keyframes certFadeIn  { from { opacity: 0; } to { opacity: 1; } }

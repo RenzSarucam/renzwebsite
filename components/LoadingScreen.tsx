@@ -1,16 +1,16 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 
 const BOOT_LINES = [
-  { text: "Initializing system...",                    color: "rgba(200,220,255,0.5)" },
-  { text: "Loading modules: React · Next.js · TypeScript", color: "rgba(200,220,255,0.5)" },
-  { text: "Connecting to DevOps pipeline...",          color: "rgba(200,220,255,0.5)" },
-  { text: "Mounting Docker containers...",             color: "#5dcaa5" },
-  { text: "Syncing GitHub repository...",              color: "rgba(200,220,255,0.5)" },
-  { text: "Configuring Nginx proxy...",                color: "rgba(200,220,255,0.5)" },
-  { text: "Building portfolio assets...",              color: "#378add" },
-  { text: "Launch sequence complete.",                 color: "#5dcaa5" },
+  { text: "Initializing system...",                    color: "rgba(200,195,240,0.5)" },
+  { text: "Loading modules: React · Next.js · TypeScript", color: "rgba(200,195,240,0.5)" },
+  { text: "Connecting to DevOps pipeline...",          color: "rgba(200,195,240,0.5)" },
+  { text: "Mounting Docker containers...",             color: "#2dd4bf" },
+  { text: "Syncing GitHub repository...",              color: "rgba(200,195,240,0.5)" },
+  { text: "Configuring Nginx proxy...",                color: "rgba(200,195,240,0.5)" },
+  { text: "Building portfolio assets...",              color: "#8b7cf8" },
+  { text: "Launch sequence complete.",                 color: "#2dd4bf" },
 ];
 
 export default function LoadingScreen() {
@@ -112,7 +112,7 @@ export default function LoadingScreen() {
                 className={`ls-term-line${i === lineCount - 1 ? " ls-term-line-enter" : ""}`}
               >
                 <span className="ls-term-prompt">&gt;</span>
-                <span style={{ color: i === lineCount - 1 ? line.color : "rgba(200,220,255,0.4)" }}>
+                <span style={{ color: i === lineCount - 1 ? line.color : "rgba(200,195,240,0.4)" }}>
                   {line.text}
                 </span>
                 {i === lineCount - 1 && progress < 100 && (
@@ -129,16 +129,16 @@ export default function LoadingScreen() {
             <svg width="68" height="68" viewBox="0 0 68 68" style={{ transform: "rotate(-90deg)" }}>
               <defs>
                 <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%"   stopColor="#378add" />
-                  <stop offset="50%"  stopColor="#5dcaa5" />
-                  <stop offset="100%" stopColor="#c678dd" />
+                  <stop offset="0%"   stopColor="#8b7cf8" />
+                  <stop offset="50%"  stopColor="#2dd4bf" />
+                  <stop offset="100%" stopColor="#f59e0b" />
                 </linearGradient>
                 <filter id="arcGlow" x="-20%" y="-20%" width="140%" height="140%">
                   <feGaussianBlur stdDeviation="2" result="blur" />
                   <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
                 </filter>
               </defs>
-              <circle cx="34" cy="34" r="28" fill="none" stroke="rgba(55,138,221,0.08)" strokeWidth="3.5" />
+              <circle cx="34" cy="34" r="28" fill="none" stroke="rgba(139,124,248,0.08)" strokeWidth="3.5" />
               <circle
                 cx="34" cy="34" r="28" fill="none"
                 stroke="url(#arcGrad)" strokeWidth="3.5"
@@ -150,7 +150,7 @@ export default function LoadingScreen() {
               />
             </svg>
             <div className="ls-ring-center">
-              <span className="ls-ring-pct" style={{ color: progress === 100 ? "#5dcaa5" : "#61afff" }}>{progress}</span>
+              <span className="ls-ring-pct" style={{ color: progress === 100 ? "#2dd4bf" : "#b09ffc" }}>{progress}</span>
             </div>
           </div>
 
@@ -158,7 +158,7 @@ export default function LoadingScreen() {
             <span className="ls-ring-label">INITIALIZING PORTFOLIO</span>
             <span className="ls-ring-status">
               {progress === 100
-                ? <span style={{ color: "#5dcaa5" }}>✓ Launch sequence complete</span>
+                ? <span style={{ color: "#2dd4bf" }}>✓ Launch sequence complete</span>
                 : BOOT_LINES[lineCount - 1]?.text ?? "Starting..."}
             </span>
           </div>
@@ -186,8 +186,8 @@ export default function LoadingScreen() {
         .ls-bg-grid {
           position: absolute; inset: 0;
           background-image:
-            linear-gradient(rgba(55,138,221,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(55,138,221,0.04) 1px, transparent 1px);
+            linear-gradient(rgba(139,124,248,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(139,124,248,0.04) 1px, transparent 1px);
           background-size: 48px 48px;
           mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
           pointer-events: none;
@@ -196,8 +196,8 @@ export default function LoadingScreen() {
           position: absolute; border-radius: 50%;
           pointer-events: none; filter: blur(100px);
         }
-        .ls-orb-1 { width: 600px; height: 600px; background: rgba(55,138,221,0.1);  top: -150px; left: -150px; animation: orbDrift 8s ease-in-out infinite alternate; }
-        .ls-orb-2 { width: 500px; height: 500px; background: rgba(93,202,165,0.08); bottom: -120px; right: -120px; animation: orbDrift 10s ease-in-out infinite alternate-reverse; }
+        .ls-orb-1 { width: 600px; height: 600px; background: rgba(139,124,248,0.1);  top: -150px; left: -150px; animation: orbDrift 8s ease-in-out infinite alternate; }
+        .ls-orb-2 { width: 500px; height: 500px; background: rgba(45,212,191,0.08); bottom: -120px; right: -120px; animation: orbDrift 10s ease-in-out infinite alternate-reverse; }
         .ls-orb-3 { width: 300px; height: 300px; background: rgba(198,120,221,0.06); top: 40%; left: 60%; animation: orbDrift 7s ease-in-out infinite alternate; }
         @keyframes orbDrift {
           from { transform: translate(0,0) scale(1); }
@@ -205,7 +205,7 @@ export default function LoadingScreen() {
         }
         .ls-scanlines {
           position: absolute; inset: 0; pointer-events: none;
-          background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(55,138,221,0.008) 3px, rgba(55,138,221,0.008) 4px);
+          background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(139,124,248,0.008) 3px, rgba(139,124,248,0.008) 4px);
         }
 
         /* ── Content ── */
@@ -231,12 +231,12 @@ export default function LoadingScreen() {
         }
         .ls-gr-1 {
           width: 160px; height: 160px;
-          border-color: rgba(55,138,221,0.12);
+          border-color: rgba(139,124,248,0.12);
           animation: grPulse 3s ease-in-out infinite;
         }
         .ls-gr-2 {
           width: 200px; height: 200px;
-          border-color: rgba(93,202,165,0.08);
+          border-color: rgba(45,212,191,0.08);
           animation: grPulse 3s ease-in-out infinite 1.5s;
         }
         @keyframes grPulse {
@@ -252,8 +252,8 @@ export default function LoadingScreen() {
           top: 50%; left: 50%;
           margin: -30px 0 0 -85px;
         }
-        .ls-orbit-1 { border: 1.5px solid rgba(55,138,221,0.5);  animation: lsOrbit1 3.2s linear infinite; }
-        .ls-orbit-2 { border: 1.5px solid rgba(93,202,165,0.45); animation: lsOrbit2 2.4s linear infinite; }
+        .ls-orbit-1 { border: 1.5px solid rgba(139,124,248,0.5);  animation: lsOrbit1 3.2s linear infinite; }
+        .ls-orbit-2 { border: 1.5px solid rgba(45,212,191,0.45); animation: lsOrbit2 2.4s linear infinite; }
         .ls-orbit-3 { border: 1.5px solid rgba(97,175,255,0.35); animation: lsOrbit3 4.2s linear infinite; }
         @keyframes lsOrbit1 { from{transform:rotateZ(0deg)}   to{transform:rotateZ(360deg)} }
         @keyframes lsOrbit2 { from{transform:rotateZ(60deg)}  to{transform:rotateZ(420deg)} }
@@ -264,28 +264,28 @@ export default function LoadingScreen() {
           position: absolute; border-radius: 50%;
           top: -5px; left: 50%; transform: translateX(-50%);
         }
-        .ls-dot-1 { width: 10px; height: 10px; background: #378add; box-shadow: 0 0 12px #378add, 0 0 28px rgba(55,138,221,0.7); }
-        .ls-dot-2 { width: 9px;  height: 9px;  background: #5dcaa5; box-shadow: 0 0 12px #5dcaa5, 0 0 24px rgba(93,202,165,0.7); }
-        .ls-dot-3 { width: 8px;  height: 8px;  background: #c678dd; box-shadow: 0 0 10px #c678dd, 0 0 20px rgba(198,120,221,0.7); }
+        .ls-dot-1 { width: 10px; height: 10px; background: #8b7cf8; box-shadow: 0 0 12px #8b7cf8, 0 0 28px rgba(139,124,248,0.7); }
+        .ls-dot-2 { width: 9px;  height: 9px;  background: #2dd4bf; box-shadow: 0 0 12px #2dd4bf, 0 0 24px rgba(45,212,191,0.7); }
+        .ls-dot-3 { width: 8px;  height: 8px;  background: #f59e0b; box-shadow: 0 0 10px #f59e0b, 0 0 20px rgba(198,120,221,0.7); }
 
         /* Core */
         .ls-core {
           position: absolute;
           width: 72px; height: 72px; border-radius: 50%;
           background: radial-gradient(circle at 38% 35%, #0d2040, #050e1c);
-          border: 1.5px solid rgba(55,138,221,0.45);
+          border: 1.5px solid rgba(139,124,248,0.45);
           display: flex; align-items: center; justify-content: center; gap: 1px;
           font-family: 'Courier New', monospace; font-weight: 900;
           animation: coreGlow 2.8s ease-in-out infinite;
-          box-shadow: 0 0 0 6px rgba(55,138,221,0.05), 0 0 40px rgba(55,138,221,0.2), inset 0 1px 0 rgba(255,255,255,0.07);
+          box-shadow: 0 0 0 6px rgba(139,124,248,0.05), 0 0 40px rgba(139,124,248,0.2), inset 0 1px 0 rgba(255,255,255,0.07);
         }
         @keyframes coreGlow {
-          0%,100% { box-shadow: 0 0 0 6px rgba(55,138,221,0.05), 0 0 40px rgba(55,138,221,0.2); border-color: rgba(55,138,221,0.45); }
-          50%      { box-shadow: 0 0 0 8px rgba(93,202,165,0.08), 0 0 60px rgba(55,138,221,0.3); border-color: rgba(93,202,165,0.6); }
+          0%,100% { box-shadow: 0 0 0 6px rgba(139,124,248,0.05), 0 0 40px rgba(139,124,248,0.2); border-color: rgba(139,124,248,0.45); }
+          50%      { box-shadow: 0 0 0 8px rgba(45,212,191,0.08), 0 0 60px rgba(139,124,248,0.3); border-color: rgba(45,212,191,0.6); }
         }
         .ls-core-lt, .ls-core-gt {
           font-size: 22px; line-height: 1;
-          background: linear-gradient(160deg, #61afff, #5dcaa5);
+          background: linear-gradient(160deg, #b09ffc, #2dd4bf);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .ls-core-sl { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1; }
@@ -300,7 +300,7 @@ export default function LoadingScreen() {
 
         .ls-name {
           font-size: clamp(20px,4vw,26px); font-weight: 800;
-          color: #e8f4ff; margin: 0 0 10px; letter-spacing: -0.01em;
+          color: #ede8fd; margin: 0 0 10px; letter-spacing: -0.01em;
           line-height: 1.2;
         }
         .ls-role {
@@ -310,32 +310,32 @@ export default function LoadingScreen() {
         }
         .ls-role-chip {
           font-size: 12px; font-weight: 600;
-          background: rgba(55,138,221,0.1);
-          border: 1px solid rgba(55,138,221,0.22);
+          background: rgba(139,124,248,0.1);
+          border: 1px solid rgba(139,124,248,0.22);
           border-radius: 100px; padding: 3px 11px;
-          color: #61afff; font-family: 'Courier New', monospace;
+          color: #b09ffc; font-family: 'Courier New', monospace;
         }
-        .ls-role-dot { color: rgba(200,220,255,0.2); font-size: 14px; }
+        .ls-role-dot { color: rgba(200,195,240,0.2); font-size: 14px; }
 
         /* ── Terminal ── */
         .ls-terminal {
           width: 100%;
           background: rgba(8,17,31,0.85);
-          border: 1px solid rgba(55,138,221,0.18);
+          border: 1px solid rgba(139,124,248,0.18);
           border-radius: 14px;
           overflow: hidden;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(55,138,221,0.06);
+          box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(139,124,248,0.06);
         }
         .ls-term-chrome {
           display: flex; align-items: center; gap: 6px;
           padding: 10px 14px;
           background: rgba(255,255,255,0.025);
-          border-bottom: 1px solid rgba(55,138,221,0.1);
+          border-bottom: 1px solid rgba(139,124,248,0.1);
         }
         .ls-term-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
         .ls-term-title {
           margin-left: 8px; font-size: 11px;
-          color: rgba(200,220,255,0.3);
+          color: rgba(200,195,240,0.3);
           font-family: 'Courier New', monospace;
         }
         .ls-term-body {
@@ -353,9 +353,9 @@ export default function LoadingScreen() {
           from { opacity: 0; transform: translateX(-6px); }
           to   { opacity: 1; transform: none; }
         }
-        .ls-term-prompt { color: #5dcaa5; flex-shrink: 0; font-weight: 700; }
+        .ls-term-prompt { color: #2dd4bf; flex-shrink: 0; font-weight: 700; }
         .ls-cursor {
-          color: #378add;
+          color: #8b7cf8;
           animation: lsBlink 0.9s step-end infinite;
         }
         @keyframes lsBlink { 0%,100%{opacity:1} 50%{opacity:0} }
@@ -364,7 +364,7 @@ export default function LoadingScreen() {
         .ls-ring-wrap {
           width: 100%; display: flex; align-items: center; gap: 20px;
           background: rgba(8,17,31,0.55);
-          border: 1px solid rgba(55,138,221,0.1);
+          border: 1px solid rgba(139,124,248,0.1);
           border-radius: 16px; padding: 16px 22px;
         }
         .ls-ring-area {
@@ -386,7 +386,7 @@ export default function LoadingScreen() {
         }
         .ls-ring-sym {
           font-size: 9px; font-weight: 700;
-          color: rgba(200,220,255,0.3);
+          color: rgba(200,195,240,0.3);
           font-family: 'Courier New', monospace;
           margin-top: 1px;
         }
@@ -397,10 +397,10 @@ export default function LoadingScreen() {
         }
         .ls-ring-label {
           font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
-          color: rgba(200,220,255,0.25); font-family: 'Courier New', monospace;
+          color: rgba(200,195,240,0.25); font-family: 'Courier New', monospace;
         }
         .ls-ring-status {
-          font-size: 12px; color: rgba(200,220,255,0.45);
+          font-size: 12px; color: rgba(200,195,240,0.45);
           font-family: 'Courier New', monospace;
           overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
         }

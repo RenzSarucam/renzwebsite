@@ -1,11 +1,11 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #050d1a;
-  --foreground: #e8f4ff;
+  --background: #0c0b14;
+  --foreground: #ede8fd;
 }
 
 @theme inline {
@@ -87,7 +87,7 @@ nav button::after {
   transform: translateX(-50%) scaleX(0);
   width: 60%;
   height: 2px;
-  background: linear-gradient(90deg, #378add, #5dcaa5);
+  background: linear-gradient(90deg, #8b7cf8, #2dd4bf);
   border-radius: 99px;
   transition: transform 0.25s ease;
 }
@@ -95,7 +95,7 @@ nav button:hover::after {
   transform: translateX(-50%) scaleX(1);
 }
 nav button:hover {
-  color: #e8f4ff !important;
+  color: #ede8fd !important;
 }
 
 /* Project cards, exp cards, skill cards — lift on hover */
@@ -105,8 +105,8 @@ nav button:hover {
 }
 .exp-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(55,138,221,0.3) !important;
-  box-shadow: 0 8px 32px rgba(55,138,221,0.12) !important;
+  border-color: rgba(139,124,248,0.3) !important;
+  box-shadow: 0 8px 32px rgba(139,124,248,0.12) !important;
 }
 
 /* Skill tags */
@@ -124,7 +124,7 @@ button, a, [role="button"] {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
-  outline: 2px solid rgba(55,138,221,0.6);
+  outline: 2px solid rgba(139,124,248,0.6);
   outline-offset: 3px;
   border-radius: 6px;
 }

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 
 export default function PrintButton() {
@@ -62,7 +62,7 @@ export default function PrintButton() {
                 style={{
                   flex: 1,
                   padding: "12px 0",
-                  background: "#1a73e8",
+                  background: "#7c6af7",
                   color: "#fff",
                   border: "none",
                   borderRadius: 10,
@@ -100,7 +100,7 @@ export default function PrintButton() {
           position: "fixed",
           bottom: 24,
           right: 24,
-          background: "#1a73e8",
+          background: "#7c6af7",
           color: "#fff",
           border: "none",
           borderRadius: 10,

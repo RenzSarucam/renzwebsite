@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
@@ -53,11 +53,11 @@ export default function RootLayout({
         style={{
           margin: 0,
           padding: 0,
-          background: "#050d1a",
+          background: "#0c0b14",
           fontFamily: "'Segoe UI', 'SF Pro Display', system-ui, sans-serif",
           WebkitFontSmoothing: "antialiased",
           MozOsxFontSmoothing: "grayscale",
-          color: "#e8f4ff",
+          color: "#ede8fd",
           scrollBehavior: "smooth",
         }}
       >
