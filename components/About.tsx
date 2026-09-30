@@ -507,31 +507,31 @@ export default function About() {
         .about-avatar-card {
           background: rgba(255,255,255,0.025);
           border: 1px solid rgba(55,138,221,0.14);
-          border-radius: 20px;
-          padding: 32px 24px 24px;
+          border-radius: 24px;
+          padding: 36px 28px 28px;
           display: flex; flex-direction: column; align-items: center;
           text-align: center; position: relative;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+          box-shadow: 0 8px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(55,138,221,0.06);
         }
 
         .about-avatar-ring {
-          position: absolute; top: 24px; left: 50%; transform: translateX(-50%);
-          width: 92px; height: 92px; border-radius: 50%;
+          position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+          width: 136px; height: 136px; border-radius: 50%;
           border: 1px solid rgba(55,138,221,0.25);
           animation: ringPulse 3s ease-in-out infinite;
         }
         @keyframes ringPulse {
           0%,100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
-          50%      { transform: translateX(-50%) scale(1.12); opacity: 0.2; }
+          50%      { transform: translateX(-50%) scale(1.1); opacity: 0.2; }
         }
 
         .about-avatar {
-          width: 80px; height: 80px; border-radius: 50%;
+          width: 120px; height: 120px; border-radius: 50%;
           background: linear-gradient(135deg, #0d2040, #050e1c);
-          border: 2px solid rgba(55,138,221,0.4);
+          border: 2.5px solid rgba(55,138,221,0.45);
           display: flex; align-items: center; justify-content: center;
-          position: relative; margin-bottom: 16px;
-          box-shadow: 0 0 0 4px rgba(55,138,221,0.08), 0 0 28px rgba(55,138,221,0.25);
+          position: relative; margin-bottom: 18px;
+          box-shadow: 0 0 0 5px rgba(55,138,221,0.07), 0 0 36px rgba(55,138,221,0.28);
         }
         .about-avatar-btn {
           cursor: pointer;
@@ -539,8 +539,8 @@ export default function About() {
           transition: box-shadow 0.25s, transform 0.25s;
         }
         .about-avatar-btn:hover {
-          box-shadow: 0 0 0 4px rgba(55,138,221,0.18), 0 0 36px rgba(55,138,221,0.45);
-          transform: scale(1.06);
+          box-shadow: 0 0 0 5px rgba(55,138,221,0.16), 0 0 48px rgba(55,138,221,0.45);
+          transform: scale(1.05);
         }
         .about-avatar-btn:hover .about-avatar-zoom { opacity: 1; }
 
@@ -568,19 +568,19 @@ export default function About() {
         }
         @keyframes orbitSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
         .about-orbit-dot {
-          position: absolute; top: -4px; left: 50%; transform: translateX(-50%);
-          width: 8px; height: 8px; border-radius: 50%;
+          position: absolute; top: -5px; left: 50%; transform: translateX(-50%);
+          width: 9px; height: 9px; border-radius: 50%;
           background: #5dcaa5;
-          box-shadow: 0 0 8px #5dcaa5;
+          box-shadow: 0 0 10px #5dcaa5;
         }
 
         .about-avatar-name {
-          font-size: 15px; font-weight: 700; color: #e8f4ff;
-          margin: 0 0 4px; line-height: 1.3;
+          font-size: 16px; font-weight: 700; color: #e8f4ff;
+          margin: 0 0 5px; line-height: 1.3;
         }
         .about-avatar-role {
           font-size: 12px; color: rgba(200,220,255,0.45);
-          font-family: 'Courier New', monospace; margin: 0 0 16px;
+          font-family: 'Courier New', monospace; margin: 0 0 18px;
         }
         .about-status {
           display: inline-flex; align-items: center; gap: 7px;
@@ -627,8 +627,8 @@ export default function About() {
 
         .about-bio-block { display: flex; flex-direction: column; gap: 14px; }
         .about-bio-text {
-          font-size: 16px; color: rgba(200,220,255,0.62);
-          line-height: 1.8; margin: 0;
+          font-size: 16px; color: rgba(200,220,255,0.66);
+          line-height: 1.85; margin: 0;
         }
 
         .about-services-label {
@@ -643,14 +643,15 @@ export default function About() {
         }
         .about-service-card {
           display: flex; gap: 14px; align-items: flex-start;
-          background: rgba(255,255,255,0.025);
+          background: rgba(255,255,255,0.022);
           border: 1px solid rgba(55,138,221,0.1);
-          border-radius: 12px; padding: 16px;
-          transition: border-color 0.2s, transform 0.2s;
+          border-radius: 14px; padding: 18px;
+          transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
         }
         .about-service-card:hover {
-          border-color: rgba(55,138,221,0.28);
+          border-color: rgba(55,138,221,0.3);
           transform: translateY(-2px);
+          box-shadow: 0 6px 24px rgba(55,138,221,0.08);
         }
         .about-service-icon {
           width: 40px; height: 40px; border-radius: 10px;
