@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 
@@ -86,7 +86,7 @@ export default function Navbar() {
           flexDirection: "column",
           background: "rgba(5,13,26,0.92)",
           backdropFilter: "blur(18px)",
-          border: "1px solid rgba(139,124,248,0.18)",
+          border: "1px solid rgba(55,138,221,0.18)",
           borderRadius: 18,
           boxShadow: "0 18px 42px rgba(0,0,0,0.28)",
           overflow: "hidden",
@@ -115,7 +115,7 @@ export default function Navbar() {
                 <span className="nav-atom-gt">&gt;</span>
               </div>
             </div>
-            <span style={{ color: "#ede8fd", fontSize: 16, fontWeight: 700 }}>RCS.dev</span>
+            <span style={{ color: "#e8f4ff", fontSize: 16, fontWeight: 700 }}>RCS.dev</span>
           </div>
 
           {/* Desktop nav links */}
@@ -134,7 +134,7 @@ export default function Navbar() {
                     padding: "8px 13px",
                     borderRadius: 999,
                     fontSize: 14,
-                    color: isActive ? "#b09ffc" : "rgba(200,195,240,0.55)",
+                    color: isActive ? "#61afff" : "rgba(200,220,255,0.55)",
                     fontFamily: "inherit",
                     fontWeight: isActive ? 600 : 400,
                     transition: "color 0.2s, background 0.2s, box-shadow 0.2s",
@@ -151,7 +151,7 @@ export default function Navbar() {
                       width: 20,
                       height: 2,
                       borderRadius: 99,
-                      background: "linear-gradient(90deg, #b09ffc, #2dd4bf)",
+                      background: "linear-gradient(90deg, #61afff, #5dcaa5)",
                       boxShadow: "0 0 6px rgba(97,175,255,0.7)",
                     }} />
                   )}
@@ -169,8 +169,8 @@ export default function Navbar() {
                 padding: "10px 18px",
                 borderRadius: 12,
                 background: "transparent",
-                border: "1px solid rgba(139,124,248,0.45)",
-                color: "#b09ffc",
+                border: "1px solid rgba(55,138,221,0.45)",
+                color: "#61afff",
                 fontSize: 15,
                 fontWeight: 600,
                 cursor: "pointer",
@@ -189,9 +189,9 @@ export default function Navbar() {
               aria-label="Toggle menu"
               style={{
                 background: "transparent",
-                border: "1px solid rgba(139,124,248,0.3)",
+                border: "1px solid rgba(55,138,221,0.3)",
                 borderRadius: 8,
-                color: "#8b7cf8",
+                color: "#378add",
                 cursor: "pointer",
                 width: 40,
                 height: 40,
@@ -213,7 +213,7 @@ export default function Navbar() {
           <div
             className="navbar-mobile-menu"
             style={{
-              borderTop: "1px solid rgba(139,124,248,0.15)",
+              borderTop: "1px solid rgba(55,138,221,0.15)",
               padding: "14px 18px 16px",
               gap: 8,
             }}
@@ -224,7 +224,7 @@ export default function Navbar() {
                 onClick={() => scrollTo(id)}
                 style={{
                   background: "rgba(255,255,255,0.035)",
-                  border: "1px solid rgba(139,124,248,0.16)",
+                  border: "1px solid rgba(55,138,221,0.16)",
                   cursor: "pointer",
                   padding: "10px 14px",
                   borderRadius: 10,
@@ -242,12 +242,12 @@ export default function Navbar() {
               onClick={() => scrollTo("contact")}
               style={{
                 background: "rgba(255,255,255,0.035)",
-                border: "1px solid rgba(139,124,248,0.36)",
+                border: "1px solid rgba(55,138,221,0.36)",
                 cursor: "pointer",
                 padding: "10px 14px",
                 borderRadius: 10,
                 fontSize: 13,
-                color: "#b09ffc",
+                color: "#61afff",
                 fontFamily: "inherit",
                 textAlign: "center",
                 width: "100%",
@@ -274,8 +274,8 @@ export default function Navbar() {
           top: 50%; left: 50%;
           margin: -6px 0 0 -16px;
         }
-        .nav-orbit-1 { border: 1.5px solid rgba(139,124,248,0.6);  animation: navOrbit1 2.4s linear infinite; }
-        .nav-orbit-2 { border: 1.5px solid rgba(45,212,191,0.55); animation: navOrbit2 1.9s linear infinite; }
+        .nav-orbit-1 { border: 1.5px solid rgba(55,138,221,0.6);  animation: navOrbit1 2.4s linear infinite; }
+        .nav-orbit-2 { border: 1.5px solid rgba(93,202,165,0.55); animation: navOrbit2 1.9s linear infinite; }
         .nav-orbit-3 { border: 1.5px solid rgba(97,175,255,0.45); animation: navOrbit3 3.1s linear infinite; }
         @keyframes navOrbit1 { from{transform:rotateZ(0deg)}   to{transform:rotateZ(360deg)} }
         @keyframes navOrbit2 { from{transform:rotateZ(60deg)}  to{transform:rotateZ(420deg)} }
@@ -286,26 +286,26 @@ export default function Navbar() {
           top: -2.5px; left: 50%;
           transform: translateX(-50%);
         }
-        .no-1 { width: 5px; height: 5px; background: #8b7cf8; box-shadow: 0 0 5px #8b7cf8, 0 0 10px rgba(139,124,248,0.8); }
-        .no-2 { width: 4px; height: 4px; background: #2dd4bf; box-shadow: 0 0 5px #2dd4bf, 0 0 9px rgba(45,212,191,0.8); }
-        .no-3 { width: 3.5px; height: 3.5px; background: #b09ffc; box-shadow: 0 0 4px #b09ffc, 0 0 8px rgba(97,175,255,0.8); }
+        .no-1 { width: 5px; height: 5px; background: #378add; box-shadow: 0 0 5px #378add, 0 0 10px rgba(55,138,221,0.8); }
+        .no-2 { width: 4px; height: 4px; background: #5dcaa5; box-shadow: 0 0 5px #5dcaa5, 0 0 9px rgba(93,202,165,0.8); }
+        .no-3 { width: 3.5px; height: 3.5px; background: #61afff; box-shadow: 0 0 4px #61afff, 0 0 8px rgba(97,175,255,0.8); }
         .nav-atom-core {
           position: absolute;
           width: 18px; height: 18px;
           border-radius: 50%;
           background: radial-gradient(circle, #0d2040, #050e1c);
-          border: 1px solid rgba(139,124,248,0.4);
+          border: 1px solid rgba(55,138,221,0.4);
           display: flex; align-items: center; justify-content: center;
           font-family: 'Courier New', monospace; font-weight: 900;
           animation: navCorePulse 2.5s ease-in-out infinite;
         }
         @keyframes navCorePulse {
-          0%,100% { box-shadow: 0 0 6px rgba(139,124,248,0.4); }
-          50%     { box-shadow: 0 0 12px rgba(45,212,191,0.6); }
+          0%,100% { box-shadow: 0 0 6px rgba(55,138,221,0.4); }
+          50%     { box-shadow: 0 0 12px rgba(93,202,165,0.6); }
         }
         .nav-atom-lt, .nav-atom-gt {
           font-size: 6px; line-height: 1;
-          background: linear-gradient(135deg, #b09ffc, #2dd4bf);
+          background: linear-gradient(135deg, #61afff, #5dcaa5);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent;
           background-clip: text;
         }
@@ -320,16 +320,16 @@ export default function Navbar() {
 
         /* Nav link hover glow */
         .navbar-link-btn:hover {
-          color: #b09ffc !important;
-          background: rgba(139,124,248,0.12) !important;
-          box-shadow: 0 0 12px rgba(139,124,248,0.35), 0 0 4px rgba(139,124,248,0.2) inset !important;
+          color: #61afff !important;
+          background: rgba(55,138,221,0.12) !important;
+          box-shadow: 0 0 12px rgba(55,138,221,0.35), 0 0 4px rgba(55,138,221,0.2) inset !important;
         }
 
         /* Hire me button hover glow */
         .navbar-hire:hover {
-          background: rgba(139,124,248,0.12) !important;
-          border-color: rgba(139,124,248,0.85) !important;
-          box-shadow: 0 0 16px rgba(139,124,248,0.5), 0 0 6px rgba(139,124,248,0.25) inset !important;
+          background: rgba(55,138,221,0.12) !important;
+          border-color: rgba(55,138,221,0.85) !important;
+          box-shadow: 0 0 16px rgba(55,138,221,0.5), 0 0 6px rgba(55,138,221,0.25) inset !important;
         }
 
         /* Desktop: show links, hide hamburger */

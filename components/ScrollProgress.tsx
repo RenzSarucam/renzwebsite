@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect, useState } from "react";
 
 export default function ScrollProgress() {
@@ -24,7 +24,7 @@ export default function ScrollProgress() {
         right: 0,
         height: 3,
         zIndex: 9999,
-        background: "rgba(139,124,248,0.08)",
+        background: "rgba(55,138,221,0.08)",
         pointerEvents: "none",
       }}
     >
@@ -32,9 +32,9 @@ export default function ScrollProgress() {
         style={{
           height: "100%",
           width: `${progress}%`,
-          background: "linear-gradient(90deg, #8b7cf8, #2dd4bf)",
+          background: "linear-gradient(90deg, #378add, #5dcaa5)",
           transition: "width 0.08s linear",
-          boxShadow: "0 0 8px rgba(139,124,248,0.6)",
+          boxShadow: "0 0 8px rgba(55,138,221,0.6)",
         }}
       />
     </div>

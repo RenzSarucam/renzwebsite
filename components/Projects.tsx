@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
@@ -8,11 +8,11 @@ const filters = ["All", "Full Stack", "Mobile", "Figma", "Docker"];
 
 const typeColor = (types: string | string[]) => {
   const t = Array.isArray(types) ? types[0] : types;
-  if (t === "Full Stack") return { accent: "#8b7cf8", glow: "rgba(139,124,248,0.18)", badge: "rgba(139,124,248,0.1)", badgeText: "#b09ffc", badgeBorder: "rgba(139,124,248,0.22)" };
-  if (t === "Mobile")     return { accent: "#2dd4bf", glow: "rgba(45,212,191,0.15)",  badge: "rgba(45,212,191,0.1)",  badgeText: "#2dd4bf",  badgeBorder: "rgba(45,212,191,0.22)"  };
-  if (t === "Figma")      return { accent: "#f59e0b", glow: "rgba(198,120,221,0.15)", badge: "rgba(198,120,221,0.1)", badgeText: "#f59e0b",  badgeBorder: "rgba(198,120,221,0.22)" };
+  if (t === "Full Stack") return { accent: "#378add", glow: "rgba(55,138,221,0.18)", badge: "rgba(55,138,221,0.1)", badgeText: "#61afff", badgeBorder: "rgba(55,138,221,0.22)" };
+  if (t === "Mobile")     return { accent: "#5dcaa5", glow: "rgba(93,202,165,0.15)",  badge: "rgba(93,202,165,0.1)",  badgeText: "#5dcaa5",  badgeBorder: "rgba(93,202,165,0.22)"  };
+  if (t === "Figma")      return { accent: "#c678dd", glow: "rgba(198,120,221,0.15)", badge: "rgba(198,120,221,0.1)", badgeText: "#c678dd",  badgeBorder: "rgba(198,120,221,0.22)" };
   if (t === "Docker")     return { accent: "#e5a44b", glow: "rgba(229,164,75,0.15)",  badge: "rgba(229,164,75,0.1)",  badgeText: "#e5a44b",  badgeBorder: "rgba(229,164,75,0.22)"  };
-  return { accent: "#8b7cf8", glow: "rgba(139,124,248,0.15)", badge: "rgba(139,124,248,0.1)", badgeText: "#b09ffc", badgeBorder: "rgba(139,124,248,0.2)" };
+  return { accent: "#378add", glow: "rgba(55,138,221,0.15)", badge: "rgba(55,138,221,0.1)", badgeText: "#61afff", badgeBorder: "rgba(55,138,221,0.2)" };
 };
 
 export default function Projects() {
@@ -33,13 +33,13 @@ export default function Projects() {
 
         {/* Header */}
         <div style={{ marginBottom: 48 }}>
-          <p style={{ fontSize: 14, color: "#8b7cf8", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
+          <p style={{ fontSize: 14, color: "#378add", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
             01. Projects
           </p>
-          <h2 style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 700, color: "#ede8fd", margin: "0 0 12px" }}>
+          <h2 style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 700, color: "#e8f4ff", margin: "0 0 12px" }}>
             Things I&apos;ve Built
           </h2>
-          <p style={{ fontSize: 17, color: "rgba(200,195,240,0.5)", maxWidth: 500, margin: 0 }}>
+          <p style={{ fontSize: 17, color: "rgba(200,220,255,0.5)", maxWidth: 500, margin: 0 }}>
             A collection of projects from research, development, and personal exploration.
           </p>
         </div>
@@ -62,9 +62,9 @@ export default function Projects() {
         <div className="pf-legend">
           <span className="pfl-label">Color key:</span>
           {[
-            { color: "#8b7cf8", label: "Full Stack" },
-            { color: "#2dd4bf", label: "Mobile" },
-            { color: "#f59e0b", label: "Figma / Design" },
+            { color: "#378add", label: "Full Stack" },
+            { color: "#5dcaa5", label: "Mobile" },
+            { color: "#c678dd", label: "Figma / Design" },
             { color: "#e5a44b", label: "Docker" },
           ].map(({ color, label }) => (
             <span key={label} className="pfl-item">
@@ -98,22 +98,22 @@ export default function Projects() {
         .pf-btn {
           display: inline-flex; align-items: center; gap: 7px;
           padding: 8px 16px; border-radius: 999px;
-          border: 1px solid rgba(139,124,248,0.18);
-          background: transparent; color: rgba(200,195,240,0.5);
+          border: 1px solid rgba(55,138,221,0.18);
+          background: transparent; color: rgba(200,220,255,0.5);
           font-size: 14px; font-weight: 500; cursor: pointer;
           transition: all 0.2s; font-family: inherit;
         }
-        .pf-btn:hover { border-color: rgba(139,124,248,0.4); color: #ede8fd; background: rgba(139,124,248,0.06); }
+        .pf-btn:hover { border-color: rgba(55,138,221,0.4); color: #e8f4ff; background: rgba(55,138,221,0.06); }
         .pf-btn-active {
-          background: rgba(139,124,248,0.14);
-          border-color: rgba(139,124,248,0.5);
-          color: #b09ffc;
-          box-shadow: 0 0 12px rgba(139,124,248,0.18);
+          background: rgba(55,138,221,0.14);
+          border-color: rgba(55,138,221,0.5);
+          color: #61afff;
+          box-shadow: 0 0 12px rgba(55,138,221,0.18);
         }
         .pf-count {
           font-size: 11px; font-weight: 700;
-          background: rgba(139,124,248,0.12);
-          border: 1px solid rgba(139,124,248,0.2);
+          background: rgba(55,138,221,0.12);
+          border: 1px solid rgba(55,138,221,0.2);
           border-radius: 999px; padding: 1px 7px;
           font-family: 'Courier New', monospace;
           color: inherit;
@@ -125,17 +125,17 @@ export default function Projects() {
           margin-bottom: 24px;
           padding: 10px 16px;
           background: rgba(255,255,255,0.02);
-          border: 1px solid rgba(139,124,248,0.09);
+          border: 1px solid rgba(55,138,221,0.09);
           border-radius: 10px;
         }
         .pfl-label {
           font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-          text-transform: uppercase; color: rgba(200,195,240,0.3);
+          text-transform: uppercase; color: rgba(200,220,255,0.3);
           font-family: 'Courier New', monospace; flex-shrink: 0;
         }
         .pfl-item {
           display: inline-flex; align-items: center; gap: 7px;
-          font-size: 12.5px; color: rgba(200,195,240,0.5);
+          font-size: 12.5px; color: rgba(200,220,255,0.5);
         }
         .pfl-dot {
           width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0;
@@ -183,7 +183,7 @@ function ProjectCard({ project, index, featured, onOpen }: {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        borderColor: hovered ? `${c.accent}50` : "rgba(139,124,248,0.1)",
+        borderColor: hovered ? `${c.accent}50` : "rgba(55,138,221,0.1)",
         boxShadow: hovered ? `0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px ${c.accent}22, 0 0 32px ${c.glow}` : "none",
         transform: hovered ? "translateY(-4px)" : "none",
       }}
@@ -234,12 +234,12 @@ function ProjectCard({ project, index, featured, onOpen }: {
 
         {/* Footer */}
         <div className="pc-footer" style={{ borderColor: hovered ? `${c.accent}22` : "rgba(255,255,255,0.05)" }}>
-          <span className="pc-cta" style={{ color: hovered ? c.accent : "rgba(200,195,240,0.35)" }}>
+          <span className="pc-cta" style={{ color: hovered ? c.accent : "rgba(200,220,255,0.35)" }}>
             View details
           </span>
           <svg
             width="14" height="14" viewBox="0 0 24 24" fill="none"
-            stroke={hovered ? c.accent : "rgba(200,195,240,0.3)"}
+            stroke={hovered ? c.accent : "rgba(200,220,255,0.3)"}
             strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
             style={{ transform: hovered ? "translateX(3px)" : "none", transition: "transform 0.2s, stroke 0.2s" }}
           >
@@ -287,23 +287,23 @@ function ProjectCard({ project, index, featured, onOpen }: {
           font-size: 11px; padding: 2px 8px; border-radius: 100px;
           border: 1px solid; font-weight: 500;
         }
-        .status-done { background: rgba(29,158,117,0.1); color: #2dd4bf; border-color: rgba(29,158,117,0.25); }
+        .status-done { background: rgba(29,158,117,0.1); color: #5dcaa5; border-color: rgba(29,158,117,0.25); }
         .status-wip  { background: rgba(239,159,39,0.1);  color: #ef9f27; border-color: rgba(239,159,39,0.25); }
 
         .pc-title {
-          font-size: 18px; font-weight: 700; color: #ede8fd;
+          font-size: 18px; font-weight: 700; color: #e8f4ff;
           margin: 0; line-height: 1.3;
         }
         .pc-inner-featured .pc-title { font-size: 26px; }
 
         .pc-place {
-          font-size: 12px; color: rgba(200,195,240,0.38);
+          font-size: 12px; color: rgba(200,220,255,0.38);
           display: inline-flex; align-items: center; gap: 5px;
           font-family: 'Courier New', monospace;
         }
 
         .pc-desc {
-          font-size: 13.5px; color: rgba(200,195,240,0.55);
+          font-size: 13.5px; color: rgba(200,220,255,0.55);
           margin: 0; line-height: 1.65;
           display: -webkit-box;
           -webkit-line-clamp: 3;
@@ -317,7 +317,7 @@ function ProjectCard({ project, index, featured, onOpen }: {
           font-size: 11.5px; padding: 3px 9px; border-radius: 5px;
           background: rgba(255,255,255,0.04);
           border: 1px solid rgba(255,255,255,0.08);
-          color: rgba(200,195,240,0.5);
+          color: rgba(200,220,255,0.5);
         }
         .pc-tag-more {
           font-size: 11.5px; padding: 3px 9px; border-radius: 5px;
@@ -457,9 +457,9 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         .dm-panel {
           width: min(560px, 100%); max-height: 88vh;
           background: #08111f;
-          border: 1px solid rgba(139,124,248,0.18);
+          border: 1px solid rgba(55,138,221,0.18);
           border-radius: 20px;
-          box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(139,124,248,0.06);
+          box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(55,138,221,0.06);
           display: flex; flex-direction: column;
           transition: transform 0.28s cubic-bezier(0.34,1.4,0.64,1), opacity 0.28s ease;
           overflow: hidden;
@@ -467,7 +467,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         .dm-header {
           display: flex; align-items: center; gap: 12px;
           padding: 18px 22px 14px;
-          border-bottom: 1px solid rgba(139,124,248,0.1);
+          border-bottom: 1px solid rgba(55,138,221,0.1);
           flex-shrink: 0;
         }
         .dm-badge {
@@ -475,34 +475,34 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           border: 1px solid; font-weight: 500;
         }
         .dm-status { border-radius: 100px !important; }
-        .status-done { background: rgba(29,158,117,0.12); color: #2dd4bf; border-color: rgba(29,158,117,0.28) !important; }
+        .status-done { background: rgba(29,158,117,0.12); color: #5dcaa5; border-color: rgba(29,158,117,0.28) !important; }
         .status-wip  { background: rgba(239,159,39,0.12);  color: #ef9f27; border-color: rgba(239,159,39,0.28)  !important; }
         .dm-close {
           width: 32px; height: 32px; border-radius: 8px;
           background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-          color: rgba(200,195,240,0.5); cursor: pointer;
+          color: rgba(200,220,255,0.5); cursor: pointer;
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0; transition: all 0.2s;
         }
-        .dm-close:hover { background: rgba(139,124,248,0.12); color: #b09ffc; }
+        .dm-close:hover { background: rgba(55,138,221,0.12); color: #61afff; }
         .dm-body {
           flex: 1; overflow-y: auto; padding: 22px 22px;
           display: flex; flex-direction: column; gap: 18px;
-          scrollbar-width: thin; scrollbar-color: rgba(139,124,248,0.2) transparent;
+          scrollbar-width: thin; scrollbar-color: rgba(55,138,221,0.2) transparent;
         }
         .dm-body::-webkit-scrollbar { width: 4px; }
         .dm-body::-webkit-scrollbar-track { background: transparent; }
-        .dm-body::-webkit-scrollbar-thumb { background: rgba(139,124,248,0.2); border-radius: 99px; }
-        .dm-title { margin: 0 0 6px; font-size: clamp(20px,4vw,26px); font-weight: 700; color: #ede8fd; line-height: 1.25; }
-        .dm-place { font-size: 13px; color: rgba(200,195,240,0.4); display: inline-flex; align-items: center; gap: 5px; }
-        .dm-divider { height: 1px; background: rgba(139,124,248,0.08); }
-        .dm-label { margin: 0 0 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: rgba(139,124,248,0.65); text-transform: uppercase; font-family: 'Courier New', monospace; }
-        .dm-desc { margin: 0; font-size: 14.5px; color: rgba(200,195,240,0.62); line-height: 1.75; }
+        .dm-body::-webkit-scrollbar-thumb { background: rgba(55,138,221,0.2); border-radius: 99px; }
+        .dm-title { margin: 0 0 6px; font-size: clamp(20px,4vw,26px); font-weight: 700; color: #e8f4ff; line-height: 1.25; }
+        .dm-place { font-size: 13px; color: rgba(200,220,255,0.4); display: inline-flex; align-items: center; gap: 5px; }
+        .dm-divider { height: 1px; background: rgba(55,138,221,0.08); }
+        .dm-label { margin: 0 0 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: rgba(55,138,221,0.65); text-transform: uppercase; font-family: 'Courier New', monospace; }
+        .dm-desc { margin: 0; font-size: 14.5px; color: rgba(200,220,255,0.62); line-height: 1.75; }
         .dm-tags { display: flex; flex-wrap: wrap; gap: 7px; }
-        .dm-tag { font-size: 12px; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: rgba(200,195,240,0.6); }
+        .dm-tag { font-size: 12px; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: rgba(200,220,255,0.6); }
         .dm-footer {
           padding: 14px 22px 22px;
-          border-top: 1px solid rgba(139,124,248,0.1);
+          border-top: 1px solid rgba(55,138,221,0.1);
           display: flex; gap: 10px; flex-shrink: 0;
         }
         .dm-cta {
@@ -511,18 +511,18 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           color: #fff; font-size: 14px; font-weight: 600;
           text-decoration: none; cursor: pointer; transition: all 0.2s;
         }
-        .dm-cta:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(139,124,248,0.4) !important; }
+        .dm-cta:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(55,138,221,0.4) !important; }
         .dm-confidential {
           flex: 1; display: inline-flex; align-items: center; gap: 6px;
-          font-size: 13px; color: rgba(200,195,240,0.3); font-style: italic;
+          font-size: 13px; color: rgba(200,220,255,0.3); font-style: italic;
         }
         .dm-close-btn {
           padding: 11px 20px; border-radius: 10px;
           background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-          color: rgba(200,195,240,0.5); font-size: 14px; font-weight: 500;
+          color: rgba(200,220,255,0.5); font-size: 14px; font-weight: 500;
           cursor: pointer; transition: all 0.2s; font-family: inherit; flex-shrink: 0;
         }
-        .dm-close-btn:hover { background: rgba(255,255,255,0.09); color: rgba(200,195,240,0.85); }
+        .dm-close-btn:hover { background: rgba(255,255,255,0.09); color: rgba(200,220,255,0.85); }
         @media (max-width: 640px) {
           .dm-overlay { align-items: flex-end; padding: 0; }
           .dm-panel { width: 100%; max-height: 90dvh; border-radius: 20px 20px 0 0; }

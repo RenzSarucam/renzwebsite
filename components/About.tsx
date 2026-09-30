@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
@@ -12,7 +12,7 @@ const services = [
     ),
     title: "Full Stack Development",
     desc: "End-to-end web apps with React / Next.js on the frontend and Laravel or Node.js on the backend.",
-    color: "#8b7cf8",
+    color: "#378add",
   },
   {
     icon: (
@@ -23,7 +23,7 @@ const services = [
     ),
     title: "DevOps & Infrastructure",
     desc: "Docker, GitHub Actions CI/CD, Nginx, Linux server administration, and multi-environment deployments.",
-    color: "#2dd4bf",
+    color: "#5dcaa5",
   },
   {
     icon: (
@@ -43,7 +43,7 @@ const services = [
     ),
     title: "UI / UX Design",
     desc: "Wireframes, prototypes, and high-fidelity designs in Figma for web and mobile platforms.",
-    color: "#f59e0b",
+    color: "#c678dd",
   },
 ];
 
@@ -64,7 +64,7 @@ const modalInfo = [
     ),
     label: "Location",
     value: "Davao City, Philippines",
-    color: "#8b7cf8",
+    color: "#378add",
   },
   {
     icon: (
@@ -74,7 +74,7 @@ const modalInfo = [
     ),
     label: "Email",
     value: "renzcarljansen@gmail.com",
-    color: "#2dd4bf",
+    color: "#5dcaa5",
   },
   {
     icon: (
@@ -94,7 +94,7 @@ const modalInfo = [
     ),
     label: "Role",
     value: "Full Stack · DevOps · R&D Engineer",
-    color: "#f59e0b",
+    color: "#c678dd",
   },
   {
     icon: (
@@ -104,7 +104,7 @@ const modalInfo = [
     ),
     label: "Education",
     value: "BSIT — Holy Cross of Davao College",
-    color: "#8b7cf8",
+    color: "#378add",
   },
 ];
 
@@ -230,12 +230,12 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         .apm-modal {
           display: flex; flex-direction: row;
           background: rgba(8,18,36,0.97);
-          border: 1px solid rgba(139,124,248,0.22);
+          border: 1px solid rgba(55,138,221,0.22);
           border-radius: 24px;
           overflow: hidden;
           max-width: 820px; width: 100%;
           max-height: 90vh;
-          box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(139,124,248,0.08);
+          box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(55,138,221,0.08);
           transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease;
         }
 
@@ -245,7 +245,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
           background: rgba(5,13,26,0.8);
           display: flex; align-items: center; justify-content: center;
           padding: 32px 24px;
-          border-right: 1px solid rgba(139,124,248,0.1);
+          border-right: 1px solid rgba(55,138,221,0.1);
           position: relative;
         }
         .apm-photo-frame {
@@ -253,7 +253,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
           width: 220px; height: 280px;
           border-radius: 16px;
           overflow: hidden;
-          box-shadow: 0 0 0 1px rgba(139,124,248,0.2), 0 8px 40px rgba(139,124,248,0.15);
+          box-shadow: 0 0 0 1px rgba(55,138,221,0.2), 0 8px 40px rgba(55,138,221,0.15);
         }
         .apm-photo {
           width: 100%; height: 100%;
@@ -264,7 +264,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         /* Corner accents */
         .apm-corner {
           position: absolute; width: 18px; height: 18px;
-          border-color: #b09ffc; border-style: solid;
+          border-color: #61afff; border-style: solid;
           opacity: 0.7;
         }
         .apm-corner-tl { top: 0; left: 0; border-width: 2px 0 0 2px; border-radius: 4px 0 0 0; }
@@ -284,43 +284,43 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
           position: absolute; top: 16px; right: 16px;
           width: 32px; height: 32px; border-radius: 8px;
           background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(139,124,248,0.2);
-          color: rgba(200,195,240,0.6);
+          border: 1px solid rgba(55,138,221,0.2);
+          color: rgba(200,220,255,0.6);
           cursor: pointer; display: flex; align-items: center; justify-content: center;
           transition: background 0.2s, color 0.2s;
           z-index: 1;
         }
-        .apm-close:hover { background: rgba(139,124,248,0.15); color: #ede8fd; }
+        .apm-close:hover { background: rgba(55,138,221,0.15); color: #e8f4ff; }
 
         .apm-info-tag {
           font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-          text-transform: uppercase; color: rgba(139,124,248,0.6);
+          text-transform: uppercase; color: rgba(55,138,221,0.6);
           font-family: 'Courier New', monospace; margin-bottom: 8px;
         }
         .apm-info-name {
-          font-size: 20px; font-weight: 800; color: #ede8fd;
+          font-size: 20px; font-weight: 800; color: #e8f4ff;
           margin: 0 0 4px; line-height: 1.25;
         }
         .apm-info-role {
-          font-size: 13px; color: rgba(200,195,240,0.45);
+          font-size: 13px; color: rgba(200,220,255,0.45);
           font-family: 'Courier New', monospace; margin: 0 0 12px;
         }
         .apm-info-status {
           display: inline-flex; align-items: center; gap: 7px;
           padding: 4px 12px; border-radius: 100px;
-          background: rgba(45,212,191,0.1);
-          border: 1px solid rgba(45,212,191,0.25);
-          color: #2dd4bf; font-size: 12px; font-weight: 500;
+          background: rgba(93,202,165,0.1);
+          border: 1px solid rgba(93,202,165,0.25);
+          color: #5dcaa5; font-size: 12px; font-weight: 500;
           width: fit-content;
         }
         .apm-info-status-dot {
           width: 6px; height: 6px; border-radius: 50%;
-          background: #2dd4bf;
+          background: #5dcaa5;
           animation: statusPulse 2s ease-in-out infinite;
         }
         .apm-divider {
           height: 1px;
-          background: linear-gradient(90deg, rgba(139,124,248,0.18), transparent);
+          background: linear-gradient(90deg, rgba(55,138,221,0.18), transparent);
         }
         .apm-info-rows { display: flex; flex-direction: column; gap: 12px; }
         .apm-info-row {
@@ -333,15 +333,15 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         }
         .apm-info-label {
           font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
-          text-transform: uppercase; color: rgba(200,195,240,0.35);
+          text-transform: uppercase; color: rgba(200,220,255,0.35);
           font-family: 'Courier New', monospace; margin: 0 0 2px;
         }
         .apm-info-value {
-          font-size: 13px; color: #ede8fd; margin: 0; font-weight: 500;
+          font-size: 13px; color: #e8f4ff; margin: 0; font-weight: 500;
           line-height: 1.4;
         }
         .apm-bio {
-          font-size: 13.5px; color: rgba(200,195,240,0.5);
+          font-size: 13.5px; color: rgba(200,220,255,0.5);
           line-height: 1.7; margin: 0;
         }
         .apm-socials { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -349,20 +349,20 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
           display: inline-flex; align-items: center; gap: 7px;
           padding: 8px 14px; border-radius: 10px;
           background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(139,124,248,0.18);
-          color: rgba(200,195,240,0.65); font-size: 13px; font-weight: 500;
+          border: 1px solid rgba(55,138,221,0.18);
+          color: rgba(200,220,255,0.65); font-size: 13px; font-weight: 500;
           text-decoration: none; transition: background 0.2s, border-color 0.2s, color 0.2s;
           font-family: inherit;
         }
         .apm-social-btn:hover {
-          background: rgba(139,124,248,0.12);
-          border-color: rgba(139,124,248,0.4);
-          color: #b09ffc;
+          background: rgba(55,138,221,0.12);
+          border-color: rgba(55,138,221,0.4);
+          color: #61afff;
         }
 
         @media (max-width: 640px) {
           .apm-modal { flex-direction: column; max-height: 88vh; }
-          .apm-photo-side { flex: 0 0 auto; border-right: none; border-bottom: 1px solid rgba(139,124,248,0.1); padding: 24px 16px; }
+          .apm-photo-side { flex: 0 0 auto; border-right: none; border-bottom: 1px solid rgba(55,138,221,0.1); padding: 24px 16px; }
           .apm-photo-frame { width: 160px; height: 200px; }
           .apm-info-side { padding: 20px 18px; }
         }
@@ -379,19 +379,19 @@ export default function About() {
     <section id="about-section" className="about-section" style={{ position: "relative", zIndex: 1 }}>
 
       {/* Subtle top divider gradient */}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, rgba(139,124,248,0.25), transparent)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, rgba(55,138,221,0.25), transparent)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
 
         {/* Header */}
         <div style={{ marginBottom: 56 }}>
-          <p style={{ fontSize: 14, color: "#8b7cf8", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
+          <p style={{ fontSize: 14, color: "#378add", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
             00. About
           </p>
-          <h2 style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 700, color: "#ede8fd", margin: "0 0 12px" }}>
+          <h2 style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 700, color: "#e8f4ff", margin: "0 0 12px" }}>
             Who I Am
           </h2>
-          <p style={{ fontSize: 17, color: "rgba(200,195,240,0.5)", margin: 0 }}>
+          <p style={{ fontSize: 17, color: "rgba(200,220,255,0.5)", margin: 0 }}>
             A little bit about me, what I do, and how I work.
           </p>
         </div>
@@ -458,13 +458,13 @@ export default function About() {
 
             <div className="about-bio-block">
               <p className="about-bio-text">
-                I&apos;m a <strong style={{ color: "#ede8fd" }}>Full Stack Developer and R&D Engineer</strong> based in Davao City, Philippines, passionate about building efficient, scalable software systems from the ground up.
+                I&apos;m a <strong style={{ color: "#e8f4ff" }}>Full Stack Developer and R&D Engineer</strong> based in Davao City, Philippines, passionate about building efficient, scalable software systems from the ground up.
               </p>
               <p className="about-bio-text">
                 My work spans the full development lifecycle — from designing clean user interfaces and building robust APIs, to configuring server infrastructure, automating deployments, and researching new technologies for internal systems.
               </p>
               <p className="about-bio-text">
-                Currently working at <strong style={{ color: "#2dd4bf" }}>DSG Son&apos;s Group Inc.</strong> as an R&D Engineer, where I design and manage multi-project Docker infrastructure, CI/CD pipelines, and internal web applications across multiple business units.
+                Currently working at <strong style={{ color: "#5dcaa5" }}>DSG Son&apos;s Group Inc.</strong> as an R&D Engineer, where I design and manage multi-project Docker infrastructure, CI/CD pipelines, and internal web applications across multiple business units.
               </p>
             </div>
 
@@ -506,7 +506,7 @@ export default function About() {
 
         .about-avatar-card {
           background: rgba(255,255,255,0.025);
-          border: 1px solid rgba(139,124,248,0.14);
+          border: 1px solid rgba(55,138,221,0.14);
           border-radius: 20px;
           padding: 32px 24px 24px;
           display: flex; flex-direction: column; align-items: center;
@@ -517,7 +517,7 @@ export default function About() {
         .about-avatar-ring {
           position: absolute; top: 24px; left: 50%; transform: translateX(-50%);
           width: 92px; height: 92px; border-radius: 50%;
-          border: 1px solid rgba(139,124,248,0.25);
+          border: 1px solid rgba(55,138,221,0.25);
           animation: ringPulse 3s ease-in-out infinite;
         }
         @keyframes ringPulse {
@@ -528,10 +528,10 @@ export default function About() {
         .about-avatar {
           width: 80px; height: 80px; border-radius: 50%;
           background: linear-gradient(135deg, #0d2040, #050e1c);
-          border: 2px solid rgba(139,124,248,0.4);
+          border: 2px solid rgba(55,138,221,0.4);
           display: flex; align-items: center; justify-content: center;
           position: relative; margin-bottom: 16px;
-          box-shadow: 0 0 0 4px rgba(139,124,248,0.08), 0 0 28px rgba(139,124,248,0.25);
+          box-shadow: 0 0 0 4px rgba(55,138,221,0.08), 0 0 28px rgba(55,138,221,0.25);
         }
         .about-avatar-btn {
           cursor: pointer;
@@ -539,7 +539,7 @@ export default function About() {
           transition: box-shadow 0.25s, transform 0.25s;
         }
         .about-avatar-btn:hover {
-          box-shadow: 0 0 0 4px rgba(139,124,248,0.18), 0 0 36px rgba(139,124,248,0.45);
+          box-shadow: 0 0 0 4px rgba(55,138,221,0.18), 0 0 36px rgba(55,138,221,0.45);
           transform: scale(1.06);
         }
         .about-avatar-btn:hover .about-avatar-zoom { opacity: 1; }
@@ -548,7 +548,7 @@ export default function About() {
           position: absolute; inset: 0; border-radius: 50%;
           background: rgba(5,13,26,0.55);
           display: flex; align-items: center; justify-content: center;
-          color: #b09ffc; opacity: 0;
+          color: #61afff; opacity: 0;
           transition: opacity 0.2s;
           z-index: 1;
         }
@@ -570,28 +570,28 @@ export default function About() {
         .about-orbit-dot {
           position: absolute; top: -4px; left: 50%; transform: translateX(-50%);
           width: 8px; height: 8px; border-radius: 50%;
-          background: #2dd4bf;
-          box-shadow: 0 0 8px #2dd4bf;
+          background: #5dcaa5;
+          box-shadow: 0 0 8px #5dcaa5;
         }
 
         .about-avatar-name {
-          font-size: 15px; font-weight: 700; color: #ede8fd;
+          font-size: 15px; font-weight: 700; color: #e8f4ff;
           margin: 0 0 4px; line-height: 1.3;
         }
         .about-avatar-role {
-          font-size: 12px; color: rgba(200,195,240,0.45);
+          font-size: 12px; color: rgba(200,220,255,0.45);
           font-family: 'Courier New', monospace; margin: 0 0 16px;
         }
         .about-status {
           display: inline-flex; align-items: center; gap: 7px;
           padding: 5px 13px; border-radius: 100px;
-          background: rgba(45,212,191,0.1);
-          border: 1px solid rgba(45,212,191,0.25);
-          color: #2dd4bf; font-size: 12px; font-weight: 500;
+          background: rgba(93,202,165,0.1);
+          border: 1px solid rgba(93,202,165,0.25);
+          color: #5dcaa5; font-size: 12px; font-weight: 500;
         }
         .about-status-dot {
           width: 6px; height: 6px; border-radius: 50%;
-          background: #2dd4bf;
+          background: #5dcaa5;
           animation: statusPulse 2s ease-in-out infinite;
         }
         @keyframes statusPulse {
@@ -602,23 +602,23 @@ export default function About() {
         /* Facts */
         .about-facts {
           background: rgba(255,255,255,0.02);
-          border: 1px solid rgba(139,124,248,0.1);
+          border: 1px solid rgba(55,138,221,0.1);
           border-radius: 14px;
           overflow: hidden;
         }
         .about-fact-row {
           display: flex; justify-content: space-between; align-items: center;
           padding: 11px 16px; gap: 12px;
-          border-bottom: 1px solid rgba(139,124,248,0.07);
+          border-bottom: 1px solid rgba(55,138,221,0.07);
         }
         .about-fact-row:last-child { border-bottom: none; }
         .about-fact-label {
           font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-          text-transform: uppercase; color: rgba(200,195,240,0.35);
+          text-transform: uppercase; color: rgba(200,220,255,0.35);
           font-family: 'Courier New', monospace; flex-shrink: 0;
         }
         .about-fact-value {
-          font-size: 12.5px; color: #ede8fd; text-align: right;
+          font-size: 12.5px; color: #e8f4ff; text-align: right;
           font-weight: 500;
         }
 
@@ -627,13 +627,13 @@ export default function About() {
 
         .about-bio-block { display: flex; flex-direction: column; gap: 14px; }
         .about-bio-text {
-          font-size: 16px; color: rgba(200,195,240,0.62);
+          font-size: 16px; color: rgba(200,220,255,0.62);
           line-height: 1.8; margin: 0;
         }
 
         .about-services-label {
           font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-          text-transform: uppercase; color: rgba(139,124,248,0.6);
+          text-transform: uppercase; color: rgba(55,138,221,0.6);
           font-family: 'Courier New', monospace;
         }
         .about-services {
@@ -644,12 +644,12 @@ export default function About() {
         .about-service-card {
           display: flex; gap: 14px; align-items: flex-start;
           background: rgba(255,255,255,0.025);
-          border: 1px solid rgba(139,124,248,0.1);
+          border: 1px solid rgba(55,138,221,0.1);
           border-radius: 12px; padding: 16px;
           transition: border-color 0.2s, transform 0.2s;
         }
         .about-service-card:hover {
-          border-color: rgba(139,124,248,0.28);
+          border-color: rgba(55,138,221,0.28);
           transform: translateY(-2px);
         }
         .about-service-icon {
@@ -661,7 +661,7 @@ export default function About() {
           font-size: 13px; font-weight: 700; margin: 0 0 4px;
         }
         .about-service-desc {
-          font-size: 12.5px; color: rgba(200,195,240,0.45);
+          font-size: 12.5px; color: rgba(200,220,255,0.45);
           line-height: 1.6; margin: 0;
         }
 
