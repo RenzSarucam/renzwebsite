@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 const services = [
@@ -113,33 +113,44 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
   const [zoom, setZoom] = useState(1);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
-  const dragOrigin = { x: 0, y: 0 };
+  const dragOriginRef = useRef({ x: 0, y: 0 });
 
-  const MIN_ZOOM = 1, MAX_ZOOM = 3;
+  const MIN_ZOOM = 1, MAX_ZOOM = 4;
+  const FRAME_W = 220, FRAME_H = 320;
+
+  function clamp(val: number, max: number) { return Math.max(-max, Math.min(max, val)); }
 
   function handleWheel(e: React.WheelEvent) {
     e.preventDefault();
-    setZoom(z => Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, z - e.deltaY * 0.001)));
+    setZoom(z => {
+      const next = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, z - e.deltaY * 0.001));
+      if (next <= 1) setPos({ x: 0, y: 0 });
+      return next;
+    });
   }
 
   function handleMouseDown(e: React.MouseEvent) {
     if (zoom <= 1) return;
-    dragOrigin.x = e.clientX - pos.x;
-    dragOrigin.y = e.clientY - pos.y;
+    e.preventDefault();
+    dragOriginRef.current = { x: e.clientX - pos.x, y: e.clientY - pos.y };
     setDragging(true);
   }
 
   function handleMouseMove(e: React.MouseEvent) {
     if (!dragging) return;
-    setPos({ x: e.clientX - dragOrigin.x, y: e.clientY - dragOrigin.y });
+    const newX = e.clientX - dragOriginRef.current.x;
+    const newY = e.clientY - dragOriginRef.current.y;
+    const maxX = (FRAME_W * (zoom - 1)) / 2;
+    const maxY = (FRAME_H * (zoom - 1)) / 2;
+    setPos({ x: clamp(newX, maxX), y: clamp(newY, maxY) });
   }
 
   function handleMouseUp() { setDragging(false); }
 
-  function zoomIn()  { setZoom(z => Math.min(MAX_ZOOM, z + 0.3)); }
+  function zoomIn()  { setZoom(z => Math.min(MAX_ZOOM, +(z + 0.25).toFixed(2))); }
   function zoomOut() {
     setZoom(z => {
-      const next = Math.max(MIN_ZOOM, z - 0.3);
+      const next = Math.max(MIN_ZOOM, +(z - 0.25).toFixed(2));
       if (next <= 1) setPos({ x: 0, y: 0 });
       return next;
     });
@@ -316,7 +327,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         }
         .apm-photo-frame {
           position: relative;
-          width: 220px; height: 280px;
+          width: 220px; height: 320px;
           border-radius: 16px;
           overflow: hidden;
           box-shadow: 0 0 0 1px rgba(55,138,221,0.2), 0 8px 40px rgba(55,138,221,0.15);
@@ -324,7 +335,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         .apm-photo {
           width: 100%; height: 100%;
           object-fit: cover;
-          object-position: center top;
+          object-position: center center;
           display: block;
         }
         /* Corner accents */
@@ -640,7 +651,7 @@ export default function About() {
           width: 100%; height: 100%;
           border-radius: 14px;
           object-fit: cover;
-          object-position: center top;
+          object-position: center center;
           display: block;
         }
         .about-orbit { display: none; }
