@@ -710,10 +710,7 @@ export default function Hero() {
         .hero-stat-card-1::before { background:linear-gradient(90deg,transparent,rgba(93,202,165,0.7),transparent); animation-delay:1s; }
         .hero-stat-card-2::before { background:linear-gradient(90deg,transparent,rgba(198,120,221,0.7),transparent); animation-delay:2s; }
 
-        /* Colored left accent bar */
-        .hero-stat-accent { position:absolute; left:0; top:20%; bottom:20%; width:3px; border-radius:0 3px 3px 0; background:linear-gradient(180deg,#61afff,#378add); }
-        .hero-stat-card-1 .hero-stat-accent { background:linear-gradient(180deg,#5dcaa5,#2ca882); }
-        .hero-stat-card-2 .hero-stat-accent { background:linear-gradient(180deg,#c678dd,#9040b2); }
+        .hero-stat-accent { display: none; }
 
         .hero-stat-value { font-size: 26px; font-weight: 800; font-family:"Courier New",monospace; }
         .hero-stat-card-0 .hero-stat-value { background:linear-gradient(135deg,#e8f4ff,#61afff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
