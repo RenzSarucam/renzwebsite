@@ -110,6 +110,41 @@ const modalInfo = [
 
 function PhotoModal({ onClose }: { onClose: () => void }) {
   const [visible, setVisible] = useState(false);
+  const [zoom, setZoom] = useState(1);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
+  const dragOrigin = { x: 0, y: 0 };
+
+  const MIN_ZOOM = 1, MAX_ZOOM = 3;
+
+  function handleWheel(e: React.WheelEvent) {
+    e.preventDefault();
+    setZoom(z => Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, z - e.deltaY * 0.001)));
+  }
+
+  function handleMouseDown(e: React.MouseEvent) {
+    if (zoom <= 1) return;
+    dragOrigin.x = e.clientX - pos.x;
+    dragOrigin.y = e.clientY - pos.y;
+    setDragging(true);
+  }
+
+  function handleMouseMove(e: React.MouseEvent) {
+    if (!dragging) return;
+    setPos({ x: e.clientX - dragOrigin.x, y: e.clientY - dragOrigin.y });
+  }
+
+  function handleMouseUp() { setDragging(false); }
+
+  function zoomIn()  { setZoom(z => Math.min(MAX_ZOOM, z + 0.3)); }
+  function zoomOut() {
+    setZoom(z => {
+      const next = Math.max(MIN_ZOOM, z - 0.3);
+      if (next <= 1) setPos({ x: 0, y: 0 });
+      return next;
+    });
+  }
+  function zoomReset() { setZoom(1); setPos({ x: 0, y: 0 }); }
 
   useEffect(() => {
     // Double-frame trick for entry animation
@@ -149,14 +184,45 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
 
         {/* Left: large photo */}
         <div className="apm-photo-side">
-          <div className="apm-photo-frame">
+          <div
+            className="apm-photo-frame"
+            onWheel={handleWheel}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            style={{ cursor: zoom > 1 ? (dragging ? "grabbing" : "grab") : "default", overflow: "hidden" }}
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/renz-profile.png" alt="Renz Carljansen Sarucam" className="apm-photo" />
+            <img
+              src="/images/renz-profile.png"
+              alt="Renz Carljansen Sarucam"
+              className="apm-photo"
+              style={{
+                transform: `scale(${zoom}) translate(${pos.x / zoom}px, ${pos.y / zoom}px)`,
+                transition: dragging ? "none" : "transform 0.2s ease",
+                userSelect: "none",
+                pointerEvents: "none",
+              }}
+            />
             {/* Corner accents */}
             <div className="apm-corner apm-corner-tl" />
             <div className="apm-corner apm-corner-tr" />
             <div className="apm-corner apm-corner-bl" />
             <div className="apm-corner apm-corner-br" />
+          </div>
+
+          {/* Zoom controls */}
+          <div className="apm-zoom-bar">
+            <button className="apm-zoom-btn" onClick={zoomOut} disabled={zoom <= 1} title="Zoom out">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <button className="apm-zoom-reset" onClick={zoomReset} title="Reset zoom">
+              {Math.round(zoom * 100)}%
+            </button>
+            <button className="apm-zoom-btn" onClick={zoomIn} disabled={zoom >= 3} title="Zoom in">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
           </div>
         </div>
 
@@ -271,6 +337,32 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         .apm-corner-tr { top: 0; right: 0; border-width: 2px 2px 0 0; border-radius: 0 4px 0 0; }
         .apm-corner-bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; border-radius: 0 0 0 4px; }
         .apm-corner-br { bottom: 0; right: 0; border-width: 0 2px 2px 0; border-radius: 0 0 4px 0; }
+
+        /* ── Zoom controls ── */
+        .apm-zoom-bar {
+          display: flex; align-items: center; gap: 6px;
+          margin-top: 12px;
+        }
+        .apm-zoom-btn {
+          width: 30px; height: 30px; border-radius: 8px;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(55,138,221,0.2);
+          color: rgba(200,220,255,0.7);
+          display: flex; align-items: center; justify-content: center;
+          cursor: pointer; transition: background 0.15s, color 0.15s;
+        }
+        .apm-zoom-btn:hover:not(:disabled) { background: rgba(55,138,221,0.15); color: #e8f4ff; }
+        .apm-zoom-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .apm-zoom-reset {
+          flex: 1; height: 30px; border-radius: 8px;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(55,138,221,0.15);
+          color: rgba(200,220,255,0.5);
+          font-size: 11px; font-weight: 600; font-family: 'Courier New', monospace;
+          cursor: pointer; transition: background 0.15s, color 0.15s;
+          letter-spacing: 0.05em;
+        }
+        .apm-zoom-reset:hover { background: rgba(55,138,221,0.1); color: rgba(200,220,255,0.8); }
 
         /* ── Info side ── */
         .apm-info-side {
