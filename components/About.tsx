@@ -514,24 +514,15 @@ export default function About() {
           box-shadow: 0 8px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(55,138,221,0.06);
         }
 
-        .about-avatar-ring {
-          position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
-          width: 136px; height: 136px; border-radius: 50%;
-          border: 1px solid rgba(55,138,221,0.25);
-          animation: ringPulse 3s ease-in-out infinite;
-        }
-        @keyframes ringPulse {
-          0%,100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
-          50%      { transform: translateX(-50%) scale(1.1); opacity: 0.2; }
-        }
+        .about-avatar-ring { display: none; }
 
         .about-avatar {
-          width: 120px; height: 120px; border-radius: 50%;
+          width: 120px; height: 120px; border-radius: 16px;
           background: linear-gradient(135deg, #0d2040, #050e1c);
-          border: 2.5px solid rgba(55,138,221,0.45);
+          border: 2px solid rgba(55,138,221,0.35);
           display: flex; align-items: center; justify-content: center;
           position: relative; margin-bottom: 18px;
-          box-shadow: 0 0 0 5px rgba(55,138,221,0.07), 0 0 36px rgba(55,138,221,0.28);
+          box-shadow: 0 4px 24px rgba(55,138,221,0.2);
         }
         .about-avatar-btn {
           cursor: pointer;
@@ -545,7 +536,7 @@ export default function About() {
         .about-avatar-btn:hover .about-avatar-zoom { opacity: 1; }
 
         .about-avatar-zoom {
-          position: absolute; inset: 0; border-radius: 50%;
+          position: absolute; inset: 0; border-radius: 14px;
           background: rgba(5,13,26,0.55);
           display: flex; align-items: center; justify-content: center;
           color: #61afff; opacity: 0;
@@ -555,24 +546,13 @@ export default function About() {
 
         .about-avatar-img {
           width: 100%; height: 100%;
-          border-radius: 50%;
+          border-radius: 14px;
           object-fit: cover;
           object-position: center top;
           display: block;
         }
-        .about-orbit {
-          position: absolute; width: 100%; height: 100%;
-          border-radius: 50%;
-          animation: orbitSpin 4s linear infinite;
-          pointer-events: none;
-        }
-        @keyframes orbitSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-        .about-orbit-dot {
-          position: absolute; top: -5px; left: 50%; transform: translateX(-50%);
-          width: 9px; height: 9px; border-radius: 50%;
-          background: #5dcaa5;
-          box-shadow: 0 0 10px #5dcaa5;
-        }
+        .about-orbit { display: none; }
+        .about-orbit-dot { display: none; }
 
         .about-avatar-name {
           font-size: 16px; font-weight: 700; color: #e8f4ff;
