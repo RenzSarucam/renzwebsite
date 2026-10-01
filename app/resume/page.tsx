@@ -128,6 +128,31 @@ export default function ResumePage() {
           margin-top: 2px;
         }
 
+        .sb-edu-item {
+          margin-bottom: 8px;
+          padding: 4px 7px;
+          border-left: 2px solid rgba(93,202,165,0.35);
+        }
+
+        .sb-edu-degree {
+          font-size: 7.5pt;
+          font-weight: 700;
+          color: rgba(255,255,255,0.75);
+          line-height: 1.4;
+        }
+
+        .sb-edu-school {
+          font-size: 7pt;
+          color: rgba(255,255,255,0.5);
+          margin-top: 1px;
+        }
+
+        .sb-edu-meta {
+          font-size: 6.5pt;
+          color: rgba(255,255,255,0.3);
+          margin-top: 2px;
+        }
+
         /* ── Main ── */
         .main {
           flex: 1;
@@ -232,6 +257,10 @@ export default function ResumePage() {
           .sb-cert-item { margin-bottom: 4px; padding: 2px 5px; }
           .sb-cert-name { font-size: 6.5pt; }
           .sb-cert-meta { font-size: 5.5pt; margin-top: 1px; }
+          .sb-edu-item { margin-bottom: 4px; padding: 2px 5px; }
+          .sb-edu-degree { font-size: 6.5pt; }
+          .sb-edu-school { font-size: 6pt; margin-top: 1px; }
+          .sb-edu-meta { font-size: 5.5pt; margin-top: 1px; }
 
           /* Main — compact */
           .main { padding: 10mm 8mm 10mm 7mm; font-size: 8.5pt; }
@@ -342,6 +371,25 @@ export default function ResumePage() {
               </div>
             ))}
           </div>
+
+          <div className="sb-divider" />
+
+          {/* Education */}
+          <div>
+            <div className="sb-section-title">Education</div>
+            {education.map((edu, i) => (
+              <div className="sb-edu-item" key={i}>
+                <div className="sb-edu-degree">{edu.degree}</div>
+                <div className="sb-edu-school">{edu.school}</div>
+                {edu.highlights.length > 0 && (
+                  <div className="sb-edu-meta">{edu.period} · {edu.highlights.join(" · ")}</div>
+                )}
+                {edu.highlights.length === 0 && (
+                  <div className="sb-edu-meta">{edu.period}</div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* ── Main ── */}
@@ -400,25 +448,6 @@ export default function ResumePage() {
             </div>
           </div>
 
-          {/* Education */}
-          <div className="section">
-            <div className="section-title">Education</div>
-            {education.map((edu, i) => (
-              <div className="edu-item" key={i}>
-                <div className="edu-header">
-                  <div>
-                    <span className="edu-degree">{edu.degree}</span>
-                    {" · "}
-                    <span className="edu-school">{edu.school}</span>
-                  </div>
-                  <span className="edu-period">{edu.period}</span>
-                </div>
-                {edu.highlights.length > 0 && (
-                  <div className="edu-note">{edu.highlights.join(" · ")}</div>
-                )}
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </>
