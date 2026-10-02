@@ -260,12 +260,12 @@ export const projects: Project[] = [
   },
   {
     title: "Opsora (Infrastructure & Application Monitoring Platform)",
-    desc: "A self-hosted internal monitoring platform that gives administrators a single dark-themed dashboard to track application health, uptime, and response times across deployed services. Opsora centralizes monitoring for web applications, servers, and Docker containers — showing which services are online, warning, or offline, with deduplication alerts and an activity log. Built with Next.js App Router + TypeScript frontend, Laravel 12 backend with Sanctum session auth, MySQL, and Docker Compose. MVP features include rate-limited login with lockout, protected routes, dashboard stat cards, and full Docker-based deployment. Currently in active development with Projects CRUD, HTTP health checks, server metrics, and container management on the roadmap.",
+    desc: "A self-hosted infrastructure and application monitoring platform built as a personal project and actively used at DSG Son's Group Inc. to monitor the organization's deployed internal systems. Opsora gives administrators a single dark-themed dashboard to track application health, uptime, and response times across all deployed services — showing which applications are online, warning, or offline in real time. It centralizes monitoring for web applications, servers, and Docker containers with deduplication alerts and an activity log. Built with Next.js App Router + TypeScript frontend, Laravel 12 backend with Sanctum session auth, MySQL, and Docker Compose. Currently in active development with HTTP health checks, server metrics, and container management on the roadmap.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Laravel 12", "Sanctum", "MySQL", "Docker", "Recharts", "Monitoring", "Self-hosted"],
     type: ["Full Stack", "Docker"],
     status: "In Progress",
     link: "https://github.com/RenzSarucam/OPSORA",
-    place: "Personal Project",
+    place: "Personal Project · Used at DSG Son's Group Inc.",
   },
   {
     title: "Gap Finder",
