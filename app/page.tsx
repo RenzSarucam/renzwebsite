@@ -8,6 +8,7 @@ import Skills from "@/components/Skills";
 import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
 import AiChat from "@/components/AiChat";
+import ScrollAnimations from "@/components/ScrollAnimations";
 
 
 export default function Home() {
@@ -38,6 +39,7 @@ export default function Home() {
       <Certificates />
       <Contact />
       <AiChat />
+      <ScrollAnimations />
     </main>
   );
 }

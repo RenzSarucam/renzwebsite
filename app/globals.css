@@ -134,3 +134,37 @@ input:focus-visible {
     scroll-margin-top: 76px;
   }
 }
+
+/* ── Scroll-triggered entrance animations ── */
+.sa {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sa.sa-in {
+  opacity: 1;
+  transform: none;
+}
+.sa-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sa-left.sa-in { opacity: 1; transform: none; }
+
+.sa-right {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sa-right.sa-in { opacity: 1; transform: none; }
+
+/* Respect reduce-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .sa, .sa-left, .sa-right {
+    opacity: 1; transform: none; transition: none;
+  }
+}
