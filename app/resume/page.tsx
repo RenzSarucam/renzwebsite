@@ -262,6 +262,10 @@ export default function ResumePage() {
           .sb-edu-school { font-size: 6pt; margin-top: 1px; }
           .sb-edu-meta { font-size: 5.5pt; margin-top: 1px; }
 
+          /* Keep each sidebar section together — no mid-section page breaks */
+          .sidebar > div { break-inside: avoid; page-break-inside: avoid; }
+          .sb-divider { break-after: avoid; page-break-after: avoid; }
+
           /* Main — compact */
           .main { padding: 10mm 8mm 10mm 7mm; font-size: 8.5pt; }
           .section { margin-bottom: 10px; }
