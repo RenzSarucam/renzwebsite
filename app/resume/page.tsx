@@ -381,16 +381,11 @@ export default function ResumePage() {
           {/* Education */}
           <div>
             <div className="sb-section-title">Education</div>
-            {education.map((edu, i) => (
+            {education.filter(edu => edu.level === "College" || edu.level === "Senior High School").map((edu, i) => (
               <div className="sb-edu-item" key={i}>
                 <div className="sb-edu-degree">{edu.degree}</div>
                 <div className="sb-edu-school">{edu.school}</div>
-                {edu.highlights.length > 0 && (
-                  <div className="sb-edu-meta">{edu.period} · {edu.highlights.join(" · ")}</div>
-                )}
-                {edu.highlights.length === 0 && (
-                  <div className="sb-edu-meta">{edu.period}</div>
-                )}
+                <div className="sb-edu-meta">{edu.period}{edu.highlights.length > 0 ? ` · ${edu.highlights.join(" · ")}` : ""}</div>
               </div>
             ))}
           </div>
