@@ -6,7 +6,7 @@ import ContribGraph from "@/components/ContribGraph";
 
 const roles = [
   "Full-Stack Web Developer (Laravel, React/Next.js)",
-  "Docker & CI/CD Engineer",
+  "Docker & CI/CD",
   "R&D Engineer",
 ];
 
