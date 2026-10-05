@@ -8,7 +8,7 @@ const roles = [
   "Full Stack Developer",
   "DevOps Engineer",
   "Research & Development Engineer",
-  "Web & Mobile Designer",
+  "Full-Stack Web Developer (Laravel, React/Next.js) | Docker & CI/CD",
 ];
 
 const contribs = [
