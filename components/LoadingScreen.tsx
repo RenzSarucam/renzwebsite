@@ -24,6 +24,9 @@ export default function LoadingScreen() {
 
   useEffect(() => {
     setMounted(true);
+    // Remove the instant HTML pre-loader now that the animated screen is taking over
+    const preLoader = document.getElementById("pre-loader");
+    if (preLoader) preLoader.style.display = "none";
 
     const t0 = setTimeout(() => setNameIn(true), 200);
     timerRef.current.push(t0);
