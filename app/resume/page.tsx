@@ -268,7 +268,7 @@ export default function ResumePage() {
           .sidebar > div { break-inside: avoid; page-break-inside: avoid; }
           .sb-divider { break-after: avoid; page-break-after: avoid; }
           /* Push Education to page 2 */
-          .sb-edu-section { break-before: page; page-break-before: always; }
+          .sb-edu-section { break-before: page; page-break-before: always; padding-top: 10mm; }
 
           /* Main — compact */
           .main { padding: 10mm 8mm 10mm 7mm; font-size: 8.5pt; }
