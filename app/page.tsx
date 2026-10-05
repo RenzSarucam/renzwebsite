@@ -13,6 +13,18 @@ import ScrollAnimations from "@/components/ScrollAnimations";
 
 export default function Home() {
   return (
+    <>
+    {/* Instant pre-loader — visible before React hydrates, hidden by LoadingScreen on mount */}
+    <div
+      id="pre-loader"
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 99998,
+        background: "#020c1b",
+        pointerEvents: "none",
+      }}
+    />
     <main
       className="page-shell"
       style={{
@@ -41,5 +53,6 @@ export default function Home() {
       <AiChat />
       <ScrollAnimations />
     </main>
+    </>
   );
 }

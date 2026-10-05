@@ -61,17 +61,6 @@ export default function RootLayout({
           scrollBehavior: "smooth",
         }}
       >
-        {/* Instant pre-loader — visible before React hydrates */}
-        <div
-          id="pre-loader"
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 99998,
-            background: "#020c1b",
-            pointerEvents: "none",
-          }}
-        />
         <ScrollToTop />
         {children}
       </body>

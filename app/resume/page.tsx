@@ -11,6 +11,8 @@ export default function ResumePage() {
       <style suppressHydrationWarning>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background: #060d1a; font-family: 'Segoe UI', Arial, sans-serif; }
+        html { scrollbar-width: none; }
+        html::-webkit-scrollbar { display: none; }
 
         .page {
           width: 210mm;
