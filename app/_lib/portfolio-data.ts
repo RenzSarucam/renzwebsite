@@ -85,7 +85,7 @@ export const techStack = [
 export const profile = {
   fullName: "Renz Carljansen Sarucam",
   firstName: "Renz",
-  role: "Full Stack Developer · R&D Engineer · DevOps Engineer",
+  role: "Full-Stack Web Developer · Docker & CI/CD · R&D Engineer",
   location: "Davao City, Philippines",
   college: "Holy Cross of Davao College",
   degree: "Bachelor of Science in Information Technology",

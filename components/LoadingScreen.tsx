@@ -86,9 +86,9 @@ export default function LoadingScreen() {
         <div className={`ls-name-block${nameIn ? " ls-name-in" : ""}`}>
           <h1 className="ls-name">Renz Carljansen Sarucam</h1>
           <p className="ls-role">
-            <span className="ls-role-chip">Full Stack</span>
+            <span className="ls-role-chip">Full-Stack Web Developer</span>
             <span className="ls-role-dot">·</span>
-            <span className="ls-role-chip">DevOps</span>
+            <span className="ls-role-chip">Docker &amp; CI/CD</span>
             <span className="ls-role-dot">·</span>
             <span className="ls-role-chip">R&amp;D Engineer</span>
           </p>

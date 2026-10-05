@@ -93,7 +93,7 @@ const modalInfo = [
       </svg>
     ),
     label: "Role",
-    value: "Full Stack · DevOps · R&D Engineer",
+    value: "Full-Stack Web Developer · Docker & CI/CD · R&D Engineer",
     color: "#c678dd",
   },
   {
@@ -535,7 +535,7 @@ export default function About() {
                 </div>
               </button>
               <h3 className="about-avatar-name">Renz Carljansen Sarucam</h3>
-              <p className="about-avatar-role">Full Stack · DevOps · R&D Engineer</p>
+              <p className="about-avatar-role">Full-Stack Web Developer · Docker & CI/CD · R&D Engineer</p>
 
               {/* Status */}
               <div className="about-status">
