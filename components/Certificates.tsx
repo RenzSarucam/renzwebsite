@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 const education = [
   {
@@ -63,6 +64,13 @@ export default function Certificates() {
 
   const openModal  = (item: (typeof certificates)[0]) => { setSelected(item); document.body.style.overflow = "hidden"; };
   const closeModal = () => { setSelected(null); document.body.style.overflow = ""; };
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeModal(); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section id="certificates" className="certs-section" style={{ position: "relative", zIndex: 1 }}>
@@ -168,8 +176,8 @@ export default function Certificates() {
         </div>
       </div>
 
-      {/* ── Certificate Image Modal ── */}
-      {selected && (
+      {/* ── Certificate Image Modal — rendered in document.body via portal ── */}
+      {selected && createPortal(
         <div className="cert-modal-overlay" onClick={closeModal}>
           <button className="cert-modal-close" onClick={closeModal} aria-label="Close">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -191,7 +199,8 @@ export default function Certificates() {
               </span>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       <style suppressHydrationWarning>{`
