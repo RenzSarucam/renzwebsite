@@ -5,10 +5,9 @@ import { certificates, projects, techStack } from "@/app/_lib/portfolio-data";
 import ContribGraph from "@/components/ContribGraph";
 
 const roles = [
-  "Full Stack Developer",
-  "DevOps Engineer",
-  "Research & Development Engineer",
-  "Full-Stack Web Developer (Laravel, React/Next.js) | Docker & CI/CD | R&D Engineer",
+  "Full-Stack Web Developer (Laravel, React/Next.js)",
+  "Docker & CI/CD Engineer",
+  "R&D Engineer",
 ];
 
 const contribs = [
