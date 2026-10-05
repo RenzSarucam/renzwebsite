@@ -69,6 +69,7 @@ export const techStack = [
   { name: "Nginx", color: "#009639" },
   { name: "CI/CD Automation", color: "#378add" },
   { name: "Redis", color: "#dc382d" },
+  { name: "shadcn/ui", color: "#e8f4ff" },
   { name: "Socket.IO", color: "#e8f4ff" },
   { name: "Figma", color: "#f24e1e" },
   { name: "Canva", color: "#00c4cc" },
