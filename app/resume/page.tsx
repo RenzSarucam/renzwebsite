@@ -312,9 +312,9 @@ export default function ResumePage() {
             <div className="sb-accent-bar" />
             <div className="sb-name">{profile.fullName}</div>
             <div className="sb-subtitle">
-              Full Stack Developer<br />
-              R&amp;D Engineer<br />
-              DevOps Engineer
+              Full-Stack Web Developer<br />
+              Docker &amp; CI/CD<br />
+              R&amp;D Engineer
             </div>
           </div>
 
