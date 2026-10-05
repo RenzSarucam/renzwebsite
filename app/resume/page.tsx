@@ -265,6 +265,8 @@ export default function ResumePage() {
           /* Keep each sidebar section together — no mid-section page breaks */
           .sidebar > div { break-inside: avoid; page-break-inside: avoid; }
           .sb-divider { break-after: avoid; page-break-after: avoid; }
+          /* Push Education to page 2 */
+          .sb-edu-section { break-before: page; page-break-before: always; }
 
           /* Main — compact */
           .main { padding: 10mm 8mm 10mm 7mm; font-size: 8.5pt; }
@@ -379,7 +381,7 @@ export default function ResumePage() {
           <div className="sb-divider" />
 
           {/* Education */}
-          <div>
+          <div className="sb-edu-section">
             <div className="sb-section-title">Education</div>
             {education.filter(edu => edu.level === "College" || edu.level === "Senior High School").map((edu, i) => (
               <div className="sb-edu-item" key={i}>
