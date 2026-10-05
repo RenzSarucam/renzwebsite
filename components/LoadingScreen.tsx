@@ -25,22 +25,22 @@ export default function LoadingScreen() {
   useEffect(() => {
     setMounted(true);
 
-    const t0 = setTimeout(() => setNameIn(true), 300);
+    const t0 = setTimeout(() => setNameIn(true), 200);
     timerRef.current.push(t0);
 
-    const totalDuration = 3000;
+    const totalDuration = 1600;
     const lineInterval  = totalDuration / BOOT_LINES.length;
 
     BOOT_LINES.forEach((_, i) => {
       const t = setTimeout(() => {
         setLineCount(i + 1);
         setProgress(Math.round(((i + 1) / BOOT_LINES.length) * 100));
-      }, 400 + i * lineInterval);
+      }, 200 + i * lineInterval);
       timerRef.current.push(t);
     });
 
-    const t1 = setTimeout(() => setFading(true),  totalDuration + 600);
-    const t2 = setTimeout(() => setVisible(false), totalDuration + 1400);
+    const t1 = setTimeout(() => setFading(true),  totalDuration + 300);
+    const t2 = setTimeout(() => setVisible(false), totalDuration + 900);
     timerRef.current.push(t0, t1, t2);
 
     return () => timerRef.current.forEach(clearTimeout);
