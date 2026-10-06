@@ -217,9 +217,9 @@ export default function Hero() {
                 </div>
 
                 <p className="hero-bio">
-                  Full Stack Developer &amp; R&amp;D Engineer focused on building efficient server infrastructure and crafting clean web experiences.
+                  Full-Stack Web Developer &amp; R&amp;D Engineer building internal web systems, automating CI/CD pipelines, and managing multi-project server infrastructure.
                   <br />
-                  Combining DevOps and full stack development in Davao City, PH.
+                  Currently at DSG Son&apos;s Group Inc. · Davao City, PH.
                 </p>
 
                 <div className="hero-actions">
