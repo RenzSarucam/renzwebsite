@@ -237,7 +237,7 @@ export default function Contact() {
         <div className="footer-inner">
           <div className="footer-brand">
             <span className="footer-brand-code">&lt;/&gt;</span>
-            <span className="footer-brand-name">RCS.dev</span>
+            <span className="footer-brand-name">Renz.dev</span>
           </div>
           <p className="footer-tagline">Full-Stack Web Developer · Docker &amp; CI/CD · R&amp;D Engineer · Davao City, PH</p>
           <div className="footer-socials">

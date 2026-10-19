@@ -144,7 +144,7 @@ export default function Hero() {
                   <span className="hb-gt">&gt;</span>
                 </div>
               </div>
-              <span className="hero-brand-name">RCS.dev</span>
+              <span className="hero-brand-name">Renz.dev</span>
             </div>
 
             <div className="hero-nav">

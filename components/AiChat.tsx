@@ -122,16 +122,14 @@ export default function AiChat() {
         type="button"
         className="ai-fab"
       >
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <rect x="4" y="7" width="16" height="12" rx="3" fill="#F5F5F5" opacity=".92"/>
-          <circle cx="9" cy="12" r="1.5" fill="#0D0D0D"/>
-          <circle cx="15" cy="12" r="1.5" fill="#0D0D0D"/>
-          <rect x="8.5" y="15" width="7" height="1.5" rx="0.75" fill="#0D0D0D"/>
-          <line x1="12" y1="7" x2="12" y2="4" stroke="#F5F5F5" strokeWidth="1.5" strokeLinecap="round" opacity=".9"/>
-          <circle cx="12" cy="3.2" r="1" fill="#F5F5F5" opacity=".9"/>
-          <rect x="2" y="10" width="2" height="4" rx="1" fill="#F5F5F5" opacity=".7"/>
-          <rect x="20" y="10" width="2" height="4" rx="1" fill="#F5F5F5" opacity=".7"/>
-        </svg>
+        <span className="ai-fab-face">
+          <span className="ai-bot">
+            <img src="/images/renz-bot-body.png" alt="" />
+            <img className="ai-bot-arm" src="/images/renz-bot-arm.png" alt="" />
+            <span className="ai-bot-eye ai-bot-eye-l" aria-hidden="true" />
+            <span className="ai-bot-eye ai-bot-eye-r" aria-hidden="true" />
+          </span>
+        </span>
         <span className="ai-fab-label">Ask RenzAI</span>
         <span className="ai-fab-dot" aria-hidden="true" />
       </button>
@@ -152,16 +150,7 @@ export default function AiChat() {
             <div className="ai-header">
               <div className="ai-header-left">
                 <div className="ai-avatar">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <rect x="4" y="7" width="16" height="12" rx="3" fill="#111111" opacity=".9"/>
-                    <circle cx="9" cy="12" r="1.4" fill="#F5F5F5"/>
-                    <circle cx="15" cy="12" r="1.4" fill="#F5F5F5"/>
-                    <rect x="8.5" y="15" width="7" height="1.4" rx="0.7" fill="#F5F5F5" opacity=".8"/>
-                    <line x1="12" y1="7" x2="12" y2="4.5" stroke="#111111" strokeWidth="1.5" strokeLinecap="round"/>
-                    <circle cx="12" cy="3.5" r="1" fill="#111111"/>
-                    <rect x="2.5" y="10" width="1.5" height="3.5" rx="0.75" fill="#111111" opacity=".7"/>
-                    <rect x="20" y="10" width="1.5" height="3.5" rx="0.75" fill="#111111" opacity=".7"/>
-                  </svg>
+                  <img src="/images/renz-bot-head.png" alt="" className="ai-face" />
                 </div>
                 <div>
                   <p className="ai-header-name">Ask RenzAI</p>
@@ -180,22 +169,7 @@ export default function AiChat() {
             {isEmpty ? (
               <div className="ai-welcome">
                 <div className="ai-welcome-icon">
-                  <svg width="38" height="38" viewBox="0 0 24 24" fill="none">
-                    <rect x="3" y="6" width="18" height="14" rx="4" fill="url(#grad2)"/>
-                    <circle cx="8.5" cy="12" r="2" fill="#111111" opacity=".9"/>
-                    <circle cx="15.5" cy="12" r="2" fill="#111111" opacity=".9"/>
-                    <rect x="7.5" y="15.5" width="9" height="1.8" rx="0.9" fill="#111111" opacity=".7"/>
-                    <line x1="12" y1="6" x2="12" y2="3" stroke="#F5F5F5" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="12" cy="2.2" r="1.2" fill="#F5F5F5"/>
-                    <rect x="1" y="9.5" width="2" height="5" rx="1" fill="#F5F5F5" opacity=".5"/>
-                    <rect x="21" y="9.5" width="2" height="5" rx="1" fill="#F5F5F5" opacity=".5"/>
-                    <defs>
-                      <linearGradient id="grad2" x1="3" y1="6" x2="21" y2="20" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#F5F5F5"/>
-                        <stop offset="1" stopColor="#F5F5F5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                  <img src="/images/renz-bot-head.png" alt="" className="ai-face" />
                 </div>
                 <p className="ai-welcome-title">How can I help you?</p>
                 <p className="ai-welcome-sub">Ask a question or pick a suggestion below.</p>
@@ -206,13 +180,7 @@ export default function AiChat() {
                   <div key={i} className={`ai-msg-row ${msg.role === "user" ? "user" : "bot"}`}>
                     {msg.role === "assistant" && (
                       <div className="ai-bot-avatar">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-                          <rect x="4" y="7" width="16" height="12" rx="3" fill="#111111" opacity=".9"/>
-                          <circle cx="9" cy="12" r="1.4" fill="#F5F5F5"/>
-                          <circle cx="15" cy="12" r="1.4" fill="#F5F5F5"/>
-                          <line x1="12" y1="7" x2="12" y2="4.5" stroke="#111111" strokeWidth="1.5" strokeLinecap="round"/>
-                          <circle cx="12" cy="3.5" r="1" fill="#111111"/>
-                        </svg>
+                        <img src="/images/renz-bot-head.png" alt="" className="ai-face" />
                       </div>
                     )}
                     <div className={`ai-bubble ${msg.role}`}>
@@ -271,25 +239,53 @@ export default function AiChat() {
       <style suppressHydrationWarning>{`
         /* ── FAB ── */
         .ai-fab {
-          position: fixed; bottom: 28px; right: 28px;
-          height: 56px; min-width: 56px; padding: 0 15px; border-radius: 999px;
-          background: linear-gradient(180deg, #1F1F1F, #111111);
-          border: 1px solid rgba(255,255,255,0.16); cursor: pointer;
-          display: flex; align-items: center; justify-content: center; gap: 0;
+          position: fixed; bottom: 14px; right: 20px;
+          background: transparent; border: none; padding: 0; cursor: pointer;
+          display: flex; flex-direction: row-reverse; align-items: center; gap: 0;
           color: #F5F5F5; font-family: inherit; font-size: 14px; font-weight: 600;
           z-index: 900;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
-          transition: gap 0.25s ease, padding 0.25s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+          transition: gap 0.25s ease;
         }
+        .ai-fab:hover, .ai-fab:focus-visible { gap: 8px; }
+        .ai-fab-face { display: block; width: 64px; height: 98px; flex: 0 0 64px; animation: botBob 3.2s ease-in-out infinite; }
+        .ai-fab-face { position: relative; }
+        /* Soft ground shadow that breathes with the bob */
+        .ai-fab::before {
+          content: ""; position: absolute; right: 10px; bottom: -3px; width: 44px; height: 9px;
+          background: radial-gradient(ellipse at center, rgba(0,0,0,0.6), transparent 70%);
+          animation: botShadow 3.2s ease-in-out infinite; pointer-events: none;
+        }
+        @keyframes botShadow { 0%, 100% { transform: scaleX(1); opacity: 0.9; } 50% { transform: scaleX(0.8); opacity: 0.55; } }
+        .ai-bot { position: absolute; inset: 0; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.55)); }
+        .ai-bot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
+        /* Blink: a visor-colored lid sweeps down over each glowing eye */
+        .ai-bot-eye {
+          position: absolute; transform-origin: 50% 0; transform: scaleY(0);
+          background: radial-gradient(ellipse at center, #15121f 62%, rgba(21,18,31,0) 74%);
+          animation: botBlink 3.6s ease-in-out infinite;
+        }
+        .ai-bot-eye-l { left: 29.6%; top: 20.3%; width: 9.2%; height: 6.1%; }
+        .ai-bot-eye-r { left: 60%; top: 21.7%; width: 10.2%; height: 6.7%; }
+        /* Livelier when the mouse is on it */
+        .ai-fab:hover .ai-bot-eye, .ai-fab:focus-visible .ai-bot-eye { animation-duration: 1.3s; }
+        .ai-fab:hover .ai-fab-face, .ai-fab:focus-visible .ai-fab-face { animation-duration: 1.6s; }
+        @keyframes botBlink {
+          0%, 84%, 100% { transform: scaleY(0); }
+          88%, 92% { transform: scaleY(1); }
+        }
+        @keyframes botBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
         .ai-fab-label {
-          max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0;
-          transition: max-width 0.25s ease, opacity 0.2s ease;
+          flex: 0 0 auto; max-width: 0; padding: 0; overflow: hidden; white-space: nowrap; opacity: 0;
+          background: #141414; border: 1px solid rgba(255,255,255,0.16); border-radius: 999px;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+          transition: max-width 0.25s ease, padding 0.25s ease, opacity 0.2s ease;
         }
-        .ai-fab:hover, .ai-fab:focus-visible { gap: 10px; padding: 0 20px 0 15px; border-color: rgba(255,255,255,0.32); box-shadow: 0 14px 38px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.14); }
-        .ai-fab:hover .ai-fab-label, .ai-fab:focus-visible .ai-fab-label { max-width: 110px; opacity: 1; }
+        .ai-fab:hover .ai-fab-label, .ai-fab:focus-visible .ai-fab-label { max-width: 130px; padding: 9px 16px; opacity: 1; }
+        .ai-face { width: 100%; height: 100%; object-fit: contain; object-position: 50% 60%; display: block; padding: 3px; }
+        .ai-avatar, .ai-bot-avatar, .ai-welcome-icon { overflow: hidden; }
         .ai-fab-dot {
-          position: absolute; top: 2px; right: 2px;
-          width: 12px; height: 12px; border-radius: 50%;
+          position: absolute; top: 6px; right: 4px;
+          width: 10px; height: 10px; border-radius: 50%;
           background: #22C55E; border: 2px solid #0D0D0D;
         }
         .ai-fab-dot::after {
@@ -300,7 +296,8 @@ export default function AiChat() {
           0% { transform: scale(1); opacity: 0.7; }
           100% { transform: scale(2.2); opacity: 0; }
         }
-        @media (prefers-reduced-motion: reduce) { .ai-fab-dot::after { animation: none; } }
+        @media (prefers-reduced-motion: reduce) { .ai-fab-dot::after, .ai-fab::before, .ai-fab-face, .ai-bot-eye { animation: none; } }
+
 
         /* ── Overlay ── */
         .ai-overlay {
@@ -365,7 +362,7 @@ export default function AiChat() {
         .ai-header-left { display: flex; align-items: center; gap: 13px; }
         .ai-avatar {
           width: 44px; height: 44px; border-radius: 13px;
-          background: linear-gradient(135deg, #F5F5F5, #F5F5F5 50%, #F5F5F5);
+          background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
           box-shadow: 0 4px 16px rgba(0,0,0,0.35);
@@ -439,7 +436,7 @@ export default function AiChat() {
         .ai-msg-row.user { justify-content: flex-end; }
         .ai-bot-avatar {
           width: 28px; height: 28px; border-radius: 9px;
-          background: linear-gradient(135deg, #F5F5F5, #F5F5F5 60%, #F5F5F5);
+          background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
           box-shadow: 0 3px 10px rgba(0,0,0,0.3);

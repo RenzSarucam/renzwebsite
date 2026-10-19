@@ -61,7 +61,7 @@ export default function NotFound() {
 
       {/* Brand */}
       <p style={{ position: "absolute", bottom: 24, fontSize: 12, color: "#A3A3A3", fontFamily: "'Courier New', monospace" }}>
-        RCS.dev
+        Renz.dev
       </p>
     </main>
   );

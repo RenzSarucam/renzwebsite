@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://renzcarljansensarucam.vercel.app",
-    siteName: "RCS.dev",
+    siteName: "Renz.dev",
     images: [
       {
         url: "https://renzcarljansensarucam.vercel.app/og-image.png",

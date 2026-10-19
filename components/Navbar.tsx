@@ -107,7 +107,7 @@ export default function Navbar() {
           {/* Brand */}
           <button
             type="button"
-            aria-label="RCS.dev — back to home"
+            aria-label="Renz.dev — back to home"
             onClick={() => { setMenuOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}
             style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0, background: "transparent", border: "none", padding: 0, cursor: "pointer", font: "inherit" }}
           >
@@ -121,7 +121,7 @@ export default function Navbar() {
                 <span className="nav-atom-gt">&gt;</span>
               </div>
             </div>
-            <span style={{ color: "#F5F5F5", fontSize: 16, fontWeight: 700 }}>RCS.dev</span>
+            <span style={{ color: "#F5F5F5", fontSize: 16, fontWeight: 700 }}>Renz.dev</span>
           </button>
 
           {/* Desktop nav links */}
