@@ -2,7 +2,7 @@
 import { workExperiences } from "@/app/_lib/portfolio-data";
 
 const roleColor = (role: string, isCurrent: boolean) => {
-  if (isCurrent) return { dot: "#F5F5F5", border: "rgba(255,255,255,0.132)", badge: "rgba(255,255,255,0.06)", badgeText: "#F5F5F5", badgeBorder: "rgba(255,255,255,0.18)" };
+  if (isCurrent) return { dot: "#22C55E", border: "rgba(34,197,94,0.35)", badge: "rgba(34,197,94,0.1)", badgeText: "#4ADE80", badgeBorder: "rgba(34,197,94,0.3)" };
   if (/design|ui|ux/i.test(role)) return { dot: "#F5F5F5", border: "rgba(255,255,255,0.075)", badge: "rgba(255,255,255,0.05)", badgeText: "#F5F5F5", badgeBorder: "rgba(255,255,255,0.125)" };
   return { dot: "#F5F5F5", border: "rgba(255,255,255,0.108)", badge: "rgba(255,255,255,0.05)", badgeText: "#F5F5F5", badgeBorder: "rgba(255,255,255,0.15)" };
 };
@@ -137,8 +137,8 @@ export default function WorkExperience() {
           animation: dotGlow 2.4s ease-in-out infinite;
         }
         @keyframes dotGlow {
-          0%,100% { box-shadow: 0 0 0 3px rgba(0,0,0,0.2), 0 0 10px rgba(0,0,0,0.5); }
-          50%      { box-shadow: 0 0 0 5px rgba(0,0,0,0.1), 0 0 18px rgba(0,0,0,0.7); }
+          0%,100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.2), 0 0 10px rgba(34,197,94,0.5); }
+          50%      { box-shadow: 0 0 0 5px rgba(34,197,94,0.1), 0 0 18px rgba(34,197,94,0.7); }
         }
         .exp-spine-line {
           width: 1px; flex: 1; min-height: 28px;
@@ -197,15 +197,15 @@ export default function WorkExperience() {
         }
         .exp-live-badge {
           display: inline-flex; align-items: center; gap: 5px;
-          font-size: 11px; font-weight: 600; color: #FFFFFF;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.18);
+          font-size: 11px; font-weight: 600; color: #4ADE80;
+          background: rgba(34,197,94,0.1);
+          border: 1px solid rgba(34,197,94,0.3);
           border-radius: 999px; padding: 2px 9px;
           white-space: nowrap;
         }
         .exp-live-dot {
           width: 6px; height: 6px; border-radius: 50%;
-          background: #F5F5F5;
+          background: #22C55E;
           animation: livePulse 1.8s ease-in-out infinite;
         }
         @keyframes livePulse {

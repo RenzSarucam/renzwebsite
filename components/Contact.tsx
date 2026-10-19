@@ -302,20 +302,20 @@ export default function Contact() {
         .avail-badge {
           display: inline-flex; align-items: center; gap: 8px;
           padding: 6px 14px; border-radius: 100px;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.15);
-          color: #FFFFFF; font-size: 13px; font-weight: 500;
+          background: rgba(34,197,94,0.1);
+          border: 1px solid rgba(34,197,94,0.35);
+          color: #4ADE80; font-size: 13px; font-weight: 500;
           width: fit-content; margin-bottom: 20px; margin-top: 20px;
         }
         .avail-dot {
           width: 7px; height: 7px; border-radius: 50%;
-          background: #F5F5F5;
-          box-shadow: 0 0 0 2px rgba(0,0,0,0.25);
+          background: #22C55E;
+          box-shadow: 0 0 0 2px rgba(34,197,94,0.25);
           animation: availPulse 2s ease-in-out infinite;
         }
         @keyframes availPulse {
-          0%, 100% { box-shadow: 0 0 0 2px rgba(0,0,0,0.25); }
-          50% { box-shadow: 0 0 0 5px rgba(0,0,0,0.1); }
+          0%, 100% { box-shadow: 0 0 0 2px rgba(34,197,94,0.25); }
+          50% { box-shadow: 0 0 0 5px rgba(34,197,94,0.1); }
         }
 
         .contact-left-sub {

@@ -118,20 +118,22 @@ export default function AiChat() {
       {/* ── Trigger button ── */}
       <button
         onClick={() => setOpen(true)}
-        aria-label="Open portfolio assistant"
+        aria-label="Ask RenzAI"
         type="button"
         className="ai-fab"
       >
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <rect x="4" y="7" width="16" height="12" rx="3" fill="#111111" opacity=".92"/>
-          <circle cx="9" cy="12" r="1.5" fill="#F5F5F5"/>
-          <circle cx="15" cy="12" r="1.5" fill="#F5F5F5"/>
-          <rect x="8.5" y="15" width="7" height="1.5" rx="0.75" fill="#F5F5F5"/>
-          <line x1="12" y1="7" x2="12" y2="4" stroke="#111111" strokeWidth="1.5" strokeLinecap="round" opacity=".9"/>
-          <circle cx="12" cy="3.2" r="1" fill="#111111" opacity=".9"/>
-          <rect x="2" y="10" width="2" height="4" rx="1" fill="#111111" opacity=".7"/>
-          <rect x="20" y="10" width="2" height="4" rx="1" fill="#111111" opacity=".7"/>
+          <rect x="4" y="7" width="16" height="12" rx="3" fill="#F5F5F5" opacity=".92"/>
+          <circle cx="9" cy="12" r="1.5" fill="#0D0D0D"/>
+          <circle cx="15" cy="12" r="1.5" fill="#0D0D0D"/>
+          <rect x="8.5" y="15" width="7" height="1.5" rx="0.75" fill="#0D0D0D"/>
+          <line x1="12" y1="7" x2="12" y2="4" stroke="#F5F5F5" strokeWidth="1.5" strokeLinecap="round" opacity=".9"/>
+          <circle cx="12" cy="3.2" r="1" fill="#F5F5F5" opacity=".9"/>
+          <rect x="2" y="10" width="2" height="4" rx="1" fill="#F5F5F5" opacity=".7"/>
+          <rect x="20" y="10" width="2" height="4" rx="1" fill="#F5F5F5" opacity=".7"/>
         </svg>
+        <span className="ai-fab-label">Ask RenzAI</span>
+        <span className="ai-fab-dot" aria-hidden="true" />
       </button>
 
       {/* ── Modal overlay ── */}
@@ -162,7 +164,7 @@ export default function AiChat() {
                   </svg>
                 </div>
                 <div>
-                  <p className="ai-header-name">Ask about Renz</p>
+                  <p className="ai-header-name">Ask RenzAI</p>
                   <p className="ai-header-status">
                     <span className="ai-status-dot" />
                     Online · Ready to help
@@ -270,32 +272,35 @@ export default function AiChat() {
         /* ── FAB ── */
         .ai-fab {
           position: fixed; bottom: 28px; right: 28px;
-          width: 58px; height: 58px; border-radius: 50%;
-          background: linear-gradient(135deg, #F5F5F5, #F5F5F5);
-          border: none; cursor: pointer;
-          display: flex; align-items: center; justify-content: center;
+          height: 56px; min-width: 56px; padding: 0 15px; border-radius: 999px;
+          background: linear-gradient(180deg, #1F1F1F, #111111);
+          border: 1px solid rgba(255,255,255,0.16); cursor: pointer;
+          display: flex; align-items: center; justify-content: center; gap: 0;
+          color: #F5F5F5; font-family: inherit; font-size: 14px; font-weight: 600;
           z-index: 900;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(0,0,0,0.2);
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+          transition: gap 0.25s ease, padding 0.25s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
-        .ai-fab:hover {
-          transform: scale(1.08);
-          box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.3);
+        .ai-fab-label {
+          max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0;
+          transition: max-width 0.25s ease, opacity 0.2s ease;
         }
-        .ai-fab::after {
-          content: '';
-          position: absolute;
-          inset: -5px;
-          border-radius: 50%;
-          background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.2));
-          z-index: -1;
-          animation: fabPulse 2.8s ease-in-out infinite;
+        .ai-fab:hover, .ai-fab:focus-visible { gap: 10px; padding: 0 20px 0 15px; border-color: rgba(255,255,255,0.32); box-shadow: 0 14px 38px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.14); }
+        .ai-fab:hover .ai-fab-label, .ai-fab:focus-visible .ai-fab-label { max-width: 110px; opacity: 1; }
+        .ai-fab-dot {
+          position: absolute; top: 2px; right: 2px;
+          width: 12px; height: 12px; border-radius: 50%;
+          background: #22C55E; border: 2px solid #0D0D0D;
+        }
+        .ai-fab-dot::after {
+          content: ""; position: absolute; inset: -2px; border-radius: 50%;
+          border: 1px solid #22C55E; animation: fabPulse 2.4s ease-out infinite;
         }
         @keyframes fabPulse {
-          0% { transform: scale(1); opacity: 0.5; }
-          70% { transform: scale(1.5); opacity: 0; }
-          100% { transform: scale(1.5); opacity: 0; }
+          0% { transform: scale(1); opacity: 0.7; }
+          100% { transform: scale(2.2); opacity: 0; }
         }
+        @media (prefers-reduced-motion: reduce) { .ai-fab-dot::after { animation: none; } }
 
         /* ── Overlay ── */
         .ai-overlay {
@@ -373,13 +378,13 @@ export default function AiChat() {
         }
         .ai-status-dot {
           width: 7px; height: 7px; border-radius: 50%;
-          background: #F5F5F5; display: inline-block;
-          box-shadow: 0 0 8px #525252;
+          background: #22C55E; display: inline-block;
+          box-shadow: 0 0 8px rgba(34,197,94,0.6);
           animation: statusPulse 2s ease-in-out infinite;
         }
         @keyframes statusPulse {
-          0%, 100% { box-shadow: 0 0 6px #525252; }
-          50% { box-shadow: 0 0 14px #525252; }
+          0%, 100% { box-shadow: 0 0 6px rgba(34,197,94,0.5); }
+          50% { box-shadow: 0 0 14px rgba(34,197,94,0.8); }
         }
         .ai-close {
           background: #1A1A1A;

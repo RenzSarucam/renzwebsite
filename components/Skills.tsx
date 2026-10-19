@@ -1,14 +1,15 @@
 "use client";
+import { useState } from "react";
 import { skillGroups } from "@/app/_lib/portfolio-data";
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Frontend:           "#F5F5F5",
-  Backend:            "#D4D4D4",
-  DevOps:             "#A3A3A3",
-  "APIs & Integrations": "#737373",
+  Frontend:           "#60A5FA",
+  Backend:            "#2DD4BF",
+  DevOps:             "#F472B6",
+  "APIs & Integrations": "#C084FC",
 };
 
-function RadarChart({ skills, color }: { skills: { name: string; level: number }[]; color: string }) {
+function RadarChart({ skills, color, active, onActive }: { skills: { name: string; level: number }[]; color: string; active: number | null; onActive: (i: number | null) => void }) {
   const size = 180;
   const cx = size / 2;
   const cy = size / 2;
@@ -59,7 +60,11 @@ function RadarChart({ skills, color }: { skills: { name: string; level: number }
 
       {/* Data dots */}
       {dataPts.map((p, i) => (
-        <circle key={i} cx={p.x} cy={p.y} r="3.5" fill={color} stroke="#F5F5F5" strokeWidth="1.5" />
+        <g key={i} onMouseEnter={() => onActive(i)} onMouseLeave={() => onActive(null)} style={{ cursor: "pointer" }}>
+          <circle cx={p.x} cy={p.y} r="11" fill="transparent" />
+          {active === i && <circle cx={p.x} cy={p.y} r="8" fill={color} opacity="0.22" />}
+          <circle cx={p.x} cy={p.y} r={active === i ? 5 : 3.5} fill={color} stroke="#F5F5F5" strokeWidth="1.5" />
+        </g>
       ))}
 
       {/* Labels */}
@@ -76,14 +81,69 @@ function RadarChart({ skills, color }: { skills: { name: string; level: number }
             y={p.y + (dy > 0 ? 4 : dy < 0 ? -2 : 0)}
             textAnchor={anchor}
             fontSize="8.5"
-            fill="#A3A3A3"
+            fill={active === i ? "#F5F5F5" : "#A3A3A3"}
+            fontWeight={active === i ? 700 : 400}
             fontFamily="inherit"
+            style={{ cursor: "pointer" }}
+            onMouseEnter={() => onActive(i)}
+            onMouseLeave={() => onActive(null)}
           >
             {name}
           </text>
         );
       })}
+      {/* Tooltip */}
+      {active !== null && (() => {
+        const p = dataPts[active];
+        const label = `${skills[active].name}  ${skills[active].level}%`;
+        const w = Math.round(label.length * 6 + 16);
+        const x = Math.max(-30, Math.min(size + 30 - w, p.x - w / 2));
+        const y = p.y < cy ? p.y + 12 : p.y - 32;
+        return (
+          <g pointerEvents="none">
+            <rect x={x} y={y} width={w} height="20" rx="6" fill="#0D0D0D" stroke={color} strokeWidth="1" />
+            <text x={x + w / 2} y={y + 13.5} textAnchor="middle" fontSize="10" fontWeight="600" fill="#F5F5F5" fontFamily="inherit">{label}</text>
+          </g>
+        );
+      })()}
     </svg>
+  );
+}
+
+function SkillCard({ group, color }: { group: (typeof skillGroups)[number]; color: string }) {
+  const [active, setActive] = useState<number | null>(null);
+  return (
+    <div className="skill-card">
+      <div className="skill-card-header" style={{ borderColor: `${color}30` }}>
+        <span style={{ fontSize: 13, color, fontFamily: "'Courier New', monospace", flexShrink: 0 }}>{group.icon}</span>
+        <h3 style={{ margin: 0, fontSize: group.category.length > 10 ? 13 : 15, fontWeight: 700, color: "#F5F5F5", lineHeight: 1.2 }}>{group.category}</h3>
+        <span className="skill-avg-badge" style={{ background: `${color}18`, color, border: `1px solid ${color}30`, whiteSpace: "nowrap" }}>
+          {Math.round(group.skills.reduce((s, k) => s + k.level, 0) / group.skills.length)}% avg
+        </span>
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "center", padding: "12px 0 4px" }}>
+        <RadarChart skills={group.skills} color={color} active={active} onActive={setActive} />
+      </div>
+
+      <div className="skill-list">
+        {group.skills.map((skill, i) => (
+          <div
+            key={skill.name}
+            className="skill-row"
+            onMouseEnter={() => setActive(i)}
+            onMouseLeave={() => setActive(null)}
+            style={{ background: active === i ? `${color}18` : "transparent", borderRadius: 6, margin: "-2px -6px", padding: "2px 6px", transition: "background 0.15s ease" }}
+          >
+            <span className="skill-name" style={active === i ? { color: "#F5F5F5" } : undefined}>{skill.name}</span>
+            <div className="skill-bar-track">
+              <div className="skill-bar-fill" style={{ width: `${skill.level}%`, background: `linear-gradient(90deg, ${color}cc, ${color})` }} />
+            </div>
+            <span className="skill-pct" style={{ color }}>{skill.level}%</span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -107,40 +167,9 @@ export default function Skills() {
 
         {/* Skill group cards */}
         <div className="skills-grid">
-          {skillGroups.map((group) => {
-            const color = CATEGORY_COLORS[group.category] ?? "#FFFFFF";
-            return (
-              <div key={group.category} className="skill-card">
-
-                {/* Card header */}
-                <div className="skill-card-header" style={{ borderColor: `${color}30` }}>
-                  <span style={{ fontSize: 13, color, fontFamily: "'Courier New', monospace", flexShrink: 0 }}>{group.icon}</span>
-                  <h3 style={{ margin: 0, fontSize: group.category.length > 10 ? 13 : 15, fontWeight: 700, color: "#F5F5F5", lineHeight: 1.2 }}>{group.category}</h3>
-                  <span className="skill-avg-badge" style={{ background: `${color}18`, color, border: `1px solid ${color}30`, whiteSpace: "nowrap" }}>
-                    {Math.round(group.skills.reduce((s, k) => s + k.level, 0) / group.skills.length)}% avg
-                  </span>
-                </div>
-
-                {/* Radar */}
-                <div style={{ display: "flex", justifyContent: "center", padding: "12px 0 4px" }}>
-                  <RadarChart skills={group.skills} color={color} />
-                </div>
-
-                {/* Skill list */}
-                <div className="skill-list">
-                  {group.skills.map((skill) => (
-                    <div key={skill.name} className="skill-row">
-                      <span className="skill-name">{skill.name}</span>
-                      <div className="skill-bar-track">
-                        <div className="skill-bar-fill" style={{ width: `${skill.level}%`, background: `linear-gradient(90deg, ${color}cc, ${color})` }} />
-                      </div>
-                      <span className="skill-pct" style={{ color }}>{skill.level}%</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+          {skillGroups.map((group) => (
+            <SkillCard key={group.category} group={group} color={CATEGORY_COLORS[group.category] ?? "#FFFFFF"} />
+          ))}
         </div>
       </div>
 

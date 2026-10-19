@@ -4,24 +4,29 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { projects, type Project } from "@/app/_lib/portfolio-data";
 
+const FEATURED_PROJECT = "Opsora";
+const isFeatured = (p: Project) => p.title.startsWith(FEATURED_PROJECT);
+
 const filters = ["All", "Full Stack", "Mobile", "Figma", "Docker"];
 
 const typeColor = (types: string | string[]) => {
   const t = Array.isArray(types) ? types[0] : types;
-  if (t === "Full Stack") return { accent: "#F5F5F5", glow: "rgba(255,255,255,0.09)", badge: "rgba(255,255,255,0.05)", badgeText: "#F5F5F5", badgeBorder: "rgba(255,255,255,0.132)" };
-  if (t === "Mobile")     return { accent: "#D4D4D4", glow: "rgba(212,212,212,0.075)",  badge: "rgba(212,212,212,0.05)",  badgeText: "#D4D4D4",  badgeBorder: "rgba(212,212,212,0.132)"  };
-  if (t === "Figma")      return { accent: "#A3A3A3", glow: "rgba(163,163,163,0.075)", badge: "rgba(163,163,163,0.05)", badgeText: "#A3A3A3",  badgeBorder: "rgba(163,163,163,0.11)" };
-  if (t === "Docker")     return { accent: "#737373", glow: "rgba(115,115,115,0.15)",  badge: "rgba(115,115,115,0.1)",  badgeText: "#A3A3A3",  badgeBorder: "rgba(115,115,115,0.3)"  };
-  return { accent: "#F5F5F5", glow: "rgba(255,255,255,0.075)", badge: "rgba(255,255,255,0.05)", badgeText: "#F5F5F5", badgeBorder: "rgba(255,255,255,0.12)" };
+  if (t === "Full Stack") return { accent: "#60A5FA", glow: "rgba(96,165,250,0.12)", badge: "rgba(96,165,250,0.1)", badgeText: "#60A5FA", badgeBorder: "rgba(96,165,250,0.3)" };
+  if (t === "Mobile") return { accent: "#2DD4BF", glow: "rgba(45,212,191,0.12)", badge: "rgba(45,212,191,0.1)", badgeText: "#2DD4BF", badgeBorder: "rgba(45,212,191,0.3)" };
+  if (t === "Figma") return { accent: "#C084FC", glow: "rgba(192,132,252,0.12)", badge: "rgba(192,132,252,0.1)", badgeText: "#C084FC", badgeBorder: "rgba(192,132,252,0.3)" };
+  if (t === "Docker") return { accent: "#F472B6", glow: "rgba(244,114,182,0.12)", badge: "rgba(244,114,182,0.1)", badgeText: "#F472B6", badgeBorder: "rgba(244,114,182,0.3)" };
+  return { accent: "#A3A3A3", glow: "rgba(163,163,163,0.1)", badge: "rgba(163,163,163,0.08)", badgeText: "#A3A3A3", badgeBorder: "rgba(163,163,163,0.25)" };
 };
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
   const [selected, setSelected] = useState<Project | null>(null);
 
-  const shown = filter === "All"
+  const filtered = filter === "All"
     ? projects
     : projects.filter(p => Array.isArray(p.type) ? p.type.includes(filter) : p.type === filter);
+  // Featured project always leads the list (stable sort keeps the rest in order)
+  const shown = [...filtered].sort((a, b) => Number(isFeatured(b)) - Number(isFeatured(a)));
 
   const countFor = (f: string) => f === "All"
     ? projects.length
@@ -62,10 +67,10 @@ export default function Projects() {
         <div className="pf-legend">
           <span className="pfl-label">Color key:</span>
           {[
-            { color: "#F5F5F5", label: "Full Stack" },
-            { color: "#D4D4D4", label: "Mobile" },
-            { color: "#A3A3A3", label: "Figma / Design" },
-            { color: "#737373", label: "Docker" },
+            { color: "#60A5FA", label: "Full Stack" },
+            { color: "#2DD4BF", label: "Mobile" },
+            { color: "#C084FC", label: "Figma / Design" },
+            { color: "#F472B6", label: "Docker" },
           ].map(({ color, label }) => (
             <span key={label} className="pfl-item">
               <span className="pfl-dot" style={{ background: color, boxShadow: `0 0 6px ${color}88` }} />
@@ -80,8 +85,8 @@ export default function Projects() {
             <ProjectCard
               key={project.title}
               project={project}
-              index={projects.indexOf(project)}
-              featured={idx === 0 && filter === "All"}
+              index={idx}
+              featured={isFeatured(project)}
               onOpen={() => setSelected(project)}
             />
           ))}
@@ -182,10 +187,15 @@ function ProjectCard({ project, index, featured, onOpen }: {
       onClick={onOpen}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onMouseMove={(e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+        e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+      }}
       style={{
-        borderColor: hovered ? `${c.accent}50` : "rgba(255,255,255,0.06)",
-        boxShadow: hovered ? `0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px ${c.accent}22, 0 0 32px ${c.glow}` : "none",
-        transform: hovered ? "translateY(-4px)" : "none",
+        borderColor: hovered ? `${c.accent}50` : featured ? `${c.accent}40` : "rgba(255,255,255,0.06)",
+        boxShadow: hovered ? `0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px ${c.accent}22, 0 0 32px ${c.glow}` : featured ? `0 0 0 1px ${c.accent}18, 0 0 40px ${c.glow}` : "none",
+        transform: hovered ? "translateY(-6px)" : "none",
       }}
     >
       {/* Top accent gradient */}
@@ -197,6 +207,7 @@ function ProjectCard({ project, index, featured, onOpen }: {
         <div className="pc-top">
           <span className="pc-num" style={{ color: `${c.accent}88` }}>#{num}</span>
           <div className="pc-badges">
+            {featured && <span className="pc-featured-badge">★ Featured</span>}
             <span className="pc-type-badge" style={{ background: c.badge, color: c.badgeText, borderColor: c.badgeBorder }}>{typeLabel}</span>
             <span className={`pc-status-badge${project.status === "Completed" ? " status-done" : " status-wip"}`}>
               {project.status === "Completed" ? "✓ " : "⏳ "}{project.status}
@@ -234,12 +245,12 @@ function ProjectCard({ project, index, featured, onOpen }: {
 
         {/* Footer */}
         <div className="pc-footer" style={{ borderColor: hovered ? `${c.accent}22` : "#2A2A2A" }}>
-          <span className="pc-cta" style={{ color: hovered ? c.accent : "#A3A3A3" }}>
+          <span className="pc-cta" style={{ color: hovered ? "#F5F5F5" : "#A3A3A3" }}>
             View details
           </span>
           <svg
             width="14" height="14" viewBox="0 0 24 24" fill="none"
-            stroke={hovered ? c.accent : "#A3A3A3"}
+            stroke={hovered ? "#F5F5F5" : "#A3A3A3"}
             strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
             style={{ transform: hovered ? "translateX(3px)" : "none", transition: "transform 0.2s, stroke 0.2s" }}
           >
@@ -254,9 +265,26 @@ function ProjectCard({ project, index, featured, onOpen }: {
           border: 1px solid; border-radius: 16px;
           overflow: hidden; cursor: pointer;
           display: flex; flex-direction: column;
-          transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+          transition: transform 0.35s cubic-bezier(.22,.8,.3,1), box-shadow 0.35s ease, border-color 0.25s;
+          position: relative; isolation: isolate;
         }
-        .pc-accent { height: 3px; width: 100%; flex-shrink: 0; }
+        /* Cursor spotlight */
+        .pc::before {
+          content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+          background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), rgba(255,255,255,0.08), transparent 65%);
+          opacity: 0; transition: opacity 0.3s ease;
+        }
+        .pc:hover::before { opacity: 1; }
+        .pc > * { position: relative; z-index: 1; }
+        .pc-accent { height: 3px; width: 100%; flex-shrink: 0; transform: scaleX(0.3); transform-origin: left; transition: transform 0.5s cubic-bezier(.22,.8,.3,1); }
+        .pc:hover .pc-accent { transform: scaleX(1); }
+        .pc-title { transition: color 0.2s ease, transform 0.3s ease; }
+        .pc:hover .pc-title { color: #FFFFFF; transform: translateX(2px); }
+        .pc:hover .pc-tag { border-color: rgba(255,255,255,0.22); color: #F5F5F5; }
+        @media (prefers-reduced-motion: reduce) {
+          .pc, .pc-accent, .pc-title { transition: none; }
+          .pc:hover .pc-title { transform: none; }
+        }
         .pc-inner {
           display: flex; flex-direction: column; gap: 10px;
           padding: 18px 20px 18px; flex: 1;
@@ -283,12 +311,16 @@ function ProjectCard({ project, index, featured, onOpen }: {
           border: 1px solid; font-weight: 600;
           font-family: 'Courier New', monospace;
         }
+        .pc-featured-badge {
+          font-size: 11px; padding: 2px 9px; border-radius: 100px; font-weight: 700;
+          background: #F5F5F5; color: #111111; letter-spacing: 0.02em;
+        }
         .pc-status-badge {
           font-size: 11px; padding: 2px 8px; border-radius: 100px;
           border: 1px solid; font-weight: 500;
         }
-        .status-done { background: rgba(255,255,255,0.05); color: #FFFFFF; border-color: rgba(255,255,255,0.15); }
-        .status-wip  { background: rgba(163,163,163,0.1);  color: #A3A3A3; border-color: rgba(163,163,163,0.25); }
+        .status-done { background: rgba(34,197,94,0.1); color: #4ADE80; border-color: rgba(34,197,94,0.3); }
+        .status-wip  { background: rgba(245,158,11,0.1);  color: #FBBF24; border-color: rgba(245,158,11,0.3); }
 
         .pc-title {
           font-size: 18px; font-weight: 700; color: #F5F5F5;
@@ -475,8 +507,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           border: 1px solid; font-weight: 500;
         }
         .dm-status { border-radius: 100px !important; }
-        .status-done { background: rgba(255,255,255,0.06); color: #FFFFFF; border-color: rgba(255,255,255,0.168) !important; }
-        .status-wip  { background: rgba(163,163,163,0.12);  color: #A3A3A3; border-color: rgba(163,163,163,0.28)  !important; }
+        .status-done { background: rgba(34,197,94,0.1); color: #4ADE80; border-color: rgba(34,197,94,0.3) !important; }
+        .status-wip  { background: rgba(245,158,11,0.1);  color: #FBBF24; border-color: rgba(245,158,11,0.3)  !important; }
         .dm-close {
           width: 32px; height: 32px; border-radius: 8px;
           background: #1A1A1A; border: 1px solid #2A2A2A;

@@ -54,23 +54,48 @@ function AnimatedCounter({ value, suffix = "", delay = 0 }: { value: number; suf
 }
 
 export default function Hero() {
-  const [roleIdx, setRoleIdx] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const [typed, setTyped] = useState(roles[0]);
   const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
 
-    const interval = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setRoleIdx((index) => (index + 1) % roles.length);
-        setVisible(true);
-      }, 400);
-    }, 2800);
+    // Typewriter: type the role, hold, delete it, then type the next one.
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let idx = 0;
+    let len = roles[0].length;
+    let deleting = true; // first role is already shown; hold, then delete
+    let timer: ReturnType<typeof setTimeout>;
 
-    return () => clearInterval(interval);
+    const tick = () => {
+      const full = roles[idx];
+      if (reduceMotion) {
+        idx = (idx + 1) % roles.length;
+        setTyped(roles[idx]);
+        timer = setTimeout(tick, 2800);
+        return;
+      }
+      if (!deleting) {
+        len += 1;
+        setTyped(full.slice(0, len));
+        if (len >= full.length) { deleting = true; timer = setTimeout(tick, 2200); return; }
+        timer = setTimeout(tick, 55 + Math.random() * 45);
+      } else {
+        len -= 1;
+        setTyped(full.slice(0, Math.max(len, 0)));
+        if (len <= 0) {
+          deleting = false;
+          idx = (idx + 1) % roles.length;
+          timer = setTimeout(tick, 350);
+          return;
+        }
+        timer = setTimeout(tick, 28);
+      }
+    };
+    timer = setTimeout(tick, 2200);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const fadeStyle = {
@@ -206,12 +231,9 @@ export default function Hero() {
                   <span className="hero-role-prompt">&gt;</span>
                   <p
                     className="hero-role"
-                    style={{
-                      opacity: visible ? 1 : 0,
-                      transform: visible ? "translateY(0)" : "translateY(-8px)",
-                    }}
+                    style={{ minHeight: "1.4em" }}
                   >
-                    {roles[roleIdx]}
+                    {typed}
                   </p>
                   <span className="hero-role-cursor">_</span>
                 </div>
@@ -290,7 +312,7 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  github.com/RenzSarucam â†’
+                  github.com/RenzSarucam →
                 </a>
               </div>
             </div>
@@ -773,7 +795,7 @@ export default function Hero() {
           word-break: break-word;
         }
 
-        /* â”€â”€ Tablet: single-column grid â”€â”€ */
+        /* ── Tablet: single-column grid ── */
         @media (max-width: 1100px) {
           .hero-grid {
             grid-template-columns: 1fr;
@@ -788,7 +810,7 @@ export default function Hero() {
           }
         }
 
-        /* â”€â”€ Tablet narrow (820px) â”€â”€ */
+        /* ── Tablet narrow (820px) ── */
         @media (max-width: 820px) {
           .hero-wrapper {
             padding: 10px;
@@ -898,7 +920,7 @@ export default function Hero() {
           .hero-link { font-size: 13px; }
         }
 
-        /* â”€â”€ Phone (640px and below) â”€â”€ */
+        /* ── Phone (640px and below) ── */
         @media (max-width: 640px) {
           .hero-wrapper {
             padding: 6px;

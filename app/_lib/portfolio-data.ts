@@ -266,10 +266,10 @@ export const projects: Project[] = [
   },
   {
     title: "Opsora (Infrastructure & Application Monitoring Platform)",
-    desc: "A self-hosted infrastructure and application monitoring platform built as a personal project and actively used at DSG Son's Group Inc. to monitor the organization's deployed internal systems. Opsora gives administrators a single dark-themed dashboard to track application health, uptime, and response times across all deployed services — showing which applications are online, warning, or offline in real time. It centralizes monitoring for web applications, servers, and Docker containers with deduplication alerts and an activity log. Built with Next.js App Router + TypeScript frontend, Laravel 12 backend with Sanctum session auth, MySQL, and Docker Compose. Currently in active development with HTTP health checks, server metrics, and container management on the roadmap.",
+    desc: "A self-hosted infrastructure and application monitoring platform built as a personal project and actively used at DSG Son's Group Inc. to monitor the organization's deployed internal systems. Opsora gives administrators a single dark-themed dashboard to track application health, uptime, and response times across all deployed services — showing which applications are online, warning, or offline in real time. It centralizes monitoring for web applications, servers, and Docker containers with deduplication alerts and an activity log. Built with Next.js App Router + TypeScript frontend, Laravel 12 backend with Sanctum session auth, MySQL, and Docker Compose.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Laravel 12", "Sanctum", "MySQL", "Docker", "Recharts", "Monitoring", "Self-hosted"],
     type: ["Full Stack", "Docker"],
-    status: "In Progress",
+    status: "Completed",
     link: "https://github.com/RenzSarucam/OPSORA",
     place: "Personal Project · Used at DSG Son's Group Inc.",
   },

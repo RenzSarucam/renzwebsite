@@ -38,23 +38,31 @@ const education = [
 ];
 
 export const certificates = [
-  { title: "CSS, Bootstrap, JavaScript, Web Development Course",        issuer: "Udemy · Proper Dot Institute",         year: "2025", color: "#FFFFFF", image: "/images/certificates/udemy-css-bootstrap-js.jpg" },
-  { title: "JavaScript 20 Projects In 20 Days HTML, CSS & JavaScript", issuer: "Udemy · Vijay Kumar",                  year: "2025", color: "#FFFFFF", image: "/images/certificates/udemy-js-20-projects.jpg" },
-  { title: "Java And C++ And PHP Crash Course All in One For Beginners",issuer: "Udemy · Crunch Coding",               year: "2025", color: "#F5F5F5", image: "/images/certificates/udemy-java-cpp-php.jpg" },
-  { title: "UIUX with Figma and Adobe XD",                             issuer: "Udemy · Marcus Menti, Zechariah Tech", year: "2025", color: "#A3A3A3", image: "/images/certificates/udemy-uiux-figma-xd.jpg" },
-  { title: "Mobile App Design in Figma: From Concept to Prototype",    issuer: "Udemy · Anton Voroniuk",              year: "2025", color: "#FFFFFF", image: "/images/certificates/udemy-figma-mobile.jpg" },
-  { title: "Hands On React JS From Beginner to Expert",                issuer: "Udemy · Learnify IT",                  year: "2025", color: "#FFFFFF", image: "/images/certificates/udemy-react-js.jpg" },
-  { title: "Learn PHP and MySQL for Web Application and Web Development",issuer: "Udemy · Marcus Menti, Zechariah Tech",year: "2025", color: "#F5F5F5", image: "/images/certificates/udemy-php-mysql.jpg" },
-  { title: "Ethical Hacking: Hacker Methodology",                      issuer: "Udemy · Peter A",                     year: "2025", color: "#A3A3A3", image: "/images/certificates/udemy-ethical-hacking.jpg" },
-  { title: "Advanced IT Troubleshooting for Helpdesk Support Technicians",issuer: "Udemy · John Courtenay",           year: "2025", color: "#FFFFFF", image: "/images/certificates/udemy-it-troubleshooting.jpg" },
-  { title: "JavaScript Tutorial: Learn JavaScript Just in 1 Hour",     issuer: "Learnoverse",                         year: "2024", color: "#FFFFFF", image: "/images/certificates/learnoverse-js.jpg" },
-  { title: "Build with AI Davao 2024 – Certificate of Participation",  issuer: "Google Developer Groups Davao",        year: "2024", color: "#FFFFFF", image: "/images/certificates/gdg-build-with-ai.jpg" },
-  { title: "Champion – Mobile Legends: Bang Bang Tournament (IT Day 2021)", issuer: "Holy Cross of Davao College – ITS", year: "2021", color: "#A3A3A3", image: "/images/certificates/hcdc-mlbb-champion.jpg" },
+  { title: "CSS, Bootstrap, JavaScript, Web Development Course",        issuer: "Udemy · Proper Dot Institute",         year: "2025", color: "#A78BFA", image: "/images/certificates/udemy-css-bootstrap-js.jpg" },
+  { title: "JavaScript 20 Projects In 20 Days HTML, CSS & JavaScript", issuer: "Udemy · Vijay Kumar",                  year: "2025", color: "#A78BFA", image: "/images/certificates/udemy-js-20-projects.jpg" },
+  { title: "Java And C++ And PHP Crash Course All in One For Beginners",issuer: "Udemy · Crunch Coding",               year: "2025", color: "#A78BFA", image: "/images/certificates/udemy-java-cpp-php.jpg" },
+  { title: "UIUX with Figma and Adobe XD",                             issuer: "Udemy · Marcus Menti, Zechariah Tech", year: "2025", color: "#A78BFA", image: "/images/certificates/udemy-uiux-figma-xd.jpg" },
+  { title: "Mobile App Design in Figma: From Concept to Prototype",    issuer: "Udemy · Anton Voroniuk",              year: "2025", color: "#A78BFA", image: "/images/certificates/udemy-figma-mobile.jpg" },
+  { title: "Hands On React JS From Beginner to Expert",                issuer: "Udemy · Learnify IT",                  year: "2025", color: "#A78BFA", image: "/images/certificates/udemy-react-js.jpg" },
+  { title: "Learn PHP and MySQL for Web Application and Web Development",issuer: "Udemy · Marcus Menti, Zechariah Tech",year: "2025", color: "#A78BFA", image: "/images/certificates/udemy-php-mysql.jpg" },
+  { title: "Ethical Hacking: Hacker Methodology",                      issuer: "Udemy · Peter A",                     year: "2025", color: "#A78BFA", image: "/images/certificates/udemy-ethical-hacking.jpg" },
+  { title: "Advanced IT Troubleshooting for Helpdesk Support Technicians",issuer: "Udemy · John Courtenay",           year: "2025", color: "#A78BFA", image: "/images/certificates/udemy-it-troubleshooting.jpg" },
+  { title: "JavaScript Tutorial: Learn JavaScript Just in 1 Hour",     issuer: "Learnoverse",                         year: "2024", color: "#2DD4BF", image: "/images/certificates/learnoverse-js.jpg" },
+  { title: "Build with AI Davao 2024 – Certificate of Participation",  issuer: "Google Developer Groups Davao",        year: "2024", color: "#60A5FA", image: "/images/certificates/gdg-build-with-ai.jpg" },
+  { title: "Champion – Mobile Legends: Bang Bang Tournament (IT Day 2021)", issuer: "Holy Cross of Davao College – ITS", year: "2021", color: "#FBBF24", image: "/images/certificates/hcdc-mlbb-champion.jpg" },
 ];
 
+const highlightStyle = (text: string) => {
+  const c = /player/i.test(text) ? "45,212,191" : /club/i.test(text) ? "192,132,252" : /honors/i.test(text) ? "251,191,36" : null;
+  if (!c) return undefined;
+  const hex = /player/i.test(text) ? "#2DD4BF" : /club/i.test(text) ? "#C084FC" : "#FBBF24";
+  return { color: hex, background: `rgba(${c},0.1)`, borderColor: `rgba(${c},0.3)` };
+};
+
 const statusStyle = (status: string) => {
-  if (status === "Graduated with Honors") return { bg: "rgba(255,255,255,0.06)", color: "#FFFFFF", border: "rgba(255,255,255,0.15)" };
-  if (status === "Graduated") return { bg: "rgba(255,255,255,0.06)", color: "#FFFFFF", border: "rgba(255,255,255,0.15)" };
+  if (status === "Graduated with Honors") return { bg: "rgba(251,191,36,0.1)", color: "#FBBF24", border: "rgba(251,191,36,0.3)" };
+  if (status === "Graduated") return { bg: "rgba(96,165,250,0.1)", color: "#60A5FA", border: "rgba(96,165,250,0.3)" };
+  if (status === "Completed") return { bg: "rgba(34,197,94,0.1)", color: "#4ADE80", border: "rgba(34,197,94,0.3)" };
   return { bg: "#2A2A2A", color: "#A3A3A3", border: "#2A2A2A" };
 };
 
@@ -123,7 +131,7 @@ export default function Certificates() {
                           {item.status}
                         </span>
                         {item.highlights.map(h => (
-                          <span key={h} className="edu-highlight">✦ {h}</span>
+                          <span key={h} className="edu-highlight" style={highlightStyle(h)}>✦ {h}</span>
                         ))}
                       </div>
                     </div>

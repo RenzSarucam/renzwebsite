@@ -12,7 +12,7 @@ const services = [
     ),
     title: "Full Stack Development",
     desc: "End-to-end web apps with React / Next.js on the frontend and Laravel or Node.js on the backend.",
-    color: "#FFFFFF",
+    color: "#60A5FA",
   },
   {
     icon: (
@@ -23,7 +23,7 @@ const services = [
     ),
     title: "DevOps & Infrastructure",
     desc: "Docker, GitHub Actions CI/CD, Nginx, Linux server administration, and multi-environment deployments.",
-    color: "#FFFFFF",
+    color: "#F472B6",
   },
   {
     icon: (
@@ -33,7 +33,7 @@ const services = [
     ),
     title: "R&D Engineering",
     desc: "Designing and prototyping internal systems, researching emerging tech, and solving complex business problems.",
-    color: "#A3A3A3",
+    color: "#2DD4BF",
   },
   {
     icon: (
@@ -43,7 +43,7 @@ const services = [
     ),
     title: "UI / UX Design",
     desc: "Wireframes, prototypes, and high-fidelity designs in Figma for web and mobile platforms.",
-    color: "#F5F5F5",
+    color: "#C084FC",
   },
 ];
 
@@ -561,13 +561,13 @@ export default function About() {
 
             <div className="about-bio-block">
               <p className="about-bio-text">
-                I&apos;m a <strong style={{ color: "#F5F5F5" }}>Full Stack Developer and R&D Engineer</strong> based in Davao City, Philippines, passionate about building efficient, scalable software systems from the ground up.
+                I&apos;m a <strong style={{ color: "#60A5FA" }}>Full Stack Developer and R&D Engineer</strong> based in Davao City, Philippines, passionate about building efficient, scalable software systems from the ground up.
               </p>
               <p className="about-bio-text">
                 My work spans the full development lifecycle — from designing clean user interfaces and building robust APIs, to configuring server infrastructure, automating deployments, and researching new technologies for internal systems.
               </p>
               <p className="about-bio-text">
-                Currently working at <strong style={{ color: "#FFFFFF" }}>DSG Son&apos;s Group Inc.</strong> as an R&D Engineer, where I design and manage multi-project Docker infrastructure, CI/CD pipelines, and internal web applications across multiple business units.
+                Currently working at <strong style={{ color: "#4ADE80" }}>DSG Son&apos;s Group Inc.</strong> as an R&D Engineer, where I design and manage multi-project Docker infrastructure, CI/CD pipelines, and internal web applications across multiple business units.
               </p>
             </div>
 
@@ -668,13 +668,13 @@ export default function About() {
         .about-status {
           display: inline-flex; align-items: center; gap: 7px;
           padding: 5px 13px; border-radius: 100px;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.15);
-          color: #FFFFFF; font-size: 12px; font-weight: 500;
+          background: rgba(34,197,94,0.1);
+          border: 1px solid rgba(34,197,94,0.35);
+          color: #4ADE80; font-size: 12px; font-weight: 500;
         }
         .about-status-dot {
           width: 6px; height: 6px; border-radius: 50%;
-          background: #F5F5F5;
+          background: #22C55E;
           animation: statusPulse 2s ease-in-out infinite;
         }
         @keyframes statusPulse {
