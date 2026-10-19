@@ -411,14 +411,14 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         .apm-info-status {
           display: inline-flex; align-items: center; gap: 7px;
           padding: 4px 12px; border-radius: 100px;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.15);
-          color: #FFFFFF; font-size: 12px; font-weight: 500;
+          background: rgba(34,197,94,0.1);
+          border: 1px solid rgba(34,197,94,0.35);
+          color: #4ADE80; font-size: 12px; font-weight: 500;
           width: fit-content;
         }
         .apm-info-status-dot {
           width: 6px; height: 6px; border-radius: 50%;
-          background: #F5F5F5;
+          background: #22C55E;
           animation: statusPulse 2s ease-in-out infinite;
         }
         .apm-divider {
