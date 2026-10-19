@@ -34,24 +34,24 @@ export default function PrintButton() {
         @keyframes pb-backdrop-in  { from { opacity: 0 } to { opacity: 1 } }
         @keyframes pb-modal-in     { from { opacity: 0; transform: translateY(18px) scale(0.96) } to { opacity: 1; transform: none } }
         @keyframes pb-modal-out    { from { opacity: 1; transform: none } to { opacity: 0; transform: translateY(12px) scale(0.97) } }
-        @keyframes pb-btn-pulse    { 0%,100% { box-shadow: 0 0 0 0 rgba(55,138,221,0.45) } 60% { box-shadow: 0 0 0 10px rgba(55,138,221,0) } }
+        @keyframes pb-btn-pulse    { 0%,100% { box-shadow: 0 0 0 0 rgba(0,0,0,0.45) } 60% { box-shadow: 0 0 0 10px rgba(0,0,0,0) } }
 
         .pb-backdrop {
           position: fixed; inset: 0; z-index: 2000;
-          background: rgba(2,12,27,0.72);
+          background: rgba(13,13,13,0.72);
           backdrop-filter: blur(6px);
           display: flex; align-items: center; justify-content: center;
           animation: pb-backdrop-in 0.22s ease forwards;
         }
 
         .pb-modal {
-          background: linear-gradient(145deg, #0d1b2e 0%, #091320 100%);
-          border: 1px solid rgba(55,138,221,0.22);
+          background: linear-gradient(145deg, #1A1A1A 0%, #1A1A1A 100%);
+          border: 1px solid rgba(255,255,255,0.132);
           border-radius: 20px;
           padding: 36px 38px 32px;
           width: 420px;
           max-width: calc(100vw - 32px);
-          box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(55,138,221,0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+          box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.05);
           animation: pb-modal-in 0.32s cubic-bezier(0.22,1,0.36,1) forwards;
         }
         .pb-modal.pb-out {
@@ -60,19 +60,19 @@ export default function PrintButton() {
 
         .pb-modal-icon {
           width: 48px; height: 48px; border-radius: 14px;
-          background: linear-gradient(135deg, rgba(55,138,221,0.18), rgba(93,202,165,0.1));
-          border: 1px solid rgba(55,138,221,0.25);
+          background: linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
+          border: 1px solid rgba(255,255,255,0.15);
           display: flex; align-items: center; justify-content: center;
           font-size: 22px; margin-bottom: 18px;
         }
 
         .pb-modal-title {
-          font-size: 18px; font-weight: 800; color: #e8f4ff;
+          font-size: 18px; font-weight: 800; color: #F5F5F5;
           margin-bottom: 6px; letter-spacing: -0.2px;
         }
 
         .pb-modal-sub {
-          font-size: 12.5px; color: rgba(200,220,255,0.38);
+          font-size: 12.5px; color: #A3A3A3;
           margin-bottom: 24px; line-height: 1.5;
         }
 
@@ -84,36 +84,36 @@ export default function PrintButton() {
         .pb-step {
           display: flex; align-items: flex-start; gap: 14px;
           padding: 13px 15px;
-          background: rgba(55,138,221,0.05);
-          border: 1px solid rgba(55,138,221,0.1);
+          background: rgba(255,255,255,0.025);
+          border: 1px solid rgba(255,255,255,0.06);
           border-radius: 12px;
         }
 
         .pb-step-num {
           flex-shrink: 0;
           width: 24px; height: 24px; border-radius: 8px;
-          background: linear-gradient(135deg, #378add, #5dcaa5);
+          background: linear-gradient(135deg, #F5F5F5, #F5F5F5);
           display: flex; align-items: center; justify-content: center;
-          font-size: 11px; font-weight: 800; color: #fff;
+          font-size: 11px; font-weight: 800; color: #111111;
           margin-top: 1px;
         }
 
         .pb-step-text {
-          font-size: 13px; color: rgba(200,220,255,0.72); line-height: 1.55;
+          font-size: 13px; color: #A3A3A3; line-height: 1.55;
         }
 
-        .pb-step-text strong { color: #e8f4ff; font-weight: 700; }
-        .pb-step-text em { color: #5dcaa5; font-style: normal; font-weight: 600; }
+        .pb-step-text strong { color: #F5F5F5; font-weight: 700; }
+        .pb-step-text em { color: #FFFFFF; font-style: normal; font-weight: 600; }
 
         .pb-actions { display: flex; gap: 10px; }
 
         .pb-btn-primary {
           flex: 1; padding: 13px 0;
-          background: linear-gradient(135deg, #378add, #5dcaa5);
-          color: #fff; border: none; border-radius: 12px;
+          background: linear-gradient(135deg, #F5F5F5, #F5F5F5);
+          color: #111111; border: none; border-radius: 12px;
           font-size: 14px; font-weight: 700; cursor: pointer;
           letter-spacing: 0.01em;
-          box-shadow: 0 4px 20px rgba(55,138,221,0.35);
+          box-shadow: 0 4px 20px rgba(0,0,0,0.35);
           transition: opacity 0.18s, transform 0.18s;
         }
         .pb-btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
@@ -121,28 +121,28 @@ export default function PrintButton() {
 
         .pb-btn-cancel {
           padding: 13px 18px;
-          background: rgba(255,255,255,0.05);
-          color: rgba(200,220,255,0.45);
-          border: 1px solid rgba(255,255,255,0.08);
+          background: #1A1A1A;
+          color: #A3A3A3;
+          border: 1px solid #2A2A2A;
           border-radius: 12px; font-size: 14px; cursor: pointer;
           transition: background 0.18s, color 0.18s;
         }
-        .pb-btn-cancel:hover { background: rgba(255,255,255,0.09); color: rgba(200,220,255,0.7); }
+        .pb-btn-cancel:hover { background: #1A1A1A; color: #A3A3A3; }
 
         .pb-trigger {
           position: fixed; bottom: 28px; right: 28px; z-index: 999;
           display: flex; align-items: center; gap: 9px;
           padding: 13px 22px;
-          background: linear-gradient(135deg, #1a5fb0, #378add);
-          color: #fff; border: none; border-radius: 14px;
+          background: linear-gradient(135deg, #F5F5F5, #F5F5F5);
+          color: #111111; border: none; border-radius: 14px;
           font-size: 14px; font-weight: 700; cursor: pointer;
-          box-shadow: 0 6px 24px rgba(26,95,176,0.45);
+          box-shadow: 0 6px 24px rgba(0,0,0,0.45);
           transition: transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s ease, opacity 0.2s;
           animation: pb-btn-pulse 2.8s ease-in-out infinite 1.5s;
         }
         .pb-trigger:hover {
           transform: translateY(-2px);
-          box-shadow: 0 10px 32px rgba(55,138,221,0.5);
+          box-shadow: 0 10px 32px rgba(0,0,0,0.5);
         }
         .pb-trigger:active { transform: scale(0.96); }
 
@@ -199,8 +199,8 @@ export default function PrintButton() {
       {/* ── Trigger Button ── */}
       <button className="pb-trigger no-print" onClick={openModal}>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M8 2v8M5 7l3 3 3-3" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M2 12h12" stroke="#fff" strokeWidth="1.8" strokeLinecap="round"/>
+          <path d="M8 2v8M5 7l3 3 3-3" stroke="#111111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M2 12h12" stroke="#111111" strokeWidth="1.8" strokeLinecap="round"/>
         </svg>
         Save as PDF
       </button>

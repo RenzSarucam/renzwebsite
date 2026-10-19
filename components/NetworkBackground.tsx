@@ -24,7 +24,7 @@ export default function NetworkBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const COLORS = ["#378add", "#5dcaa5", "#7f77dd", "#378add", "#378add"];
+    const COLORS = ["#F5F5F5", "#F5F5F5", "#F5F5F5", "#F5F5F5", "#F5F5F5"];
     const NODE_COUNT = 90;
     const CONNECT_DIST = 140;
 
@@ -54,7 +54,7 @@ export default function NetworkBackground() {
     const draw = () => {
       const w = canvas.width;
       const h = canvas.height;
-      ctx.fillStyle = "#050d1a";
+      ctx.fillStyle = "#0D0D0D";
       ctx.fillRect(0, 0, w, h);
 
       const ns = nodesRef.current;
@@ -73,7 +73,7 @@ export default function NetworkBackground() {
           const d = Math.sqrt(dx * dx + dy * dy);
           if (d < CONNECT_DIST) {
             const a = (1 - d / CONNECT_DIST) * 0.4;
-            ctx.strokeStyle = `rgba(55,138,221,${a})`;
+            ctx.strokeStyle = `rgba(163,163,163,${a})`;
             ctx.lineWidth = 0.7;
             ctx.beginPath();
             ctx.moveTo(ns[i].x, ns[i].y);

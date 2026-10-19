@@ -25,14 +25,14 @@ function renderMessage(content: string) {
         if (line.startsWith("• ")) {
           return (
             <span key={i} style={{ display: "flex", gap: 7, alignItems: "flex-start", marginTop: i === 0 ? 0 : 10 }}>
-              <span style={{ color: "#378add", flexShrink: 0, marginTop: 2, fontSize: 16 }}>•</span>
-              <span style={{ fontWeight: 600, color: "#e8f4ff" }}>{line.slice(2)}</span>
+              <span style={{ color: "#FFFFFF", flexShrink: 0, marginTop: 2, fontSize: 16 }}>•</span>
+              <span style={{ fontWeight: 600, color: "#F5F5F5" }}>{line.slice(2)}</span>
             </span>
           );
         }
         if (line.startsWith("  ")) {
           return (
-            <span key={i} style={{ display: "block", paddingLeft: 23, fontSize: 13, color: "rgba(200,220,255,0.7)", marginTop: 2 }}>
+            <span key={i} style={{ display: "block", paddingLeft: 23, fontSize: 13, color: "#A3A3A3", marginTop: 2 }}>
               {line.trim()}
             </span>
           );
@@ -123,14 +123,14 @@ export default function AiChat() {
         className="ai-fab"
       >
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <rect x="4" y="7" width="16" height="12" rx="3" fill="white" opacity=".92"/>
-          <circle cx="9" cy="12" r="1.5" fill="rgba(55,138,221,0.9)"/>
-          <circle cx="15" cy="12" r="1.5" fill="rgba(55,138,221,0.9)"/>
-          <rect x="8.5" y="15" width="7" height="1.5" rx="0.75" fill="rgba(55,138,221,0.7)"/>
-          <line x1="12" y1="7" x2="12" y2="4" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity=".9"/>
-          <circle cx="12" cy="3.2" r="1" fill="white" opacity=".9"/>
-          <rect x="2" y="10" width="2" height="4" rx="1" fill="white" opacity=".7"/>
-          <rect x="20" y="10" width="2" height="4" rx="1" fill="white" opacity=".7"/>
+          <rect x="4" y="7" width="16" height="12" rx="3" fill="#111111" opacity=".92"/>
+          <circle cx="9" cy="12" r="1.5" fill="#F5F5F5"/>
+          <circle cx="15" cy="12" r="1.5" fill="#F5F5F5"/>
+          <rect x="8.5" y="15" width="7" height="1.5" rx="0.75" fill="#F5F5F5"/>
+          <line x1="12" y1="7" x2="12" y2="4" stroke="#111111" strokeWidth="1.5" strokeLinecap="round" opacity=".9"/>
+          <circle cx="12" cy="3.2" r="1" fill="#111111" opacity=".9"/>
+          <rect x="2" y="10" width="2" height="4" rx="1" fill="#111111" opacity=".7"/>
+          <rect x="20" y="10" width="2" height="4" rx="1" fill="#111111" opacity=".7"/>
         </svg>
       </button>
 
@@ -151,14 +151,14 @@ export default function AiChat() {
               <div className="ai-header-left">
                 <div className="ai-avatar">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <rect x="4" y="7" width="16" height="12" rx="3" fill="white" opacity=".9"/>
-                    <circle cx="9" cy="12" r="1.4" fill="#378add"/>
-                    <circle cx="15" cy="12" r="1.4" fill="#378add"/>
-                    <rect x="8.5" y="15" width="7" height="1.4" rx="0.7" fill="#378add" opacity=".8"/>
-                    <line x1="12" y1="7" x2="12" y2="4.5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-                    <circle cx="12" cy="3.5" r="1" fill="white"/>
-                    <rect x="2.5" y="10" width="1.5" height="3.5" rx="0.75" fill="white" opacity=".7"/>
-                    <rect x="20" y="10" width="1.5" height="3.5" rx="0.75" fill="white" opacity=".7"/>
+                    <rect x="4" y="7" width="16" height="12" rx="3" fill="#111111" opacity=".9"/>
+                    <circle cx="9" cy="12" r="1.4" fill="#F5F5F5"/>
+                    <circle cx="15" cy="12" r="1.4" fill="#F5F5F5"/>
+                    <rect x="8.5" y="15" width="7" height="1.4" rx="0.7" fill="#F5F5F5" opacity=".8"/>
+                    <line x1="12" y1="7" x2="12" y2="4.5" stroke="#111111" strokeWidth="1.5" strokeLinecap="round"/>
+                    <circle cx="12" cy="3.5" r="1" fill="#111111"/>
+                    <rect x="2.5" y="10" width="1.5" height="3.5" rx="0.75" fill="#111111" opacity=".7"/>
+                    <rect x="20" y="10" width="1.5" height="3.5" rx="0.75" fill="#111111" opacity=".7"/>
                   </svg>
                 </div>
                 <div>
@@ -180,17 +180,17 @@ export default function AiChat() {
                 <div className="ai-welcome-icon">
                   <svg width="38" height="38" viewBox="0 0 24 24" fill="none">
                     <rect x="3" y="6" width="18" height="14" rx="4" fill="url(#grad2)"/>
-                    <circle cx="8.5" cy="12" r="2" fill="white" opacity=".9"/>
-                    <circle cx="15.5" cy="12" r="2" fill="white" opacity=".9"/>
-                    <rect x="7.5" y="15.5" width="9" height="1.8" rx="0.9" fill="white" opacity=".7"/>
-                    <line x1="12" y1="6" x2="12" y2="3" stroke="#5dcaa5" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="12" cy="2.2" r="1.2" fill="#5dcaa5"/>
-                    <rect x="1" y="9.5" width="2" height="5" rx="1" fill="#378add" opacity=".5"/>
-                    <rect x="21" y="9.5" width="2" height="5" rx="1" fill="#378add" opacity=".5"/>
+                    <circle cx="8.5" cy="12" r="2" fill="#111111" opacity=".9"/>
+                    <circle cx="15.5" cy="12" r="2" fill="#111111" opacity=".9"/>
+                    <rect x="7.5" y="15.5" width="9" height="1.8" rx="0.9" fill="#111111" opacity=".7"/>
+                    <line x1="12" y1="6" x2="12" y2="3" stroke="#F5F5F5" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="12" cy="2.2" r="1.2" fill="#F5F5F5"/>
+                    <rect x="1" y="9.5" width="2" height="5" rx="1" fill="#F5F5F5" opacity=".5"/>
+                    <rect x="21" y="9.5" width="2" height="5" rx="1" fill="#F5F5F5" opacity=".5"/>
                     <defs>
                       <linearGradient id="grad2" x1="3" y1="6" x2="21" y2="20" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#378add"/>
-                        <stop offset="1" stopColor="#5dcaa5"/>
+                        <stop stopColor="#F5F5F5"/>
+                        <stop offset="1" stopColor="#F5F5F5"/>
                       </linearGradient>
                     </defs>
                   </svg>
@@ -205,11 +205,11 @@ export default function AiChat() {
                     {msg.role === "assistant" && (
                       <div className="ai-bot-avatar">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-                          <rect x="4" y="7" width="16" height="12" rx="3" fill="white" opacity=".9"/>
-                          <circle cx="9" cy="12" r="1.4" fill="#378add"/>
-                          <circle cx="15" cy="12" r="1.4" fill="#378add"/>
-                          <line x1="12" y1="7" x2="12" y2="4.5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-                          <circle cx="12" cy="3.5" r="1" fill="white"/>
+                          <rect x="4" y="7" width="16" height="12" rx="3" fill="#111111" opacity=".9"/>
+                          <circle cx="9" cy="12" r="1.4" fill="#F5F5F5"/>
+                          <circle cx="15" cy="12" r="1.4" fill="#F5F5F5"/>
+                          <line x1="12" y1="7" x2="12" y2="4.5" stroke="#111111" strokeWidth="1.5" strokeLinecap="round"/>
+                          <circle cx="12" cy="3.5" r="1" fill="#111111"/>
                         </svg>
                       </div>
                     )}
@@ -256,7 +256,7 @@ export default function AiChat() {
                   className="ai-send"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9L22 2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9L22 2" stroke="#111111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
               </div>
@@ -271,23 +271,23 @@ export default function AiChat() {
         .ai-fab {
           position: fixed; bottom: 28px; right: 28px;
           width: 58px; height: 58px; border-radius: 50%;
-          background: linear-gradient(135deg, #378add, #5dcaa5);
+          background: linear-gradient(135deg, #F5F5F5, #F5F5F5);
           border: none; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
           z-index: 900;
-          box-shadow: 0 8px 32px rgba(55,138,221,0.45), 0 0 0 1px rgba(93,202,165,0.2);
+          box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(0,0,0,0.2);
           transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .ai-fab:hover {
           transform: scale(1.08);
-          box-shadow: 0 12px 40px rgba(55,138,221,0.6), 0 0 0 1px rgba(93,202,165,0.3);
+          box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.3);
         }
         .ai-fab::after {
           content: '';
           position: absolute;
           inset: -5px;
           border-radius: 50%;
-          background: linear-gradient(135deg, rgba(55,138,221,0.4), rgba(93,202,165,0.4));
+          background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.2));
           z-index: -1;
           animation: fabPulse 2.8s ease-in-out infinite;
         }
@@ -312,10 +312,10 @@ export default function AiChat() {
           position: relative;
           width: 100%; max-width: 470px;
           height: min(700px, 92vh);
-          background: linear-gradient(160deg, #0a1525 0%, #080f1c 100%);
-          border: 1px solid rgba(55,138,221,0.2);
+          background: linear-gradient(160deg, #1A1A1A 0%, #1A1A1A 100%);
+          border: 1px solid rgba(255,255,255,0.12);
           border-radius: 24px;
-          box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(55,138,221,0.06) inset;
+          box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,0,0,0.06) inset;
           display: flex; flex-direction: column;
           overflow: hidden;
           animation: aiIn 0.24s cubic-bezier(.22,.68,0,1.2);
@@ -328,7 +328,7 @@ export default function AiChat() {
         /* Accent bar */
         .ai-accent-bar {
           height: 3px;
-          background: linear-gradient(90deg, #378add 0%, #5dcaa5 50%, #c678dd 100%);
+          background: linear-gradient(90deg, #F5F5F5 0%, #F5F5F5 50%, #2A2A2A 100%);
           flex-shrink: 0;
         }
 
@@ -339,12 +339,12 @@ export default function AiChat() {
         }
         .ai-orb-1 {
           width: 220px; height: 220px;
-          background: rgba(55,138,221,0.12);
+          background: rgba(255,255,255,0.06);
           top: -60px; right: -50px;
         }
         .ai-orb-2 {
           width: 180px; height: 180px;
-          background: rgba(93,202,165,0.09);
+          background: rgba(255,255,255,0.045);
           bottom: 120px; left: -50px;
         }
 
@@ -353,43 +353,43 @@ export default function AiChat() {
           position: relative; z-index: 1;
           display: flex; align-items: center; justify-content: space-between;
           padding: 16px 20px;
-          background: rgba(255,255,255,0.025);
-          border-bottom: 1px solid rgba(55,138,221,0.1);
+          background: #1A1A1A;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
           backdrop-filter: blur(4px);
         }
         .ai-header-left { display: flex; align-items: center; gap: 13px; }
         .ai-avatar {
           width: 44px; height: 44px; border-radius: 13px;
-          background: linear-gradient(135deg, #1a5ba8, #378add 50%, #2ca882);
+          background: linear-gradient(135deg, #F5F5F5, #F5F5F5 50%, #F5F5F5);
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
-          box-shadow: 0 4px 16px rgba(55,138,221,0.35);
+          box-shadow: 0 4px 16px rgba(0,0,0,0.35);
         }
-        .ai-header-name { margin: 0; font-size: 15px; font-weight: 700; color: #e8f4ff; letter-spacing: 0.01em; }
+        .ai-header-name { margin: 0; font-size: 15px; font-weight: 700; color: #F5F5F5; letter-spacing: 0.01em; }
         .ai-header-status {
           margin: 0; margin-top: 3px; font-size: 11px;
-          color: rgba(200,220,255,0.5);
+          color: #A3A3A3;
           display: flex; align-items: center; gap: 5px;
         }
         .ai-status-dot {
           width: 7px; height: 7px; border-radius: 50%;
-          background: #5dcaa5; display: inline-block;
-          box-shadow: 0 0 8px #5dcaa5;
+          background: #F5F5F5; display: inline-block;
+          box-shadow: 0 0 8px #525252;
           animation: statusPulse 2s ease-in-out infinite;
         }
         @keyframes statusPulse {
-          0%, 100% { box-shadow: 0 0 6px #5dcaa5; }
-          50% { box-shadow: 0 0 14px #5dcaa5; }
+          0%, 100% { box-shadow: 0 0 6px #525252; }
+          50% { box-shadow: 0 0 14px #525252; }
         }
         .ai-close {
-          background: rgba(255,255,255,0.06);
-          border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 9px; color: rgba(200,220,255,0.45);
+          background: #1A1A1A;
+          border: 1px solid #2A2A2A;
+          border-radius: 9px; color: #A3A3A3;
           width: 32px; height: 32px; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
           transition: background 0.2s, color 0.2s;
         }
-        .ai-close:hover { background: rgba(255,255,255,0.12); color: #e8f4ff; }
+        .ai-close:hover { background: #1A1A1A; color: #F5F5F5; }
 
         /* ── Welcome ── */
         .ai-welcome {
@@ -400,24 +400,24 @@ export default function AiChat() {
         }
         .ai-welcome-icon {
           width: 82px; height: 82px; border-radius: 22px;
-          background: linear-gradient(135deg, rgba(55,138,221,0.14), rgba(93,202,165,0.14));
-          border: 1px solid rgba(55,138,221,0.25);
+          background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.07));
+          border: 1px solid rgba(255,255,255,0.15);
           display: flex; align-items: center; justify-content: center;
           margin-bottom: 10px;
-          box-shadow: 0 0 40px rgba(55,138,221,0.15), 0 0 80px rgba(93,202,165,0.08);
+          box-shadow: 0 0 40px rgba(0,0,0,0.15), 0 0 80px rgba(0,0,0,0.08);
           animation: iconFloat 3.5s ease-in-out infinite;
         }
         @keyframes iconFloat {
-          0%, 100% { transform: translateY(0); box-shadow: 0 0 40px rgba(55,138,221,0.15); }
-          50% { transform: translateY(-5px); box-shadow: 0 10px 48px rgba(55,138,221,0.28); }
+          0%, 100% { transform: translateY(0); box-shadow: 0 0 40px rgba(0,0,0,0.15); }
+          50% { transform: translateY(-5px); box-shadow: 0 10px 48px rgba(0,0,0,0.28); }
         }
         .ai-welcome-title {
           margin: 0; font-size: 21px; font-weight: 800;
-          color: #e8f4ff; letter-spacing: -0.3px;
+          color: #F5F5F5; letter-spacing: -0.3px;
         }
         .ai-welcome-sub {
           margin: 0; font-size: 13px;
-          color: rgba(200,220,255,0.42); text-align: center;
+          color: #A3A3A3; text-align: center;
           max-width: 280px; line-height: 1.6;
         }
 
@@ -429,15 +429,15 @@ export default function AiChat() {
         }
         .ai-messages::-webkit-scrollbar { width: 4px; }
         .ai-messages::-webkit-scrollbar-track { background: transparent; }
-        .ai-messages::-webkit-scrollbar-thumb { background: rgba(55,138,221,0.2); border-radius: 99px; }
+        .ai-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
         .ai-msg-row { display: flex; gap: 8px; align-items: flex-end; }
         .ai-msg-row.user { justify-content: flex-end; }
         .ai-bot-avatar {
           width: 28px; height: 28px; border-radius: 9px;
-          background: linear-gradient(135deg, #1a5ba8, #378add 60%, #2ca882);
+          background: linear-gradient(135deg, #F5F5F5, #F5F5F5 60%, #F5F5F5);
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
-          box-shadow: 0 3px 10px rgba(55,138,221,0.3);
+          box-shadow: 0 3px 10px rgba(0,0,0,0.3);
         }
         .ai-bubble {
           max-width: 78%; padding: 11px 15px;
@@ -445,21 +445,21 @@ export default function AiChat() {
           white-space: pre-wrap;
         }
         .ai-bubble.user {
-          background: linear-gradient(135deg, #1f6bbf, #378add 60%, #2ca882);
-          color: #fff; border-radius: 18px 18px 4px 18px;
-          box-shadow: 0 4px 16px rgba(55,138,221,0.25);
+          background: linear-gradient(135deg, #F5F5F5, #F5F5F5 60%, #F5F5F5);
+          color: #111111; border-radius: 18px 18px 4px 18px;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.25);
         }
         .ai-bubble.assistant {
-          background: rgba(255,255,255,0.045);
-          border: 1px solid rgba(55,138,221,0.14);
-          border-left: 2px solid rgba(93,202,165,0.35);
-          color: rgba(220,235,255,0.9);
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.084);
+          border-left: 2px solid rgba(255,255,255,0.21);
+          color: #A3A3A3;
           border-radius: 18px 18px 18px 4px;
         }
         .ai-typing { display: flex; gap: 4px; padding: 4px 0; }
         .ai-typing span {
           width: 6px; height: 6px; border-radius: 50%;
-          background: rgba(200,220,255,0.4);
+          background: #737373;
           animation: aiDot 1.2s infinite ease-in-out;
         }
         .ai-typing span:nth-child(2) { animation-delay: 0.2s; }
@@ -473,12 +473,12 @@ export default function AiChat() {
         .ai-prompts {
           position: relative; z-index: 1;
           padding: 10px 20px 8px;
-          border-top: 1px solid rgba(55,138,221,0.09);
+          border-top: 1px solid rgba(255,255,255,0.054);
           background: rgba(0,0,0,0.12);
         }
         .ai-prompts-label {
           margin: 0 0 9px; font-size: 9.5px; font-weight: 700;
-          color: rgba(200,220,255,0.3); letter-spacing: 0.12em;
+          color: #A3A3A3; letter-spacing: 0.12em;
           text-transform: uppercase;
         }
         .ai-prompts-grid {
@@ -488,24 +488,24 @@ export default function AiChat() {
         .ai-prompt-btn {
           display: flex; align-items: center; gap: 8px;
           padding: 8px 10px; border-radius: 11px;
-          background: rgba(255,255,255,0.035);
-          border: 1px solid rgba(55,138,221,0.13);
-          color: rgba(220,235,255,0.7); font-size: 12px;
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.078);
+          color: #A3A3A3; font-size: 12px;
           cursor: pointer; font-family: inherit;
           transition: background 0.15s, border-color 0.15s, transform 0.15s, color 0.15s;
           text-align: left;
         }
         .ai-prompt-icon {
           width: 24px; height: 24px; border-radius: 7px;
-          background: rgba(55,138,221,0.12);
+          background: rgba(255,255,255,0.06);
           display: flex; align-items: center; justify-content: center;
           font-size: 13px; flex-shrink: 0;
         }
         .ai-prompt-label { flex: 1; line-height: 1.3; }
         .ai-prompt-btn:hover:not(:disabled) {
-          background: rgba(55,138,221,0.1);
-          border-color: rgba(55,138,221,0.3);
-          color: #e8f4ff;
+          background: rgba(255,255,255,0.05);
+          border-color: rgba(255,255,255,0.18);
+          color: #F5F5F5;
           transform: translateY(-1px);
         }
         .ai-prompt-btn:disabled { opacity: 0.45; cursor: not-allowed; }
@@ -514,7 +514,7 @@ export default function AiChat() {
         .ai-input-row {
           position: relative; z-index: 1;
           padding: 10px 20px 4px;
-          border-top: 1px solid rgba(55,138,221,0.09);
+          border-top: 1px solid rgba(255,255,255,0.054);
           background: rgba(0,0,0,0.15);
         }
         .ai-input-wrap {
@@ -523,36 +523,36 @@ export default function AiChat() {
         .ai-input {
           flex: 1; padding: 12px 16px;
           border-radius: 13px;
-          border: 1px solid rgba(55,138,221,0.2);
-          background: rgba(255,255,255,0.045);
-          color: #e8f4ff; font-size: 13.5px;
+          border: 1px solid rgba(255,255,255,0.12);
+          background: #1A1A1A;
+          color: #F5F5F5; font-size: 13.5px;
           outline: none; font-family: inherit;
           transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .ai-input::placeholder { color: rgba(200,220,255,0.3); }
+        .ai-input::placeholder { color: #A3A3A3; }
         .ai-input:focus {
-          border-color: rgba(55,138,221,0.5);
-          box-shadow: 0 0 0 3px rgba(55,138,221,0.1);
+          border-color: rgba(255,255,255,0.3);
+          box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
         }
         .ai-send {
           width: 44px; height: 44px; border-radius: 13px;
-          background: linear-gradient(135deg, #1f6bbf, #378add 60%, #2ca882);
+          background: linear-gradient(135deg, #F5F5F5, #F5F5F5 60%, #F5F5F5);
           border: none; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
-          box-shadow: 0 4px 14px rgba(55,138,221,0.3);
+          box-shadow: 0 4px 14px rgba(0,0,0,0.3);
           transition: transform 0.2s, box-shadow 0.2s;
         }
-        .ai-send:disabled { background: rgba(55,138,221,0.18); box-shadow: none; cursor: not-allowed; }
+        .ai-send:disabled { background: rgba(255,255,255,0.09); box-shadow: none; cursor: not-allowed; }
         .ai-send:not(:disabled):hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 22px rgba(55,138,221,0.45);
+          box-shadow: 0 8px 22px rgba(0,0,0,0.45);
         }
 
         /* Disclaimer */
         .ai-disclaimer {
           margin: 7px 0 10px; font-size: 10px;
-          color: rgba(200,220,255,0.22); text-align: center;
+          color: #A3A3A3; text-align: center;
         }
       `}</style>
     </>

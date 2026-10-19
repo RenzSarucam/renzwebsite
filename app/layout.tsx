@@ -47,17 +47,19 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon-r.svg" />
         <link rel="shortcut icon" href="/favicon-r.svg" />
+        <meta name="color-scheme" content="dark" />
+        <style>{`:root{color-scheme:dark}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #FFFFFF;outline-offset:3px}::placeholder{color:#A3A3A3}`}</style>
       </head>
       <body
         suppressHydrationWarning
         style={{
           margin: 0,
           padding: 0,
-          background: "#050d1a",
+          background: "#0D0D0D",
           fontFamily: "'Segoe UI', 'SF Pro Display', system-ui, sans-serif",
           WebkitFontSmoothing: "antialiased",
           MozOsxFontSmoothing: "grayscale",
-          color: "#e8f4ff",
+          color: "#F5F5F5",
           scrollBehavior: "smooth",
         }}
       >

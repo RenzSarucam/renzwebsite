@@ -12,7 +12,7 @@ const services = [
     ),
     title: "Full Stack Development",
     desc: "End-to-end web apps with React / Next.js on the frontend and Laravel or Node.js on the backend.",
-    color: "#378add",
+    color: "#FFFFFF",
   },
   {
     icon: (
@@ -23,7 +23,7 @@ const services = [
     ),
     title: "DevOps & Infrastructure",
     desc: "Docker, GitHub Actions CI/CD, Nginx, Linux server administration, and multi-environment deployments.",
-    color: "#5dcaa5",
+    color: "#FFFFFF",
   },
   {
     icon: (
@@ -33,7 +33,7 @@ const services = [
     ),
     title: "R&D Engineering",
     desc: "Designing and prototyping internal systems, researching emerging tech, and solving complex business problems.",
-    color: "#e5a44b",
+    color: "#A3A3A3",
   },
   {
     icon: (
@@ -43,7 +43,7 @@ const services = [
     ),
     title: "UI / UX Design",
     desc: "Wireframes, prototypes, and high-fidelity designs in Figma for web and mobile platforms.",
-    color: "#c678dd",
+    color: "#F5F5F5",
   },
 ];
 
@@ -64,7 +64,7 @@ const modalInfo = [
     ),
     label: "Location",
     value: "Davao City, Philippines",
-    color: "#378add",
+    color: "#FFFFFF",
   },
   {
     icon: (
@@ -74,7 +74,7 @@ const modalInfo = [
     ),
     label: "Email",
     value: "renzcarljansen@gmail.com",
-    color: "#5dcaa5",
+    color: "#FFFFFF",
   },
   {
     icon: (
@@ -84,7 +84,7 @@ const modalInfo = [
     ),
     label: "Phone",
     value: "+63 926 673 5768",
-    color: "#e5a44b",
+    color: "#A3A3A3",
   },
   {
     icon: (
@@ -94,7 +94,7 @@ const modalInfo = [
     ),
     label: "Role",
     value: "Full-Stack Web Developer · Docker & CI/CD · R&D Engineer",
-    color: "#c678dd",
+    color: "#F5F5F5",
   },
   {
     icon: (
@@ -104,7 +104,7 @@ const modalInfo = [
     ),
     label: "Education",
     value: "BSIT — Holy Cross of Davao College",
-    color: "#378add",
+    color: "#FFFFFF",
   },
 ];
 
@@ -298,7 +298,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
       <style suppressHydrationWarning>{`
         .apm-backdrop {
           position: fixed; inset: 0; z-index: 9999;
-          background: rgba(2,6,14,0.82);
+          background: rgba(13,13,13,0.82);
           backdrop-filter: blur(10px);
           display: flex; align-items: center; justify-content: center;
           padding: 16px;
@@ -306,23 +306,23 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         }
         .apm-modal {
           display: flex; flex-direction: row;
-          background: rgba(8,18,36,0.97);
-          border: 1px solid rgba(55,138,221,0.22);
+          background: rgba(13,13,13,0.97);
+          border: 1px solid rgba(255,255,255,0.132);
           border-radius: 24px;
           overflow: hidden;
           max-width: 820px; width: 100%;
           max-height: 90vh;
-          box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(55,138,221,0.08);
+          box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.08);
           transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease;
         }
 
         /* ── Photo side ── */
         .apm-photo-side {
           flex: 0 0 300px;
-          background: rgba(5,13,26,0.8);
+          background: rgba(13,13,13,0.8);
           display: flex; align-items: center; justify-content: center;
           padding: 32px 24px;
-          border-right: 1px solid rgba(55,138,221,0.1);
+          border-right: 1px solid rgba(255,255,255,0.06);
           position: relative;
         }
         .apm-photo-frame {
@@ -330,7 +330,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
           width: 220px; height: 320px;
           border-radius: 16px;
           overflow: hidden;
-          box-shadow: 0 0 0 1px rgba(55,138,221,0.2), 0 8px 40px rgba(55,138,221,0.15);
+          box-shadow: 0 0 0 1px rgba(0,0,0,0.2), 0 8px 40px rgba(0,0,0,0.15);
         }
         .apm-photo {
           width: 100%; height: 100%;
@@ -341,7 +341,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         /* Corner accents */
         .apm-corner {
           position: absolute; width: 18px; height: 18px;
-          border-color: #61afff; border-style: solid;
+          border-color: #A3A3A3; border-style: solid;
           opacity: 0.7;
         }
         .apm-corner-tl { top: 0; left: 0; border-width: 2px 0 0 2px; border-radius: 4px 0 0 0; }
@@ -356,24 +356,24 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         }
         .apm-zoom-btn {
           width: 30px; height: 30px; border-radius: 8px;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(55,138,221,0.2);
-          color: rgba(200,220,255,0.7);
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.12);
+          color: #A3A3A3;
           display: flex; align-items: center; justify-content: center;
           cursor: pointer; transition: background 0.15s, color 0.15s;
         }
-        .apm-zoom-btn:hover:not(:disabled) { background: rgba(55,138,221,0.15); color: #e8f4ff; }
+        .apm-zoom-btn:hover:not(:disabled) { background: rgba(255,255,255,0.075); color: #F5F5F5; }
         .apm-zoom-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         .apm-zoom-reset {
           flex: 1; height: 30px; border-radius: 8px;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(55,138,221,0.15);
-          color: rgba(200,220,255,0.5);
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.09);
+          color: #A3A3A3;
           font-size: 11px; font-weight: 600; font-family: 'Courier New', monospace;
           cursor: pointer; transition: background 0.15s, color 0.15s;
           letter-spacing: 0.05em;
         }
-        .apm-zoom-reset:hover { background: rgba(55,138,221,0.1); color: rgba(200,220,255,0.8); }
+        .apm-zoom-reset:hover { background: rgba(255,255,255,0.05); color: #A3A3A3; }
 
         /* ── Info side ── */
         .apm-info-side {
@@ -386,44 +386,44 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         .apm-close {
           position: absolute; top: 16px; right: 16px;
           width: 32px; height: 32px; border-radius: 8px;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(55,138,221,0.2);
-          color: rgba(200,220,255,0.6);
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.12);
+          color: #A3A3A3;
           cursor: pointer; display: flex; align-items: center; justify-content: center;
           transition: background 0.2s, color 0.2s;
           z-index: 1;
         }
-        .apm-close:hover { background: rgba(55,138,221,0.15); color: #e8f4ff; }
+        .apm-close:hover { background: rgba(255,255,255,0.075); color: #F5F5F5; }
 
         .apm-info-tag {
           font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-          text-transform: uppercase; color: rgba(55,138,221,0.6);
+          text-transform: uppercase; color: rgba(255,255,255,0.3);
           font-family: 'Courier New', monospace; margin-bottom: 8px;
         }
         .apm-info-name {
-          font-size: 20px; font-weight: 800; color: #e8f4ff;
+          font-size: 20px; font-weight: 800; color: #F5F5F5;
           margin: 0 0 4px; line-height: 1.25;
         }
         .apm-info-role {
-          font-size: 13px; color: rgba(200,220,255,0.45);
+          font-size: 13px; color: #A3A3A3;
           font-family: 'Courier New', monospace; margin: 0 0 12px;
         }
         .apm-info-status {
           display: inline-flex; align-items: center; gap: 7px;
           padding: 4px 12px; border-radius: 100px;
-          background: rgba(93,202,165,0.1);
-          border: 1px solid rgba(93,202,165,0.25);
-          color: #5dcaa5; font-size: 12px; font-weight: 500;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.15);
+          color: #FFFFFF; font-size: 12px; font-weight: 500;
           width: fit-content;
         }
         .apm-info-status-dot {
           width: 6px; height: 6px; border-radius: 50%;
-          background: #5dcaa5;
+          background: #F5F5F5;
           animation: statusPulse 2s ease-in-out infinite;
         }
         .apm-divider {
           height: 1px;
-          background: linear-gradient(90deg, rgba(55,138,221,0.18), transparent);
+          background: linear-gradient(90deg, rgba(255,255,255,0.09), transparent);
         }
         .apm-info-rows { display: flex; flex-direction: column; gap: 12px; }
         .apm-info-row {
@@ -436,36 +436,36 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         }
         .apm-info-label {
           font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
-          text-transform: uppercase; color: rgba(200,220,255,0.35);
+          text-transform: uppercase; color: #A3A3A3;
           font-family: 'Courier New', monospace; margin: 0 0 2px;
         }
         .apm-info-value {
-          font-size: 13px; color: #e8f4ff; margin: 0; font-weight: 500;
+          font-size: 13px; color: #F5F5F5; margin: 0; font-weight: 500;
           line-height: 1.4;
         }
         .apm-bio {
-          font-size: 13.5px; color: rgba(200,220,255,0.5);
+          font-size: 13.5px; color: #A3A3A3;
           line-height: 1.7; margin: 0;
         }
         .apm-socials { display: flex; gap: 10px; flex-wrap: wrap; }
         .apm-social-btn {
           display: inline-flex; align-items: center; gap: 7px;
           padding: 8px 14px; border-radius: 10px;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(55,138,221,0.18);
-          color: rgba(200,220,255,0.65); font-size: 13px; font-weight: 500;
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.108);
+          color: #A3A3A3; font-size: 13px; font-weight: 500;
           text-decoration: none; transition: background 0.2s, border-color 0.2s, color 0.2s;
           font-family: inherit;
         }
         .apm-social-btn:hover {
-          background: rgba(55,138,221,0.12);
-          border-color: rgba(55,138,221,0.4);
-          color: #61afff;
+          background: rgba(255,255,255,0.06);
+          border-color: rgba(255,255,255,0.24);
+          color: #FFFFFF;
         }
 
         @media (max-width: 640px) {
           .apm-modal { flex-direction: column; max-height: 88vh; }
-          .apm-photo-side { flex: 0 0 auto; border-right: none; border-bottom: 1px solid rgba(55,138,221,0.1); padding: 24px 16px; }
+          .apm-photo-side { flex: 0 0 auto; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 24px 16px; }
           .apm-photo-frame { width: 160px; height: 200px; }
           .apm-info-side { padding: 20px 18px; }
         }
@@ -482,19 +482,19 @@ export default function About() {
     <section id="about-section" className="about-section" style={{ position: "relative", zIndex: 1 }}>
 
       {/* Subtle top divider gradient */}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, rgba(55,138,221,0.25), transparent)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.125), transparent)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
 
         {/* Header */}
         <div style={{ marginBottom: 56 }}>
-          <p style={{ fontSize: 14, color: "#378add", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
+          <p style={{ fontSize: 14, color: "#FFFFFF", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
             00. About
           </p>
-          <h2 style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 700, color: "#e8f4ff", margin: "0 0 12px" }}>
+          <h2 style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 700, color: "#F5F5F5", margin: "0 0 12px" }}>
             Who I Am
           </h2>
-          <p style={{ fontSize: 17, color: "rgba(200,220,255,0.5)", margin: 0 }}>
+          <p style={{ fontSize: 17, color: "#A3A3A3", margin: 0 }}>
             A little bit about me, what I do, and how I work.
           </p>
         </div>
@@ -561,13 +561,13 @@ export default function About() {
 
             <div className="about-bio-block">
               <p className="about-bio-text">
-                I&apos;m a <strong style={{ color: "#e8f4ff" }}>Full Stack Developer and R&D Engineer</strong> based in Davao City, Philippines, passionate about building efficient, scalable software systems from the ground up.
+                I&apos;m a <strong style={{ color: "#F5F5F5" }}>Full Stack Developer and R&D Engineer</strong> based in Davao City, Philippines, passionate about building efficient, scalable software systems from the ground up.
               </p>
               <p className="about-bio-text">
                 My work spans the full development lifecycle — from designing clean user interfaces and building robust APIs, to configuring server infrastructure, automating deployments, and researching new technologies for internal systems.
               </p>
               <p className="about-bio-text">
-                Currently working at <strong style={{ color: "#5dcaa5" }}>DSG Son&apos;s Group Inc.</strong> as an R&D Engineer, where I design and manage multi-project Docker infrastructure, CI/CD pipelines, and internal web applications across multiple business units.
+                Currently working at <strong style={{ color: "#FFFFFF" }}>DSG Son&apos;s Group Inc.</strong> as an R&D Engineer, where I design and manage multi-project Docker infrastructure, CI/CD pipelines, and internal web applications across multiple business units.
               </p>
             </div>
 
@@ -608,24 +608,24 @@ export default function About() {
         .about-left { display: flex; flex-direction: column; gap: 20px; }
 
         .about-avatar-card {
-          background: rgba(255,255,255,0.025);
-          border: 1px solid rgba(55,138,221,0.14);
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.084);
           border-radius: 24px;
           padding: 36px 28px 28px;
           display: flex; flex-direction: column; align-items: center;
           text-align: center; position: relative;
-          box-shadow: 0 8px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(55,138,221,0.06);
+          box-shadow: 0 8px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(0,0,0,0.06);
         }
 
         .about-avatar-ring { display: none; }
 
         .about-avatar {
           width: 120px; height: 120px; border-radius: 16px;
-          background: linear-gradient(135deg, #0d2040, #050e1c);
-          border: 2px solid rgba(55,138,221,0.35);
+          background: linear-gradient(135deg, #2A2A2A, #2A2A2A);
+          border: 2px solid rgba(255,255,255,0.21);
           display: flex; align-items: center; justify-content: center;
           position: relative; margin-bottom: 18px;
-          box-shadow: 0 4px 24px rgba(55,138,221,0.2);
+          box-shadow: 0 4px 24px rgba(0,0,0,0.2);
         }
         .about-avatar-btn {
           cursor: pointer;
@@ -633,16 +633,16 @@ export default function About() {
           transition: box-shadow 0.25s, transform 0.25s;
         }
         .about-avatar-btn:hover {
-          box-shadow: 0 0 0 5px rgba(55,138,221,0.16), 0 0 48px rgba(55,138,221,0.45);
+          box-shadow: 0 0 0 5px rgba(0,0,0,0.16), 0 0 48px rgba(0,0,0,0.45);
           transform: scale(1.05);
         }
         .about-avatar-btn:hover .about-avatar-zoom { opacity: 1; }
 
         .about-avatar-zoom {
           position: absolute; inset: 0; border-radius: 14px;
-          background: rgba(5,13,26,0.55);
+          background: rgba(13,13,13,0.55);
           display: flex; align-items: center; justify-content: center;
-          color: #61afff; opacity: 0;
+          color: #FFFFFF; opacity: 0;
           transition: opacity 0.2s;
           z-index: 1;
         }
@@ -658,23 +658,23 @@ export default function About() {
         .about-orbit-dot { display: none; }
 
         .about-avatar-name {
-          font-size: 16px; font-weight: 700; color: #e8f4ff;
+          font-size: 16px; font-weight: 700; color: #F5F5F5;
           margin: 0 0 5px; line-height: 1.3;
         }
         .about-avatar-role {
-          font-size: 12px; color: rgba(200,220,255,0.45);
+          font-size: 12px; color: #A3A3A3;
           font-family: 'Courier New', monospace; margin: 0 0 18px;
         }
         .about-status {
           display: inline-flex; align-items: center; gap: 7px;
           padding: 5px 13px; border-radius: 100px;
-          background: rgba(93,202,165,0.1);
-          border: 1px solid rgba(93,202,165,0.25);
-          color: #5dcaa5; font-size: 12px; font-weight: 500;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.15);
+          color: #FFFFFF; font-size: 12px; font-weight: 500;
         }
         .about-status-dot {
           width: 6px; height: 6px; border-radius: 50%;
-          background: #5dcaa5;
+          background: #F5F5F5;
           animation: statusPulse 2s ease-in-out infinite;
         }
         @keyframes statusPulse {
@@ -684,24 +684,24 @@ export default function About() {
 
         /* Facts */
         .about-facts {
-          background: rgba(255,255,255,0.02);
-          border: 1px solid rgba(55,138,221,0.1);
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.06);
           border-radius: 14px;
           overflow: hidden;
         }
         .about-fact-row {
           display: flex; justify-content: space-between; align-items: center;
           padding: 11px 16px; gap: 12px;
-          border-bottom: 1px solid rgba(55,138,221,0.07);
+          border-bottom: 1px solid rgba(255,255,255,0.042);
         }
         .about-fact-row:last-child { border-bottom: none; }
         .about-fact-label {
           font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-          text-transform: uppercase; color: rgba(200,220,255,0.35);
+          text-transform: uppercase; color: #A3A3A3;
           font-family: 'Courier New', monospace; flex-shrink: 0;
         }
         .about-fact-value {
-          font-size: 12.5px; color: #e8f4ff; text-align: right;
+          font-size: 12.5px; color: #F5F5F5; text-align: right;
           font-weight: 500;
         }
 
@@ -710,13 +710,13 @@ export default function About() {
 
         .about-bio-block { display: flex; flex-direction: column; gap: 14px; }
         .about-bio-text {
-          font-size: 16px; color: rgba(200,220,255,0.66);
+          font-size: 16px; color: #A3A3A3;
           line-height: 1.85; margin: 0;
         }
 
         .about-services-label {
           font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-          text-transform: uppercase; color: rgba(55,138,221,0.6);
+          text-transform: uppercase; color: rgba(255,255,255,0.3);
           font-family: 'Courier New', monospace;
         }
         .about-services {
@@ -726,15 +726,15 @@ export default function About() {
         }
         .about-service-card {
           display: flex; gap: 14px; align-items: flex-start;
-          background: rgba(255,255,255,0.022);
-          border: 1px solid rgba(55,138,221,0.1);
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.06);
           border-radius: 14px; padding: 18px;
           transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
         }
         .about-service-card:hover {
-          border-color: rgba(55,138,221,0.3);
+          border-color: rgba(255,255,255,0.18);
           transform: translateY(-2px);
-          box-shadow: 0 6px 24px rgba(55,138,221,0.08);
+          box-shadow: 0 6px 24px rgba(0,0,0,0.08);
         }
         .about-service-icon {
           width: 40px; height: 40px; border-radius: 10px;
@@ -745,7 +745,7 @@ export default function About() {
           font-size: 13px; font-weight: 700; margin: 0 0 4px;
         }
         .about-service-desc {
-          font-size: 12.5px; color: rgba(200,220,255,0.45);
+          font-size: 12.5px; color: #A3A3A3;
           line-height: 1.6; margin: 0;
         }
 

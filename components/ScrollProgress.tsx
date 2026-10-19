@@ -24,7 +24,7 @@ export default function ScrollProgress() {
         right: 0,
         height: 3,
         zIndex: 9999,
-        background: "rgba(55,138,221,0.08)",
+        background: "rgba(255,255,255,0.04)",
         pointerEvents: "none",
       }}
     >
@@ -32,9 +32,9 @@ export default function ScrollProgress() {
         style={{
           height: "100%",
           width: `${progress}%`,
-          background: "linear-gradient(90deg, #378add, #5dcaa5)",
+          background: "linear-gradient(90deg, #F5F5F5, #F5F5F5)",
           transition: "width 0.08s linear",
-          boxShadow: "0 0 8px rgba(55,138,221,0.6)",
+          boxShadow: "0 0 8px rgba(0,0,0,0.6)",
         }}
       />
     </div>

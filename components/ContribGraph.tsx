@@ -10,12 +10,12 @@ const CURRENT_YEAR = new Date().getFullYear();
 const YEARS = [CURRENT_YEAR, CURRENT_YEAR - 1, CURRENT_YEAR - 2, CURRENT_YEAR - 3];
 
 function getColor(count: number, max: number) {
-  if (count === 0) return "rgba(255,255,255,0.07)";
+  if (count === 0) return "#2A2A2A";
   const ratio = count / Math.max(max, 1);
-  if (ratio <= 0.25) return "#196c2e";  // visible low
-  if (ratio <= 0.5)  return "#2ea043";  // medium
-  if (ratio <= 0.75) return "#3ec655";  // high
-  return "#4ae168";                      // max
+  if (ratio <= 0.25) return "#0e4429";  // visible low
+  if (ratio <= 0.5)  return "#006d32";  // medium
+  if (ratio <= 0.75) return "#26a641";  // high
+  return "#39d353";                      // max
 }
 
 function usePHTime() {
@@ -72,7 +72,7 @@ export default function ContribGraph() {
 
   if (loading) return (
     <div style={{ height: 100, display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <span style={{ fontSize: 12, color: "rgba(200,220,255,0.3)", fontFamily: "'Courier New', monospace" }}>
+      <span style={{ fontSize: 12, color: "#A3A3A3", fontFamily: "'Courier New', monospace" }}>
         Loading contributions...
       </span>
     </div>
@@ -132,9 +132,9 @@ export default function ContribGraph() {
       {/* PH Time clock */}
       {phTime && (
         <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
-          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#378add", boxShadow: "0 0 6px #378add", display: "inline-block", flexShrink: 0 }} />
-          <span style={{ fontSize: 11, color: "rgba(200,220,255,0.4)", fontFamily: "'Courier New', monospace", letterSpacing: "0.06em", textTransform: "uppercase" }}>PH Time</span>
-          <span style={{ fontSize: 13, color: "#61afff", fontFamily: "'Courier New', monospace", fontWeight: 600, letterSpacing: "0.04em" }}>{phTime}</span>
+          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#22C55E", boxShadow: "0 0 6px rgba(34,197,94,0.5)", display: "inline-block", flexShrink: 0 }} />
+          <span style={{ fontSize: 11, color: "#A3A3A3", fontFamily: "'Courier New', monospace", letterSpacing: "0.06em", textTransform: "uppercase" }}>PH Time</span>
+          <span style={{ fontSize: 13, color: "#FFFFFF", fontFamily: "'Courier New', monospace", fontWeight: 600, letterSpacing: "0.04em" }}>{phTime}</span>
         </div>
       )}
 
@@ -147,9 +147,9 @@ export default function ContribGraph() {
             style={{
               padding: "3px 12px",
               borderRadius: 6,
-              border: `1px solid ${selectedYear === y ? "#378add" : "rgba(55,138,221,0.2)"}`,
-              background: selectedYear === y ? "#378add" : "transparent",
-              color: selectedYear === y ? "#fff" : "rgba(200,220,255,0.5)",
+              border: `1px solid ${selectedYear === y ? "#F5F5F5" : "rgba(255,255,255,0.1)"}`,
+              background: selectedYear === y ? "#F5F5F5" : "transparent",
+              color: selectedYear === y ? "#111111" : "#A3A3A3",
               fontSize: 12,
               cursor: "pointer",
               fontFamily: "'Courier New', monospace",
@@ -169,9 +169,9 @@ export default function ContribGraph() {
             marginLeft: "auto",
             padding: "3px 8px",
             borderRadius: 6,
-            border: "1px solid rgba(55,138,221,0.2)",
+            border: "1px solid rgba(255,255,255,0.12)",
             background: "transparent",
-            color: "rgba(200,220,255,0.4)",
+            color: "#A3A3A3",
             fontSize: 12,
             cursor: refreshing ? "default" : "pointer",
             fontFamily: "'Courier New', monospace",
@@ -196,7 +196,7 @@ export default function ContribGraph() {
 
       <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
 
-      <p style={{ margin: "0 0 8px 28px", fontSize: 12, color: "rgba(200,220,255,0.45)", fontFamily: "'Courier New', monospace" }}>
+      <p style={{ margin: "0 0 8px 28px", fontSize: 12, color: "#A3A3A3", fontFamily: "'Courier New', monospace" }}>
         {year} Contributions &nbsp;·&nbsp; <span style={{ color: "#39d353" }}>{total.toLocaleString()} total</span>
       </p>
 
@@ -209,7 +209,7 @@ export default function ContribGraph() {
               style={{
                 height: CELL,
                 fontSize: 9,
-                color: "rgba(200,220,255,0.3)",
+                color: "#A3A3A3",
                 fontFamily: "'Courier New', monospace",
                 lineHeight: `${CELL}px`,
                 visibility: d % 2 === 1 ? "visible" : "hidden",
@@ -231,7 +231,7 @@ export default function ContribGraph() {
                   position: "absolute",
                   left: weekIdx * STEP,
                   fontSize: 10,
-                  color: "rgba(200,220,255,0.4)",
+                  color: "#A3A3A3",
                   fontFamily: "'Courier New', monospace",
                   whiteSpace: "nowrap",
                 }}
@@ -254,7 +254,7 @@ export default function ContribGraph() {
                       height: CELL,
                       borderRadius: 2,
                       background: day ? getColor(day.count, max) : "transparent",
-                      border: day ? "1px solid rgba(255,255,255,0.04)" : "none",
+                      border: day ? "1px solid #2A2A2A" : "none",
                       cursor: day ? "default" : "default",
                     }}
                   />
@@ -267,11 +267,11 @@ export default function ContribGraph() {
 
       {/* Legend */}
       <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 8, marginLeft: 28, justifyContent: "flex-end" }}>
-        <span style={{ fontSize: 10, color: "rgba(200,220,255,0.3)", fontFamily: "'Courier New', monospace" }}>Less</span>
-        {["rgba(255,255,255,0.05)", "#0e4429", "#006d32", "#26a641", "#39d353"].map((c) => (
-          <div key={c} style={{ width: 10, height: 10, borderRadius: 2, background: c, border: "1px solid rgba(255,255,255,0.06)" }} />
+        <span style={{ fontSize: 10, color: "#A3A3A3", fontFamily: "'Courier New', monospace" }}>Less</span>
+        {["#2A2A2A", "#0e4429", "#006d32", "#26a641", "#39d353"].map((c) => (
+          <div key={c} style={{ width: 10, height: 10, borderRadius: 2, background: c, border: "1px solid #2A2A2A" }} />
         ))}
-        <span style={{ fontSize: 10, color: "rgba(200,220,255,0.3)", fontFamily: "'Courier New', monospace" }}>More</span>
+        <span style={{ fontSize: 10, color: "#A3A3A3", fontFamily: "'Courier New', monospace" }}>More</span>
       </div>
     </div>
   );

@@ -8,11 +8,11 @@ const filters = ["All", "Full Stack", "Mobile", "Figma", "Docker"];
 
 const typeColor = (types: string | string[]) => {
   const t = Array.isArray(types) ? types[0] : types;
-  if (t === "Full Stack") return { accent: "#378add", glow: "rgba(55,138,221,0.18)", badge: "rgba(55,138,221,0.1)", badgeText: "#61afff", badgeBorder: "rgba(55,138,221,0.22)" };
-  if (t === "Mobile")     return { accent: "#5dcaa5", glow: "rgba(93,202,165,0.15)",  badge: "rgba(93,202,165,0.1)",  badgeText: "#5dcaa5",  badgeBorder: "rgba(93,202,165,0.22)"  };
-  if (t === "Figma")      return { accent: "#c678dd", glow: "rgba(198,120,221,0.15)", badge: "rgba(198,120,221,0.1)", badgeText: "#c678dd",  badgeBorder: "rgba(198,120,221,0.22)" };
-  if (t === "Docker")     return { accent: "#e5a44b", glow: "rgba(229,164,75,0.15)",  badge: "rgba(229,164,75,0.1)",  badgeText: "#e5a44b",  badgeBorder: "rgba(229,164,75,0.22)"  };
-  return { accent: "#378add", glow: "rgba(55,138,221,0.15)", badge: "rgba(55,138,221,0.1)", badgeText: "#61afff", badgeBorder: "rgba(55,138,221,0.2)" };
+  if (t === "Full Stack") return { accent: "#F5F5F5", glow: "rgba(255,255,255,0.09)", badge: "rgba(255,255,255,0.05)", badgeText: "#F5F5F5", badgeBorder: "rgba(255,255,255,0.132)" };
+  if (t === "Mobile")     return { accent: "#D4D4D4", glow: "rgba(212,212,212,0.075)",  badge: "rgba(212,212,212,0.05)",  badgeText: "#D4D4D4",  badgeBorder: "rgba(212,212,212,0.132)"  };
+  if (t === "Figma")      return { accent: "#A3A3A3", glow: "rgba(163,163,163,0.075)", badge: "rgba(163,163,163,0.05)", badgeText: "#A3A3A3",  badgeBorder: "rgba(163,163,163,0.11)" };
+  if (t === "Docker")     return { accent: "#737373", glow: "rgba(115,115,115,0.15)",  badge: "rgba(115,115,115,0.1)",  badgeText: "#A3A3A3",  badgeBorder: "rgba(115,115,115,0.3)"  };
+  return { accent: "#F5F5F5", glow: "rgba(255,255,255,0.075)", badge: "rgba(255,255,255,0.05)", badgeText: "#F5F5F5", badgeBorder: "rgba(255,255,255,0.12)" };
 };
 
 export default function Projects() {
@@ -33,13 +33,13 @@ export default function Projects() {
 
         {/* Header */}
         <div style={{ marginBottom: 48 }}>
-          <p style={{ fontSize: 14, color: "#378add", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
+          <p style={{ fontSize: 14, color: "#FFFFFF", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
             01. Projects
           </p>
-          <h2 style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 700, color: "#e8f4ff", margin: "0 0 12px" }}>
+          <h2 style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 700, color: "#F5F5F5", margin: "0 0 12px" }}>
             Things I&apos;ve Built
           </h2>
-          <p style={{ fontSize: 17, color: "rgba(200,220,255,0.5)", maxWidth: 500, margin: 0 }}>
+          <p style={{ fontSize: 17, color: "#A3A3A3", maxWidth: 500, margin: 0 }}>
             A collection of projects from research, development, and personal exploration.
           </p>
         </div>
@@ -62,10 +62,10 @@ export default function Projects() {
         <div className="pf-legend">
           <span className="pfl-label">Color key:</span>
           {[
-            { color: "#378add", label: "Full Stack" },
-            { color: "#5dcaa5", label: "Mobile" },
-            { color: "#c678dd", label: "Figma / Design" },
-            { color: "#e5a44b", label: "Docker" },
+            { color: "#F5F5F5", label: "Full Stack" },
+            { color: "#D4D4D4", label: "Mobile" },
+            { color: "#A3A3A3", label: "Figma / Design" },
+            { color: "#737373", label: "Docker" },
           ].map(({ color, label }) => (
             <span key={label} className="pfl-item">
               <span className="pfl-dot" style={{ background: color, boxShadow: `0 0 6px ${color}88` }} />
@@ -98,22 +98,22 @@ export default function Projects() {
         .pf-btn {
           display: inline-flex; align-items: center; gap: 7px;
           padding: 8px 16px; border-radius: 999px;
-          border: 1px solid rgba(55,138,221,0.18);
-          background: transparent; color: rgba(200,220,255,0.5);
+          border: 1px solid rgba(255,255,255,0.108);
+          background: transparent; color: #A3A3A3;
           font-size: 14px; font-weight: 500; cursor: pointer;
           transition: all 0.2s; font-family: inherit;
         }
-        .pf-btn:hover { border-color: rgba(55,138,221,0.4); color: #e8f4ff; background: rgba(55,138,221,0.06); }
+        .pf-btn:hover { border-color: rgba(255,255,255,0.24); color: #F5F5F5; background: rgba(255,255,255,0.03); }
         .pf-btn-active {
-          background: rgba(55,138,221,0.14);
-          border-color: rgba(55,138,221,0.5);
-          color: #61afff;
-          box-shadow: 0 0 12px rgba(55,138,221,0.18);
+          background: rgba(255,255,255,0.07);
+          border-color: rgba(255,255,255,0.3);
+          color: #FFFFFF;
+          box-shadow: 0 0 12px rgba(0,0,0,0.18);
         }
         .pf-count {
           font-size: 11px; font-weight: 700;
-          background: rgba(55,138,221,0.12);
-          border: 1px solid rgba(55,138,221,0.2);
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.12);
           border-radius: 999px; padding: 1px 7px;
           font-family: 'Courier New', monospace;
           color: inherit;
@@ -124,18 +124,18 @@ export default function Projects() {
           display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
           margin-bottom: 24px;
           padding: 10px 16px;
-          background: rgba(255,255,255,0.02);
-          border: 1px solid rgba(55,138,221,0.09);
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.054);
           border-radius: 10px;
         }
         .pfl-label {
           font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-          text-transform: uppercase; color: rgba(200,220,255,0.3);
+          text-transform: uppercase; color: #A3A3A3;
           font-family: 'Courier New', monospace; flex-shrink: 0;
         }
         .pfl-item {
           display: inline-flex; align-items: center; gap: 7px;
-          font-size: 12.5px; color: rgba(200,220,255,0.5);
+          font-size: 12.5px; color: #A3A3A3;
         }
         .pfl-dot {
           width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0;
@@ -183,7 +183,7 @@ function ProjectCard({ project, index, featured, onOpen }: {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        borderColor: hovered ? `${c.accent}50` : "rgba(55,138,221,0.1)",
+        borderColor: hovered ? `${c.accent}50` : "rgba(255,255,255,0.06)",
         boxShadow: hovered ? `0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px ${c.accent}22, 0 0 32px ${c.glow}` : "none",
         transform: hovered ? "translateY(-4px)" : "none",
       }}
@@ -233,13 +233,13 @@ function ProjectCard({ project, index, featured, onOpen }: {
         </div>
 
         {/* Footer */}
-        <div className="pc-footer" style={{ borderColor: hovered ? `${c.accent}22` : "rgba(255,255,255,0.05)" }}>
-          <span className="pc-cta" style={{ color: hovered ? c.accent : "rgba(200,220,255,0.35)" }}>
+        <div className="pc-footer" style={{ borderColor: hovered ? `${c.accent}22` : "#2A2A2A" }}>
+          <span className="pc-cta" style={{ color: hovered ? c.accent : "#A3A3A3" }}>
             View details
           </span>
           <svg
             width="14" height="14" viewBox="0 0 24 24" fill="none"
-            stroke={hovered ? c.accent : "rgba(200,220,255,0.3)"}
+            stroke={hovered ? c.accent : "#A3A3A3"}
             strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
             style={{ transform: hovered ? "translateX(3px)" : "none", transition: "transform 0.2s, stroke 0.2s" }}
           >
@@ -250,7 +250,7 @@ function ProjectCard({ project, index, featured, onOpen }: {
 
       <style suppressHydrationWarning>{`
         .pc {
-          background: rgba(255,255,255,0.025);
+          background: #1A1A1A;
           border: 1px solid; border-radius: 16px;
           overflow: hidden; cursor: pointer;
           display: flex; flex-direction: column;
@@ -287,23 +287,23 @@ function ProjectCard({ project, index, featured, onOpen }: {
           font-size: 11px; padding: 2px 8px; border-radius: 100px;
           border: 1px solid; font-weight: 500;
         }
-        .status-done { background: rgba(29,158,117,0.1); color: #5dcaa5; border-color: rgba(29,158,117,0.25); }
-        .status-wip  { background: rgba(239,159,39,0.1);  color: #ef9f27; border-color: rgba(239,159,39,0.25); }
+        .status-done { background: rgba(255,255,255,0.05); color: #FFFFFF; border-color: rgba(255,255,255,0.15); }
+        .status-wip  { background: rgba(163,163,163,0.1);  color: #A3A3A3; border-color: rgba(163,163,163,0.25); }
 
         .pc-title {
-          font-size: 18px; font-weight: 700; color: #e8f4ff;
+          font-size: 18px; font-weight: 700; color: #F5F5F5;
           margin: 0; line-height: 1.3;
         }
         .pc-inner-featured .pc-title { font-size: 26px; }
 
         .pc-place {
-          font-size: 12px; color: rgba(200,220,255,0.38);
+          font-size: 12px; color: #A3A3A3;
           display: inline-flex; align-items: center; gap: 5px;
           font-family: 'Courier New', monospace;
         }
 
         .pc-desc {
-          font-size: 13.5px; color: rgba(200,220,255,0.55);
+          font-size: 13.5px; color: #A3A3A3;
           margin: 0; line-height: 1.65;
           display: -webkit-box;
           -webkit-line-clamp: 3;
@@ -315,9 +315,9 @@ function ProjectCard({ project, index, featured, onOpen }: {
         .pc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
         .pc-tag {
           font-size: 11.5px; padding: 3px 9px; border-radius: 5px;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.08);
-          color: rgba(200,220,255,0.5);
+          background: #1A1A1A;
+          border: 1px solid #2A2A2A;
+          color: #A3A3A3;
         }
         .pc-tag-more {
           font-size: 11.5px; padding: 3px 9px; border-radius: 5px;
@@ -448,7 +448,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
       <style suppressHydrationWarning>{`
         .dm-overlay {
           position: fixed; inset: 0; z-index: 99999;
-          background: rgba(2,8,18,0.82);
+          background: rgba(13,13,13,0.82);
           backdrop-filter: blur(8px);
           transition: opacity 0.28s ease;
           display: flex; align-items: center; justify-content: center;
@@ -456,10 +456,10 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         }
         .dm-panel {
           width: min(560px, 100%); max-height: 88vh;
-          background: #08111f;
-          border: 1px solid rgba(55,138,221,0.18);
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.108);
           border-radius: 20px;
-          box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(55,138,221,0.06);
+          box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(0,0,0,0.06);
           display: flex; flex-direction: column;
           transition: transform 0.28s cubic-bezier(0.34,1.4,0.64,1), opacity 0.28s ease;
           overflow: hidden;
@@ -467,7 +467,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         .dm-header {
           display: flex; align-items: center; gap: 12px;
           padding: 18px 22px 14px;
-          border-bottom: 1px solid rgba(55,138,221,0.1);
+          border-bottom: 1px solid rgba(255,255,255,0.06);
           flex-shrink: 0;
         }
         .dm-badge {
@@ -475,54 +475,54 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           border: 1px solid; font-weight: 500;
         }
         .dm-status { border-radius: 100px !important; }
-        .status-done { background: rgba(29,158,117,0.12); color: #5dcaa5; border-color: rgba(29,158,117,0.28) !important; }
-        .status-wip  { background: rgba(239,159,39,0.12);  color: #ef9f27; border-color: rgba(239,159,39,0.28)  !important; }
+        .status-done { background: rgba(255,255,255,0.06); color: #FFFFFF; border-color: rgba(255,255,255,0.168) !important; }
+        .status-wip  { background: rgba(163,163,163,0.12);  color: #A3A3A3; border-color: rgba(163,163,163,0.28)  !important; }
         .dm-close {
           width: 32px; height: 32px; border-radius: 8px;
-          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-          color: rgba(200,220,255,0.5); cursor: pointer;
+          background: #1A1A1A; border: 1px solid #2A2A2A;
+          color: #A3A3A3; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0; transition: all 0.2s;
         }
-        .dm-close:hover { background: rgba(55,138,221,0.12); color: #61afff; }
+        .dm-close:hover { background: rgba(255,255,255,0.06); color: #FFFFFF; }
         .dm-body {
           flex: 1; overflow-y: auto; padding: 22px 22px;
           display: flex; flex-direction: column; gap: 18px;
-          scrollbar-width: thin; scrollbar-color: rgba(55,138,221,0.2) transparent;
+          scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.1) transparent;
         }
         .dm-body::-webkit-scrollbar { width: 4px; }
         .dm-body::-webkit-scrollbar-track { background: transparent; }
-        .dm-body::-webkit-scrollbar-thumb { background: rgba(55,138,221,0.2); border-radius: 99px; }
-        .dm-title { margin: 0 0 6px; font-size: clamp(20px,4vw,26px); font-weight: 700; color: #e8f4ff; line-height: 1.25; }
-        .dm-place { font-size: 13px; color: rgba(200,220,255,0.4); display: inline-flex; align-items: center; gap: 5px; }
-        .dm-divider { height: 1px; background: rgba(55,138,221,0.08); }
-        .dm-label { margin: 0 0 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: rgba(55,138,221,0.65); text-transform: uppercase; font-family: 'Courier New', monospace; }
-        .dm-desc { margin: 0; font-size: 14.5px; color: rgba(200,220,255,0.62); line-height: 1.75; }
+        .dm-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
+        .dm-title { margin: 0 0 6px; font-size: clamp(20px,4vw,26px); font-weight: 700; color: #F5F5F5; line-height: 1.25; }
+        .dm-place { font-size: 13px; color: #A3A3A3; display: inline-flex; align-items: center; gap: 5px; }
+        .dm-divider { height: 1px; background: rgba(255,255,255,0.04); }
+        .dm-label { margin: 0 0 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: rgba(255,255,255,0.325); text-transform: uppercase; font-family: 'Courier New', monospace; }
+        .dm-desc { margin: 0; font-size: 14.5px; color: #A3A3A3; line-height: 1.75; }
         .dm-tags { display: flex; flex-wrap: wrap; gap: 7px; }
-        .dm-tag { font-size: 12px; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: rgba(200,220,255,0.6); }
+        .dm-tag { font-size: 12px; padding: 4px 10px; border-radius: 6px; background: #1A1A1A; border: 1px solid #2A2A2A; color: #A3A3A3; }
         .dm-footer {
           padding: 14px 22px 22px;
-          border-top: 1px solid rgba(55,138,221,0.1);
+          border-top: 1px solid rgba(255,255,255,0.06);
           display: flex; gap: 10px; flex-shrink: 0;
         }
         .dm-cta {
           flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
           padding: 11px 20px; border-radius: 10px; border: none;
-          color: #fff; font-size: 14px; font-weight: 600;
+          color: #111111; font-size: 14px; font-weight: 600;
           text-decoration: none; cursor: pointer; transition: all 0.2s;
         }
-        .dm-cta:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(55,138,221,0.4) !important; }
+        .dm-cta:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important; }
         .dm-confidential {
           flex: 1; display: inline-flex; align-items: center; gap: 6px;
-          font-size: 13px; color: rgba(200,220,255,0.3); font-style: italic;
+          font-size: 13px; color: #A3A3A3; font-style: italic;
         }
         .dm-close-btn {
           padding: 11px 20px; border-radius: 10px;
-          background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-          color: rgba(200,220,255,0.5); font-size: 14px; font-weight: 500;
+          background: #1A1A1A; border: 1px solid #2A2A2A;
+          color: #A3A3A3; font-size: 14px; font-weight: 500;
           cursor: pointer; transition: all 0.2s; font-family: inherit; flex-shrink: 0;
         }
-        .dm-close-btn:hover { background: rgba(255,255,255,0.09); color: rgba(200,220,255,0.85); }
+        .dm-close-btn:hover { background: #1A1A1A; color: #A3A3A3; }
         @media (max-width: 640px) {
           .dm-overlay { align-items: flex-end; padding: 0; }
           .dm-panel { width: 100%; max-height: 90dvh; border-radius: 20px 20px 0 0; }

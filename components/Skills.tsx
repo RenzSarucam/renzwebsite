@@ -2,10 +2,10 @@
 import { skillGroups } from "@/app/_lib/portfolio-data";
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Frontend:           "#61afff",
-  Backend:            "#5dcaa5",
-  DevOps:             "#e5a44b",
-  "APIs & Integrations": "#c678dd",
+  Frontend:           "#F5F5F5",
+  Backend:            "#D4D4D4",
+  DevOps:             "#A3A3A3",
+  "APIs & Integrations": "#737373",
 };
 
 function RadarChart({ skills, color }: { skills: { name: string; level: number }[]; color: string }) {
@@ -46,12 +46,12 @@ function RadarChart({ skills, color }: { skills: { name: string; level: number }
 
       {/* Grid rings */}
       {[0.33, 0.66, 1].map((r, i) => (
-        <path key={i} d={polyPath(r)} fill="none" stroke="rgba(55,138,221,0.1)" strokeWidth="1" />
+        <path key={i} d={polyPath(r)} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
       ))}
 
       {/* Axes */}
       {axePts.map((p, i) => (
-        <line key={i} x1={cx} y1={cy} x2={p.x} y2={p.y} stroke="rgba(55,138,221,0.1)" strokeWidth="1" />
+        <line key={i} x1={cx} y1={cy} x2={p.x} y2={p.y} stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
       ))}
 
       {/* Data fill */}
@@ -59,7 +59,7 @@ function RadarChart({ skills, color }: { skills: { name: string; level: number }
 
       {/* Data dots */}
       {dataPts.map((p, i) => (
-        <circle key={i} cx={p.x} cy={p.y} r="3.5" fill={color} stroke="#08111f" strokeWidth="1.5" />
+        <circle key={i} cx={p.x} cy={p.y} r="3.5" fill={color} stroke="#F5F5F5" strokeWidth="1.5" />
       ))}
 
       {/* Labels */}
@@ -76,7 +76,7 @@ function RadarChart({ skills, color }: { skills: { name: string; level: number }
             y={p.y + (dy > 0 ? 4 : dy < 0 ? -2 : 0)}
             textAnchor={anchor}
             fontSize="8.5"
-            fill="rgba(200,220,255,0.55)"
+            fill="#A3A3A3"
             fontFamily="inherit"
           >
             {name}
@@ -94,13 +94,13 @@ export default function Skills() {
 
         {/* Header */}
         <div style={{ marginBottom: 52 }}>
-          <p style={{ fontSize: 14, color: "#378add", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
+          <p style={{ fontSize: 14, color: "#FFFFFF", fontFamily: "'Courier New', monospace", margin: "0 0 8px", letterSpacing: "0.05em" }}>
             03. Skills
           </p>
-          <h2 style={{ fontSize: "clamp(32px, 4vw, 44px)", fontWeight: 700, color: "#e8f4ff", margin: "0 0 12px" }}>
+          <h2 style={{ fontSize: "clamp(32px, 4vw, 44px)", fontWeight: 700, color: "#F5F5F5", margin: "0 0 12px" }}>
             My Expertise
           </h2>
-          <p style={{ fontSize: 17, color: "rgba(200,220,255,0.55)", maxWidth: 500, margin: 0 }}>
+          <p style={{ fontSize: 17, color: "#A3A3A3", maxWidth: 500, margin: 0 }}>
             Technologies and tools I work with as a Full Stack Developer &amp; DevOps Engineer.
           </p>
         </div>
@@ -108,14 +108,14 @@ export default function Skills() {
         {/* Skill group cards */}
         <div className="skills-grid">
           {skillGroups.map((group) => {
-            const color = CATEGORY_COLORS[group.category] ?? "#378add";
+            const color = CATEGORY_COLORS[group.category] ?? "#FFFFFF";
             return (
               <div key={group.category} className="skill-card">
 
                 {/* Card header */}
                 <div className="skill-card-header" style={{ borderColor: `${color}30` }}>
                   <span style={{ fontSize: 13, color, fontFamily: "'Courier New', monospace", flexShrink: 0 }}>{group.icon}</span>
-                  <h3 style={{ margin: 0, fontSize: group.category.length > 10 ? 13 : 15, fontWeight: 700, color: "#e8f4ff", lineHeight: 1.2 }}>{group.category}</h3>
+                  <h3 style={{ margin: 0, fontSize: group.category.length > 10 ? 13 : 15, fontWeight: 700, color: "#F5F5F5", lineHeight: 1.2 }}>{group.category}</h3>
                   <span className="skill-avg-badge" style={{ background: `${color}18`, color, border: `1px solid ${color}30`, whiteSpace: "nowrap" }}>
                     {Math.round(group.skills.reduce((s, k) => s + k.level, 0) / group.skills.length)}% avg
                   </span>
@@ -154,8 +154,8 @@ export default function Skills() {
         }
 
         .skill-card {
-          background: rgba(255,255,255,0.025);
-          border: 1px solid rgba(55,138,221,0.12);
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.072);
           border-radius: 16px;
           overflow: hidden;
           transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -163,7 +163,7 @@ export default function Skills() {
         .skill-card:hover {
           transform: translateY(-4px);
           box-shadow: 0 12px 36px rgba(0,0,0,0.3);
-          border-color: rgba(55,138,221,0.28);
+          border-color: rgba(255,255,255,0.168);
         }
 
         .skill-card-header {
@@ -190,13 +190,13 @@ export default function Skills() {
           display: flex; align-items: center; gap: 8px;
         }
         .skill-name {
-          font-size: 12px; color: rgba(200,220,255,0.6);
+          font-size: 12px; color: #A3A3A3;
           width: 100px; flex-shrink: 0;
           white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         .skill-bar-track {
           flex: 1; height: 3px;
-          background: rgba(55,138,221,0.08);
+          background: rgba(255,255,255,0.04);
           border-radius: 99px; overflow: hidden;
         }
         .skill-bar-fill {

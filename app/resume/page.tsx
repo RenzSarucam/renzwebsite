@@ -10,7 +10,7 @@ export default function ResumePage() {
     <>
       <style suppressHydrationWarning>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: #060d1a; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background: #0D0D0D; font-family: 'Segoe UI', Arial, sans-serif; }
         html { scrollbar-width: none; }
         html::-webkit-scrollbar { display: none; }
 
@@ -19,7 +19,7 @@ export default function ResumePage() {
           min-height: 297mm;
           margin: 28px auto;
           display: flex;
-          box-shadow: 0 16px 56px rgba(0,0,0,0.65), 0 0 0 1px rgba(55,138,221,0.18);
+          box-shadow: 0 16px 56px rgba(0,0,0,0.65), 0 0 0 1px rgba(0,0,0,0.18);
           border-radius: 6px;
           overflow: hidden;
         }
@@ -28,7 +28,7 @@ export default function ResumePage() {
         .sidebar {
           width: 70mm;
           flex-shrink: 0;
-          background: linear-gradient(170deg, #0d1b2e 0%, #091320 100%);
+          background: linear-gradient(170deg, #2A2A2A 0%, #2A2A2A 100%);
           padding: 13mm 7mm 12mm;
           display: flex;
           flex-direction: column;
@@ -38,7 +38,7 @@ export default function ResumePage() {
         .sb-accent-bar {
           width: 32px;
           height: 3px;
-          background: linear-gradient(90deg, #378add, #5dcaa5);
+          background: linear-gradient(90deg, #F5F5F5, #F5F5F5);
           border-radius: 2px;
           margin-bottom: 8px;
         }
@@ -46,7 +46,7 @@ export default function ResumePage() {
         .sb-name {
           font-size: 14.5pt;
           font-weight: 800;
-          color: #fff;
+          color: #111111;
           line-height: 1.2;
           letter-spacing: -0.3px;
         }
@@ -54,13 +54,13 @@ export default function ResumePage() {
         .sb-subtitle {
           margin-top: 6px;
           font-size: 7.5pt;
-          color: rgba(255,255,255,0.48);
+          color: #A3A3A3;
           line-height: 1.85;
         }
 
         .sb-divider {
           height: 1px;
-          background: rgba(55,138,221,0.14);
+          background: rgba(255,255,255,0.07);
         }
 
         .sb-section-title {
@@ -68,7 +68,7 @@ export default function ResumePage() {
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.15em;
-          color: #5dcaa5;
+          color: #FFFFFF;
           margin-bottom: 8px;
         }
 
@@ -77,7 +77,7 @@ export default function ResumePage() {
           align-items: flex-start;
           gap: 6px;
           font-size: 7.5pt;
-          color: rgba(255,255,255,0.7);
+          color: #A3A3A3;
           margin-bottom: 5px;
           line-height: 1.45;
           word-break: break-all;
@@ -95,9 +95,9 @@ export default function ResumePage() {
         }
 
         .sb-skill-tag {
-          background: rgba(55,138,221,0.09);
-          border: 1px solid rgba(55,138,221,0.22);
-          color: rgba(255,255,255,0.72);
+          background: rgba(255,255,255,0.045);
+          border: 1px solid rgba(255,255,255,0.132);
+          color: #A3A3A3;
           border-radius: 3px;
           padding: 1px 5px;
           font-size: 6.5pt;
@@ -106,59 +106,59 @@ export default function ResumePage() {
 
         .sb-lang-item {
           font-size: 8pt;
-          color: rgba(255,255,255,0.7);
+          color: #A3A3A3;
           margin-bottom: 4px;
           padding-left: 8px;
-          border-left: 2px solid rgba(93,202,165,0.4);
+          border-left: 2px solid rgba(255,255,255,0.24);
         }
 
         .sb-cert-item {
           margin-bottom: 7px;
           padding: 4px 7px;
-          border-left: 2px solid rgba(55,138,221,0.35);
+          border-left: 2px solid rgba(255,255,255,0.21);
         }
 
         .sb-cert-name {
           font-size: 7.5pt;
-          color: rgba(255,255,255,0.68);
+          color: #A3A3A3;
           line-height: 1.4;
         }
 
         .sb-cert-meta {
           font-size: 6.5pt;
-          color: rgba(255,255,255,0.32);
+          color: #A3A3A3;
           margin-top: 2px;
         }
 
         .sb-edu-item {
           margin-bottom: 8px;
           padding: 4px 7px;
-          border-left: 2px solid rgba(93,202,165,0.35);
+          border-left: 2px solid rgba(255,255,255,0.21);
         }
 
         .sb-edu-degree {
           font-size: 7.5pt;
           font-weight: 700;
-          color: rgba(255,255,255,0.75);
+          color: #A3A3A3;
           line-height: 1.4;
         }
 
         .sb-edu-school {
           font-size: 7pt;
-          color: rgba(255,255,255,0.5);
+          color: #A3A3A3;
           margin-top: 1px;
         }
 
         .sb-edu-meta {
           font-size: 6.5pt;
-          color: rgba(255,255,255,0.3);
+          color: #A3A3A3;
           margin-top: 2px;
         }
 
         /* ── Main ── */
         .main {
           flex: 1;
-          background: #fff;
+          background: #F5F5F5;
           padding: 13mm 11mm 12mm 9mm;
           color: #1a1a1a;
           font-size: 10pt;
@@ -172,8 +172,8 @@ export default function ResumePage() {
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.11em;
-          color: #1a73e8;
-          border-bottom: 1.5px solid #d0e4fa;
+          color: #FFFFFF;
+          border-bottom: 1.5px solid #2A2A2A;
           padding-bottom: 3px;
           margin-bottom: 9px;
         }
@@ -188,12 +188,12 @@ export default function ResumePage() {
           gap: 2px;
         }
         .exp-title { font-weight: 700; font-size: 10pt; }
-        .exp-company { font-size: 9.5pt; color: #1a73e8; font-weight: 600; }
+        .exp-company { font-size: 9.5pt; color: #FFFFFF; font-weight: 600; }
         .exp-location { font-size: 9pt; color: #666; }
         .exp-period { font-size: 8.5pt; color: #666; white-space: nowrap; }
         .exp-desc { font-size: 9pt; color: #333; margin-top: 3px; line-height: 1.5; }
         .exp-projects { margin-top: 2px; font-size: 8.5pt; color: #333; }
-        .exp-projects-label { font-weight: 600; color: #1a73e8; }
+        .exp-projects-label { font-weight: 600; color: #FFFFFF; }
         .exp-tools { margin-top: 3px; font-size: 8.5pt; color: #555; font-style: italic; }
 
         /* ── Education ── */
@@ -205,7 +205,7 @@ export default function ResumePage() {
           flex-wrap: wrap;
         }
         .edu-degree { font-weight: 700; font-size: 10pt; }
-        .edu-school { font-size: 9.5pt; color: #1a73e8; font-weight: 600; }
+        .edu-school { font-size: 9.5pt; color: #FFFFFF; font-weight: 600; }
         .edu-period { font-size: 8.5pt; color: #666; }
         .edu-note { font-size: 8.5pt; color: #555; margin-top: 2px; font-style: italic; }
 
@@ -220,12 +220,12 @@ export default function ResumePage() {
         }
         .project-title { font-weight: 700; font-size: 9.5pt; }
         .project-place { font-size: 9pt; color: #555; }
-        .project-type { font-size: 8.5pt; color: #1a73e8; font-weight: 600; }
+        .project-type { font-size: 8.5pt; color: #FFFFFF; font-weight: 600; }
         .project-tags { font-size: 8pt; color: #666; font-style: italic; margin-top: 1px; }
 
         /* ── Print ── */
         @media print {
-          body { background: #fff; }
+          body { background: #F5F5F5; }
           .page {
             margin: 0;
             box-shadow: none;
@@ -239,12 +239,12 @@ export default function ResumePage() {
             width: 60mm;
             padding: 10mm 5mm 10mm;
             gap: 10px;
-            background: #0d1b2e !important;
+            background: #2A2A2A !important;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
           }
           .sb-accent-bar {
-            background: linear-gradient(90deg, #378add, #5dcaa5) !important;
+            background: linear-gradient(90deg, #F5F5F5, #F5F5F5) !important;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
           }

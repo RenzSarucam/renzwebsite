@@ -21,7 +21,7 @@ export default function Home() {
         position: "fixed",
         inset: 0,
         zIndex: 99998,
-        background: "#020c1b",
+        background: "#0D0D0D",
         pointerEvents: "none",
       }}
     />

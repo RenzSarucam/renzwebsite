@@ -33,14 +33,14 @@ export default function Contact() {
     width: "100%",
     padding: "13px 16px",
     borderRadius: 10,
-    border: `1px solid ${focused === field ? "rgba(55,138,221,0.55)" : "rgba(55,138,221,0.14)"}`,
-    background: focused === field ? "rgba(55,138,221,0.06)" : "rgba(255,255,255,0.03)",
-    color: "#e8f4ff",
+    border: `1px solid ${focused === field ? "#A3A3A3" : "#3A3A3A"}`,
+    background: "#1A1A1A",
+    color: "#F5F5F5",
     fontSize: 15,
     outline: "none",
     boxSizing: "border-box" as const,
     transition: "border-color 0.2s, background 0.2s, box-shadow 0.2s",
-    boxShadow: focused === field ? "0 0 0 3px rgba(55,138,221,0.1), 0 0 18px rgba(55,138,221,0.12)" : "none",
+    boxShadow: focused === field ? "0 0 0 3px rgba(255,255,255,0.05), 0 0 18px rgba(255,255,255,0.06)" : "none",
     fontFamily: "inherit",
   });
 
@@ -58,11 +58,11 @@ export default function Contact() {
           <div className="contact-left">
 
             {/* Section label */}
-            <p style={{ fontSize: 13, color: "#378add", fontFamily: "'Courier New', monospace", margin: "0 0 14px", letterSpacing: "0.06em" }}>
+            <p style={{ fontSize: 13, color: "#FFFFFF", fontFamily: "'Courier New', monospace", margin: "0 0 14px", letterSpacing: "0.06em" }}>
               05. Contact
             </p>
 
-            <h2 style={{ fontSize: "clamp(28px,3.5vw,40px)", fontWeight: 700, color: "#e8f4ff", margin: "0 0 14px", lineHeight: 1.2 }}>
+            <h2 style={{ fontSize: "clamp(28px,3.5vw,40px)", fontWeight: 700, color: "#F5F5F5", margin: "0 0 14px", lineHeight: 1.2 }}>
               Let&apos;s Work<br />Together
             </h2>
 
@@ -80,7 +80,7 @@ export default function Contact() {
             <div className="contact-info-list">
               {/* Email */}
               <button className="contact-info-card" onClick={copyEmail}>
-                <div className="cic-icon" style={{ background: "rgba(55,138,221,0.12)", color: "#61afff", border: "1px solid rgba(55,138,221,0.2)" }}>
+                <div className="cic-icon" style={{ background: "rgba(255,255,255,0.06)", color: "#FFFFFF", border: "1px solid rgba(255,255,255,0.12)" }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                   </svg>
@@ -89,7 +89,7 @@ export default function Contact() {
                   <span className="cic-label">Email</span>
                   <span className="cic-value">{copied ? "Copied!" : contactEmail}</span>
                 </div>
-                <div className="cic-action" style={{ color: copied ? "#5dcaa5" : "rgba(55,138,221,0.5)" }}>
+                <div className="cic-action" style={{ color: copied ? "#FFFFFF" : "rgba(255,255,255,0.25)" }}>
                   {copied ? (
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
                   ) : (
@@ -100,7 +100,7 @@ export default function Contact() {
 
               {/* Location */}
               <div className="contact-info-card" style={{ cursor: "default" }}>
-                <div className="cic-icon" style={{ background: "rgba(93,202,165,0.1)", color: "#5dcaa5", border: "1px solid rgba(93,202,165,0.2)" }}>
+                <div className="cic-icon" style={{ background: "rgba(255,255,255,0.05)", color: "#FFFFFF", border: "1px solid rgba(255,255,255,0.12)" }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
                   </svg>
@@ -113,7 +113,7 @@ export default function Contact() {
 
               {/* Response time */}
               <div className="contact-info-card" style={{ cursor: "default" }}>
-                <div className="cic-icon" style={{ background: "rgba(229,164,75,0.1)", color: "#e5a44b", border: "1px solid rgba(229,164,75,0.2)" }}>
+                <div className="cic-icon" style={{ background: "rgba(163,163,163,0.1)", color: "#A3A3A3", border: "1px solid rgba(163,163,163,0.2)" }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                   </svg>
@@ -278,12 +278,12 @@ export default function Contact() {
         }
         .contact-orb-1 {
           width: 480px; height: 480px;
-          background: radial-gradient(circle, #378add 0%, transparent 70%);
+          background: radial-gradient(circle, #F5F5F5 0%, transparent 70%);
           top: -100px; left: -160px;
         }
         .contact-orb-2 {
           width: 360px; height: 360px;
-          background: radial-gradient(circle, #5dcaa5 0%, transparent 70%);
+          background: radial-gradient(circle, #F5F5F5 0%, transparent 70%);
           bottom: 80px; right: -120px;
         }
 
@@ -302,24 +302,24 @@ export default function Contact() {
         .avail-badge {
           display: inline-flex; align-items: center; gap: 8px;
           padding: 6px 14px; border-radius: 100px;
-          background: rgba(93,202,165,0.1);
-          border: 1px solid rgba(93,202,165,0.25);
-          color: #5dcaa5; font-size: 13px; font-weight: 500;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.15);
+          color: #FFFFFF; font-size: 13px; font-weight: 500;
           width: fit-content; margin-bottom: 20px; margin-top: 20px;
         }
         .avail-dot {
           width: 7px; height: 7px; border-radius: 50%;
-          background: #5dcaa5;
-          box-shadow: 0 0 0 2px rgba(93,202,165,0.25);
+          background: #F5F5F5;
+          box-shadow: 0 0 0 2px rgba(0,0,0,0.25);
           animation: availPulse 2s ease-in-out infinite;
         }
         @keyframes availPulse {
-          0%, 100% { box-shadow: 0 0 0 2px rgba(93,202,165,0.25); }
-          50% { box-shadow: 0 0 0 5px rgba(93,202,165,0.1); }
+          0%, 100% { box-shadow: 0 0 0 2px rgba(0,0,0,0.25); }
+          50% { box-shadow: 0 0 0 5px rgba(0,0,0,0.1); }
         }
 
         .contact-left-sub {
-          font-size: 15px; color: rgba(200,220,255,0.5);
+          font-size: 15px; color: #A3A3A3;
           line-height: 1.75; margin: 0 0 28px;
         }
 
@@ -328,8 +328,8 @@ export default function Contact() {
         .contact-info-card {
           display: flex; align-items: center; gap: 14px;
           padding: 14px 16px; border-radius: 12px;
-          background: rgba(255,255,255,0.025);
-          border: 1px solid rgba(55,138,221,0.1);
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.06);
           text-align: left; width: 100%;
           box-sizing: border-box;
           -webkit-appearance: none; appearance: none;
@@ -338,8 +338,8 @@ export default function Contact() {
           font-family: inherit;
         }
         .contact-info-card:hover {
-          border-color: rgba(55,138,221,0.28);
-          background: rgba(55,138,221,0.04);
+          border-color: rgba(255,255,255,0.168);
+          background: rgba(255,255,255,0.02);
         }
         .cic-icon {
           width: 38px; height: 38px; border-radius: 10px;
@@ -347,8 +347,8 @@ export default function Contact() {
           flex-shrink: 0;
         }
         .cic-body { flex: 1; min-width: 0; }
-        .cic-label { display: block; font-size: 11px; color: rgba(200,220,255,0.4); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
-        .cic-value { display: block; font-size: 14px; color: #e8f4ff; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .cic-label { display: block; font-size: 11px; color: #A3A3A3; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
+        .cic-value { display: block; font-size: 14px; color: #F5F5F5; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .cic-action { flex-shrink: 0; }
 
         /* Social row */
@@ -356,34 +356,34 @@ export default function Contact() {
         .cs-link {
           display: inline-flex; align-items: center; gap: 9px;
           padding: 12px 22px; border-radius: 10px;
-          border: 1px solid rgba(55,138,221,0.2);
-          color: rgba(200,220,255,0.65);
+          border: 1px solid rgba(255,255,255,0.12);
+          color: #A3A3A3;
           font-size: 15px; font-weight: 600;
           text-decoration: none;
           transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
         }
         .cs-link:hover {
-          color: #61afff;
-          border-color: rgba(55,138,221,0.5);
-          background: rgba(55,138,221,0.09);
+          color: #FFFFFF;
+          border-color: rgba(255,255,255,0.3);
+          background: rgba(255,255,255,0.045);
           transform: translateY(-2px);
         }
 
         /* ── Form card ── */
         .contact-form-card {
-          background: rgba(255,255,255,0.03);
-          border: 1px solid rgba(55,138,221,0.18);
+          background: #1A1A1A;
+          border: 1px solid rgba(255,255,255,0.108);
           border-radius: 18px;
           overflow: hidden;
-          box-shadow: 0 24px 64px rgba(0,0,0,0.3), 0 0 0 1px rgba(55,138,221,0.06) inset;
+          box-shadow: 0 24px 64px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.06) inset;
         }
         .form-accent-bar {
           height: 3px;
-          background: linear-gradient(90deg, #378add, #5dcaa5, #c678dd);
+          background: linear-gradient(90deg, #F5F5F5, #F5F5F5, #2A2A2A);
         }
         .form-eyebrow {
           font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
-          text-transform: uppercase; color: rgba(55,138,221,0.6);
+          text-transform: uppercase; color: rgba(255,255,255,0.3);
           font-family: 'Courier New', monospace;
           margin: 0 0 20px;
         }
@@ -396,37 +396,37 @@ export default function Contact() {
         .cf-field { display: flex; flex-direction: column; gap: 6px; }
         .cf-label {
           font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
-          text-transform: uppercase; color: rgba(200,220,255,0.45);
+          text-transform: uppercase; color: #A3A3A3;
         }
 
         .contact-submit {
           width: 100%; padding: 14px;
           border-radius: 10px; border: none;
-          background: linear-gradient(135deg, #378add, #2d6fb5);
-          color: #fff; font-size: 16px; font-weight: 600;
+          background: linear-gradient(135deg, #F5F5F5, #F5F5F5);
+          color: #111111; font-size: 16px; font-weight: 600;
           cursor: pointer; font-family: inherit;
-          box-shadow: 0 4px 18px rgba(55,138,221,0.3);
+          box-shadow: 0 4px 18px rgba(0,0,0,0.3);
           transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
           letter-spacing: 0.01em;
         }
         .contact-submit:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 28px rgba(55,138,221,0.45);
-          background: linear-gradient(135deg, #4a9ae8, #378add);
+          box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+          background: linear-gradient(135deg, #F5F5F5, #F5F5F5);
         }
         .contact-submit:active { transform: translateY(0); }
         .contact-submit-sent {
-          background: rgba(93,202,165,0.15) !important;
-          border: 1px solid rgba(93,202,165,0.35) !important;
-          color: #5dcaa5 !important;
+          background: rgba(255,255,255,0.075) !important;
+          border: 1px solid rgba(255,255,255,0.21) !important;
+          color: #FFFFFF !important;
           box-shadow: none !important;
           transform: none !important;
         }
 
         /* ── Footer ── */
         .site-footer {
-          background: rgba(2,10,20,0.7);
-          border-top: 1px solid rgba(55,138,221,0.1);
+          background: rgba(13,13,13,0.7);
+          border-top: 1px solid rgba(255,255,255,0.06);
           padding: 40px 32px 32px;
           margin-top: 72px;
           position: relative; z-index: 1;
@@ -439,23 +439,23 @@ export default function Contact() {
         .footer-brand { display: flex; align-items: center; gap: 8px; }
         .footer-brand-code {
           font-family: 'Courier New', monospace; font-size: 15px; font-weight: 900;
-          background: linear-gradient(135deg, #61afff, #5dcaa5);
+          background: linear-gradient(135deg, #F5F5F5, #F5F5F5);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .footer-brand-name { color: #e8f4ff; font-size: 16px; font-weight: 700; letter-spacing: 0.02em; }
-        .footer-tagline { font-size: 13px; color: rgba(200,220,255,0.4); margin: 0; font-family: 'Courier New', monospace; letter-spacing: 0.03em; }
+        .footer-brand-name { color: #F5F5F5; font-size: 16px; font-weight: 700; letter-spacing: 0.02em; }
+        .footer-tagline { font-size: 13px; color: #A3A3A3; margin: 0; font-family: 'Courier New', monospace; letter-spacing: 0.03em; }
         .footer-socials { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
         .footer-social-link {
           display: inline-flex; align-items: center; gap: 6px;
           padding: 7px 14px; border-radius: 8px;
-          border: 1px solid rgba(55,138,221,0.15);
-          color: rgba(200,220,255,0.5); font-size: 13px; font-weight: 500;
+          border: 1px solid rgba(255,255,255,0.09);
+          color: #A3A3A3; font-size: 13px; font-weight: 500;
           text-decoration: none;
           transition: color 0.2s, border-color 0.2s, background 0.2s;
         }
-        .footer-social-link:hover { color: #61afff; border-color: rgba(55,138,221,0.45); background: rgba(55,138,221,0.08); }
-        .footer-divider { width: 100%; height: 1px; background: rgba(55,138,221,0.09); margin: 4px 0; }
-        .footer-copy { font-size: 12px; color: rgba(200,220,255,0.25); font-family: 'Courier New', monospace; margin: 0; letter-spacing: 0.03em; }
+        .footer-social-link:hover { color: #FFFFFF; border-color: rgba(255,255,255,0.27); background: rgba(255,255,255,0.04); }
+        .footer-divider { width: 100%; height: 1px; background: rgba(255,255,255,0.045); margin: 4px 0; }
+        .footer-copy { font-size: 12px; color: #A3A3A3; font-family: 'Courier New', monospace; margin: 0; letter-spacing: 0.03em; }
 
         @media (max-width: 860px) {
           .contact-grid { grid-template-columns: 1fr; gap: 36px; }
