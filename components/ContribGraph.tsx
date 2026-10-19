@@ -112,20 +112,22 @@ export default function ContribGraph() {
     }
   }
 
-  // Month label positions — first week that has a day in each month
+  // Month label positions — the column that contains the 1st of each month.
+  // January's first column is often mostly empty, so label the next full column instead.
   const monthPositions: { month: number; weekIdx: number }[] = [];
-  let lastMonth = -1;
-  weeks.forEach((week, wi) => {
-    const firstReal = week.find((d) => d !== null);
-    if (firstReal) {
-      const m = new Date(firstReal.date).getUTCMonth();
-      if (m !== lastMonth) { monthPositions.push({ month: m, weekIdx: wi }); lastMonth = m; }
-    }
-  });
+  for (let m = 0; m < 12; m++) {
+    const first = `${year}-${String(m + 1).padStart(2, "0")}-01`;
+    let wi = weeks.findIndex((w) => w.some((d) => d && d.date === first));
+    if (wi === -1) continue;
+    if (m === 0 && weeks[wi].filter(Boolean).length < 4) wi += 1;
+    monthPositions.push({ month: m, weekIdx: wi });
+  }
 
   const CELL = 10;
   const GAP  = 2;
-  const STEP = CELL + GAP;
+  // Each square is CELL + its 1px border on both sides, so the real pitch is CELL + 2 + GAP
+  const SQUARE = CELL + 2;
+  const STEP = SQUARE + GAP;
 
   return (
     <div style={{ width: "100%", overflowX: "hidden" }}>
@@ -220,11 +222,11 @@ export default function ContribGraph() {
             <div
               key={d}
               style={{
-                height: CELL,
+                height: SQUARE,
                 fontSize: 9,
                 color: "#A3A3A3",
                 fontFamily: "'Courier New', monospace",
-                lineHeight: `${CELL}px`,
+                lineHeight: `${SQUARE}px`,
                 visibility: d % 2 === 1 ? "visible" : "hidden",
               }}
             >
@@ -263,11 +265,12 @@ export default function ContribGraph() {
                     key={di}
                     title={day ? `${day.date}: ${day.count} contribution${day.count !== 1 ? "s" : ""}` : ""}
                     style={{
+                      boxSizing: "content-box",
                       width: CELL,
                       height: CELL,
                       borderRadius: 2,
                       background: day ? getColor(day.count, max) : "transparent",
-                      border: day ? "1px solid #2A2A2A" : "none",
+                      border: day ? "1px solid #2A2A2A" : "1px solid transparent",
                       cursor: day ? "default" : "default",
                     }}
                   />
