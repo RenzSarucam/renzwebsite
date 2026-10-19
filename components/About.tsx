@@ -231,7 +231,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
             <button className="apm-zoom-reset" onClick={zoomReset} title="Reset zoom">
               {Math.round(zoom * 100)}%
             </button>
-            <button className="apm-zoom-btn" onClick={zoomIn} disabled={zoom >= 3} title="Zoom in">
+            <button className="apm-zoom-btn" onClick={zoomIn} disabled={zoom >= MAX_ZOOM} title="Zoom in">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
           </div>
@@ -320,7 +320,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         .apm-photo-side {
           flex: 0 0 300px;
           background: rgba(13,13,13,0.8);
-          display: flex; align-items: center; justify-content: center;
+          display: flex; flex-direction: column; align-items: center; justify-content: center;
           padding: 32px 24px;
           border-right: 1px solid rgba(255,255,255,0.06);
           position: relative;
@@ -352,7 +352,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
         /* ── Zoom controls ── */
         .apm-zoom-bar {
           display: flex; align-items: center; gap: 6px;
-          margin-top: 12px;
+          margin-top: 12px; width: 220px;
         }
         .apm-zoom-btn {
           width: 30px; height: 30px; border-radius: 8px;
@@ -467,6 +467,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
           .apm-modal { flex-direction: column; max-height: 88vh; }
           .apm-photo-side { flex: 0 0 auto; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 24px 16px; }
           .apm-photo-frame { width: 160px; height: 200px; }
+          .apm-zoom-bar { width: 160px; }
           .apm-info-side { padding: 20px 18px; }
         }
       `}</style>

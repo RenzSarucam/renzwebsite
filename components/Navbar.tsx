@@ -105,7 +105,12 @@ export default function Navbar() {
           }}
         >
           {/* Brand */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+          <button
+            type="button"
+            aria-label="RCS.dev — back to home"
+            onClick={() => { setMenuOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0, background: "transparent", border: "none", padding: 0, cursor: "pointer", font: "inherit" }}
+          >
             <div className="nav-atom">
               <div className="nav-orbit nav-orbit-1"><div className="nav-orb no-1" /></div>
               <div className="nav-orbit nav-orbit-2"><div className="nav-orb no-2" /></div>
@@ -117,7 +122,7 @@ export default function Navbar() {
               </div>
             </div>
             <span style={{ color: "#F5F5F5", fontSize: 16, fontWeight: 700 }}>RCS.dev</span>
-          </div>
+          </button>
 
           {/* Desktop nav links */}
           <div className="navbar-links" style={{ display: "flex", gap: 2, flexWrap: "wrap", justifyContent: "center" }}>

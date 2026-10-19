@@ -3,8 +3,8 @@ import { workExperiences } from "@/app/_lib/portfolio-data";
 
 const roleColor = (role: string, isCurrent: boolean) => {
   if (isCurrent) return { dot: "#22C55E", border: "rgba(34,197,94,0.35)", badge: "rgba(34,197,94,0.1)", badgeText: "#4ADE80", badgeBorder: "rgba(34,197,94,0.3)" };
-  if (/design|ui|ux/i.test(role)) return { dot: "#F5F5F5", border: "rgba(255,255,255,0.075)", badge: "rgba(255,255,255,0.05)", badgeText: "#F5F5F5", badgeBorder: "rgba(255,255,255,0.125)" };
-  return { dot: "#F5F5F5", border: "rgba(255,255,255,0.108)", badge: "rgba(255,255,255,0.05)", badgeText: "#F5F5F5", badgeBorder: "rgba(255,255,255,0.15)" };
+  if (/design|ui|ux/i.test(role)) return { dot: "#C084FC", border: "rgba(192,132,252,0.3)", badge: "rgba(192,132,252,0.1)", badgeText: "#C084FC", badgeBorder: "rgba(192,132,252,0.3)" };
+  return { dot: "#60A5FA", border: "rgba(96,165,250,0.3)", badge: "rgba(96,165,250,0.1)", badgeText: "#60A5FA", badgeBorder: "rgba(96,165,250,0.3)" };
 };
 
 const locationFlag = (loc: string) => {
