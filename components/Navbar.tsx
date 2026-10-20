@@ -112,13 +112,15 @@ export default function Navbar() {
             style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0, background: "transparent", border: "none", padding: 0, cursor: "pointer", font: "inherit" }}
           >
             <div className="nav-atom">
-              <div className="nav-orbit nav-orbit-1"><div className="nav-orb no-1" /></div>
-              <div className="nav-orbit nav-orbit-2"><div className="nav-orb no-2" /></div>
-              <div className="nav-orbit nav-orbit-3"><div className="nav-orb no-3" /></div>
-              <div className="nav-atom-core">
-                <span className="nav-atom-lt">&lt;</span>
-                <span className="nav-atom-sl">/</span>
-                <span className="nav-atom-gt">&gt;</span>
+              <div className="nav-rings" aria-hidden="true">
+                <div className="nav-plane nav-plane-1"><div className="nav-spin nav-spin-1"><i className="nav-orb no-1" /></div></div>
+                <div className="nav-plane nav-plane-2"><div className="nav-spin nav-spin-2"><i className="nav-orb no-2" /></div></div>
+                <div className="nav-plane nav-plane-3"><div className="nav-spin nav-spin-3"><i className="nav-orb no-3" /></div></div>
+                <div className="nav-atom-core nav-atom-core-base">
+                  <span className="nav-atom-lt">&lt;</span>
+                  <span className="nav-atom-sl">/</span>
+                  <span className="nav-atom-gt">&gt;</span>
+                </div>
               </div>
             </div>
             <span style={{ color: "#F5F5F5", fontSize: 16, fontWeight: 700 }}>Renz.dev</span>
@@ -269,45 +271,63 @@ export default function Navbar() {
         /* ── Nav atom logo ── */
         .nav-atom {
           position: relative;
-          width: 34px; height: 34px;
+          width: 40px; height: 40px;
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
+          perspective: 110px;
         }
-        .nav-orbit {
-          position: absolute;
-          width: 32px; height: 12px;
+        /* Three real 3D orbits, tumbling slowly around the core */
+        .nav-rings {
+          position: absolute; inset: 0;
+          transform-style: preserve-3d;
+          animation: navTumble 10s linear infinite;
+        }
+        @keyframes navTumble {
+          from { transform: rotateX(-22deg) rotateY(0deg); }
+          to   { transform: rotateX(-22deg) rotateY(360deg); }
+        }
+        .nav-plane {
+          position: absolute; left: 50%; top: 50%;
+          width: 36px; height: 36px; margin: -18px 0 0 -18px;
+          border: 1.5px solid rgba(255,255,255,0.32);
           border-radius: 50%;
-          top: 50%; left: 50%;
-          margin: -6px 0 0 -16px;
+          transform-style: preserve-3d;
         }
-        .nav-orbit-1 { border: 1.5px solid rgba(255,255,255,0.36);  animation: navOrbit1 2.4s linear infinite; }
-        .nav-orbit-2 { border: 1.5px solid rgba(255,255,255,0.33); animation: navOrbit2 1.9s linear infinite; }
-        .nav-orbit-3 { border: 1.5px solid rgba(255,255,255,0.27); animation: navOrbit3 3.1s linear infinite; }
-        @keyframes navOrbit1 { from{transform:rotateZ(0deg)}   to{transform:rotateZ(360deg)} }
-        @keyframes navOrbit2 { from{transform:rotateZ(60deg)}  to{transform:rotateZ(420deg)} }
-        @keyframes navOrbit3 { from{transform:rotateZ(-60deg)} to{transform:rotateZ(300deg)} }
+        .nav-plane-1 { transform: rotateX(78deg) rotateZ(0deg); }
+        .nav-plane-2 { transform: rotateX(78deg) rotateZ(60deg); }
+        .nav-plane-3 { transform: rotateX(78deg) rotateZ(120deg); }
+        .nav-spin { position: absolute; inset: -1.5px; border-radius: 50%; }
+        .nav-spin-1 { animation: navSpin 2.6s linear infinite; }
+        .nav-spin-2 { animation: navSpin 2.0s linear infinite reverse; }
+        .nav-spin-3 { animation: navSpin 3.2s linear infinite; }
+        @keyframes navSpin { to { transform: rotateZ(360deg); } }
         .nav-orb {
-          position: absolute;
+          position: absolute; display: block;
           border-radius: 50%;
-          top: -2.5px; left: 50%;
-          transform: translateX(-50%);
+          top: -3px; left: 50%; margin-left: -3px;
+          width: 6px; height: 6px;
+          background: radial-gradient(circle at 35% 30%, #FFFFFF, #A3A3A3 60%, #525252);
+          box-shadow: 0 0 6px rgba(255,255,255,0.35);
         }
-        .no-1 { width: 5px; height: 5px; background: #F5F5F5; box-shadow: 0 0 5px #525252, 0 0 10px rgba(0,0,0,0.8); }
-        .no-2 { width: 4px; height: 4px; background: #F5F5F5; box-shadow: 0 0 5px #525252, 0 0 9px rgba(0,0,0,0.8); }
-        .no-3 { width: 3.5px; height: 3.5px; background: #F5F5F5; box-shadow: 0 0 4px #525252, 0 0 8px rgba(0,0,0,0.8); }
+        .no-2 { width: 5px; height: 5px; margin-left: -2.5px; top: -2.5px; }
+        .no-3 { width: 4.5px; height: 4.5px; margin-left: -2.25px; top: -2.25px; }
+        /* Glossy sphere core */
         .nav-atom-core {
+          left: 50%; top: 50%; margin: -10px 0 0 -10px;
+          animation: navFace 10s linear infinite;
+        }
+        @keyframes navFace {
+          from { transform: rotateY(0deg) rotateX(22deg); }
+          to   { transform: rotateY(-360deg) rotateX(22deg); }
+        }
+        .nav-atom-core, .nav-atom-core-base {
           position: absolute;
-          width: 18px; height: 18px;
+          width: 20px; height: 20px;
           border-radius: 50%;
-          background: radial-gradient(circle, #2A2A2A, #2A2A2A);
-          border: 1px solid rgba(255,255,255,0.24);
+          background: radial-gradient(circle at 32% 26%, #6b6b6b 0%, #2a2a2a 48%, #0b0b0b 100%);
+          box-shadow: inset -2px -3px 5px rgba(0,0,0,0.85), inset 1px 1px 2px rgba(255,255,255,0.25), 0 3px 8px rgba(0,0,0,0.7);
           display: flex; align-items: center; justify-content: center;
           font-family: 'Courier New', monospace; font-weight: 900;
-          animation: navCorePulse 2.5s ease-in-out infinite;
-        }
-        @keyframes navCorePulse {
-          0%,100% { box-shadow: 0 0 6px rgba(0,0,0,0.4); }
-          50%     { box-shadow: 0 0 12px rgba(0,0,0,0.6); }
         }
         .nav-atom-lt, .nav-atom-gt {
           font-size: 6px; line-height: 1;

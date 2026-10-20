@@ -73,15 +73,15 @@ export default function LoadingScreen() {
           <div className="ls-glow-ring ls-gr-2" />
 
           {/* Orbit rings */}
-          <div className="ls-orbit ls-orbit-1"><div className="ls-dot ls-dot-1" /></div>
-          <div className="ls-orbit ls-orbit-2"><div className="ls-dot ls-dot-2" /></div>
-          <div className="ls-orbit ls-orbit-3"><div className="ls-dot ls-dot-3" /></div>
-
-          {/* Core */}
-          <div className="ls-core">
-            <span className="ls-core-lt">&lt;</span>
-            <span className="ls-core-sl">/</span>
-            <span className="ls-core-gt">&gt;</span>
+          <div className="ls-rings" aria-hidden="true">
+            <div className="ls-plane ls-plane-1"><div className="ls-spin ls-spin-1"><i className="ls-dot ls-dot-1" /></div></div>
+            <div className="ls-plane ls-plane-2"><div className="ls-spin ls-spin-2"><i className="ls-dot ls-dot-2" /></div></div>
+            <div className="ls-plane ls-plane-3"><div className="ls-spin ls-spin-3"><i className="ls-dot ls-dot-3" /></div></div>
+            <div className="ls-core ls-core-base">
+              <span className="ls-core-lt">&lt;</span>
+              <span className="ls-core-sl">/</span>
+              <span className="ls-core-gt">&gt;</span>
+            </div>
           </div>
         </div>
 
@@ -247,44 +247,60 @@ export default function LoadingScreen() {
           50%      { opacity: 1;   transform: translate(-50%,-50%) scale(1.06); }
         }
 
-        /* Orbit rings */
-        .ls-orbit {
-          position: absolute;
-          width: 170px; height: 60px;
-          border-radius: 50%;
-          top: 50%; left: 50%;
-          margin: -30px 0 0 -85px;
+        /* Three real 3D orbits tumbling around a glossy core */
+        .ls-atom-wrap { perspective: 520px; }
+        .ls-rings {
+          position: absolute; inset: 0;
+          transform-style: preserve-3d;
+          animation: lsTumble 12s linear infinite;
         }
-        .ls-orbit-1 { border: 1.5px solid rgba(255,255,255,0.3);  animation: lsOrbit1 3.2s linear infinite; }
-        .ls-orbit-2 { border: 1.5px solid rgba(255,255,255,0.27); animation: lsOrbit2 2.4s linear infinite; }
-        .ls-orbit-3 { border: 1.5px solid rgba(255,255,255,0.21); animation: lsOrbit3 4.2s linear infinite; }
-        @keyframes lsOrbit1 { from{transform:rotateZ(0deg)}   to{transform:rotateZ(360deg)} }
-        @keyframes lsOrbit2 { from{transform:rotateZ(60deg)}  to{transform:rotateZ(420deg)} }
-        @keyframes lsOrbit3 { from{transform:rotateZ(-60deg)} to{transform:rotateZ(300deg)} }
+        @keyframes lsTumble {
+          from { transform: rotateX(-22deg) rotateY(0deg); }
+          to   { transform: rotateX(-22deg) rotateY(360deg); }
+        }
+        .ls-plane {
+          position: absolute; left: 50%; top: 50%;
+          width: 156px; height: 156px; margin: -78px 0 0 -78px;
+          border: 1.5px solid rgba(255,255,255,0.3);
+          border-radius: 50%;
+          transform-style: preserve-3d;
+        }
+        .ls-plane-1 { transform: rotateX(78deg) rotateZ(0deg); }
+        .ls-plane-2 { transform: rotateX(78deg) rotateZ(60deg); }
+        .ls-plane-3 { transform: rotateX(78deg) rotateZ(120deg); }
+        .ls-spin { position: absolute; inset: -1.5px; border-radius: 50%; }
+        .ls-spin-1 { animation: lsSpin 3.2s linear infinite; }
+        .ls-spin-2 { animation: lsSpin 2.4s linear infinite reverse; }
+        .ls-spin-3 { animation: lsSpin 4.2s linear infinite; }
+        @keyframes lsSpin { to { transform: rotateZ(360deg); } }
 
         /* Dots */
         .ls-dot {
-          position: absolute; border-radius: 50%;
-          top: -5px; left: 50%; transform: translateX(-50%);
+          position: absolute; display: block; border-radius: 50%;
+          top: -5px; left: 50%; margin-left: -5px;
+          background: radial-gradient(circle at 35% 30%, #FFFFFF, #A3A3A3 60%, #525252);
+          box-shadow: 0 0 12px rgba(255,255,255,0.3);
         }
-        .ls-dot-1 { width: 10px; height: 10px; background: #F5F5F5; box-shadow: 0 0 12px #525252, 0 0 28px rgba(0,0,0,0.7); }
-        .ls-dot-2 { width: 9px;  height: 9px;  background: #F5F5F5; box-shadow: 0 0 12px #525252, 0 0 24px rgba(0,0,0,0.7); }
-        .ls-dot-3 { width: 8px;  height: 8px;  background: #2A2A2A; box-shadow: 0 0 10px #000000, 0 0 20px rgba(255,255,255,0.35); }
+        .ls-dot-1 { width: 10px; height: 10px; }
+        .ls-dot-2 { width: 9px;  height: 9px;  margin-left: -4.5px; top: -4.5px; }
+        .ls-dot-3 { width: 8px;  height: 8px;  margin-left: -4px;   top: -4px; }
 
-        /* Core */
+        /* Glossy sphere core */
         .ls-core {
+          left: 50%; top: 50%; margin: -38px 0 0 -38px;
+          animation: lsFace 12s linear infinite;
+        }
+        @keyframes lsFace {
+          from { transform: rotateY(0deg) rotateX(22deg); }
+          to   { transform: rotateY(-360deg) rotateX(22deg); }
+        }
+        .ls-core, .ls-core-base {
           position: absolute;
-          width: 72px; height: 72px; border-radius: 50%;
-          background: radial-gradient(circle at 38% 35%, #2A2A2A, #2A2A2A);
-          border: 1.5px solid rgba(255,255,255,0.27);
+          width: 76px; height: 76px; border-radius: 50%;
+          background: radial-gradient(circle at 32% 26%, #6b6b6b 0%, #2a2a2a 48%, #0b0b0b 100%);
           display: flex; align-items: center; justify-content: center; gap: 1px;
           font-family: 'Courier New', monospace; font-weight: 900;
-          animation: coreGlow 2.8s ease-in-out infinite;
-          box-shadow: 0 0 0 6px rgba(0,0,0,0.05), 0 0 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.07);
-        }
-        @keyframes coreGlow {
-          0%,100% { box-shadow: 0 0 0 6px rgba(0,0,0,0.05), 0 0 40px rgba(0,0,0,0.2); border-color: rgba(255,255,255,0.27); }
-          50%      { box-shadow: 0 0 0 8px rgba(0,0,0,0.08), 0 0 60px rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.36); }
+          box-shadow: inset -8px -10px 18px rgba(0,0,0,0.85), inset 3px 3px 8px rgba(255,255,255,0.22), 0 14px 30px rgba(0,0,0,0.7);
         }
         .ls-core-lt, .ls-core-gt {
           font-size: 22px; line-height: 1;

@@ -135,13 +135,15 @@ export default function Hero() {
           <div className="hero-topbar">
             <div className="hero-brand">
               <div className="hb-atom">
-                <div className="hb-orbit hb-o1"><div className="hb-dot hb-d1" /></div>
-                <div className="hb-orbit hb-o2"><div className="hb-dot hb-d2" /></div>
-                <div className="hb-orbit hb-o3"><div className="hb-dot hb-d3" /></div>
-                <div className="hb-core">
-                  <span className="hb-lt">&lt;</span>
-                  <span className="hb-sl">/</span>
-                  <span className="hb-gt">&gt;</span>
+                <div className="hb-rings" aria-hidden="true">
+                  <div className="hb-plane hb-plane-1"><div className="hb-spin hb-spin-1"><i className="hb-dot hb-d1" /></div></div>
+                  <div className="hb-plane hb-plane-2"><div className="hb-spin hb-spin-2"><i className="hb-dot hb-d2" /></div></div>
+                  <div className="hb-plane hb-plane-3"><div className="hb-spin hb-spin-3"><i className="hb-dot hb-d3" /></div></div>
+                  <div className="hb-core hb-core-base">
+                    <span className="hb-lt">&lt;</span>
+                    <span className="hb-sl">/</span>
+                    <span className="hb-gt">&gt;</span>
+                  </div>
                 </div>
               </div>
               <span className="hero-brand-name">Renz.dev</span>
@@ -379,45 +381,63 @@ export default function Hero() {
         /* Hero brand atom */
         .hb-atom {
           position: relative;
-          width: 34px; height: 34px;
+          width: 40px; height: 40px;
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
+          perspective: 110px;
         }
-        .hb-orbit {
-          position: absolute;
-          width: 32px; height: 12px;
+        /* Three real 3D orbits tumbling around the core */
+        .hb-rings {
+          position: absolute; inset: 0;
+          transform-style: preserve-3d;
+          animation: hbTumble 10s linear infinite;
+        }
+        @keyframes hbTumble {
+          from { transform: rotateX(-22deg) rotateY(0deg); }
+          to   { transform: rotateX(-22deg) rotateY(360deg); }
+        }
+        .hb-plane {
+          position: absolute; left: 50%; top: 50%;
+          width: 36px; height: 36px; margin: -18px 0 0 -18px;
+          border: 1.5px solid rgba(255,255,255,0.32);
           border-radius: 50%;
-          top: 50%; left: 50%;
-          margin: -6px 0 0 -16px;
+          transform-style: preserve-3d;
         }
-        .hb-o1 { border: 1.5px solid rgba(255,255,255,0.36);  animation: hbOrbit1 2.4s linear infinite; }
-        .hb-o2 { border: 1.5px solid rgba(255,255,255,0.33); animation: hbOrbit2 1.9s linear infinite; }
-        .hb-o3 { border: 1.5px solid rgba(255,255,255,0.27); animation: hbOrbit3 3.1s linear infinite; }
-        @keyframes hbOrbit1 { from{transform:rotateZ(0deg)}   to{transform:rotateZ(360deg)} }
-        @keyframes hbOrbit2 { from{transform:rotateZ(60deg)}  to{transform:rotateZ(420deg)} }
-        @keyframes hbOrbit3 { from{transform:rotateZ(-60deg)} to{transform:rotateZ(300deg)} }
+        .hb-plane-1 { transform: rotateX(78deg) rotateZ(0deg); }
+        .hb-plane-2 { transform: rotateX(78deg) rotateZ(60deg); }
+        .hb-plane-3 { transform: rotateX(78deg) rotateZ(120deg); }
+        .hb-spin { position: absolute; inset: -1.5px; border-radius: 50%; }
+        .hb-spin-1 { animation: hbSpin 2.6s linear infinite; }
+        .hb-spin-2 { animation: hbSpin 2.0s linear infinite reverse; }
+        .hb-spin-3 { animation: hbSpin 3.2s linear infinite; }
+        @keyframes hbSpin { to { transform: rotateZ(360deg); } }
         .hb-dot {
-          position: absolute;
+          position: absolute; display: block;
           border-radius: 50%;
-          top: -2.5px; left: 50%;
-          transform: translateX(-50%);
+          top: -3px; left: 50%; margin-left: -3px;
+          background: radial-gradient(circle at 35% 30%, #FFFFFF, #A3A3A3 60%, #525252);
+          box-shadow: 0 0 6px rgba(255,255,255,0.35);
         }
-        .hb-d1 { width: 5px; height: 5px; background: #F5F5F5; box-shadow: 0 0 5px #525252, 0 0 10px rgba(0,0,0,0.8); }
-        .hb-d2 { width: 4px; height: 4px; background: #F5F5F5; box-shadow: 0 0 5px #525252, 0 0 9px rgba(0,0,0,0.8); }
-        .hb-d3 { width: 3.5px; height: 3.5px; background: #F5F5F5; box-shadow: 0 0 4px #525252, 0 0 8px rgba(0,0,0,0.8); }
+        .hb-d1 { width: 6px; height: 6px; }
+        .hb-d2 { width: 5px; height: 5px; margin-left: -2.5px; top: -2.5px; }
+        .hb-d3 { width: 4.5px; height: 4.5px; margin-left: -2.25px; top: -2.25px; }
+        /* Glossy sphere core */
         .hb-core {
+          left: 50%; top: 50%; margin: -10px 0 0 -10px;
+          animation: hbFace 10s linear infinite;
+        }
+        @keyframes hbFace {
+          from { transform: rotateY(0deg) rotateX(22deg); }
+          to   { transform: rotateY(-360deg) rotateX(22deg); }
+        }
+        .hb-core, .hb-core-base {
           position: absolute;
-          width: 18px; height: 18px;
+          width: 20px; height: 20px;
           border-radius: 50%;
-          background: radial-gradient(circle, #2A2A2A, #2A2A2A);
-          border: 1px solid rgba(255,255,255,0.24);
+          background: radial-gradient(circle at 32% 26%, #6b6b6b 0%, #2a2a2a 48%, #0b0b0b 100%);
+          box-shadow: inset -2px -3px 5px rgba(0,0,0,0.85), inset 1px 1px 2px rgba(255,255,255,0.25), 0 3px 8px rgba(0,0,0,0.7);
           display: flex; align-items: center; justify-content: center;
           font-family: 'Courier New', monospace; font-weight: 900;
-          animation: hbCorePulse 2.5s ease-in-out infinite;
-        }
-        @keyframes hbCorePulse {
-          0%,100% { box-shadow: 0 0 6px rgba(0,0,0,0.4); }
-          50%     { box-shadow: 0 0 12px rgba(0,0,0,0.6); }
         }
         .hb-lt, .hb-gt {
           font-size: 6px; line-height: 1;
