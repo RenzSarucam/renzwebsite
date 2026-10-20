@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { workExperiences } from "@/app/_lib/portfolio-data";
 
 const services = [
   {
@@ -53,12 +54,22 @@ const factIcon = (inner: React.ReactNode) => (
   </svg>
 );
 
+// Taken from the Work Experience data: the entry whose period says "Present".
+// Change that entry in portfolio-data.ts and this row updates by itself.
+const currentJob = workExperiences.find((e) => /present/i.test(e.period));
+
 const facts: { label: string; value: string; icon: React.ReactNode; highlight?: boolean }[] = [
   { label: "Based in",     value: "Davao City, PH", icon: factIcon(<><path d="M20 10c0 6-8 13-8 13s-8-7-8-13a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></>) },
+  ...(currentJob
+    ? [{
+        label: "Current role",
+        value: `${currentJob.role} · ${currentJob.company}`,
+        icon: factIcon(<><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></>),
+      }]
+    : []),
   { label: "Degree",       value: "BSIT — Holy Cross of Davao College", icon: factIcon(<><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></>) },
   { label: "Experience",   value: "2+ years professional", icon: factIcon(<><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></>) },
   { label: "Main stack",   value: "Laravel · React / Next.js · Docker", icon: factIcon(<><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></>) },
-  { label: "Availability", value: "Open to opportunities", highlight: true, icon: factIcon(<><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></>) },
   { label: "Languages",    value: "Filipino · English", icon: factIcon(<><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></>) },
 ];
 
