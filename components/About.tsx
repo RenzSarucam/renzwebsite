@@ -47,12 +47,19 @@ const services = [
   },
 ];
 
-const facts = [
-  { label: "Based in",      value: "Davao City, PH" },
-  { label: "Degree",        value: "BSIT — Holy Cross of Davao College" },
-  { label: "Experience",    value: "2+ years professional" },
-  { label: "Availability",  value: "Open to opportunities" },
-  { label: "Languages",     value: "Filipino · English" },
+const factIcon = (inner: React.ReactNode) => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {inner}
+  </svg>
+);
+
+const facts: { label: string; value: string; icon: React.ReactNode; highlight?: boolean }[] = [
+  { label: "Based in",     value: "Davao City, PH", icon: factIcon(<><path d="M20 10c0 6-8 13-8 13s-8-7-8-13a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></>) },
+  { label: "Degree",       value: "BSIT — Holy Cross of Davao College", icon: factIcon(<><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></>) },
+  { label: "Experience",   value: "2+ years professional", icon: factIcon(<><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></>) },
+  { label: "Main stack",   value: "Laravel · React / Next.js · Docker", icon: factIcon(<><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></>) },
+  { label: "Availability", value: "Open to opportunities", highlight: true, icon: factIcon(<><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></>) },
+  { label: "Languages",    value: "Filipino · English", icon: factIcon(<><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></>) },
 ];
 
 const modalInfo = [
@@ -206,7 +213,7 @@ function PhotoModal({ onClose }: { onClose: () => void }) {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/renz-profile.png"
+              src="/images/renz-profile.jpg"
               alt="Renz Carljansen Sarucam"
               className="apm-photo"
               style={{
@@ -519,7 +526,7 @@ export default function About() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/renz-profile.png"
+                  src="/images/renz-profile.jpg"
                   alt="Renz Carljansen Sarucam"
                   className="about-avatar-img"
                 />
@@ -549,8 +556,8 @@ export default function About() {
             <div className="about-facts">
               {facts.map(f => (
                 <div key={f.label} className="about-fact-row">
-                  <span className="about-fact-label">{f.label}</span>
-                  <span className="about-fact-value">{f.value}</span>
+                  <span className="about-fact-label">{f.icon}{f.label}</span>
+                  <span className="about-fact-value" style={f.highlight ? { color: "#4ADE80" } : undefined}>{f.value}</span>
                 </div>
               ))}
             </div>
@@ -602,7 +609,7 @@ export default function About() {
           display: grid;
           grid-template-columns: 300px 1fr;
           gap: 56px;
-          align-items: start;
+          align-items: stretch; /* both columns end on the same line */
         }
 
         /* ── Avatar card ── */
@@ -652,7 +659,7 @@ export default function About() {
           width: 100%; height: 100%;
           border-radius: 14px;
           object-fit: cover;
-          object-position: center center;
+          object-position: 50% 28%;
           display: block;
         }
         .about-orbit { display: none; }
@@ -685,12 +692,14 @@ export default function About() {
 
         /* Facts */
         .about-facts {
+          flex: 1; display: flex; flex-direction: column;
           background: #1A1A1A;
           border: 1px solid rgba(255,255,255,0.06);
           border-radius: 14px;
           overflow: hidden;
         }
         .about-fact-row {
+          flex: 1;
           display: flex; justify-content: space-between; align-items: center;
           padding: 11px 16px; gap: 12px;
           border-bottom: 1px solid rgba(255,255,255,0.042);
@@ -700,7 +709,9 @@ export default function About() {
           font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
           text-transform: uppercase; color: #A3A3A3;
           font-family: 'Courier New', monospace; flex-shrink: 0;
+          display: inline-flex; align-items: center; gap: 8px;
         }
+        .about-fact-label svg { flex-shrink: 0; opacity: 0.85; }
         .about-fact-value {
           font-size: 12.5px; color: #F5F5F5; text-align: right;
           font-weight: 500;
@@ -721,8 +732,10 @@ export default function About() {
           font-family: 'Courier New', monospace;
         }
         .about-services {
+          flex: 1;
           display: grid;
           grid-template-columns: 1fr 1fr;
+          grid-auto-rows: 1fr;
           gap: 12px;
         }
         .about-service-card {
