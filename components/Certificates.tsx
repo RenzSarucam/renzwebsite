@@ -52,6 +52,14 @@ export const certificates = [
   { title: "Champion – Mobile Legends: Bang Bang Tournament (IT Day 2021)", issuer: "Holy Cross of Davao College – ITS", year: "2021", color: "#FBBF24", image: "/images/certificates/hcdc-mlbb-champion.jpg" },
 ];
 
+// One accent per education level (dot, level tag)
+const levelColor = (level: string) => {
+  if (/college/i.test(level)) return { hex: "#60A5FA", rgb: "96,165,250" };
+  if (/senior/i.test(level)) return { hex: "#2DD4BF", rgb: "45,212,191" };
+  if (/junior/i.test(level)) return { hex: "#C084FC", rgb: "192,132,252" };
+  return { hex: "#F472B6", rgb: "244,114,182" };
+};
+
 const highlightStyle = (text: string) => {
   const c = /player/i.test(text) ? "45,212,191" : /club/i.test(text) ? "192,132,252" : /honors/i.test(text) ? "251,191,36" : null;
   if (!c) return undefined;
@@ -105,18 +113,19 @@ export default function Certificates() {
             <div className="edu-timeline">
               {education.map((item, idx) => {
                 const st = statusStyle(item.status);
+                const lc = levelColor(item.level);
                 return (
                   <div key={item.school} className="edu-item">
                     {/* Timeline spine */}
                     <div className="edu-spine">
-                      <div className="edu-dot" style={{ boxShadow: `0 0 0 3px rgba(0,0,0,0.15), 0 0 12px rgba(0,0,0,0.3)` }} />
+                      <div className="edu-dot" style={{ background: lc.hex, boxShadow: `0 0 0 3px rgba(${lc.rgb},0.2), 0 0 12px rgba(${lc.rgb},0.4)` }} />
                       {idx < education.length - 1 && <div className="edu-line" />}
                     </div>
 
                     {/* Card */}
                     <div className="edu-card">
                       <div className="edu-card-top">
-                        <span className="edu-level">{item.level}</span>
+                        <span className="edu-level" style={{ color: lc.hex, background: `rgba(${lc.rgb},0.1)`, borderColor: `rgba(${lc.rgb},0.35)` }}>{item.level}</span>
                         <span className="edu-period">{item.period}</span>
                       </div>
                       <h3 className="edu-degree">{item.degree}</h3>

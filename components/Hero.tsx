@@ -264,17 +264,8 @@ export default function Hero() {
                   </svg>
                   Davao City, PH
                 </span>
-                <a
-                  className="hero-footer-item"
-                  href="https://facebook.com/renz134542770"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-                  </svg>
-                  renz134542770
-                </a>
+                <a className="hero-social" href="https://facebook.com/renz134542770" rel="noopener noreferrer" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>Facebook</a>
+                <a className="hero-social" href="https://www.linkedin.com/in/renz-carljansen-sarucam-195897314/" rel="noopener noreferrer" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
               </div>
             </div>
 
@@ -305,16 +296,6 @@ export default function Hero() {
                 <ContribGraph />
               </div>
 
-              <div className="hero-link-row">
-                <a
-                  className="hero-link"
-                  href="https://github.com/RenzSarucam"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  github.com/RenzSarucam →
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -696,10 +677,17 @@ export default function Hero() {
           border-top: 1px solid rgba(255,255,255,0.048);
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: flex-start;
           flex-wrap: wrap;
-          gap: 12px;
+          gap: 12px 22px;
         }
+
+        .hero-social {
+          display: inline-flex; align-items: center; gap: 8px;
+          font-size: 15px; color: #A3A3A3; text-decoration: none;
+          text-underline-offset: 4px; transition: color 0.2s ease;
+        }
+        .hero-social:hover, .hero-social:focus-visible { color: #FFFFFF; text-decoration: underline; }
 
         .hero-footer-item {
           display: flex;
