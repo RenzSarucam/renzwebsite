@@ -337,7 +337,8 @@ export default function Contact() {
           position: relative;
           overflow: hidden;
         }
-        .contact-inner { max-width: 1100px; margin: 0 auto; }
+        /* Fills the screen when you jump here, so the footer stays below the fold */
+        .contact-inner { max-width: 1100px; margin: 0 auto; min-height: calc(100svh - 100px); }
 
         /* Background orbs */
         .contact-orb {
