@@ -49,7 +49,7 @@ export default function Navbar() {
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {
         const element = document.getElementById(id);
-        const navbar = document.querySelector("nav");
+        const navbar = document.querySelector("nav.main-navbar");
         if (!element || !navbar) return;
 
         const targetOffset = navbar.getBoundingClientRect().bottom + 26;

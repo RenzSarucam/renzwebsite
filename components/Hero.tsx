@@ -110,7 +110,7 @@ export default function Hero() {
       const element = document.getElementById(id);
       if (!element) return;
 
-      const navbar = document.querySelector("nav");
+      const navbar = document.querySelector("nav.main-navbar");
       const baseOffset = navbar
         ? navbar.getBoundingClientRect().bottom
         : window.innerWidth <= 640

@@ -286,7 +286,7 @@ export default function Contact() {
               </p>
             </div>
 
-            <nav className="footer-col" aria-label="Footer navigation">
+            <div className="footer-col" role="navigation" aria-label="Footer navigation">
               <p className="footer-label">Navigate</p>
               <ul>
                 {footerNav.map(([label, id]) => (
@@ -304,7 +304,7 @@ export default function Contact() {
                   </li>
                 ))}
               </ul>
-            </nav>
+            </div>
 
             <div className="footer-col">
               <p className="footer-label">Connect</p>
@@ -527,7 +527,7 @@ export default function Contact() {
           text-transform: uppercase; color: #737373;
         }
         .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
-        nav.footer-col ul { display: grid; grid-template-columns: repeat(2, auto); justify-content: start; gap: 9px 36px; }
+        .footer-col[role="navigation"] ul { display: grid; grid-template-columns: repeat(2, auto); justify-content: start; gap: 9px 36px; }
         .footer-link {
           color: #A3A3A3; font-size: 14px; text-decoration: none;
           transition: color 0.2s ease;
