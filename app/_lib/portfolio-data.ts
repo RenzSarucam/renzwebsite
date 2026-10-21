@@ -256,6 +256,15 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "Keycloak (Identity & Access Management)",
+    desc: "Deployed with Docker as the open-source identity and access management (IAM) platform used at DSG Son's Group Inc. Keycloak is a self-hosted, open-source solution that provides single sign-on (SSO), centralized user and role management, and standards-based authentication through OpenID Connect, OAuth 2.0, and SAML. Running it as a container keeps the setup reproducible and easy to upgrade alongside the organization's other Dockerized systems.",
+    tags: ["Docker", "Keycloak", "IAM", "SSO", "OpenID Connect", "OAuth 2.0", "SAML", "Open Source", "Self-hosted"],
+    type: "Docker",
+    status: "Completed",
+    link: "",
+    place: "DSG Son's Group Inc.",
+  },
+  {
     title: "CrisisMesh",
     desc: "An emergency communication and coordination platform for communities and first responders operating where internet connectivity is unreliable, congested, or disrupted. Citizens can report incidents and send SOS requests entirely offline — reports queue locally via IndexedDB and sync automatically when the network returns. A command center gives responders and admins a live operational picture: real-time map, incident and SOS management, resource and evacuation-center tracking, analytics, audit logs, and a full verification workflow. Built as an offline-first PWA with Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, TanStack Query, Leaflet + OpenStreetMap, Dexie, Laravel 12, and MySQL — deployed via Docker Compose with GitHub Actions CI.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Laravel 12", "PHP", "MySQL", "Docker", "GitHub Actions", "PWA", "Leaflet", "TanStack Query", "Recharts", "Sanctum", "Offline-first", "IndexedDB"],
