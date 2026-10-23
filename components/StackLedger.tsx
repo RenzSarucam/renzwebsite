@@ -1,0 +1,81 @@
+import { skillGroups } from "@/app/_lib/portfolio-data";
+
+/** Short "evidence tag" shown in the Code column. */
+const CODES: Record<string, string> = {
+  "React / Next.js": "RNX",
+  "HTML / CSS": "HTML",
+  TypeScript: "TS",
+  "Tailwind CSS": "TWX",
+  "shadcn/ui": "SHAD",
+  "Figma / Canva": "FIG",
+  "Laravel / PHP": "LRV",
+  "Node.js / Express": "NODE",
+  MySQL: "SQL",
+  PostgreSQL: "PG",
+  "Python / Django": "PY",
+  "Flutter / Dart": "DART",
+  "Linux CLI": "LNX",
+  "Git / GitHub": "GIT",
+  Docker: "DCKR",
+  "GitHub Actions": "GHA",
+  Nginx: "NGX",
+  "CI/CD Automation": "CICD",
+  "REST API": "REST",
+  "Socket.IO": "SIO",
+  "GitHub GraphQL API": "GQL",
+  "Firebase API": "FIRE",
+  "Supabase API": "SUPA",
+  "ODBC / SFTP": "ODBC",
+};
+
+const detected = (level: number) => (level >= 90 ? "Daily driver" : level >= 86 ? "Most days" : "In projects");
+
+const finding = (level: number): { label: string; tone: "primary" | "comfortable" | "working" } =>
+  level >= 90
+    ? { label: "Primary tool", tone: "primary" }
+    : level >= 85
+      ? { label: "Comfortable", tone: "comfortable" }
+      : { label: "Working knowledge", tone: "working" };
+
+const rows = skillGroups
+  .flatMap((g) => g.skills.map((s) => ({ ...s, desk: g.category })))
+  .sort((a, b) => b.level - a.level);
+
+export default function StackLedger() {
+  return (
+    <div>
+      <div className="lab-scroll">
+        <table className="lab">
+          <thead>
+            <tr>
+              <th scope="col">Substance</th>
+              <th scope="col" className="lab-code">Code</th>
+              <th scope="col">Detected</th>
+              <th scope="col" className="lab-finding">Finding</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r, i) => {
+              const f = finding(r.level);
+              return (
+                <tr key={r.name}>
+                  <td className="lab-name">{r.name}</td>
+                  <td className="lab-code">{CODES[r.name] ?? r.name.slice(0, 4).toUpperCase()}</td>
+                  <td className="lab-detected">{detected(r.level)}</td>
+                  <td className="lab-finding">
+                    <span className={`finding finding-${f.tone}`} style={{ transform: `rotate(${i % 2 ? 1.2 : -1.2}deg)` }}>
+                      {f.label}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <p className="disclaimer">
+        Findings are self-reported and illustrative — a snapshot of where the hours go, not admissible in court.
+      </p>
+    </div>
+  );
+}

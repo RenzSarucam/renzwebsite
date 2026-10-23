@@ -48,6 +48,8 @@ export type SkillGroup = {
 };
 
 export const contactEmail = "renzcarljansen@gmail.com";
+export const githubUrl = "https://github.com/RenzSarucam";
+export const linkedinUrl = "https://www.linkedin.com/in/renz-carljansen-sarucam-195897314";
 
 export const techStack = [
   { name: "JavaScript", color: "#f7df1e" },
@@ -114,7 +116,7 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       { name: "Laravel / PHP", level: 85 },
       { name: "Node.js / Express", level: 91 },
-      { name: "MySQL", level: 82 },
+      { name: "MySQL", level: 85 },
       { name: "PostgreSQL", level: 86 },
       { name: "Python / Django", level: 83 },
       { name: "Flutter / Dart", level: 84 },

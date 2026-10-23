@@ -1,58 +1,73 @@
-import LoadingScreen from "@/components/LoadingScreen";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Projects from "@/components/Projects";
-import WorkExperience from "@/components/WorkExperience";
-import Skills from "@/components/Skills";
-import Certificates from "@/components/Certificates";
+import Intro from "@/components/Intro";
+import Nav from "@/components/Nav";
+import Masthead from "@/components/Masthead";
+import Front from "@/components/Front";
+import Profile from "@/components/Profile";
+import Works from "@/components/Works";
+import StackLedger from "@/components/StackLedger";
+import Career from "@/components/Career";
+import CollapsibleSection from "@/components/CollapsibleSection";
+import Credentials from "@/components/Credentials";
 import Contact from "@/components/Contact";
-import AiChat from "@/components/AiChat";
-import ScrollAnimations from "@/components/ScrollAnimations";
+import Footer from "@/components/Footer";
+import Reveal from "@/components/Reveal";
+import { getCaseImages } from "@/app/_lib/case-images";
 
+function Section({ id, kicker, title, sub, page, children }: {
+  id: string;
+  kicker: string;
+  title: string;
+  sub?: string;
+  page: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className="section">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <div>
+              <p className="kicker">{kicker}</p>
+              <h2 className="section-title">{title}</h2>
+              {sub && <p className="section-sub">{sub}</p>}
+            </div>
+            <span className="section-no">{page}</span>
+          </div>
+          {children}
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   return (
     <>
-    {/* Instant pre-loader — visible before React hydrates, hidden by LoadingScreen on mount */}
-    <div
-      id="pre-loader"
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 99998,
-        background: "#0D0D0D",
-        pointerEvents: "none",
-      }}
-    />
-    <main
-      className="page-shell"
-      style={{
-        minHeight: "100svh",
-        width: "100%",
-        maxWidth: "100vw",
-        display: "flex",
-        flexDirection: "column",
-        padding: 0,
-        margin: 0,
-        position: "relative",
-        background: "transparent",
-        overflowX: "clip",
-      }}
-    >
-
-      <LoadingScreen />
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <WorkExperience />
-      <Skills />
-      <Certificates />
-      <Contact />
-      <AiChat />
-      <ScrollAnimations />
-    </main>
+      <Intro />
+      <div className="page">
+        <Masthead />
+        <Nav />
+        <main>
+          <Front />
+          <Profile />
+          <Section id="work" kicker="The Evidence Room" title="Exhibits" sub="Every system, tool and side project on file — all confirmed." page="File 03">
+            <Works images={getCaseImages()} />
+          </Section>
+          <Section id="stack" kicker="Forensics" title="The Lab Report" page="Substances detected on the subject, as of this edition">
+            <StackLedger />
+          </Section>
+          <CollapsibleSection id="career" kicker="Known Whereabouts" title="The Case History" sub="Most recent sighting first." file="File 05">
+            <Career />
+          </CollapsibleSection>
+          <CollapsibleSection id="credentials" kicker="Records" title="Schooling & Clearances" file="File 06">
+            <Credentials />
+          </CollapsibleSection>
+          <Section id="contact" kicker="Get in Touch" title="Open a New Case" sub="Projects, roles, collaborations — or just a hello." page="File 07">
+            <Contact />
+          </Section>
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }
