@@ -1,13 +1,16 @@
 import { profile, projects } from "@/app/_lib/portfolio-data";
+import { getDavaoWeather } from "@/app/_lib/weather";
 
-const stats: [string, string][] = [
-  [`No. ${projects.length}`, "Exhibits on file"],
-  ["32°C", "Davao City · light on bugs"],
-  ["Global", "Jurisdiction · remote-friendly"],
-  ["Open", "Status · taking new cases"],
-];
+export default async function Front() {
+  const weather = await getDavaoWeather();
+  const stats: [string, string][] = [
+    [`No. ${projects.length}`, "Exhibits on file"],
+    // live from Open-Meteo; falls back to the fixed 32°C line if the service can't be reached
+    [weather ? `${weather.temp}°C` : "32°C", `Davao City · ${weather ? weather.label : "Light on bugs"}`],
+    ["Global", "Jurisdiction · remote-friendly"],
+    ["Open", "Status · taking new cases"],
+  ];
 
-export default function Front() {
   return (
     <section className="wrap hero" aria-labelledby="headline">
       <div className="hero-strip label">
