@@ -59,6 +59,7 @@ export default function Intro() {
   const [hidden, setHidden] = useState(false);
   const [found, setFound] = useState(false);
   const [leaving, setLeaving] = useState(false);
+  const [ready, setReady] = useState(false); // the glass only appears once it is positioned and live
 
   const root = useRef<HTMLDivElement>(null);
   const lens = useRef<HTMLDivElement>(null);
@@ -72,6 +73,15 @@ export default function Intro() {
     setHidden(true);
   };
 
+  // the site underneath waits (hidden) while the intro plays, then its text enters one piece at a time
+  const startLeave = () => {
+    const h = document.documentElement;
+    h.classList.remove("intro-on");
+    h.classList.add("intro-enter");
+    setTimeout(() => h.classList.remove("intro-enter"), 3200);
+    setLeaving(true);
+  };
+
   useEffect(() => {
     if (played) {
       setHidden(true);
@@ -83,6 +93,7 @@ export default function Intro() {
     if (!el || !cl || !bgEl) return;
 
     const html = document.documentElement;
+    html.classList.add("intro-on");
     const prevOverflow = html.style.overflow;
     html.style.overflow = "hidden"; // no page scroll behind the intro
 
@@ -125,7 +136,7 @@ export default function Intro() {
       tx = targetX;
       ty = targetY;
       setFound(true);
-      timers.push(setTimeout(() => setLeaving(true), HOLD_MS));
+      timers.push(setTimeout(startLeave, HOLD_MS));
       timers.push(setTimeout(finish, HOLD_MS + SLIDE_MS));
     };
 
@@ -153,6 +164,10 @@ export default function Intro() {
       }
       raf = requestAnimationFrame(tick);
     };
+    // place the glass (and its magnified copy) before showing it, so it never flashes in the wrong spot
+    el.style.transform = `translate3d(${lx - r}px, ${ly - r}px, 0)`;
+    cl.style.transform = `translate(${r - lx * MAGNIFY}px, ${r - ly * MAGNIFY}px) scale(${MAGNIFY})`;
+    setReady(true);
     raf = requestAnimationFrame(tick);
 
     const onMove = (e: PointerEvent) => {
@@ -178,6 +193,7 @@ export default function Intro() {
       window.removeEventListener("resize", measure);
       window.removeEventListener("keydown", onKey);
       html.style.overflow = prevOverflow;
+      html.classList.remove("intro-on");
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -189,14 +205,14 @@ export default function Intro() {
 
   const skip = () => {
     done.current = true;
-    setLeaving(true);
+    startLeave();
     setTimeout(finish, SLIDE_MS);
   };
 
   return (
     <div
       ref={root}
-      className={`gi${hidden ? " is-hidden" : ""}${leaving ? " is-leaving" : ""}${found ? " is-found" : ""}`}
+      className={`gi${hidden ? " is-hidden" : ""}${leaving ? " is-leaving" : ""}${found ? " is-found" : ""}${ready ? " is-ready" : ""}`}
       role="presentation"
     >
       <div className="gi-bg" ref={bg} aria-hidden="true">

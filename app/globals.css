@@ -1664,3 +1664,58 @@ html.mag-on, html.mag-on * { cursor: auto !important; }
 .gi-wanted { width: min(150px, 20vw); }
 .gi-stamp { top: 84%; }
 @media (max-width: 700px) { .gi-w-name { font-size: 7px; } .gi-stamp { top: 80%; } }
+
+/* ═════════ After the subject is found: the page's text enters piece by piece ═════════ */
+@keyframes enter-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes enter-name { from { opacity: 0; transform: translateY(34px); letter-spacing: 0.08em; filter: blur(6px); } to { opacity: 1; transform: none; letter-spacing: -0.02em; filter: none; } }
+@keyframes enter-poster { from { opacity: 0; transform: translateY(40px) rotate(-3deg) scale(0.94); } to { opacity: 1; transform: rotate(1.2deg); } }
+@keyframes enter-rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* waiting state: hidden while the intro is on screen */
+html.intro-on :is(.mast-top, .mast-name, .mast-tag, .mast-dateline, .nav, .hero-strip, .hero-kicker, .hero-title, .hero-deck, .hero-byline, .hero-left .btn-row, .hero-stats, .wanted) { opacity: 0; }
+
+html.intro-enter .mast-top { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both; }
+html.intro-enter .mast-name { animation: enter-name 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
+html.intro-enter .mast-tag { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both; }
+html.intro-enter .mast-dateline { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.75s both; }
+html.intro-enter .nav { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both; }
+html.intro-enter .hero-strip { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1s both; }
+html.intro-enter .hero-kicker { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.1s both; }
+html.intro-enter .hero-title { animation: enter-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) 1.2s both; }
+html.intro-enter .hero-deck { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.4s both; }
+html.intro-enter .hero-byline { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.5s both; }
+html.intro-enter .hero-left .btn-row { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.6s both; }
+html.intro-enter .hero-stats { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.75s both; }
+html.intro-enter .wanted { animation: enter-poster 1s cubic-bezier(0.22, 1, 0.36, 1) 1.3s both; }
+html.intro-enter .mast-top, html.intro-enter .mast-dateline { border-image: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.intro-on :is(.mast-top, .mast-name, .mast-tag, .mast-dateline, .nav, .hero-strip, .hero-kicker, .hero-title, .hero-deck, .hero-byline, .hero-left .btn-row, .hero-stats, .wanted) { opacity: 1; }
+  html.intro-enter * { animation: none !important; }
+}
+
+/* ═════════ Typewriter entrance (TypeIn.tsx) ═════════ */
+/* typed elements are visible straight away; their letters arrive instead of fading */
+html.intro-on [data-typing],
+html.intro-enter [data-typing] { opacity: 1 !important; animation: none !important; }
+.tt-rest { color: transparent !important; -webkit-text-fill-color: transparent; }
+.tt-rest * { color: transparent !important; }
+.is-typing::after {
+  content: "";
+  display: inline-block;
+  width: 0.09em;
+  min-width: 2px;
+  height: 0.85em;
+  margin-left: 2px;
+  vertical-align: -0.08em;
+  background: currentColor;
+  animation: tt-blink 0.55s steps(1) infinite;
+}
+.mast-name.is-typing::after, .mast-tag.is-typing::after, .mast-top.is-typing::after, .mast-dateline.is-typing::after { display: none; }
+@keyframes tt-blink { 50% { opacity: 0; } }
+
+/* the glass stays hidden until the script has placed it (no stray magnified notice in a corner while loading) */
+.gi-lens { opacity: 0; transition: opacity 0.45s ease; }
+.gi.is-ready .gi-lens { opacity: 1; }
+/* the blinking cursor is a pseudo-element; inside a flex row it would become an extra item and push the others around */
+.hero-strip.is-typing::after, .hero-stats.is-typing::after, .mast-flags.is-typing::after { display: none; }

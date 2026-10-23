@@ -19,7 +19,7 @@ export default function Masthead() {
         <span>Est. 2023</span>
       </div>
       <h2 className="mast-name">Renz Carljansen Sarucam</h2>
-      <p className="mast-tag">The Case File of a Full-Stack &amp; DevOps Engineer</p>
+      <p className="mast-tag">The Case File of a Full Stack Developer &amp; DevOps Engineer</p>
       <div className="mast-dateline label">
         <span className="mast-date">{today || " "}</span>
         <i aria-hidden="true">•</i>
@@ -27,7 +27,7 @@ export default function Masthead() {
         <i aria-hidden="true">•</i>
         <span>Selected Works &amp; Case Notes</span>
         <i aria-hidden="true">•</i>
-        <span>Price: One Kape</span>
+        <span>Price: Free to View</span>
       </div>
     </div>
   );
