@@ -22,7 +22,7 @@ export default async function Front() {
         <div className="hero-left">
           <p className="hero-kicker label">Case No. 2023-RS — Findings Published</p>
           <h1 id="headline" className="hero-title">
-            A Davao City developer who builds the whole thing — <em>from database to deploy.</em>
+            Building software that simplifies work — <em>from idea to deployment.</em>
           </h1>
           <blockquote className="hero-deck">
             {profile.firstName} builds full-stack web applications for DSG Son&apos;s Group Inc., manages Docker

@@ -16,21 +16,20 @@ export default function Profile() {
 
           <div className="profile-cols">
             <p>
-              {profile.fullName} is a full-stack web developer known to operate out of {profile.location}. Since April 2026 they have
-              worked as a Research &amp; Development Engineer at DSG Son&apos;s Group Inc., designing and deploying
-              multi-project server infrastructure with Docker and Docker Compose, and building the internal web
-              applications that several business units depend on every day.
+              I&apos;m {profile.firstName}, a full-stack web developer based in {profile.location}. I joined
+              DSG Son&apos;s Group Inc. as a Research &amp; Development Engineer in April 2026.
+              I build internal web applications for our business units and manage the servers they run on.
             </p>
             <p>
-              The day job is a mix of Laravel, React and Next.js on the application side and Linux, Nginx and GitHub
-              Actions self-hosted runners on the delivery side. Every system goes through separate testing and production
-              environments, with shared database architecture and monitoring to keep them honest.
+              Most of my work involves Laravel, React and Next.js. I also set up Docker containers,
+              maintain Linux servers and Nginx, and automate deployments with GitHub Actions.
+              Part of the job is keeping testing and production environments separate and checking
+              that the applications and databases are running properly.
             </p>
             <p>
-              Before that came a run of remote engagements for clients in Australia and the United States — a
-              responsive web application, and a full-stack business management platform with role-based access — plus
-              earlier UI/UX and mobile work in Figma, React Native and Flutter. A {profile.degree} from{" "}
-              {profile.college} ({profile.graduationYear}) holds it all together.
+              I&apos;ve also worked remotely with clients in Australia and the United States on web applications
+              and business management systems. My earlier work includes UI/UX design and mobile app development.
+              I graduated from {profile.college} in {profile.graduationYear} with a {profile.degree}.
             </p>
           </div>
 
