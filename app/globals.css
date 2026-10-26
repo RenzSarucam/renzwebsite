@@ -1418,7 +1418,12 @@ html.mag-on, html.mag-on * { cursor: auto !important; }
 }
 .intro-stamp { top: 62%; font-size: clamp(24px, 4.6vw, 50px); padding: 4px 22px; border-width: 4px; }
 
-/* ═════════ Wanted poster (hero) ═════════ */
+/* ═════════ Illustrated portrait (hero) ═════════ */
+.illus { width: 100%; max-width: 420px; margin: 0 auto; background: #efe5cd; border: 2px solid var(--ink); box-shadow: 5px 6px 0 rgba(21, 18, 15, 0.18); }
+.illus img { display: block; width: 100%; height: auto; }
+.illus-cap { display: flex; justify-content: space-between; gap: 12px; padding: 8px 12px; border-top: 2px solid var(--ink); font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #5a4d37; }
+
+/* ═════════ Wanted poster (hero, unused) ═════════ */
 .hero-right { display: flex; justify-content: center; align-items: flex-start; }
 .wanted {
   position: relative;
@@ -1669,10 +1674,11 @@ html.mag-on, html.mag-on * { cursor: auto !important; }
 @keyframes enter-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
 @keyframes enter-name { from { opacity: 0; transform: translateY(34px); letter-spacing: 0.08em; filter: blur(6px); } to { opacity: 1; transform: none; letter-spacing: -0.02em; filter: none; } }
 @keyframes enter-poster { from { opacity: 0; transform: translateY(40px) rotate(-3deg) scale(0.94); } to { opacity: 1; transform: rotate(1.2deg); } }
+@keyframes enter-illus { from { opacity: 0; transform: translateY(40px) scale(0.96); } to { opacity: 1; transform: none; } }
 @keyframes enter-rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
 /* waiting state: hidden while the intro is on screen */
-html.intro-on :is(.mast-top, .mast-name, .mast-tag, .mast-dateline, .nav, .hero-strip, .hero-kicker, .hero-title, .hero-deck, .hero-byline, .hero-left .btn-row, .hero-stats, .wanted) { opacity: 0; }
+html.intro-on :is(.mast-top, .mast-name, .mast-tag, .mast-dateline, .nav, .hero-strip, .hero-kicker, .hero-title, .hero-deck, .hero-byline, .hero-left .btn-row, .hero-stats, .wanted, .illus) { opacity: 0; }
 
 html.intro-enter .mast-top { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both; }
 html.intro-enter .mast-name { animation: enter-name 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
@@ -1687,10 +1693,11 @@ html.intro-enter .hero-byline { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0
 html.intro-enter .hero-left .btn-row { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.6s both; }
 html.intro-enter .hero-stats { animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.75s both; }
 html.intro-enter .wanted { animation: enter-poster 1s cubic-bezier(0.22, 1, 0.36, 1) 1.3s both; }
+html.intro-enter .illus { animation: enter-illus 1s cubic-bezier(0.22, 1, 0.36, 1) 1.3s both; }
 html.intro-enter .mast-top, html.intro-enter .mast-dateline { border-image: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  html.intro-on :is(.mast-top, .mast-name, .mast-tag, .mast-dateline, .nav, .hero-strip, .hero-kicker, .hero-title, .hero-deck, .hero-byline, .hero-left .btn-row, .hero-stats, .wanted) { opacity: 1; }
+  html.intro-on :is(.mast-top, .mast-name, .mast-tag, .mast-dateline, .nav, .hero-strip, .hero-kicker, .hero-title, .hero-deck, .hero-byline, .hero-left .btn-row, .hero-stats, .wanted, .illus) { opacity: 1; }
   html.intro-enter * { animation: none !important; }
 }
 

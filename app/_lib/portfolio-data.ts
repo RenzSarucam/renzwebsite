@@ -343,7 +343,7 @@ export const projects: Project[] = [
     desc: "Deployed and administered BookStack — an open-source, Laravel-based wiki system — as an internal knowledge management and documentation platform. BookStack provides an intuitive book/chapter/page hierarchy for organizing documentation, with role-based permissions, a built-in REST API, WYSIWYG and Markdown editors, diagram support via Diagrams.net, and multi-language support. Set up with Docker, configured for the organization's environment, and maintained for internal use.",
     tags: ["Docker", "Laravel", "PHP", "Linux", "Nginx", "Wiki", "Documentation", "Self-hosted"],
     type: "Docker",
-    status: "Completed",
+     status: "Completed",
     link: "",
     place: "DSG Son's Group Inc.",
   },

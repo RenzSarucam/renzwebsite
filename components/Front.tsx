@@ -51,25 +51,11 @@ export default async function Front() {
         </div>
 
         <aside className="hero-right">
-          <figure className="wanted">
-            <p className="wanted-title">Wanted</p>
-            <p className="wanted-sub label">For building the whole thing</p>
-            <div className="wanted-photo">
-              <img src="/images/renz-profile.jpg" alt={`Portrait of ${profile.fullName}`} />
-            </div>
-            <figcaption className="wanted-info">
-              <p className="wanted-name">{profile.fullName}</p>
-              <p className="wanted-alias">Alias: Renz · Last seen: {profile.location.split(",")[0]}</p>
-              <dl className="wanted-facts">
-                <div>
-                  <dt>Wanted for</dt>
-                  <dd>Laravel · React · Docker · CI/CD</dd>
-                </div>
-                <div>
-                  <dt>Reward</dt>
-                  <dd>One good project</dd>
-                </div>
-              </dl>
+          <figure className="illus">
+            <img src="/images/renz-illustration.jpg" alt={`Illustrated portrait of ${profile.fullName} at his desk`} />
+            <figcaption className="illus-cap">
+              <span>{profile.fullName}</span>
+              <span>{profile.location.split(",")[0]}</span>
             </figcaption>
           </figure>
         </aside>
