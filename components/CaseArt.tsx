@@ -1,5 +1,6 @@
 import type { CaseFile } from "@/app/_lib/case-files";
 import ExhibitCircle from "@/components/ExhibitCircle";
+import DeviceMockup from "@/components/DeviceMockup";
 
 const markOf = (c: CaseFile) => {
   const acr = c.headline.match(/^([A-Z0-9&-]{2,6})\b/);
@@ -19,7 +20,7 @@ export default function CaseArt({ c, image, large = false }: { c: CaseFile; imag
       <span className="tape" aria-hidden="true" />
       <div className="polaroid-shot">
         {image ? (
-          <img src={image} alt={`${c.headline} — screenshot`} loading="lazy" />
+          <DeviceMockup slug={c.slug} title={c.headline} image={image} />
         ) : (
           <div className="polaroid-blank" aria-hidden="true">
             <span>{markOf(c)}</span>

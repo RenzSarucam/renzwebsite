@@ -537,7 +537,7 @@ a.exhibit-link:hover { color: var(--accent); }
   box-shadow: 0 1px 0 rgba(21, 18, 15, 0.1), 0 10px 22px -14px rgba(21, 18, 15, 0.45);
   overflow: hidden;
 }
-.polaroid-shot img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; filter: grayscale(1) contrast(1.05) sepia(0.12); }
+.polaroid-shot img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; object-position: center; background: #0b0f17; }
 .polaroid-blank {
   aspect-ratio: 16 / 10;
   background-color: var(--paper-3);
@@ -552,7 +552,8 @@ a.exhibit-link:hover { color: var(--accent); }
 .stamp-confirmed {
   position: absolute;
   top: 24px;
-  right: 18px;
+  right: 28px;
+  z-index: 4;
   transform: rotate(-7deg);
   padding: 3px 14px;
   font-family: var(--mono);
@@ -563,7 +564,7 @@ a.exhibit-link:hover { color: var(--accent); }
   color: var(--accent);
   border: 3px solid var(--accent);
   border-radius: 3px;
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
   opacity: 0.88;
   -webkit-mask-image: radial-gradient(circle at 20% 30%, #000 60%, rgba(0, 0, 0, 0.55) 100%);
   mask-image: radial-gradient(circle at 20% 30%, #000 60%, rgba(0, 0, 0, 0.55) 100%);
@@ -601,7 +602,6 @@ a.exhibit-link:hover { color: var(--accent); }
 .case-deck { margin: 0 0 22px; padding-left: 20px; border-left: 4px solid var(--ink); font-family: var(--serif-body); font-style: italic; font-size: clamp(19px, 2.2vw, 26px); line-height: 1.4; max-width: 40ch; }
 .polaroid-lg { margin: 36px 0 0; }
 .polaroid-lg .polaroid-shot { padding: 12px; }
-.polaroid-lg .polaroid-shot img { aspect-ratio: 16 / 9; }
 .polaroid-lg .stamp-confirmed { top: 36px; right: 40px; font-size: clamp(22px, 3.4vw, 46px); border-width: 4px; padding: 6px 22px; }
 .polaroid-lg .tape { width: 130px; height: 32px; top: -16px; }
 .case-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 56px; margin-top: 56px; }
@@ -651,14 +651,20 @@ a.exhibit-link:hover { color: var(--accent); }
 .exhibit-link:hover span[aria-hidden],
 .exhibit:hover .exhibit-link span[aria-hidden] { transform: translateX(5px); }
 
-/* stamp is hidden until the card is hovered, then slams down */
+/* Reveal the confirmation stamp when the pointer reaches an exhibit. */
 .exhibit .stamp-confirmed {
   opacity: 0;
-  transform: rotate(-7deg) scale(1.9);
+  transform: rotate(-7deg) scale(1.8);
   transition: opacity 0.18s ease, transform 0.28s cubic-bezier(0.2, 1.4, 0.4, 1);
 }
-.exhibit:hover .stamp-confirmed,
-.exhibit:focus-within .stamp-confirmed { opacity: 0.9; transform: rotate(-7deg) scale(1); }
+.exhibit .polaroid-shot:has(img) .stamp-confirmed {
+  color: #ff5148;
+  border-color: #ff5148;
+  background: rgba(12, 16, 24, 0.86);
+}
+@media (hover: hover) and (pointer: fine) {
+  .exhibit:hover .stamp-confirmed { opacity: 0.9; transform: rotate(-7deg) scale(1); }
+}
 
 /* magnifying glass fades in over the screenshot */
 .magnifier {
@@ -686,14 +692,8 @@ a.exhibit-link:hover { color: var(--accent); }
   background-image: radial-gradient(circle at center, rgba(21, 18, 15, 0.22) 1px, transparent 1.4px);
   background-size: 6px 6px;
 }
-.exhibit:hover .polaroid-shot::after { opacity: 1; }
+.exhibit:hover .polaroid-shot::after { opacity: 0; }
 .polaroid-lg .polaroid-shot::after { display: none; }
-.polaroid-shot img { transition: filter 0.3s ease; }
-
-/* no hover on touch screens: show the stamp straight away */
-@media (hover: none) {
-  .exhibit .stamp-confirmed { opacity: 0.9; transform: rotate(-7deg) scale(1); }
-}
 
 /* nav + buttons */
 .nav-links a { position: relative; border-bottom: 0; }
