@@ -658,9 +658,9 @@ a.exhibit-link:hover { color: var(--accent); }
   transition: opacity 0.18s ease, transform 0.28s cubic-bezier(0.2, 1.4, 0.4, 1);
 }
 .exhibit .polaroid-shot:has(img) .stamp-confirmed {
-  color: #ff5148;
-  border-color: #ff5148;
-  background: rgba(12, 16, 24, 0.86);
+  color: var(--accent);
+  border-color: var(--accent);
+  background: transparent;
 }
 @media (hover: hover) and (pointer: fine) {
   .exhibit:hover .stamp-confirmed { opacity: 0.9; transform: rotate(-7deg) scale(1); }
