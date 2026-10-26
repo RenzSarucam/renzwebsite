@@ -15,18 +15,28 @@ const markOf = (c: CaseFile) => {
 /** Taped "polaroid" with CONFIRMED stamp, circled exhibit label and a typewriter caption. */
 export default function CaseArt({ c, image, large = false }: { c: CaseFile; image?: string; large?: boolean }) {
   const place = c.place?.split(" · ")[0] ?? "the archive";
+  const confidential = ["jit-jairo-institute-of-technology-design", "jairosoft-elms-designer"].includes(c.slug);
   return (
     <figure className={`polaroid${large ? " polaroid-lg" : ""}`}>
       <span className="tape" aria-hidden="true" />
       <div className="polaroid-shot">
-        {image ? (
+        {confidential ? (
+          <div className="polaroid-blank polaroid-confidential" role="img" aria-label={`${c.headline}: confidential design preview`}>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+              <rect x="5" y="10" width="14" height="11" rx="2" />
+              <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3" />
+            </svg>
+            <strong>Confidential</strong>
+            <small>Design preview withheld</small>
+          </div>
+        ) : image ? (
           <DeviceMockup slug={c.slug} title={c.headline} image={image} />
         ) : (
           <div className="polaroid-blank" aria-hidden="true">
             <span>{markOf(c)}</span>
           </div>
         )}
-        <span className="stamp-confirmed" aria-hidden="true">Confirmed</span>
+        {!confidential && <span className="stamp-confirmed" aria-hidden="true">Confirmed</span>}
       </div>
       <figcaption className="polaroid-cap">
         <ExhibitCircle letter={c.letter} />

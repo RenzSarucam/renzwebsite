@@ -35,6 +35,8 @@
   width: 100%; height: auto; aspect-ratio: auto;
   background: #080b13; filter: none;
 }
+.device-scene-truenest-seekers-website-design .mock-laptop-display { aspect-ratio: 16 / 10; background: #f1faff; }
+.polaroid-shot .device-scene-truenest-seekers-website-design .mock-laptop-display img { height: 100%; object-fit: cover; object-position: center top; background: #f1faff; }
 .mock-laptop-camera {
   position: absolute; top: 0.3cqw; left: 50%; transform: translateX(-50%);
   width: 0.65cqw; height: 0.65cqw; border-radius: 50%; background: #272d36;
@@ -94,6 +96,7 @@
   transform: rotate(-3deg);
 }
 .mock-phone-screen { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 3.7cqw; background: #111; }
+.device-scene-truenest-seekers-mobile-design .mock-phone { width: 27cqw; }
 .polaroid-shot .mock-phone-screen img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: contain; background: #111; filter: none; }
 .mock-phone-island {
   position: absolute; top: 1cqw; left: 34%; width: 32%; height: 2cqw;
@@ -106,3 +109,13 @@
 
 .polaroid-shot:has(.device-scene)::after { display: none; }
 .exhibit .polaroid-shot:has(.device-scene) .stamp-confirmed { z-index: 5; }
+
+.polaroid-confidential {
+  flex-direction: column;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--paper-2), var(--paper-3));
+  color: var(--accent);
+  text-align: center;
+}
+.polaroid-confidential strong { font-family: var(--mono); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.polaroid-confidential small { font-family: var(--mono); font-size: 12px; color: var(--ink-2); }

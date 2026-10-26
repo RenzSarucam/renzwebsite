@@ -642,6 +642,17 @@ a.exhibit-link:hover { color: var(--accent); }
 .exhibit-letter { margin: 0 0 14px; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
 .exhibit-client { margin: 0 0 8px; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
 .exhibit-title { font-weight: 400; font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1; margin: 0 0 22px; }
+.works-grid .exhibit-title { min-height: 2.2em; }
+/* Cards in the same row share header heights, keeping screenshots aligned. */
+@supports (grid-template-rows: subgrid) {
+  .works-grid > .exhibit {
+    display: grid;
+    grid-row: span 5;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+  .works-grid .exhibit-title { min-height: 0; }
+}
 .exhibit-hit { padding: 14px 0 0; }
 .exhibit-body { padding: 18px 0 0; gap: 14px; }
 .exhibit-desc { text-align: justify; hyphens: auto; font-size: 16.5px; line-height: 1.6; color: var(--ink); -webkit-line-clamp: 5; line-clamp: 5; min-height: calc(1.6em * 5); }

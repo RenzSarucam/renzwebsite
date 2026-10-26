@@ -363,7 +363,7 @@ export const projects: Project[] = [
     type: "Full Stack",
     status: "Completed",
     link: "",
-    place: "DSG Son's Group Inc.",
+    place: "Personal Project",
   },
   {
     title: "GEMS (G-Export Management System)",
