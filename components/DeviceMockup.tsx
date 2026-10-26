@@ -3,7 +3,7 @@ type Props = { slug: string; title: string; image: string };
 export default function DeviceMockup({ slug, title, image }: Props) {
   const screenshot = <img src={image} alt={`${title} — screenshot`} loading="lazy" />;
 
-  if (slug === "qrgen" || slug === "truenest-seekers-mobile-design") {
+  if (["qrgen", "truenest-seekers-mobile-design", "trackguard-mobile-app"].includes(slug)) {
     return (
       <div className={`device-scene device-scene-phone device-scene-${slug}`}>
         <div className="mock-phone">
@@ -23,6 +23,7 @@ export default function DeviceMockup({ slug, title, image }: Props) {
     "epa", "pmes", "bookstack", "gems", "gtms", "wpi", "e-jo",
     "inventory-count-management-system", "web-idc", "schedulelink", "reorderpro",
     "truenest-seekers-website-design",
+    "trackguard-admin-panel",
   ].includes(slug)) {
     return (
       <div className={`device-scene device-scene-${slug}`}>

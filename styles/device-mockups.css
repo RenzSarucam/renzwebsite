@@ -96,7 +96,10 @@
   transform: rotate(-3deg);
 }
 .mock-phone-screen { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 3.7cqw; background: #111; }
-.device-scene-truenest-seekers-mobile-design .mock-phone { width: 27cqw; }
+.device-scene-truenest-seekers-mobile-design .mock-phone,
+.device-scene-trackguard-mobile-app .mock-phone { width: 27cqw; }
+.device-scene-trackguard-mobile-app .mock-phone-island,
+.device-scene-trackguard-mobile-app .mock-phone-home { display: none; }
 .polaroid-shot .mock-phone-screen img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: contain; background: #111; filter: none; }
 .mock-phone-island {
   position: absolute; top: 1cqw; left: 34%; width: 32%; height: 2cqw;
