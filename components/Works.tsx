@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { caseFiles } from "@/app/_lib/case-files";
 import CaseArt from "@/components/CaseArt";
+import { useCollapseScroll } from "@/app/_lib/use-collapse-scroll";
 
 const FILTERS = ["All", "Full Stack", "Docker", "Mobile", "Figma"] as const;
 const INITIAL = 9;
@@ -11,6 +12,7 @@ const INITIAL = 9;
 export default function Works({ images }: { images: Record<string, string> }) {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
   const [expanded, setExpanded] = useState(false);
+  useCollapseScroll(expanded, "work");
 
   const counts = useMemo(
     () =>

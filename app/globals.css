@@ -365,12 +365,17 @@ a.exhibit-link:hover { color: var(--accent); }
 
 /* ── Career ledger ── */
 .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
-.timeline::before { content: ""; position: absolute; left: 190px; top: 6px; bottom: 6px; width: 1px; background: var(--ink); }
-.t-item { display: grid; grid-template-columns: 190px 1fr; gap: 0 36px; padding: 0 0 36px; position: relative; }
-.t-item::before { content: ""; position: absolute; left: 190px; top: 8px; width: 11px; height: 11px; background: var(--paper); border: 2px solid var(--ink); border-radius: 50%; transform: translateX(-50%); }
-.t-item:first-child::before { background: var(--accent); border-color: var(--accent); }
-.t-date { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); padding-top: 4px; padding-right: 18px; text-align: right; }
-.t-body { padding-left: 14px; }
+.timeline::before { content: ""; position: absolute; left: 164px; top: 22px; bottom: 36px; width: 1px; background: var(--ink-3); opacity: 0.4; }
+.t-item { display: grid; grid-template-columns: 164px minmax(0, 1fr); gap: 0 32px; padding: 0 0 32px; position: relative; }
+.t-item::before { content: ""; position: absolute; left: 164px; top: 22px; width: 10px; height: 10px; background: var(--paper); border: 2px solid var(--ink-3); border-radius: 50%; transform: translateX(-50%); box-shadow: 0 0 0 4px var(--paper); }
+.t-item.is-current::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px var(--accent); }
+.t-date { align-self: start; margin-right: 22px; padding: 12px 14px; border: 1px solid var(--paper-3); border-left: 2px solid var(--ink-3); background: rgba(255, 255, 255, 0.22); text-align: left; }
+.t-date-start { display: block; font-family: var(--serif-display); font-size: 22px; line-height: 1.2; color: var(--ink); white-space: nowrap; }
+.t-date-end { display: flex; align-items: baseline; gap: 6px; margin-top: 5px; font-family: var(--sans); font-size: 10px; font-weight: 600; line-height: 1.5; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+.t-item.is-current .t-date { border-left-color: var(--accent); background: rgba(179, 38, 30, 0.04); }
+.t-item.is-current .t-date-end { color: var(--accent); }
+.t-body { padding: 0 0 26px; border-bottom: 1px solid var(--paper-3); }
+.t-item:last-child .t-body { border-bottom: 0; padding-bottom: 0; }
 .t-role { font-family: var(--serif-display); font-weight: 400; font-size: 24px; line-height: 1.15; margin: 0; }
 .t-org { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 6px 0 10px; }
 .t-desc { margin: 0 0 12px; font-size: 16.5px; color: var(--ink-2); max-width: 70ch; }
@@ -467,7 +472,9 @@ a.exhibit-link:hover { color: var(--accent); }
   .timeline::before { left: 5px; }
   .t-item { grid-template-columns: 1fr; padding-left: 28px; }
   .t-item::before { left: 5px; }
-  .t-date { text-align: left; padding: 0 0 4px; }
+  .t-date { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; width: fit-content; margin: 0 0 14px; padding: 8px 12px; }
+  .t-date-start { font-size: 20px; }
+  .t-date-end { margin-top: 0; }
   .t-body { padding-left: 0; }
   .footer-grid { grid-template-columns: 1fr; }
   .section { padding: 40px 0; }

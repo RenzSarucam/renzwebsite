@@ -500,24 +500,6 @@ export const projects: Project[] = [
     link: "https://github.com/RenzSarucam/Clothify-Ecomm",
     place: "Personal Project",
   },
-  {
-    title: "Good Taste",
-    desc: "A mobile UI design project for a restaurant app called Good Taste. The design captures a premium dining atmosphere through rich typography, warm color palettes, and elegant food photography layouts. Key screens include menu browsing, dish detail views, and reservation booking — all crafted to feel upscale yet approachable, making the dining experience feel inviting before the customer even walks through the door.",
-    tags: ["Restaurant", "Mobile UI", "Food App"],
-    type: ["Mobile", "Figma"],
-    status: "Completed",
-    link: "https://www.figma.com/design/IPXOqKQOcXlH7s8wb1xK24/Good-Taste?node-id=0-1&t=dYubPY7NNZECtJVD-1",
-    place: "Personal Project",
-  },
-  {
-    title: "Facebook Clone",
-    desc: "A high-fidelity Figma recreation of the Facebook web interface, designed as a UI/UX study project. The goal was to closely replicate the layout, component structure, and visual hierarchy of the original platform — including the news feed, sidebar, and navigation elements. This project sharpened skills in component design, spacing systems, and building consistent design patterns at scale.",
-    tags: ["Social App", "UI Clone", "Web Design"],
-    type: "Figma",
-    status: "Completed",
-    link: "https://www.figma.com/design/Els0kit8BXfniyEsmdE48Y/HCIACtivity1?node-id=0-1&t=jXQKsUDKxx88GlDi-1",
-    place: "Personal Project",
-  },
 ];
 
 export const education: Education[] = [

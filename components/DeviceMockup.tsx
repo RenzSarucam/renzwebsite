@@ -24,6 +24,7 @@ export default function DeviceMockup({ slug, title, image }: Props) {
     "inventory-count-management-system", "web-idc", "schedulelink", "reorderpro",
     "truenest-seekers-website-design",
     "trackguard-admin-panel",
+    "davao-tours", "money-lending-app", "clotify-ecomm",
   ].includes(slug)) {
     return (
       <div className={`device-scene device-scene-${slug}`}>

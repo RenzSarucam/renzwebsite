@@ -2,18 +2,27 @@
 
 import { useState } from "react";
 import { workExperiences } from "@/app/_lib/portfolio-data";
+import { useCollapseScroll } from "@/app/_lib/use-collapse-scroll";
 
 const LIMIT = 6;
 const CLAMP = 220;
+const compactDate = (date: string) => date.replace(
+  /\b(January|February|March|April|June|July|August|September|October|November|December)\b/g,
+  (month) => month.slice(0, 3),
+);
 
 function Entry({ w, current }: { w: (typeof workExperiences)[number]; current: boolean }) {
   const [open, setOpen] = useState(false);
   const long = w.description.length > CLAMP;
   const text = long && !open ? w.description.slice(0, CLAMP).replace(/\s+\S*$/, "") + "…" : w.description;
+  const [start, end] = w.period.split(/\s+(?:–|—|-)\s+/);
 
   return (
-    <li className="t-item">
-      <div className="t-date">{w.period.replace(/\s*–\s*/g, " – ")}{current && " ●"}</div>
+    <li className={`t-item${current ? " is-current" : ""}`}>
+      <div className="t-date">
+        <span className="t-date-start">{compactDate(start)}</span>
+        {end && <span className="t-date-end"><span aria-hidden="true">—</span> {compactDate(end)}</span>}
+      </div>
       <div className="t-body">
         <h3 className="t-role">{w.role}</h3>
         <p className="t-org">
@@ -41,6 +50,7 @@ function Entry({ w, current }: { w: (typeof workExperiences)[number]; current: b
 
 export default function Career() {
   const [all, setAll] = useState(false);
+  useCollapseScroll(all, "career");
   const list = all ? workExperiences : workExperiences.slice(0, LIMIT);
 
   return (
