@@ -4,7 +4,6 @@ import ScrollToTop from "@/components/ScrollToTop";
 import MagnifierCursor from "@/components/MagnifierCursor";
 import "./globals.css";
 import "@/styles/device-mockups.css";
-import "@/styles/device-mockups.css";
 
 const display = Libre_Caslon_Display({ subsets: ["latin"], weight: "400", variable: "--font-display", display: "swap" });
 const body = Libre_Caslon_Text({ subsets: ["latin"], weight: ["400", "700"], style: ["normal", "italic"], variable: "--font-body", display: "swap" });
