@@ -5,6 +5,7 @@ import { caseFiles, getCase } from "@/app/_lib/case-files";
 import { getCaseImages } from "@/app/_lib/case-images";
 import { contactEmail, profile } from "@/app/_lib/portfolio-data";
 import CaseArt from "@/components/CaseArt";
+import CaseImagePreview from "@/components/CaseImagePreview";
 
 type Props = { params: { slug: string } };
 
@@ -56,7 +57,13 @@ export default function CaseFilePage({ params }: Props) {
           By <b style={{ color: "var(--ink)" }}>The Detective Desk</b> · {c.types.join(" / ")} · Status: {c.status}
         </p>
 
-        <CaseArt c={c} image={image} large />
+        {image && !["jit-jairo-institute-of-technology-design", "jairosoft-elms-designer"].includes(c.slug) ? (
+          <CaseImagePreview image={image} title={c.headline}>
+            <CaseArt c={c} image={image} large />
+          </CaseImagePreview>
+        ) : (
+          <CaseArt c={c} image={image} large />
+        )}
 
         <div className="case-grid">
           <div className="case-main">
