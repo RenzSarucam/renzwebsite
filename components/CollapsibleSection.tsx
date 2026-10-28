@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import Reveal from "@/components/Reveal";
+import { useCollapseScroll } from "@/app/_lib/use-collapse-scroll";
 
 type Props = {
   id: string;
@@ -9,13 +10,30 @@ type Props = {
   title: string;
   sub?: string;
   file: string;
+  stickyHeader?: boolean;
   children: React.ReactNode;
 };
 
 /** A section that starts closed; the toggle on the right of the header reveals the details. */
-export default function CollapsibleSection({ id, kicker, title, sub, file, children }: Props) {
+export default function CollapsibleSection({ id, kicker, title, sub, file, stickyHeader = false, children }: Props) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
+  const sectionRef = useRef<HTMLElement>(null);
+  useCollapseScroll(open, id);
+
+  // Keep the file heading just below the navigation, including after mobile/font resizing.
+  useEffect(() => {
+    if (!stickyHeader) return;
+    const nav = document.querySelector<HTMLElement>(".nav");
+    if (!nav) return;
+    const measure = () => {
+      sectionRef.current?.style.setProperty("--file-nav-height", `${nav.getBoundingClientRect().height}px`);
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(nav);
+    return () => observer.disconnect();
+  }, [stickyHeader]);
 
   // deep links (e.g. a footer link to #career) open the file
   useEffect(() => {
@@ -28,7 +46,7 @@ export default function CollapsibleSection({ id, kicker, title, sub, file, child
   }, [id]);
 
   return (
-    <section id={id} className={`section${open ? "" : " is-collapsed"}`}>
+    <section ref={sectionRef} id={id} className={`section${stickyHeader && open ? " has-sticky-file-header" : ""}${open ? "" : " is-collapsed"}`}>
       <div className="wrap">
         <Reveal>
           <div className={`section-head${open ? "" : " is-closed"}`}>

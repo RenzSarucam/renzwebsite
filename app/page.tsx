@@ -58,10 +58,10 @@ export default function Home() {
           <Section id="stack" kicker="Forensics" title="The Lab Report" page="Substances detected on the subject, as of this edition">
             <StackLedger />
           </Section>
-          <CollapsibleSection id="career" kicker="Known Whereabouts" title="The Case History" sub="Most recent sighting first." file="File 05">
+          <CollapsibleSection id="career" kicker="Known Whereabouts" title="The Case History" sub="Most recent sighting first." file="File 05" stickyHeader>
             <Career />
           </CollapsibleSection>
-          <CollapsibleSection id="credentials" kicker="Records" title="Schooling & Clearances" file="File 06">
+          <CollapsibleSection id="credentials" kicker="Records" title="Schooling & Clearances" file="File 06" stickyHeader>
             <Credentials />
           </CollapsibleSection>
           <Section id="contact" kicker="Get in Touch" title="Open a New Case" sub="Projects, roles, collaborations — or just a hello." page="File 07">

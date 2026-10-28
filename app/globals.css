@@ -1242,6 +1242,13 @@ html.mag-on, html.mag-on * { cursor: auto !important; }
 /* ═════════ Collapsible file (Case History) ═════════ */
 .section.is-collapsed { padding-bottom: 36px; }
 .section-head.is-closed { margin-bottom: 0; }
+.has-sticky-file-header .section-head {
+  position: sticky;
+  top: var(--file-nav-height, 64px);
+  z-index: 40;
+  padding-top: 16px;
+  background: var(--paper);
+}
 .file-side { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
 .file-toggle {
   display: inline-flex;
