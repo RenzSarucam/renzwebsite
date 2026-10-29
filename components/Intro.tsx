@@ -232,10 +232,10 @@ export default function Intro() {
       </div>
 
       <span className={`gi-stamp${found ? " on" : ""}`} aria-hidden="true">
-        Subject found
+        Portfolio ready
       </span>
 
-      <p className="gi-caption">{found ? "Subject located — filing the case" : "Pick up the glass — find the subject"}</p>
+      <p className="gi-caption">{found ? "Welcome to my portfolio" : "Loading portfolio"}</p>
 
       <button className="gi-skip" onClick={skip}>
         Skip intro →

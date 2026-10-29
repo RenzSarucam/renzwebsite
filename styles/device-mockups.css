@@ -111,7 +111,6 @@
 .mock-phone-buttons::after { content: ""; position: absolute; left: 33.1cqw; top: 5cqw; width: 0.5cqw; height: 6cqw; border-radius: 0.4cqw; background: #9c9fb1; }
 
 .polaroid-shot:has(.device-scene)::after { display: none; }
-.exhibit .polaroid-shot:has(.device-scene) .stamp-confirmed { z-index: 5; }
 
 .polaroid-confidential {
   flex-direction: column;

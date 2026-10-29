@@ -1,11 +1,11 @@
 import { contactEmail, githubUrl, linkedinUrl, profile } from "@/app/_lib/portfolio-data";
 
 const sections: [string, string][] = [
-  ["Evidence Room", "#work"],
-  ["Lab Report", "#stack"],
-  ["Case History", "#career"],
-  ["Records", "#credentials"],
-  ["Get in Touch", "#contact"],
+  ["Projects", "#work"],
+  ["Skills", "#stack"],
+  ["Experience", "#career"],
+  ["Education", "#credentials"],
+  ["Contact", "#contact"],
 ];
 
 const iconProps = {
@@ -28,9 +28,8 @@ export default function Footer() {
 
         <div className="ft-grid">
           <p className="ft-about">
-            A full-stack web developer in {profile.location}. Building and running internal systems at DSG Son&apos;s
-            Group Inc., with Docker and CI/CD behind every one. This broadsheet is hand-set in Libre Caslon, Libre
-            Franklin and Courier Prime.
+            I&apos;m a full-stack web developer in {profile.location}. My experience covers internal web
+            applications, deployment, and the infrastructure that supports them.
           </p>
 
           <div>
@@ -45,7 +44,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4>The Desk</h4>
+            <h4>Contact</h4>
             <ul>
               <li>{profile.location}</li>
               <li>PHT · Remote-first</li>
@@ -56,7 +55,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4>Wire Services</h4>
+            <h4>Links</h4>
             <ul>
               <li>
                 <a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -72,13 +71,11 @@ export default function Footer() {
         </div>
 
         <div className="ft-stamp-row">
-          <span className="ft-stamp" aria-hidden="true">Case closed</span>
+          <span className="ft-stamp" aria-hidden="true">Thank you</span>
         </div>
 
         <div className="ft-bottom">
-          <span>
-            © 2026 {profile.fullName} · All rights reserved · Printed in Davao City
-          </span>
+          <span>© 2026 {profile.fullName} · Davao City, Philippines</span>
           <div className="ft-icons">
             <a href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <svg {...iconProps}>

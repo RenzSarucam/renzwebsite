@@ -3,8 +3,10 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const links: [label: string, id: string][] = [
-  ["Work", "work"],
-  ["Stack", "stack"],
+  ["About", "profile"],
+  ["Projects", "work"],
+  ["Skills", "stack"],
+  ["Experience", "career"],
   ["Contact", "contact"],
 ];
 

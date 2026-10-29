@@ -64,7 +64,6 @@ const css = `
   .rs-exp-role { font-weight: 700; font-size: 10pt; }
   .rs-exp-company { font-size: 9.2pt; color: #b3261e; font-weight: 700; }
   .rs-exp-place { font-size: 8.6pt; color: #5a5347; }
-  .rs-exp-period { font-family: var(--sans), Arial, sans-serif; font-size: 7.4pt; font-weight: 600; letter-spacing: 0.04em; color: #5a5347; white-space: nowrap; }
   .rs-exp-desc { font-size: 8.8pt; color: #2b2620; margin-top: 3px; line-height: 1.5; }
   .rs-exp-line { margin-top: 3px; font-size: 8.2pt; color: #3d372f; }
   .rs-exp-line b { color: #15120f; }
@@ -125,7 +124,6 @@ const css = `
     .rs-exp-role { font-size: 9pt; }
     .rs-exp-company { font-size: 8.5pt; }
     .rs-exp-place { font-size: 7.6pt; }
-    .rs-exp-period { font-size: 6.8pt; }
     .rs-exp-desc { font-size: 8pt; line-height: 1.4; margin-top: 2px; }
     .rs-exp-line { font-size: 7.4pt; margin-top: 2px; }
     .rs-projects { gap: 4px 14px; }
@@ -250,7 +248,6 @@ export default function ResumePage() {
                     {" · "}
                     <span className="rs-exp-place">{exp.location}</span>
                   </div>
-                  <span className="rs-exp-period">{exp.period}</span>
                 </div>
                 <div className="rs-exp-desc">{exp.description}</div>
                 {(exp.projects || exp.autoProjectsFromPlace) && (

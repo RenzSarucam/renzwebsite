@@ -19,7 +19,7 @@ export function generateMetadata({ params }: Props): Metadata {
   const c = getCase(params.slug);
   if (!c) return {};
   return {
-    title: `${c.headline} — Case File | ${profile.fullName}`,
+    title: `${c.headline} — Project | ${profile.fullName}`,
     description: c.deck,
   };
 }
@@ -44,12 +44,12 @@ export default function CaseFilePage({ params }: Props) {
       <div className="wrap case">
         <div className="case-bar label">
           <Link href="/#work" className="back-link"><span>← Back to the case</span></Link>
-          <span className="hide-sm">The Renz Report · Case Files</span>
+          <span className="hide-sm">{profile.fullName} · Projects</span>
           <span>Filed from Davao City</span>
         </div>
 
         <p className="kicker" style={{ marginTop: 40 }}>
-          Case file · Exhibit {c.letter} · {place}
+          {place}
         </p>
         <h1 className="case-title">{c.headline}</h1>
         <blockquote className="case-deck">{c.deck}</blockquote>
@@ -87,8 +87,8 @@ export default function CaseFilePage({ params }: Props) {
                 <div><dt>Stack</dt><dd>{c.tags.slice(0, 3).join(" · ")}</dd></div>
                 <div><dt>Type</dt><dd>{c.types.join(" · ")}</dd></div>
                 <div><dt>Client</dt><dd>{place}</dd></div>
-                <div><dt>Exhibit</dt><dd>{c.letter}</dd></div>
-                <div><dt>Status</dt><dd>{c.status === "Completed" ? "Case closed" : c.status}</dd></div>
+                <div><dt>Project</dt><dd>{c.letter}</dd></div>
+                <div><dt>Status</dt><dd>{c.status}</dd></div>
                 <div><dt>Deployment</dt><dd>{c.deploy}</dd></div>
               </dl>
               {related.length > 0 && (
@@ -96,7 +96,7 @@ export default function CaseFilePage({ params }: Props) {
                   <h4>Related exhibits</h4>
                   {related.map((r) => (
                     <Link key={r.slug} href={`/case-files/${r.slug}`}>
-                      Exhibit {r.letter} — {r.headline}
+                      Project {r.letter} — {r.headline}
                     </Link>
                   ))}
                 </div>
@@ -108,17 +108,17 @@ export default function CaseFilePage({ params }: Props) {
               </a>
             ) : (
               <p className="form-note">
-                This case file is sealed — the source and live system are internal. Ask me about it:{" "}
+                This project is used internally, so I can’t share its source code or live system. Contact me to learn more:{" "}
                 <a href={`mailto:${contactEmail}?subject=${encodeURIComponent(`About ${c.headline}`)}`}>{contactEmail}</a>
               </p>
             )}
           </aside>
         </div>
 
-        <nav className="case-pager" aria-label="More case files">
+        <nav className="case-pager" aria-label="More projects">
           {prev ? (
             <Link href={`/case-files/${prev.slug}`}>
-              <span className="label">← Previous · Exhibit {prev.letter}</span>
+              <span className="label">← Previous project · {prev.letter}</span>
               <b>{prev.headline}</b>
             </Link>
           ) : (
@@ -126,7 +126,7 @@ export default function CaseFilePage({ params }: Props) {
           )}
           {next ? (
             <Link href={`/case-files/${next.slug}`} style={{ textAlign: "right" }}>
-              <span className="label">Next · Exhibit {next.letter} →</span>
+              <span className="label">Next project · {next.letter} →</span>
               <b>{next.headline}</b>
             </Link>
           ) : (

@@ -9,19 +9,20 @@ type Props = {
   kicker: string;
   title: string;
   sub?: string;
-  file: string;
+  file?: string;
   stickyHeader?: boolean;
+  alwaysOpen?: boolean;
   children: React.ReactNode;
 };
 
-/** A section that starts closed; the toggle on the right of the header reveals the details. */
-export default function CollapsibleSection({ id, kicker, title, sub, file, stickyHeader = false, children }: Props) {
-  const [open, setOpen] = useState(false);
+/** A section that can reveal its details with a button on the right of the heading. */
+export default function CollapsibleSection({ id, kicker, title, sub, file, stickyHeader = false, alwaysOpen = false, children }: Props) {
+  const [open, setOpen] = useState(alwaysOpen);
   const panelId = useId();
   const sectionRef = useRef<HTMLElement>(null);
   useCollapseScroll(open, id);
 
-  // Keep the file heading just below the navigation, including after mobile/font resizing.
+  // Keep the section heading just below the navigation, including after mobile/font resizing.
   useEffect(() => {
     if (!stickyHeader) return;
     const nav = document.querySelector<HTMLElement>(".nav");
@@ -35,7 +36,7 @@ export default function CollapsibleSection({ id, kicker, title, sub, file, stick
     return () => observer.disconnect();
   }, [stickyHeader]);
 
-  // deep links (e.g. a footer link to #career) open the file
+  // Deep links (for example, a footer link to #career) reveal the section.
   useEffect(() => {
     const sync = () => {
       if (window.location.hash === `#${id}`) setOpen(true);
@@ -55,19 +56,19 @@ export default function CollapsibleSection({ id, kicker, title, sub, file, stick
               <h2 className="section-title">{title}</h2>
               {sub && <p className="section-sub">{sub}</p>}
             </div>
-            <div className="file-side">
-              <span className="section-no">{file}</span>
-              <button
+            {(file || !alwaysOpen) && <div className="file-side">
+              {file && <span className="section-no">{file}</span>}
+              {!alwaysOpen && <button
                 type="button"
                 className="file-toggle"
                 aria-expanded={open}
                 aria-controls={panelId}
                 onClick={() => setOpen((v) => !v)}
               >
-                {open ? "Close file" : "Open file"}
+                {open ? "Hide details" : "Show details"}
                 <span aria-hidden="true" className="file-toggle-icon">{open ? "−" : "+"}</span>
-              </button>
-            </div>
+              </button>}
+            </div>}
           </div>
 
           <div id={panelId} className={`collapse${open ? " is-open" : ""}`} aria-hidden={!open}>

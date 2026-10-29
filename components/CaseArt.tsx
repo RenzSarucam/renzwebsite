@@ -1,5 +1,4 @@
 import type { CaseFile } from "@/app/_lib/case-files";
-import ExhibitCircle from "@/components/ExhibitCircle";
 import DeviceMockup from "@/components/DeviceMockup";
 
 const markOf = (c: CaseFile) => {
@@ -12,9 +11,8 @@ const markOf = (c: CaseFile) => {
     .join("");
 };
 
-/** Taped "polaroid" with CONFIRMED stamp, circled exhibit label and a typewriter caption. */
+/** Taped project exhibit with a device mockup. */
 export default function CaseArt({ c, image, large = false }: { c: CaseFile; image?: string; large?: boolean }) {
-  const place = c.place?.split(" · ")[0] ?? "the archive";
   const confidential = ["jit-jairo-institute-of-technology-design", "jairosoft-elms-designer"].includes(c.slug);
   return (
     <figure className={`polaroid${large ? " polaroid-lg" : ""}`}>
@@ -36,12 +34,7 @@ export default function CaseArt({ c, image, large = false }: { c: CaseFile; imag
             <span>{markOf(c)}</span>
           </div>
         )}
-        {!confidential && <span className="stamp-confirmed" aria-hidden="true">Confirmed</span>}
       </div>
-      <figcaption className="polaroid-cap">
-        <ExhibitCircle letter={c.letter} />
-        <span className="recovered">recovered from {place}</span>
-      </figcaption>
     </figure>
   );
 }

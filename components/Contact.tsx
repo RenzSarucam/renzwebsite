@@ -39,7 +39,7 @@ export default function Contact() {
   return (
     <div className="cbox">
       <form className="cbox-left" onSubmit={submit}>
-        <h3 className="cbox-title">Put it in writing</h3>
+        <h3 className="cbox-title">Send me a message</h3>
         <p className="cbox-intro">
           A project in mind, a role to fill, or just a good question — send it through and {profile.firstName} will get
           back to you.
@@ -60,18 +60,18 @@ export default function Contact() {
           <input id="c-subject" value={form.subject} onChange={set("subject")} placeholder="A new product, a rebuild, a contract…" />
         </div>
         <div className="cfield">
-          <label htmlFor="c-msg">The details</label>
+          <label htmlFor="c-msg">Message</label>
           <textarea id="c-msg" required value={form.message} onChange={set("message")} placeholder={`Tell ${profile.firstName} what you're building.`} />
         </div>
 
         <div className="cbox-foot">
           {sent ? (
-            <span className="cbox-note is-ok" role="status">Report drafted in a new tab — hit send there to file it.</span>
+            <span className="cbox-note is-ok" role="status">Email draft opened in a new tab. Review it, then press Send.</span>
           ) : (
             <span className="cbox-note">Usually replies within 24 hours</span>
           )}
           <button type="submit" className="btn btn-solid cbox-send">
-            File the report →
+            Open email draft →
           </button>
         </div>
       </form>
@@ -79,26 +79,25 @@ export default function Contact() {
       <aside className="cbox-right">
         <div className="cbox-blocks">
           <div className="cbox-block">
-            <p className="cbox-label">Direct line</p>
+            <p className="cbox-label">Email</p>
             <button type="button" className="cbox-big cbox-mail" onClick={copyEmail} aria-label="Copy email address">
               {copied ? "Copied to clipboard ✓" : contactEmail}
             </button>
             <p className="cbox-sub">For projects, roles, and the occasional good argument about Docker.</p>
           </div>
           <div className="cbox-block">
-            <p className="cbox-label">The desk</p>
+            <p className="cbox-label">Location</p>
             <p className="cbox-big">{profile.location}</p>
             <p className="cbox-sub">PHT (UTC+8) — working with teams worldwide, remote-first.</p>
           </div>
           <div className="cbox-block">
-            <p className="cbox-label">Availability</p>
+            <p className="cbox-label">Let&apos;s talk</p>
             <p className="cbox-big">
               <span className="dot" aria-hidden="true" />
-              Freelance &amp; contract
+              Projects &amp; roles
             </p>
             <p className="cbox-sub">
-              Working full-time at DSG Son&apos;s Group Inc., so {profile.firstName} takes on select freelance and contract
-              projects on the side.
+              Have a project or role in mind? Send me a note with the details.
             </p>
           </div>
         </div>

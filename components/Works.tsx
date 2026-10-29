@@ -30,7 +30,7 @@ export default function Works({ images }: { images: Record<string, string> }) {
 
   return (
     <div>
-      <div className="filters" role="group" aria-label="Filter exhibits">
+      <div className="filters" role="group" aria-label="Filter projects">
         {FILTERS.map((f) => (
           <button
             key={f}
@@ -50,12 +50,12 @@ export default function Works({ images }: { images: Record<string, string> }) {
       <div className="works-grid">
         {shown.map((c) => (
           <article className="exhibit is-linked" key={c.slug}>
-            <p className="exhibit-letter">Exhibit {c.letter}</p>
+            <p className="exhibit-letter">Project {c.letter}</p>
             <p className="exhibit-client">{c.place?.split(" · ")[0] ?? "Personal Project"}</p>
             <h3 className="exhibit-title">
               <Link href={`/case-files/${c.slug}`}>{c.headline}</Link>
             </h3>
-            <Link href={`/case-files/${c.slug}`} className="exhibit-hit" aria-label={`Open case file: ${c.headline}`} tabIndex={-1}>
+            <Link href={`/case-files/${c.slug}`} className="exhibit-hit" aria-label={`View project: ${c.headline}`} tabIndex={-1}>
               <CaseArt c={c} image={images[c.slug]} />
             </Link>
             <div className="exhibit-body">
@@ -70,7 +70,7 @@ export default function Works({ images }: { images: Record<string, string> }) {
               <div className="exhibit-foot">
                 <span className="exhibit-where">{c.types.join(" · ")}</span>
                 <Link className="exhibit-link" href={`/case-files/${c.slug}`}>
-                  Open case file <span aria-hidden="true">→</span>
+                  View project <span aria-hidden="true">→</span>
                 </Link>
               </div>
             </div>
@@ -81,7 +81,7 @@ export default function Works({ images }: { images: Record<string, string> }) {
       {filtered.length > INITIAL && (
         <div className="more-row">
           <button className="btn" onClick={() => setExpanded((v) => !v)}>
-            {expanded ? "Seal the archive" : `Pull the archive (${filtered.length - INITIAL} more)`}
+            {expanded ? "Show fewer projects" : `Show ${filtered.length - INITIAL} more projects`}
           </button>
         </div>
       )}

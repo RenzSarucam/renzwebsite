@@ -15,19 +15,17 @@ export default function Masthead() {
     <div className="masthead wrap" id="top">
       <div className="mast-top label">
         <span>Davao City, Philippines</span>
-        <span>The Investigation Phase</span>
-        <span>Est. 2023</span>
+        <span>Portfolio</span>
+        <span>Web Development &amp; Design</span>
       </div>
       <h2 className="mast-name">Renz Carljansen Sarucam</h2>
-      <p className="mast-tag">The Case File of a Full Stack Developer &amp; DevOps Engineer</p>
+      <p className="mast-tag">Full-Stack Developer &amp; DevOps Engineer</p>
       <div className="mast-dateline label">
         <span className="mast-date">{today || " "}</span>
         <i aria-hidden="true">•</i>
-        <span>Vol. IV</span>
+        <span>Selected Work</span>
         <i aria-hidden="true">•</i>
-        <span>Selected Works &amp; Case Notes</span>
-        <i aria-hidden="true">•</i>
-        <span>Price: Free to View</span>
+        <span>Web Apps · Design · Deployment</span>
       </div>
     </div>
   );

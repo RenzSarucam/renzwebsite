@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Courier_Prime, Libre_Caslon_Display, Libre_Caslon_Text, Libre_Franklin, Special_Elite } from "next/font/google";
 import ScrollToTop from "@/components/ScrollToTop";
 import MagnifierCursor from "@/components/MagnifierCursor";
+import ScrollReveals from "@/components/ScrollReveals";
 import "./globals.css";
 import "@/styles/device-mockups.css";
 
@@ -73,6 +74,7 @@ export default function RootLayout({
           </filter>
         </svg>
         <ScrollToTop />
+        <ScrollReveals />
         {children}
         <MagnifierCursor />
       </body>

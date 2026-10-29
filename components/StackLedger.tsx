@@ -1,6 +1,6 @@
 import { skillGroups } from "@/app/_lib/portfolio-data";
 
-/** Short "evidence tag" shown in the Code column. */
+/** Short label shown in the skills table. */
 const CODES: Record<string, string> = {
   "React / Next.js": "RNX",
   "HTML / CSS": "HTML",
@@ -48,10 +48,10 @@ export default function StackLedger() {
         <table className="lab">
           <thead>
             <tr>
-              <th scope="col">Substance</th>
-              <th scope="col" className="lab-code">Code</th>
-              <th scope="col">Detected</th>
-              <th scope="col" className="lab-finding">Finding</th>
+              <th scope="col">Skill</th>
+              <th scope="col" className="lab-code">Short name</th>
+              <th scope="col">How often I use it</th>
+              <th scope="col" className="lab-finding">Experience</th>
             </tr>
           </thead>
           <tbody>
@@ -74,7 +74,7 @@ export default function StackLedger() {
         </table>
       </div>
       <p className="disclaimer">
-        Findings are self-reported and illustrative — a snapshot of where the hours go, not admissible in court.
+        Skill levels are my own estimate, based on the tools I use in my work and projects.
       </p>
     </div>
   );

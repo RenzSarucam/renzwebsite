@@ -52,19 +52,19 @@ export default function Home() {
         <main>
           <Front />
           <Profile />
-          <Section id="work" kicker="The Evidence Room" title="Exhibits" sub="Every system, tool and side project on file — all confirmed." page="File 03">
+          <CollapsibleSection id="work" kicker="Selected Work" title="Projects" sub="Websites, applications, and design projects I’ve built." stickyHeader alwaysOpen>
             <Works images={getCaseImages()} />
-          </Section>
-          <Section id="stack" kicker="Forensics" title="The Lab Report" page="Substances detected on the subject, as of this edition">
+          </CollapsibleSection>
+          <CollapsibleSection id="stack" kicker="Technical Skills" title="Tools I Use" stickyHeader alwaysOpen>
             <StackLedger />
-          </Section>
-          <CollapsibleSection id="career" kicker="Known Whereabouts" title="The Case History" sub="Most recent sighting first." file="File 05" stickyHeader>
+          </CollapsibleSection>
+          <CollapsibleSection id="career" kicker="Work Experience" title="Where I’ve Worked" sub="My roles and projects, starting with the most recent." stickyHeader alwaysOpen>
             <Career />
           </CollapsibleSection>
-          <CollapsibleSection id="credentials" kicker="Records" title="Schooling & Clearances" file="File 06" stickyHeader>
+          <CollapsibleSection id="credentials" kicker="Education & Certificates" title="Education & Certificates" file="Credentials" stickyHeader>
             <Credentials />
           </CollapsibleSection>
-          <Section id="contact" kicker="Get in Touch" title="Open a New Case" sub="Projects, roles, collaborations — or just a hello." page="File 07">
+          <Section id="contact" kicker="Contact" title="Let’s Work Together" sub="Have a project or role in mind? I’d be glad to hear from you." page="Contact">
             <Contact />
           </Section>
         </main>

@@ -6,28 +6,21 @@ import { useCollapseScroll } from "@/app/_lib/use-collapse-scroll";
 
 const LIMIT = 6;
 const CLAMP = 220;
-const compactDate = (date: string) => date.replace(
-  /\b(January|February|March|April|June|July|August|September|October|November|December)\b/g,
-  (month) => month.slice(0, 3),
-);
 
-function Entry({ w, current }: { w: (typeof workExperiences)[number]; current: boolean }) {
+function Entry({ w }: { w: (typeof workExperiences)[number] }) {
   const [open, setOpen] = useState(false);
   const long = w.description.length > CLAMP;
   const text = long && !open ? w.description.slice(0, CLAMP).replace(/\s+\S*$/, "") + "…" : w.description;
-  const [start, end] = w.period.split(/\s+(?:–|—|-)\s+/);
 
   return (
-    <li className={`t-item${current ? " is-current" : ""}`}>
-      <div className="t-date">
-        <span className="t-date-start">{compactDate(start)}</span>
-        {end && <span className="t-date-end"><span aria-hidden="true">—</span> {compactDate(end)}</span>}
-      </div>
-      <div className="t-body">
+    <li className="t-item">
+      <div className="t-meta">
         <h3 className="t-role">{w.role}</h3>
         <p className="t-org">
           {w.company} · {w.location}
         </p>
+      </div>
+      <div className="t-body">
         <p className="t-desc">{text}</p>
         {long && (
           <button className="t-more" onClick={() => setOpen((v) => !v)} aria-expanded={open}>
@@ -56,14 +49,14 @@ export default function Career() {
   return (
     <div>
       <ol className="timeline">
-        {list.map((w, i) => (
-          <Entry key={`${w.company}-${w.period}`} w={w} current={i === 0 && /present/i.test(w.period)} />
+        {list.map((w) => (
+          <Entry key={`${w.company}-${w.period}`} w={w} />
         ))}
       </ol>
       {workExperiences.length > LIMIT && (
         <div className="more-row">
           <button className="btn" onClick={() => setAll((v) => !v)}>
-            {all ? "Show fewer entries" : `Reopen cold cases (${workExperiences.length - LIMIT} earlier entries)`}
+            {all ? "Show fewer roles" : `Show ${workExperiences.length - LIMIT} earlier roles`}
           </button>
         </div>
       )}
