@@ -159,7 +159,7 @@ export const workExperiences: WorkExperience[] = [
     tools: ["Linux CLI", "Docker", "Git / GitHub", "VS Code", "AI", "Node.js", "Next.js", "Nginx", "Laravel", "React", "MySQL", "CI/CD", "GitHub Actions"],
   },
   {
-    company: "Confidential Client",
+    company: "Private Client",
     location: "Australia",
     role: "Web Developer",
     period: "June 2025 – May 2026",
@@ -175,7 +175,7 @@ export const workExperiences: WorkExperience[] = [
     tools: [],
   },
   {
-    company: "Confidential Client",
+    company: "Private Client",
     location: "United States",
     role: "Full-Stack Developer",
     period: "November 2024 – November 2025",
