@@ -11,6 +11,7 @@ import Credentials from "@/components/Credentials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
+import TypeFade from "@/components/TypeFade";
 import { getCaseImages } from "@/app/_lib/case-images";
 
 function Section({ id, kicker, title, sub, page, children }: {
@@ -27,8 +28,8 @@ function Section({ id, kicker, title, sub, page, children }: {
         <Reveal>
           <div className="section-head">
             <div>
-              <p className="kicker">{kicker}</p>
-              <h2 className="section-title">{title}</h2>
+              <p className="kicker"><TypeFade>{kicker}</TypeFade></p>
+              <h2 className="section-title"><TypeFade>{title}</TypeFade></h2>
               {sub && <p className="section-sub">{sub}</p>}
             </div>
             <span className="section-no">{page}</span>

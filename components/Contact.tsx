@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { contactEmail, githubUrl, linkedinUrl, profile } from "@/app/_lib/portfolio-data";
+import TypeFade from "@/components/TypeFade";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -39,7 +40,7 @@ export default function Contact() {
   return (
     <div className="cbox">
       <form className="cbox-left" onSubmit={submit}>
-        <h3 className="cbox-title">Send me a message</h3>
+        <h3 className="cbox-title"><TypeFade>Send me a message</TypeFade></h3>
         <p className="cbox-intro">
           A project in mind, a role to fill, or just a good question — send it through and {profile.firstName} will get
           back to you.
@@ -47,20 +48,20 @@ export default function Contact() {
 
         <div className="cbox-row">
           <div className="cfield">
-            <label htmlFor="c-name">Your name</label>
+            <label htmlFor="c-name"><TypeFade>Your name</TypeFade></label>
             <input id="c-name" required value={form.name} onChange={set("name")} placeholder="Jane Dela Cruz" autoComplete="name" />
           </div>
           <div className="cfield">
-            <label htmlFor="c-email">Email</label>
+            <label htmlFor="c-email"><TypeFade>Email</TypeFade></label>
             <input id="c-email" type="email" required value={form.email} onChange={set("email")} placeholder="jane@company.com" autoComplete="email" />
           </div>
         </div>
         <div className="cfield">
-          <label htmlFor="c-subject">Subject</label>
+          <label htmlFor="c-subject"><TypeFade>Subject</TypeFade></label>
           <input id="c-subject" value={form.subject} onChange={set("subject")} placeholder="A new product, a rebuild, a contract…" />
         </div>
         <div className="cfield">
-          <label htmlFor="c-msg">Message</label>
+          <label htmlFor="c-msg"><TypeFade>Message</TypeFade></label>
           <textarea id="c-msg" required value={form.message} onChange={set("message")} placeholder={`Tell ${profile.firstName} what you're building.`} />
         </div>
 
@@ -79,19 +80,19 @@ export default function Contact() {
       <aside className="cbox-right">
         <div className="cbox-blocks">
           <div className="cbox-block">
-            <p className="cbox-label">Email</p>
+            <p className="cbox-label"><TypeFade>Email</TypeFade></p>
             <button type="button" className="cbox-big cbox-mail" onClick={copyEmail} aria-label="Copy email address">
               {copied ? "Copied to clipboard ✓" : contactEmail}
             </button>
             <p className="cbox-sub">For projects, roles, and the occasional good argument about Docker.</p>
           </div>
           <div className="cbox-block">
-            <p className="cbox-label">Location</p>
+            <p className="cbox-label"><TypeFade>Location</TypeFade></p>
             <p className="cbox-big">{profile.location}</p>
             <p className="cbox-sub">PHT (UTC+8) — working with teams worldwide, remote-first.</p>
           </div>
           <div className="cbox-block">
-            <p className="cbox-label">Let&apos;s talk</p>
+            <p className="cbox-label"><TypeFade>{"Let's talk"}</TypeFade></p>
             <p className="cbox-big">
               <span className="dot" aria-hidden="true" />
               Projects &amp; roles

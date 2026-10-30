@@ -1,5 +1,6 @@
 import { profile } from "@/app/_lib/portfolio-data";
 import Reveal from "@/components/Reveal";
+import TypeFade from "@/components/TypeFade";
 
 export default function Profile() {
   return (
@@ -8,8 +9,8 @@ export default function Profile() {
         <Reveal>
           <div className="section-head">
             <div>
-              <p className="kicker">About Me</p>
-              <h2 className="section-title">What I Do</h2>
+              <p className="kicker"><TypeFade>About Me</TypeFade></p>
+              <h2 className="section-title"><TypeFade>What I Do</TypeFade></h2>
             </div>
             <span className="section-no">About</span>
           </div>

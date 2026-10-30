@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import Reveal from "@/components/Reveal";
+import TypeFade from "@/components/TypeFade";
 import { useCollapseScroll } from "@/app/_lib/use-collapse-scroll";
 
 type Props = {
@@ -52,8 +53,8 @@ export default function CollapsibleSection({ id, kicker, title, sub, file, stick
         <Reveal>
           <div className={`section-head${open ? "" : " is-closed"}`}>
             <div>
-              <p className="kicker">{kicker}</p>
-              <h2 className="section-title">{title}</h2>
+              <p className="kicker"><TypeFade>{kicker}</TypeFade></p>
+              <h2 className="section-title"><TypeFade>{title}</TypeFade></h2>
               {sub && <p className="section-sub">{sub}</p>}
             </div>
             {(file || !alwaysOpen) && <div className="file-side">

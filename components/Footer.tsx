@@ -1,4 +1,5 @@
 import { contactEmail, githubUrl, linkedinUrl, profile } from "@/app/_lib/portfolio-data";
+import TypeFade from "@/components/TypeFade";
 
 const sections: [string, string][] = [
   ["Projects", "#work"],
@@ -24,7 +25,7 @@ export default function Footer() {
   return (
     <footer className="ft">
       <div className="wrap">
-        <p className="ft-name">{profile.fullName}</p>
+        <p className="ft-name"><TypeFade>{profile.fullName}</TypeFade></p>
 
         <div className="ft-grid">
           <p className="ft-about">
@@ -33,8 +34,8 @@ export default function Footer() {
           </p>
 
           <div>
-            <h4>Sections</h4>
-            <ul>
+            <h4><TypeFade>Sections</TypeFade></h4>
+            <ul className="ft-sections">
               {sections.map(([label, href]) => (
                 <li key={href}>
                   <a href={href}>{label}</a>
@@ -44,7 +45,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4>Contact</h4>
+            <h4><TypeFade>Contact</TypeFade></h4>
             <ul>
               <li>{profile.location}</li>
               <li>PHT · Remote-first</li>
@@ -55,7 +56,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4>Links</h4>
+            <h4><TypeFade>Links</TypeFade></h4>
             <ul>
               <li>
                 <a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -68,10 +69,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-        </div>
-
-        <div className="ft-stamp-row">
-          <span className="ft-stamp" aria-hidden="true">Thank you</span>
         </div>
 
         <div className="ft-bottom">

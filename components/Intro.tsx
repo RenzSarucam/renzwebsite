@@ -5,7 +5,7 @@ import styles from "./Intro.module.css";
 
 // Replay on a full refresh, but not when returning from a project.
 let played = false;
-const PRINT_MS = 2520; // 3 seconds total, including the 480ms exit.
+const PRINT_MS = 1520; // 2 seconds total, including the 480ms exit.
 const EXIT_MS = 480;
 
 export default function Intro() {

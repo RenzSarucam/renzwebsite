@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { caseFiles } from "@/app/_lib/case-files";
 import CaseArt from "@/components/CaseArt";
+import TypeFade from "@/components/TypeFade";
 import { useCollapseScroll } from "@/app/_lib/use-collapse-scroll";
 
 const FILTERS = ["All", "Full Stack", "Docker", "Mobile", "Figma"] as const;
@@ -53,7 +54,7 @@ export default function Works({ images }: { images: Record<string, string> }) {
             <p className="exhibit-letter">Project {c.letter}</p>
             <p className="exhibit-client">{c.place?.split(" · ")[0] ?? "Personal Project"}</p>
             <h3 className="exhibit-title">
-              <Link href={`/case-files/${c.slug}`}>{c.headline}</Link>
+              <Link href={`/case-files/${c.slug}`}><TypeFade>{c.headline}</TypeFade></Link>
             </h3>
             <Link href={`/case-files/${c.slug}`} className="exhibit-hit" aria-label={`View project: ${c.headline}`} tabIndex={-1}>
               <CaseArt c={c} image={images[c.slug]} />

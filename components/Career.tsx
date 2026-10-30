@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { workExperiences } from "@/app/_lib/portfolio-data";
 import { useCollapseScroll } from "@/app/_lib/use-collapse-scroll";
+import TypeFade from "@/components/TypeFade";
 
 const LIMIT = 6;
 const CLAMP = 220;
@@ -15,7 +16,7 @@ function Entry({ w }: { w: (typeof workExperiences)[number] }) {
   return (
     <li className="t-item">
       <div className="t-meta">
-        <h3 className="t-role">{w.role}</h3>
+        <h3 className="t-role"><TypeFade>{w.role}</TypeFade></h3>
         <p className="t-org">
           {w.company} · {w.location}
         </p>

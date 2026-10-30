@@ -154,9 +154,9 @@ export const workExperiences: WorkExperience[] = [
     location: "Philippines",
     role: "Research And Development Engineer",
     period: "April 2026",
-    description: "Designed and deployed multi-project server infrastructure using Docker and Docker Compose. Managed CI/CD pipelines with GitHub Actions self-hosted runners, administered Linux servers with separate testing and production environments, maintained shared databases, and developed full-stack internal applications across multiple business units.",
+    description: "Built Opsora, a self-hosted monitoring dashboard that helps administrators track application health, uptime, and response times. Brought web applications, servers, and Docker containers into one view, with alerts and an activity log for troubleshooting. For other internal applications, handled Docker containerization and automated CI/CD pipelines using GitHub Actions self-hosted runners. Managed Linux deployments with separate testing and production environments.",
     autoProjectsFromPlace: "DSG Son's Group Inc.",
-    tools: ["Linux CLI", "Docker", "Git / GitHub", "VS Code", "AI", "Node.js", "Next.js", "Nginx", "Laravel", "React", "MySQL", "CI/CD", "GitHub Actions"],
+    tools: ["Laravel", "React", "Next.js", "Node.js", "MySQL", "Docker", "CI/CD", "GitHub Actions", "Linux CLI", "Nginx", "Git / GitHub", "VS Code", "AI"],
   },
   {
     company: "Private Client",

@@ -6,6 +6,7 @@ import { getCaseImages } from "@/app/_lib/case-images";
 import { contactEmail, profile } from "@/app/_lib/portfolio-data";
 import CaseArt from "@/components/CaseArt";
 import CaseImagePreview from "@/components/CaseImagePreview";
+import TypeFade from "@/components/TypeFade";
 
 type Props = { params: { slug: string } };
 
@@ -54,7 +55,7 @@ export default function CaseFilePage({ params }: Props) {
         <h1 className="case-title">{c.headline}</h1>
         <blockquote className="case-deck">{c.deck}</blockquote>
         <p className="byline" style={{ borderBottom: 0, paddingBottom: 0 }}>
-          By <b style={{ color: "var(--ink)" }}>The Detective Desk</b> · {c.types.join(" / ")} · Status: {c.status}
+          By <b style={{ color: "var(--ink)" }}>{profile.fullName}</b> · {c.types.join(" / ")} · Status: {c.status}
         </p>
 
         {image && !["jit-jairo-institute-of-technology-design", "jairosoft-elms-designer"].includes(c.slug) ? (
@@ -67,10 +68,10 @@ export default function CaseFilePage({ params }: Props) {
 
         <div className="case-grid">
           <div className="case-main">
-            <h2 className="case-h">The Brief</h2>
+            <h2 className="case-h"><TypeFade>The Brief</TypeFade></h2>
             <p className="case-body">{c.desc}</p>
 
-            <h2 className="case-h">Tools Recovered at the Scene</h2>
+            <h2 className="case-h"><TypeFade>Tools Recovered at the Scene</TypeFade></h2>
             <div className="tags" style={{ marginTop: 0 }}>
               {c.tags.map((t) => (
                 <span className="tag" key={t}>
