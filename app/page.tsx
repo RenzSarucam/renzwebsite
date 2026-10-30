@@ -1,5 +1,4 @@
 import Intro from "@/components/Intro";
-import TypeIn from "@/components/TypeIn";
 import Nav from "@/components/Nav";
 import Masthead from "@/components/Masthead";
 import Front from "@/components/Front";
@@ -45,7 +44,6 @@ export default function Home() {
   return (
     <>
       <Intro />
-      <TypeIn />
       <div className="page">
         <Masthead />
         <Nav />
