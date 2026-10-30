@@ -91,7 +91,7 @@ export default function Intro() {
       <header className={styles.header}>
         <span className={styles.imprint}>An independent portfolio</span>
         <button ref={skipButton} className={styles.skip} onClick={skip}>
-          Skip intro <span aria-hidden="true">↗</span>
+          Skip intro
         </button>
       </header>
 
@@ -120,10 +120,10 @@ export default function Intro() {
 
       <footer className={styles.footer}>
         <p className={styles.status} role="status">
-          <span className={styles.statusMark} aria-hidden="true">{leaving ? "✓" : "↳"}</span>
+          <img className={styles.statusIcon} src="/cursors/fountain-pen.svg" width="22" height="22" alt="" aria-hidden="true" draggable={false} />
           {leaving ? "Ready to read" : "Putting ink to paper"}
         </p>
-        <span className={styles.turn}>A few things I’ve made <span aria-hidden="true">↗</span></span>
+        <span className={styles.turn}>A few things I’ve made</span>
       </footer>
     </div>
   );

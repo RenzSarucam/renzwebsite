@@ -30,9 +30,7 @@
 
 .imprint { color: var(--ink-2); }
 .skip {
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
+  display: inline-block;
   min-height: 44px;
   padding: 8px 0 8px 16px;
   border: 0;
@@ -45,7 +43,6 @@
 }
 .skip:hover { color: var(--accent); }
 .skip:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
-.skip span { font-size: 22px; }
 .sheet { width: min(100%, 1020px); margin: auto; }
 
 .edition {
@@ -93,10 +90,9 @@
 .byline { align-items: baseline; padding-top: 18px; border-top: 3px double var(--ink); }
 .byline p { margin: 0; font-family: var(--serif-body); font-size: 15px; line-height: 1.6; }
 .byline p + p { color: var(--ink-2); font-style: italic; text-align: right; }
-.status { display: flex; align-items: center; gap: 10px; margin: 0; }
-.statusMark { width: 16px; color: var(--accent); font-size: 18px; }
+.status { display: flex; align-items: center; gap: 8px; margin: 0; }
+.statusIcon { display: block; flex-shrink: 0; }
 .turn { color: var(--ink-2); }
-.turn > span { margin-left: 12px; }
 .leaving { pointer-events: none; animation: sheet-exit 480ms var(--press-ease) forwards; }
 
 @keyframes ink-pass {
@@ -128,7 +124,6 @@
   .byline p { font-size: 13px; }
   .byline p + p { text-align: left; font-size: 12px; }
   .turn { max-width: 115px; text-align: right; }
-  .turn > span { margin-left: 4px; }
 }
 @media (max-height: 520px) and (min-width: 601px) {
   .press { padding-block: 12px; gap: 8px; }
