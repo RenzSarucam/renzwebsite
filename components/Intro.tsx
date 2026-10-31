@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { profile } from "@/app/_lib/portfolio-data";
 import styles from "./Intro.module.css";
 
 // Replay on a full refresh, but not when returning from a project.
@@ -103,17 +104,16 @@ export default function Intro() {
         <div className={styles.nameplate}>
           <p className={styles.the}>The</p>
           <h2 className={styles.title}>
-            <span className={styles.firstLine}>Renz</span>
+            <span className={styles.firstLine}>{profile.fullName}</span>
             <span className={styles.printLine}>
-              <span className={styles.unprinted}>Report.</span>
-              <span className={styles.printed} aria-hidden="true">Report.</span>
+              <span className={styles.printed}>Report.</span>
               <span className={styles.roller} aria-hidden="true" />
             </span>
           </h2>
-          <span className={styles.proof} aria-hidden="true">Fresh<br />off the press.</span>
+          <span className={styles.proof} aria-hidden="true">Fresh off the press.</span>
         </div>
         <div className={styles.byline}>
-          <p>Renz Carljansen Sarucam</p>
+          <p>{profile.fullName}</p>
           <p>Development, design &amp; the work in between.</p>
         </div>
       </div>

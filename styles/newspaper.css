@@ -73,6 +73,9 @@ section[id] { scroll-margin-top: calc(var(--nav-height) + 16px); }
 .section-sub { font-size: 16px; line-height: 1.6; }
 .has-sticky-file-header .section-head { top: var(--nav-height); background-color: var(--paper); background-image: var(--paper-grain); }
 .has-sticky-file-header .section-head::before { display: none; }
+.section-toolbar { flex: 0 0 100%; min-width: 0; }
+#work .section-head { gap: 12px; padding-bottom: 0; margin-bottom: 0; }
+#work .section-toolbar .filters { margin: 0; padding: 10px 0 12px; border-top: 1px solid var(--ink); border-bottom: 0; }
 .collapse.is-open .collapse-inner { padding-top: 4px; }
 .collapse.is-open .collapse-inner { overflow: visible; }
 .profile-cols { column-gap: 40px; }
@@ -119,15 +122,44 @@ section[id] { scroll-margin-top: calc(var(--nav-height) + 16px); }
 /* Skills are a directory, and experience reads as dated dispatches. */
 #stack .section-head { border-bottom-width: 1px; }
 .lab-scroll { border: 1px solid var(--ink); background: transparent; }
+#stack .lab-scroll { overflow: visible; }
+#stack .lab thead { position: sticky; top: calc(var(--nav-height) + var(--file-header-height, 100px)); z-index: 35; background: var(--ink); }
 .lab { table-layout: fixed; }
-.lab thead th, .lab tbody td { border: 1px solid var(--ink-3); }
+.lab thead th, .lab thead th.lab-finding, .lab tbody td { border: 1px solid var(--ink-3); text-align: center; vertical-align: middle; }
 .lab tbody .lab-code::before, .lab tbody .lab-detected::before { display: none; }
-.lab thead th { font-size: 10px; letter-spacing: 0.06em; padding: 14px 18px; }
-.lab tbody td { padding: 14px 18px; height: auto; }
-.lab-name { font-family: var(--serif-body); font-size: 17px; }
-.lab-code, .lab-detected, .lab tbody td.lab-code, .lab tbody td.lab-detected { font-family: var(--sans); font-size: 12px; }
-.lab-finding { width: 24%; }
-.finding { border: 0; padding: 0; font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0; text-transform: none; filter: none; mix-blend-mode: normal; white-space: normal; }
+.lab thead th { font-size: 13px; letter-spacing: 0.04em; line-height: 1.5; padding: 16px 20px; }
+.lab thead th:first-child { width: 34%; }
+.lab thead th.lab-code { width: 14%; }
+.lab thead th:nth-child(3) { width: 24%; }
+.lab tbody td { padding: 16px 20px; height: auto; line-height: 1.6; }
+.lab-name { font-family: var(--serif-body); font-size: 21px; }
+.lab-code, .lab-detected, .lab tbody td.lab-code, .lab tbody td.lab-detected { font-family: var(--sans); font-size: 16px; }
+.lab-finding { width: 28%; }
+.lab .finding {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  padding: 6px 10px;
+  border: 3px double var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif-body);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.025em;
+  text-align: center;
+  text-transform: none;
+  filter: none;
+  mix-blend-mode: normal;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+.lab .finding::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: var(--paper-grain); opacity: 0.5; }
+.lab .finding-primary { background: var(--ink); color: var(--paper); border-color: var(--paper); outline: 1px solid var(--ink); outline-offset: -1px; text-transform: uppercase; }
+.lab .finding-working { border: 1px solid var(--ink-3); background: var(--paper-2); color: var(--ink-2); font-weight: 400; font-style: italic; letter-spacing: 0; text-transform: none; }
 .disclaimer { font-size: 13px; }
 .t-item { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr); gap: 40px; padding-block: 28px; border-top: 1px solid var(--ink-3); }
 .t-role { font-size: 24px; font-weight: 700; letter-spacing: -0.04em; line-height: 1.25; }
@@ -258,13 +290,16 @@ section[id] { scroll-margin-top: calc(var(--nav-height) + 16px); }
   .exhibit-client { font-size: 11px; }
   .exhibit .tag { font-size: 11px; }
   .chip { font-size: 10px; padding-inline: 10px; }
-  .lab thead th, .lab tbody td { padding: 12px 8px; }
-  .lab-name { width: 38%; font-size: 15px; }
+  .lab thead th, .lab tbody td { padding: 14px 8px; }
+  .lab-name { width: 38%; font-size: 17px; }
+  .lab thead th:first-child { width: 38%; }
   .lab-detected { width: 28%; }
   .lab-finding { width: 34%; }
-  .lab thead th { font-size: 10px; letter-spacing: 0; }
-  .lab tbody td.lab-detected { font-size: 11px; }
-  .lab .finding { font-size: 11px; text-align: right; }
+  .lab thead th:nth-child(3) { width: 28%; }
+  .lab thead th { font-size: 12px; letter-spacing: 0; }
+  .lab tbody td.lab-detected { font-size: 14px; }
+  .lab tbody td.lab-finding { padding-inline: 4px; }
+  .lab .finding { padding: 5px 2px; border-width: 1px; border-style: solid; font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0; text-align: center; text-transform: none; }
   .t-item { grid-template-columns: minmax(0, 1fr); gap: 16px; padding-block: 24px; }
   .t-role { font-size: 23px; }
   .t-org { margin-top: 8px; }

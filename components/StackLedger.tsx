@@ -50,7 +50,7 @@ export default function StackLedger() {
             <tr>
               <th scope="col">Skill</th>
               <th scope="col" className="lab-code">Short name</th>
-              <th scope="col">How often I use it</th>
+              <th scope="col">Usage</th>
               <th scope="col" className="lab-finding">Experience</th>
             </tr>
           </thead>

@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { caseFiles } from "@/app/_lib/case-files";
 import CaseArt, { isConfidentialProject } from "@/components/CaseArt";
 import TypeFade from "@/components/TypeFade";
 import { useCollapseScroll } from "@/app/_lib/use-collapse-scroll";
+import CollapsibleSection from "@/components/CollapsibleSection";
 
 const FILTERS = ["All", "Full Stack", "Docker", "Mobile", "Figma"] as const;
 const INITIAL = 9;
@@ -13,7 +14,15 @@ const INITIAL = 9;
 export default function Works({ images }: { images: Record<string, string> }) {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
   const [expanded, setExpanded] = useState(false);
+  const previousFilter = useRef(filter);
   useCollapseScroll(expanded, "work");
+
+  useLayoutEffect(() => {
+    if (previousFilter.current !== filter) {
+      document.getElementById("work")?.scrollIntoView({ block: "start", behavior: "instant" });
+      previousFilter.current = filter;
+    }
+  }, [filter]);
 
   const counts = useMemo(
     () =>
@@ -30,24 +39,32 @@ export default function Works({ images }: { images: Record<string, string> }) {
   const shown = expanded ? filtered : filtered.slice(0, INITIAL);
 
   return (
-    <div>
-      <div className="filters" role="group" aria-label="Filter projects">
-        {FILTERS.map((f) => (
-          <button
-            key={f}
-            className="chip"
-            aria-pressed={filter === f}
-            onClick={() => {
-              setFilter(f);
-              setExpanded(false);
-            }}
-          >
-            {f}
-            <small>{counts[f]}</small>
-          </button>
-        ))}
-      </div>
-
+    <CollapsibleSection
+      id="work"
+      kicker="Selected Work"
+      title="Projects"
+      sub="Websites, applications, and design projects I’ve built."
+      stickyHeader
+      alwaysOpen
+      toolbar={
+        <div className="filters" role="group" aria-label="Filter projects">
+          {FILTERS.map((f) => (
+            <button
+              key={f}
+              className="chip"
+              aria-pressed={filter === f}
+              onClick={() => {
+                setFilter(f);
+                setExpanded(false);
+              }}
+            >
+              {f}
+              <small>{counts[f]}</small>
+            </button>
+          ))}
+        </div>
+      }
+    >
       <div className="works-grid">
         {shown.map((c) => (
           <article className={`exhibit is-linked${images[c.slug] || isConfidentialProject(c.slug) ? "" : " exhibit--text"}`} key={c.slug}>
@@ -86,6 +103,6 @@ export default function Works({ images }: { images: Record<string, string> }) {
           </button>
         </div>
       )}
-    </div>
+    </CollapsibleSection>
   );
 }

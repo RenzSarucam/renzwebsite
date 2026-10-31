@@ -13,11 +13,12 @@ type Props = {
   file?: string;
   stickyHeader?: boolean;
   alwaysOpen?: boolean;
+  toolbar?: React.ReactNode;
   children: React.ReactNode;
 };
 
 /** A section that can reveal its details with a button on the right of the heading. */
-export default function CollapsibleSection({ id, kicker, title, sub, file, stickyHeader = false, alwaysOpen = false, children }: Props) {
+export default function CollapsibleSection({ id, kicker, title, sub, file, stickyHeader = false, alwaysOpen = false, toolbar, children }: Props) {
   const [open, setOpen] = useState(alwaysOpen);
   const panelId = useId();
   const sectionRef = useRef<HTMLElement>(null);
@@ -27,13 +28,16 @@ export default function CollapsibleSection({ id, kicker, title, sub, file, stick
   useEffect(() => {
     if (!stickyHeader) return;
     const nav = document.querySelector<HTMLElement>(".nav");
+    const heading = sectionRef.current?.querySelector<HTMLElement>(".section-head");
     if (!nav) return;
     const measure = () => {
       sectionRef.current?.style.setProperty("--file-nav-height", `${nav.getBoundingClientRect().height}px`);
+      if (heading) sectionRef.current?.style.setProperty("--file-header-height", `${heading.getBoundingClientRect().height}px`);
     };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(nav);
+    if (heading) observer.observe(heading);
     return () => observer.disconnect();
   }, [stickyHeader]);
 
@@ -70,6 +74,7 @@ export default function CollapsibleSection({ id, kicker, title, sub, file, stick
                 <span aria-hidden="true" className="file-toggle-icon">{open ? "−" : "+"}</span>
               </button>}
             </div>}
+            {open && toolbar && <div className="section-toolbar">{toolbar}</div>}
           </div>
 
           <div id={panelId} className={`collapse${open ? " is-open" : ""}`} aria-hidden={!open}>

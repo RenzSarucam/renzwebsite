@@ -51,9 +51,7 @@ export default function Home() {
         <main>
           <Front />
           <Profile />
-          <CollapsibleSection id="work" kicker="Selected Work" title="Projects" sub="Websites, applications, and design projects I’ve built." stickyHeader alwaysOpen>
-            <Works images={getCaseImages()} />
-          </CollapsibleSection>
+          <Works images={getCaseImages()} />
           <CollapsibleSection id="stack" kicker="Technical Skills" title="Tools I Use" stickyHeader alwaysOpen>
             <StackLedger />
           </CollapsibleSection>
