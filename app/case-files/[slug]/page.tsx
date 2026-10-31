@@ -118,7 +118,7 @@ export default function CaseFilePage({ params }: Props) {
 
         <nav className="case-pager" aria-label="More projects">
           {prev ? (
-            <Link href={`/case-files/${prev.slug}`}>
+            <Link className="case-pager-prev" rel="prev" href={`/case-files/${prev.slug}`}>
               <span className="label">← Previous project · {prev.letter}</span>
               <b>{prev.headline}</b>
             </Link>
@@ -126,7 +126,7 @@ export default function CaseFilePage({ params }: Props) {
             <span />
           )}
           {next ? (
-            <Link href={`/case-files/${next.slug}`} style={{ textAlign: "right" }}>
+            <Link className="case-pager-next" rel="next" href={`/case-files/${next.slug}`}>
               <span className="label">Next project · {next.letter} →</span>
               <b>{next.headline}</b>
             </Link>
