@@ -83,20 +83,13 @@ export default function ScrollReveals() {
       if (reduceMotion.matches) return;
 
       const seen = new WeakSet<Element>();
-      const ratios = new WeakMap<Element, number>();
       observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
-            const previousRatio = ratios.get(entry.target) ?? 0;
-            ratios.set(entry.target, entry.intersectionRatio);
-            if (!entry.isIntersecting || entry.intersectionRatio === 0) {
-              conceal(entry.target, true, entry.boundingClientRect.bottom <= 0);
-            } else if (entry.intersectionRatio < 0.18 && entry.intersectionRatio < previousRatio) {
-              // Start fading while the last part is still visible, in either scroll direction.
-              conceal(entry.target, false);
-            } else {
-              reveal(entry.target, entry.intersectionRatio >= 0.99);
-            }
+            if (!entry.isIntersecting) continue;
+            // Printed articles stay readable after their first entrance, including on return scrolls.
+            reveal(entry.target, entry.intersectionRatio >= 0.99);
+            observer?.unobserve(entry.target);
           }
         },
         { threshold: [0, 0.01, 0.18, 0.99] },

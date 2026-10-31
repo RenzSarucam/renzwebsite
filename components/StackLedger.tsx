@@ -55,7 +55,7 @@ export default function StackLedger() {
             </tr>
           </thead>
           <tbody>
-            {rows.map((r, i) => {
+            {rows.map((r) => {
               const f = finding(r.level);
               return (
                 <tr key={r.name}>
@@ -63,7 +63,7 @@ export default function StackLedger() {
                   <td className="lab-code">{CODES[r.name] ?? r.name.slice(0, 4).toUpperCase()}</td>
                   <td className="lab-detected">{detected(r.level)}</td>
                   <td className="lab-finding">
-                    <span className={`finding finding-${f.tone}`} style={{ transform: `rotate(${i % 2 ? 1.2 : -1.2}deg)` }}>
+                    <span className={`finding finding-${f.tone}`}>
                       {f.label}
                     </span>
                   </td>

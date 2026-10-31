@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { workExperiences } from "@/app/_lib/portfolio-data";
 import { useCollapseScroll } from "@/app/_lib/use-collapse-scroll";
 import TypeFade from "@/components/TypeFade";
@@ -10,6 +10,7 @@ const CLAMP = 220;
 
 function Entry({ w }: { w: (typeof workExperiences)[number] }) {
   const [open, setOpen] = useState(false);
+  const descriptionId = useId();
   const long = w.description.length > CLAMP;
   const text = long && !open ? w.description.slice(0, CLAMP).replace(/\s+\S*$/, "") + "…" : w.description;
 
@@ -22,9 +23,9 @@ function Entry({ w }: { w: (typeof workExperiences)[number] }) {
         </p>
       </div>
       <div className="t-body">
-        <p className="t-desc">{text}</p>
+        <p id={descriptionId} className="t-desc">{text}</p>
         {long && (
-          <button className="t-more" onClick={() => setOpen((v) => !v)} aria-expanded={open}>
+          <button className="t-more" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-controls={descriptionId}>
             {open ? "Read less" : "Read more"}
           </button>
         )}

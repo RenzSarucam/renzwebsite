@@ -7,7 +7,7 @@ export default function Masthead() {
 
   useEffect(() => {
     setToday(
-      new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" })
+      new Date().toLocaleDateString("en-GB", { timeZone: "Asia/Manila", weekday: "long", day: "numeric", month: "long", year: "numeric" })
     );
   }, []);
 
@@ -25,7 +25,7 @@ export default function Masthead() {
         <i aria-hidden="true">•</i>
         <span>Selected Work</span>
         <i aria-hidden="true">•</i>
-        <span>Web Apps · Design · Deployment</span>
+        <span>Web Development · Deployment</span>
       </div>
     </div>
   );

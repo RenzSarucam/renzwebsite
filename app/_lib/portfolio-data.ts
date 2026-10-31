@@ -615,11 +615,4 @@ export const certificates: Certificate[] = [
     color: "#4285f4",
     image: "/images/certificates/gdg-build-with-ai.jpg",
   },
-  {
-    title: "Champion - Mobile Legends: Bang Bang Tournament (IT Day 2021)",
-    issuer: "Holy Cross of Davao College - ITS",
-    year: "2021",
-    color: "#ef9f27",
-    image: "/images/certificates/hcdc-mlbb-champion.jpg",
-  },
 ];

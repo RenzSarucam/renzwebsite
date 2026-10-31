@@ -15,27 +15,28 @@ export default async function Front() {
     <section className="wrap hero" aria-labelledby="headline">
       <div className="hero-strip label">
         <span>Portfolio</span>
-        <span>Web development &amp; design</span>
+        <span>Web development &amp; deployment</span>
       </div>
 
       <div className="hero-grid">
         <div className="hero-left">
           <p className="hero-kicker label">Full-Stack Developer · Davao City</p>
           <h1 id="headline" className="hero-title">
-{/*  */}            Building software that simplifies work — <em>from idea to deployment.</em>
+            Your idea.<br />Built &amp; deployed.
           </h1>
           <blockquote className="hero-deck">
-            I build web applications, manage deployment infrastructure, and help teams make everyday work easier.
+            I turn business ideas into dependable web applications — with thoughtful design, full-stack development,
+            and deployment handled from start to finish.
           </blockquote>
           <p className="hero-byline label">
             {profile.location}
           </p>
           <div className="btn-row">
             <a className="btn btn-solid" href="#work">
-              View my projects →
+              View projects →
             </a>
             <a className="btn" href="#contact">
-              Get in touch
+              Discuss a project
             </a>
           </div>
 

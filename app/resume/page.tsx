@@ -18,35 +18,35 @@ const bare = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "");
 
 // Everything is namespaced with `rs-` so it can't collide with the site's global classes.
 const css = `
-  .rs-root { min-height: 100vh; padding: 28px 12px; background: #1b1815; position: relative; z-index: 1; }
+  .rs-root { min-height: 100vh; padding: 28px 12px 100px; background: var(--paper); position: relative; z-index: 1; }
   .rs-page {
     width: 210mm; min-height: 297mm; margin: 0 auto; display: flex;
-    box-shadow: 0 16px 56px rgba(0,0,0,0.55);
-    background: #f6f2e8; color: #15120f;
+    border-top: 4px double var(--ink);
+    background: var(--paper); color: var(--ink);
     font-family: var(--serif-body), Georgia, serif;
   }
 
   /* ── Sidebar ── */
   .rs-sidebar {
-    width: 70mm; flex-shrink: 0; background: #15120f; color: #e9e3d3;
+    width: 70mm; flex-shrink: 0; background: var(--ink); color: #e9e3d3;
     padding: 13mm 7mm 12mm; display: flex; flex-direction: column; gap: 14px;
   }
   .rs-bar { width: 34px; height: 3px; background: #b3261e; margin-bottom: 10px; }
-  .rs-name { font-family: var(--serif-display), Georgia, serif; font-weight: 400; font-size: 20pt; line-height: 1.08; color: #f6f2e8; }
+  .rs-name { font-family: var(--serif-display), Georgia, serif; font-weight: 400; font-size: 20pt; line-height: 1.08; color: var(--paper); }
   .rs-role { margin-top: 8px; font-family: var(--sans), Arial, sans-serif; font-size: 6.8pt; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.9; color: #c9c1ad; }
   .rs-divider { height: 1px; background: rgba(246,242,232,0.16); }
   .rs-side-title { font-family: var(--sans), Arial, sans-serif; font-size: 6.5pt; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #e0554b; margin-bottom: 8px; }
 
   .rs-contact { margin-bottom: 7px; }
   .rs-contact-label { font-family: var(--sans), Arial, sans-serif; font-size: 5.8pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #9a927f; }
-  .rs-contact-value { font-size: 7.8pt; line-height: 1.4; color: #f1ecdf; word-break: break-all; }
+  .rs-contact-value { font-size: 7.8pt; line-height: 1.4; color: var(--paper); word-break: break-all; }
 
   .rs-tags { display: flex; flex-wrap: wrap; gap: 4px; }
   .rs-tag { border: 1px solid rgba(246,242,232,0.3); color: #e9e3d3; padding: 1px 5px; font-family: var(--mono), "Courier New", monospace; font-size: 6.3pt; line-height: 1.7; }
 
-  .rs-lang { font-size: 8pt; margin-bottom: 4px; padding-left: 8px; border-left: 2px solid #b3261e; color: #f1ecdf; }
+  .rs-lang { font-size: 8pt; margin-bottom: 4px; padding-left: 8px; border-left: 2px solid #b3261e; color: var(--paper); }
   .rs-item { margin-bottom: 8px; padding: 1px 0 1px 8px; border-left: 2px solid rgba(246,242,232,0.25); }
-  .rs-item-title { font-size: 7.6pt; line-height: 1.4; color: #f6f2e8; font-weight: 700; }
+  .rs-item-title { font-size: 7.6pt; line-height: 1.4; color: var(--paper); font-weight: 700; }
   .rs-item-meta { font-size: 6.6pt; margin-top: 2px; color: #b6ae9a; line-height: 1.4; }
 
   /* ── Main ── */
@@ -54,8 +54,8 @@ const css = `
   .rs-section { margin-bottom: 14px; }
   .rs-title {
     font-family: var(--sans), Arial, sans-serif; font-size: 8pt; font-weight: 700;
-    letter-spacing: 0.18em; text-transform: uppercase; color: #15120f;
-    border-bottom: 2px solid #15120f; padding-bottom: 4px; margin-bottom: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink);
+    border-bottom: 2px solid var(--ink); padding-bottom: 4px; margin-bottom: 10px;
   }
   .rs-title::before { content: ""; display: inline-block; width: 7px; height: 7px; background: #b3261e; margin-right: 8px; }
 
@@ -65,8 +65,8 @@ const css = `
   .rs-exp-company { font-size: 9.2pt; color: #b3261e; font-weight: 700; }
   .rs-exp-place { font-size: 8.6pt; color: #5a5347; }
   .rs-exp-desc { font-size: 8.8pt; color: #2b2620; margin-top: 3px; line-height: 1.5; }
-  .rs-exp-line { margin-top: 3px; font-size: 8.2pt; color: #3d372f; }
-  .rs-exp-line b { color: #15120f; }
+  .rs-exp-line { margin-top: 3px; font-size: 8.2pt; color: var(--ink-2); }
+  .rs-exp-line b { color: var(--ink); }
   .rs-exp-tools { font-style: italic; color: #5a5347; }
 
   .rs-projects { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; }
@@ -76,27 +76,46 @@ const css = `
   .rs-proj-type { font-family: var(--sans), Arial, sans-serif; font-size: 6.6pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #b3261e; }
   .rs-proj-tags { font-size: 7.2pt; color: #5a5347; font-style: italic; line-height: 1.4; }
 
+  /* Same paper-and-ink edition as the portfolio. */
+  .rs-page { max-width: 100%; }
+  .rs-sidebar { background: transparent; color: var(--ink); border-right: 1px solid var(--ink-3); }
+  .rs-name { color: var(--ink); font-weight: 700; letter-spacing: -0.04em; margin: 0; }
+  .rs-role, .rs-contact-label, .rs-item-meta { color: var(--ink-3); }
+  .rs-side-title, .rs-contact-value, .rs-item-title, .rs-lang, .rs-tag { color: var(--ink); }
+  .rs-tag { border: 0; padding-left: 0; font-family: var(--sans); }
+  .rs-divider { background: var(--paper-3); }
+  .rs-bar { background: var(--ink); }
+  .rs-lang, .rs-item { border-color: var(--ink-3); }
+  .rs-side-title, .rs-exp-company, .rs-proj-type { color: var(--ink); }
+  .rs-title::before { display: none; }
+  .rs-main { min-width: 0; }
+
   /* ── Phone ── */
   @media (max-width: 860px) {
     .rs-root { padding: 0; }
     .rs-page { width: 100%; min-height: 0; flex-direction: column; }
-    .rs-sidebar { width: 100%; padding: 28px 22px; }
+    .rs-sidebar { width: 100%; padding: 28px 22px; border-right: 0; border-bottom: 3px double var(--ink); }
     .rs-main { padding: 28px 22px; }
     .rs-projects { grid-template-columns: 1fr; }
+    .rs-role, .rs-side-title, .rs-contact-label, .rs-tag, .rs-item-meta, .rs-proj-type { font-size: 12px; }
+    .rs-contact-value, .rs-lang, .rs-item-title, .rs-exp-place, .rs-exp-desc, .rs-exp-line, .rs-proj-place, .rs-proj-tags { font-size: 14px; }
+    .rs-exp-role, .rs-exp-company, .rs-proj-title { font-size: 16px; }
+    .rs-title { font-size: 14px; }
   }
 
   /* ── Print ── */
   @media print {
-    html, body { background: #f6f2e8 !important; }
+    html, body { background: var(--paper) !important; }
     body::before { display: none !important; }
-    .rs-root { padding: 0; background: #f6f2e8; }
+    .rs-root { padding: 0; background: var(--paper); }
     .rs-page { margin: 0; box-shadow: none; width: 100%; min-height: unset; display: flex; flex-direction: row; }
     .rs-sidebar {
-      width: 60mm; padding: 10mm 5mm; gap: 10px; background: #15120f !important;
+      width: 60mm; padding: 10mm 5mm; gap: 10px; background: transparent !important;
+      border-right: 1px solid var(--ink-3); border-bottom: 0;
       -webkit-print-color-adjust: exact; print-color-adjust: exact;
     }
     .rs-bar, .rs-tag, .rs-lang, .rs-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .rs-bar { background: #b3261e !important; }
+    .rs-bar { background: var(--ink) !important; }
     .rs-name { font-size: 15pt; }
     .rs-role { font-size: 6pt; line-height: 1.7; margin-top: 5px; }
     .rs-side-title { font-size: 5.6pt; margin-bottom: 5px; }
@@ -149,7 +168,7 @@ export default function ResumePage() {
         <div className="rs-sidebar">
           <div>
             <div className="rs-bar" />
-            <div className="rs-name">{profile.fullName}</div>
+            <h1 className="rs-name">{profile.fullName}</h1>
             <div className="rs-role">
               Full-Stack Web Developer<br />
               Docker &amp; CI/CD<br />

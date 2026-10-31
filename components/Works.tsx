@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { caseFiles } from "@/app/_lib/case-files";
-import CaseArt from "@/components/CaseArt";
+import CaseArt, { isConfidentialProject } from "@/components/CaseArt";
 import TypeFade from "@/components/TypeFade";
 import { useCollapseScroll } from "@/app/_lib/use-collapse-scroll";
 
@@ -50,15 +50,15 @@ export default function Works({ images }: { images: Record<string, string> }) {
 
       <div className="works-grid">
         {shown.map((c) => (
-          <article className="exhibit is-linked" key={c.slug}>
+          <article className={`exhibit is-linked${images[c.slug] || isConfidentialProject(c.slug) ? "" : " exhibit--text"}`} key={c.slug}>
             <p className="exhibit-letter">Project {c.letter}</p>
             <p className="exhibit-client">{c.place?.split(" · ")[0] ?? "Personal Project"}</p>
             <h3 className="exhibit-title">
               <Link href={`/case-files/${c.slug}`}><TypeFade>{c.headline}</TypeFade></Link>
             </h3>
-            <Link href={`/case-files/${c.slug}`} className="exhibit-hit" aria-label={`View project: ${c.headline}`} tabIndex={-1}>
+            {(images[c.slug] || isConfidentialProject(c.slug)) && <Link href={`/case-files/${c.slug}`} className="exhibit-hit" aria-label={`View project: ${c.headline}`} tabIndex={-1}>
               <CaseArt c={c} image={images[c.slug]} />
-            </Link>
+            </Link>}
             <div className="exhibit-body">
               <p className="exhibit-desc">{c.desc}</p>
               <div className="tags">

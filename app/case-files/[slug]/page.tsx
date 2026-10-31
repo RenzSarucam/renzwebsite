@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { caseFiles, getCase } from "@/app/_lib/case-files";
 import { getCaseImages } from "@/app/_lib/case-images";
 import { contactEmail, profile } from "@/app/_lib/portfolio-data";
-import CaseArt from "@/components/CaseArt";
+import CaseArt, { isConfidentialProject } from "@/components/CaseArt";
 import CaseImagePreview from "@/components/CaseImagePreview";
 import TypeFade from "@/components/TypeFade";
 
@@ -44,7 +44,7 @@ export default function CaseFilePage({ params }: Props) {
     <div className="page">
       <div className="wrap case">
         <div className="case-bar label">
-          <Link href="/#work" className="back-link"><span>← Back to the case</span></Link>
+          <Link href="/#work" className="back-link"><span>← Back to projects</span></Link>
           <span className="hide-sm">{profile.fullName} · Projects</span>
           <span>Filed from Davao City</span>
         </div>
@@ -58,7 +58,7 @@ export default function CaseFilePage({ params }: Props) {
           By <b style={{ color: "var(--ink)" }}>{profile.fullName}</b> · {c.types.join(" / ")} · Status: {c.status}
         </p>
 
-        {image && !["jit-jairo-institute-of-technology-design", "jairosoft-elms-designer"].includes(c.slug) ? (
+        {image && !isConfidentialProject(c.slug) ? (
           <CaseImagePreview image={image} title={c.headline}>
             <CaseArt c={c} image={image} large />
           </CaseImagePreview>
@@ -71,7 +71,7 @@ export default function CaseFilePage({ params }: Props) {
             <h2 className="case-h"><TypeFade>The Brief</TypeFade></h2>
             <p className="case-body">{c.desc}</p>
 
-            <h2 className="case-h"><TypeFade>Tools Recovered at the Scene</TypeFade></h2>
+            <h2 className="case-h"><TypeFade>Tools &amp; technologies</TypeFade></h2>
             <div className="tags" style={{ marginTop: 0 }}>
               {c.tags.map((t) => (
                 <span className="tag" key={t}>
@@ -94,7 +94,7 @@ export default function CaseFilePage({ params }: Props) {
               </dl>
               {related.length > 0 && (
                 <div className="built-related">
-                  <h4>Related exhibits</h4>
+                  <h4>Related projects</h4>
                   {related.map((r) => (
                     <Link key={r.slug} href={`/case-files/${r.slug}`}>
                       Project {r.letter} — {r.headline}

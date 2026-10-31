@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { Courier_Prime, Libre_Caslon_Display, Libre_Caslon_Text, Libre_Franklin, Special_Elite } from "next/font/google";
+import { Libre_Caslon_Text, Libre_Franklin } from "next/font/google";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReveals from "@/components/ScrollReveals";
 import "./globals.css";
 import "@/styles/device-mockups.css";
+import "@/styles/newspaper.css";
 
-const display = Libre_Caslon_Display({ subsets: ["latin"], weight: "400", variable: "--font-display", display: "swap" });
 const body = Libre_Caslon_Text({ subsets: ["latin"], weight: ["400", "700"], style: ["normal", "italic"], variable: "--font-body", display: "swap" });
 const label = Libre_Franklin({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-label", display: "swap" });
-const stamp = Special_Elite({ subsets: ["latin"], weight: "400", variable: "--font-stamp", display: "swap" });
-const mono = Courier_Prime({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Renz Carljansen Sarucam — Full Stack Developer & R&D Engineer",
@@ -47,11 +45,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} ${label.variable} ${mono.variable} ${stamp.variable}`}>
+    <html lang="en" className={`${body.variable} ${label.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="color-scheme" content="light" />
-        <meta name="theme-color" content="#f1ecdf" />
+        <meta name="theme-color" content="#e9e8e1" />
       </head>
       <body suppressHydrationWarning>
         {/* Rubber-stamp texture: wobbly edges + ink-starved speckle */}

@@ -19,10 +19,25 @@ export default function Nav() {
   const [bar, setBar] = useState<{ x: number; w: number } | null>(null);
   const [animate, setAnimate] = useState(false);
   const wrap = useRef<HTMLElement>(null);
+  const header = useRef<HTMLElement>(null);
   const items = useRef<Record<string, HTMLAnchorElement | null>>({});
   // while the page smooth-scrolls after a click, keep the clicked link as current instead of
   // letting the sections it passes on the way steal the underline
   const lock = useRef<{ id: string; timer?: ReturnType<typeof setTimeout> } | null>(null);
+
+  useEffect(() => {
+    if (!header.current) return;
+    const updateHeight = () => {
+      document.documentElement.style.setProperty("--nav-height", `${header.current?.getBoundingClientRect().height ?? 64}px`);
+    };
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(header.current);
+    return () => {
+      observer.disconnect();
+      document.documentElement.style.removeProperty("--nav-height");
+    };
+  }, []);
 
   // which section is current
   useEffect(() => {
@@ -88,7 +103,7 @@ export default function Nav() {
   }, [bar, animate]);
 
   return (
-    <header className="nav">
+    <header className="nav" ref={header}>
       <div className="wrap nav-inner">
         <a className="nav-brand" href="#top" aria-label="Back to top">
           Renz S.

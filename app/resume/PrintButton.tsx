@@ -59,9 +59,9 @@ export default function PrintButton() {
 
         .pb-modal {
           width: 460px; max-width: 100%;
-          background: #f1ecdf; color: #15120f;
-          border: 2px solid #15120f;
-          box-shadow: 8px 8px 0 #15120f;
+          background: var(--paper); color: var(--ink);
+          border: 2px solid var(--ink);
+          box-shadow: 8px 8px 0 var(--ink);
           padding: 30px 32px 28px;
           animation: pb-rise 0.28s cubic-bezier(0.22, 1, 0.36, 1) forwards;
           font-family: var(--serif-body), Georgia, serif;
@@ -71,56 +71,56 @@ export default function PrintButton() {
         .pb-kicker {
           margin: 0 0 8px;
           font-family: var(--sans), Arial, sans-serif; font-size: 11px; font-weight: 700;
-          letter-spacing: 0.18em; text-transform: uppercase; color: #b3261e;
+          letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink);
         }
         .pb-title {
-          margin: 0 0 14px; padding-bottom: 12px; border-bottom: 3px double #15120f;
+          margin: 0 0 14px; padding-bottom: 12px; border-bottom: 3px double var(--ink);
           font-family: var(--serif-display), Georgia, serif; font-weight: 400;
           font-size: 34px; line-height: 1.05; letter-spacing: -0.01em;
         }
-        .pb-sub { margin: 0 0 20px; font-size: 15.5px; font-style: italic; color: #3d372f; line-height: 1.5; }
+        .pb-sub { margin: 0 0 20px; font-size: 15.5px; font-style: italic; color: var(--ink-2); line-height: 1.5; }
 
-        .pb-steps { list-style: none; margin: 0 0 24px; padding: 0; border-top: 1px solid #6b6458; }
+        .pb-steps { list-style: none; margin: 0 0 24px; padding: 0; border-top: 1px solid var(--ink-3); }
         .pb-step {
           display: flex; align-items: flex-start; gap: 14px;
-          padding: 13px 0; border-bottom: 1px solid #6b6458;
-          font-size: 15.5px; line-height: 1.5; color: #3d372f;
+          padding: 13px 0; border-bottom: 1px solid var(--ink-3);
+          font-size: 15.5px; line-height: 1.5; color: var(--ink-2);
         }
         .pb-num {
           flex-shrink: 0; width: 26px; height: 26px; margin-top: 1px;
           display: flex; align-items: center; justify-content: center;
-          background: #15120f; color: #f1ecdf;
+          background: var(--ink); color: var(--paper);
           font-family: var(--sans), Arial, sans-serif; font-size: 12px; font-weight: 700;
         }
-        .pb-step b { color: #15120f; }
+        .pb-step b { color: var(--ink); }
 
         .pb-actions { display: flex; gap: 12px; flex-wrap: wrap; }
         .pb-btn {
           font-family: var(--sans), Arial, sans-serif; font-size: 12px; font-weight: 700;
           letter-spacing: 0.14em; text-transform: uppercase;
-          padding: 14px 22px; border: 2px solid #15120f; cursor: pointer;
+          padding: 14px 22px; border: 2px solid var(--ink); cursor: pointer;
           transition: background 0.18s ease, color 0.18s ease;
         }
-        .pb-btn-primary { flex: 1; background: #15120f; color: #f1ecdf; }
-        .pb-btn-primary:hover { background: transparent; color: #15120f; }
-        .pb-btn-cancel { background: transparent; color: #15120f; }
-        .pb-btn-cancel:hover { background: #15120f; color: #f1ecdf; }
+        .pb-btn-primary { flex: 1; background: var(--ink); color: var(--paper); }
+        .pb-btn-primary:hover { background: transparent; color: var(--ink); }
+        .pb-btn-cancel { background: transparent; color: var(--ink); }
+        .pb-btn-cancel:hover { background: var(--ink); color: var(--paper); }
 
         .pb-trigger {
           position: fixed; bottom: 24px; right: 24px; z-index: 999;
           display: inline-flex; align-items: center; gap: 10px;
           padding: 13px 20px;
-          background: #f1ecdf; color: #15120f;
-          border: 2px solid #15120f; box-shadow: 4px 4px 0 #15120f;
+          background: var(--paper); color: var(--ink);
+          border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink);
           font-family: var(--sans), Arial, sans-serif; font-size: 12px; font-weight: 700;
           letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
           transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
-        .pb-trigger:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #15120f; }
-        .pb-trigger:active { transform: translate(4px, 4px); box-shadow: 0 0 0 #15120f; }
+        .pb-trigger:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+        .pb-trigger:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--ink); }
 
         @media (max-width: 480px) {
-          .pb-modal { padding: 24px 20px 22px; box-shadow: 5px 5px 0 #15120f; }
+          .pb-modal { padding: 24px 20px 22px; box-shadow: 5px 5px 0 var(--ink); }
           .pb-title { font-size: 28px; }
           .pb-trigger { bottom: 14px; right: 14px; padding: 11px 14px; }
         }
