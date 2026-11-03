@@ -18,10 +18,11 @@ export type Certificate = {
 
 export type WorkExperience = {
   company: string;
-  location: string;
+  location?: string;
   role: string;
   period: string;
   description: string;
+  link?: string;
   projects?: string;
   autoProjectsFromPlace?: string;
   tools: string[];
@@ -149,6 +150,14 @@ export const skillGroups: SkillGroup[] = [
 ];
 
 export const workExperiences: WorkExperience[] = [
+  {
+    company: "Rentora",
+    role: "Fullstack Developer",
+    period: "",
+    description: "Developed a full-stack boarding house management application for Philippine landlords, with a desktop admin interface and an installable mobile app for boarders. Built room and bed management, monthly billing, payment-proof verification, receipts, maintenance requests, and announcements using Next.js and Supabase.",
+    link: "https://github.com/RenzSarucam/Rentora",
+    tools: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "PWA"],
+  },
   {
     company: "DSG Son's Group Inc.",
     location: "Philippines",

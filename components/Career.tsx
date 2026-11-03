@@ -19,8 +19,13 @@ function Entry({ w }: { w: (typeof workExperiences)[number] }) {
       <div className="t-meta">
         <h3 className="t-role"><TypeFade>{w.role}</TypeFade></h3>
         <p className="t-org">
-          {w.company} · {w.location}
+          {w.company}{w.location && <> · {w.location}</>}
         </p>
+        {w.link && (
+          <a className="t-more" href={w.link} target="_blank" rel="noopener noreferrer">
+            View source on GitHub
+          </a>
+        )}
       </div>
       <div className="t-body">
         <p id={descriptionId} className="t-desc">{text}</p>

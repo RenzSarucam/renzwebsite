@@ -263,9 +263,17 @@ export default function ResumePage() {
                   <div>
                     <span className="rs-exp-role">{exp.role}</span>
                     {" · "}
-                    <span className="rs-exp-company">{exp.company}</span>
-                    {" · "}
-                    <span className="rs-exp-place">{exp.location}</span>
+                    <span className="rs-exp-company">
+                      {exp.link ? (
+                        <a href={exp.link} target="_blank" rel="noopener noreferrer">{exp.company}</a>
+                      ) : exp.company}
+                    </span>
+                    {exp.location && (
+                      <>
+                        {" · "}
+                        <span className="rs-exp-place">{exp.location}</span>
+                      </>
+                    )}
                   </div>
                 </div>
                 <div className="rs-exp-desc">{exp.description}</div>
