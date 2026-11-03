@@ -263,7 +263,7 @@ export const projects: Project[] = [
     desc: "A boarding house management platform for Philippine landlords, with a desktop admin interface and an installable mobile app for boarders. As Fullstack Developer, built room and bed management, boarder records, monthly billing, payment-proof verification, receipts, maintenance requests, and announcements. Developed the frontend and backend with Next.js, React, TypeScript, Tailwind CSS, and Supabase, using PostgreSQL, role-based access, and row-level security to protect each boarding house's data.",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "PWA"],
     type: "Full Stack",
-    status: "MVP",
+    status: "Ongoing",
     link: "https://github.com/RenzSarucam/Rentora",
     place: "Personal Project",
   },
