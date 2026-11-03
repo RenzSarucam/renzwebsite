@@ -151,14 +151,6 @@ export const skillGroups: SkillGroup[] = [
 
 export const workExperiences: WorkExperience[] = [
   {
-    company: "Rentora",
-    role: "Fullstack Developer",
-    period: "",
-    description: "Developed a full-stack boarding house management application for Philippine landlords, with a desktop admin interface and an installable mobile app for boarders. Built room and bed management, monthly billing, payment-proof verification, receipts, maintenance requests, and announcements using Next.js and Supabase.",
-    link: "https://github.com/RenzSarucam/Rentora",
-    tools: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "PWA"],
-  },
-  {
     company: "DSG Son's Group Inc.",
     location: "Philippines",
     role: "Research And Development Engineer",
@@ -266,6 +258,15 @@ export const workExperiences: WorkExperience[] = [
 ];
 
 export const projects: Project[] = [
+  {
+    title: "Rentora (Boarding House Management)",
+    desc: "A boarding house management platform for Philippine landlords, with a desktop admin interface and an installable mobile app for boarders. As Fullstack Developer, built room and bed management, boarder records, monthly billing, payment-proof verification, receipts, maintenance requests, and announcements. Developed the frontend and backend with Next.js, React, TypeScript, Tailwind CSS, and Supabase, using PostgreSQL, role-based access, and row-level security to protect each boarding house's data.",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "PWA"],
+    type: "Full Stack",
+    status: "MVP",
+    link: "https://github.com/RenzSarucam/Rentora",
+    place: "Personal Project",
+  },
   {
     title: "Keycloak (Identity & Access Management)",
     desc: "Deployed with Docker as the open-source identity and access management (IAM) platform used at DSG Son's Group Inc. Keycloak is a self-hosted, open-source solution that provides single sign-on (SSO), centralized user and role management, and standards-based authentication through OpenID Connect, OAuth 2.0, and SAML. Running it as a container keeps the setup reproducible and easy to upgrade alongside the organization's other Dockerized systems.",
