@@ -1,11 +1,20 @@
 "use client";
 
 import Link from "next/link";
+<<<<<<< HEAD
 import { useMemo, useRef, useState } from "react";
+=======
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
+>>>>>>> 71e37e9277966704943729a342b36013b4d9d884
 import { caseFiles } from "@/app/_lib/case-files";
-import CaseArt from "@/components/CaseArt";
+import CaseArt, { isConfidentialProject } from "@/components/CaseArt";
+import TypeFade from "@/components/TypeFade";
 import { useCollapseScroll } from "@/app/_lib/use-collapse-scroll";
+<<<<<<< HEAD
 import { useScrollReveal } from "@/app/_lib/use-scroll-reveal";
+=======
+import CollapsibleSection from "@/components/CollapsibleSection";
+>>>>>>> 71e37e9277966704943729a342b36013b4d9d884
 
 const FILTERS = ["All", "Full Stack", "Docker", "Mobile", "Figma"] as const;
 const INITIAL = 9;
@@ -13,9 +22,20 @@ const INITIAL = 9;
 export default function Works({ images }: { images: Record<string, string> }) {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
   const [expanded, setExpanded] = useState(false);
+<<<<<<< HEAD
   const grid = useRef<HTMLDivElement>(null);
   useScrollReveal(grid, ".exhibit", `${filter}:${expanded}`);
+=======
+  const previousFilter = useRef(filter);
+>>>>>>> 71e37e9277966704943729a342b36013b4d9d884
   useCollapseScroll(expanded, "work");
+
+  useLayoutEffect(() => {
+    if (previousFilter.current !== filter) {
+      document.getElementById("work")?.scrollIntoView({ block: "start", behavior: "instant" });
+      previousFilter.current = filter;
+    }
+  }, [filter]);
 
   const counts = useMemo(
     () =>
@@ -32,6 +52,7 @@ export default function Works({ images }: { images: Record<string, string> }) {
   const shown = expanded ? filtered : filtered.slice(0, INITIAL);
 
   return (
+<<<<<<< HEAD
     <div>
       <div className="filters" role="group" aria-label="Filter exhibits">
         {FILTERS.map((f) => (
@@ -66,6 +87,45 @@ export default function Works({ images }: { images: Record<string, string> }) {
             <div className="exhibit-hit">
               <CaseArt c={c} image={images[c.slug]} />
             </div>
+=======
+    <CollapsibleSection
+      id="work"
+      kicker="Selected Work"
+      title="Projects"
+      sub="Websites, applications, and design projects I’ve built."
+      stickyHeader
+      alwaysOpen
+      toolbar={
+        <div className="filters" role="group" aria-label="Filter projects">
+          {FILTERS.map((f) => (
+            <button
+              key={f}
+              className="chip"
+              aria-pressed={filter === f}
+              onClick={() => {
+                setFilter(f);
+                setExpanded(false);
+              }}
+            >
+              {f}
+              <small>{counts[f]}</small>
+            </button>
+          ))}
+        </div>
+      }
+    >
+      <div className="works-grid">
+        {shown.map((c) => (
+          <article className={`exhibit is-linked${images[c.slug] || isConfidentialProject(c.slug) ? "" : " exhibit--text"}`} key={c.slug}>
+            <p className="exhibit-letter">Project {c.letter}</p>
+            <p className="exhibit-client">{c.place?.split(" · ")[0] ?? "Personal Project"}</p>
+            <h3 className="exhibit-title">
+              <Link href={`/case-files/${c.slug}`}><TypeFade>{c.headline}</TypeFade></Link>
+            </h3>
+            {(images[c.slug] || isConfidentialProject(c.slug)) && <Link href={`/case-files/${c.slug}`} className="exhibit-hit" aria-label={`View project: ${c.headline}`} tabIndex={-1}>
+              <CaseArt c={c} image={images[c.slug]} />
+            </Link>}
+>>>>>>> 71e37e9277966704943729a342b36013b4d9d884
             <div className="exhibit-body">
               <p className="exhibit-desc">{c.desc}</p>
               <div className="tags">
@@ -77,9 +137,15 @@ export default function Works({ images }: { images: Record<string, string> }) {
               </div>
               <div className="exhibit-foot">
                 <span className="exhibit-where">{c.types.join(" · ")}</span>
+<<<<<<< HEAD
                 <span className="exhibit-link">
                   Open case file <span aria-hidden="true">→</span>
                 </span>
+=======
+                <Link className="exhibit-link" href={`/case-files/${c.slug}`}>
+                  View project <span aria-hidden="true">→</span>
+                </Link>
+>>>>>>> 71e37e9277966704943729a342b36013b4d9d884
               </div>
             </div>
           </Link>
@@ -89,10 +155,10 @@ export default function Works({ images }: { images: Record<string, string> }) {
       {filtered.length > INITIAL && (
         <div className="more-row">
           <button className="btn" onClick={() => setExpanded((v) => !v)}>
-            {expanded ? "Seal the archive" : `Pull the archive (${filtered.length - INITIAL} more)`}
+            {expanded ? "Show fewer projects" : `Show ${filtered.length - INITIAL} more projects`}
           </button>
         </div>
       )}
-    </div>
+    </CollapsibleSection>
   );
 }

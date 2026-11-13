@@ -4,8 +4,9 @@ import { notFound } from "next/navigation";
 import { caseFiles, getCase } from "@/app/_lib/case-files";
 import { getCaseImages } from "@/app/_lib/case-images";
 import { contactEmail, profile } from "@/app/_lib/portfolio-data";
-import CaseArt from "@/components/CaseArt";
+import CaseArt, { isConfidentialProject } from "@/components/CaseArt";
 import CaseImagePreview from "@/components/CaseImagePreview";
+import TypeFade from "@/components/TypeFade";
 
 type Props = { params: { slug: string } };
 
@@ -19,7 +20,7 @@ export function generateMetadata({ params }: Props): Metadata {
   const c = getCase(params.slug);
   if (!c) return {};
   return {
-    title: `${c.headline} — Case File | ${profile.fullName}`,
+    title: `${c.headline} — Project | ${profile.fullName}`,
     description: c.deck,
   };
 }
@@ -43,21 +44,21 @@ export default function CaseFilePage({ params }: Props) {
     <div className="page">
       <div className="wrap case">
         <div className="case-bar label">
-          <Link href="/#work" className="back-link"><span>← Back to the case</span></Link>
-          <span className="hide-sm">The Renz Report · Case Files</span>
+          <Link href="/#work" className="back-link"><span>← Back to projects</span></Link>
+          <span className="hide-sm">{profile.fullName} · Projects</span>
           <span>Filed from Davao City</span>
         </div>
 
         <p className="kicker" style={{ marginTop: 40 }}>
-          Case file · Exhibit {c.letter} · {place}
+          {place}
         </p>
         <h1 className="case-title">{c.headline}</h1>
         <blockquote className="case-deck">{c.deck}</blockquote>
         <p className="byline" style={{ borderBottom: 0, paddingBottom: 0 }}>
-          By <b style={{ color: "var(--ink)" }}>The Detective Desk</b> · {c.types.join(" / ")} · Status: {c.status}
+          By <b style={{ color: "var(--ink)" }}>{profile.fullName}</b> · {c.types.join(" / ")} · Status: {c.status}
         </p>
 
-        {image && !["jit-jairo-institute-of-technology-design", "jairosoft-elms-designer"].includes(c.slug) ? (
+        {image && !isConfidentialProject(c.slug) ? (
           <CaseImagePreview image={image} title={c.headline}>
             <CaseArt c={c} image={image} large />
           </CaseImagePreview>
@@ -67,10 +68,10 @@ export default function CaseFilePage({ params }: Props) {
 
         <div className="case-grid">
           <div className="case-main">
-            <h2 className="case-h">The Brief</h2>
+            <h2 className="case-h"><TypeFade>The Brief</TypeFade></h2>
             <p className="case-body">{c.desc}</p>
 
-            <h2 className="case-h">Tools Recovered at the Scene</h2>
+            <h2 className="case-h"><TypeFade>Tools &amp; technologies</TypeFade></h2>
             <div className="tags" style={{ marginTop: 0 }}>
               {c.tags.map((t) => (
                 <span className="tag" key={t}>
@@ -87,16 +88,16 @@ export default function CaseFilePage({ params }: Props) {
                 <div><dt>Stack</dt><dd>{c.tags.slice(0, 3).join(" · ")}</dd></div>
                 <div><dt>Type</dt><dd>{c.types.join(" · ")}</dd></div>
                 <div><dt>Client</dt><dd>{place}</dd></div>
-                <div><dt>Exhibit</dt><dd>{c.letter}</dd></div>
-                <div><dt>Status</dt><dd>{c.status === "Completed" ? "Case closed" : c.status}</dd></div>
+                <div><dt>Project</dt><dd>{c.letter}</dd></div>
+                <div><dt>Status</dt><dd>{c.status}</dd></div>
                 <div><dt>Deployment</dt><dd>{c.deploy}</dd></div>
               </dl>
               {related.length > 0 && (
                 <div className="built-related">
-                  <h4>Related exhibits</h4>
+                  <h4>Related projects</h4>
                   {related.map((r) => (
                     <Link key={r.slug} href={`/case-files/${r.slug}`}>
-                      Exhibit {r.letter} — {r.headline}
+                      Project {r.letter} — {r.headline}
                     </Link>
                   ))}
                 </div>
@@ -108,25 +109,25 @@ export default function CaseFilePage({ params }: Props) {
               </a>
             ) : (
               <p className="form-note">
-                This case file is sealed — the source and live system are internal. Ask me about it:{" "}
+                This project is used internally, so I can’t share its source code or live system. Contact me to learn more:{" "}
                 <a href={`mailto:${contactEmail}?subject=${encodeURIComponent(`About ${c.headline}`)}`}>{contactEmail}</a>
               </p>
             )}
           </aside>
         </div>
 
-        <nav className="case-pager" aria-label="More case files">
+        <nav className="case-pager" aria-label="More projects">
           {prev ? (
-            <Link href={`/case-files/${prev.slug}`}>
-              <span className="label">← Previous · Exhibit {prev.letter}</span>
+            <Link className="case-pager-prev" rel="prev" href={`/case-files/${prev.slug}`}>
+              <span className="label">← Previous project · {prev.letter}</span>
               <b>{prev.headline}</b>
             </Link>
           ) : (
             <span />
           )}
           {next ? (
-            <Link href={`/case-files/${next.slug}`} style={{ textAlign: "right" }}>
-              <span className="label">Next · Exhibit {next.letter} →</span>
+            <Link className="case-pager-next" rel="next" href={`/case-files/${next.slug}`}>
+              <span className="label">Next project · {next.letter} →</span>
               <b>{next.headline}</b>
             </Link>
           ) : (

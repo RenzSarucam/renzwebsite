@@ -18,10 +18,11 @@ export type Certificate = {
 
 export type WorkExperience = {
   company: string;
-  location: string;
+  location?: string;
   role: string;
   period: string;
   description: string;
+  link?: string;
   projects?: string;
   autoProjectsFromPlace?: string;
   tools: string[];
@@ -153,10 +154,10 @@ export const workExperiences: WorkExperience[] = [
     company: "DSG Son's Group Inc.",
     location: "Philippines",
     role: "Research And Development Engineer",
-    period: "April 2026 - Present",
-    description: "Working as an R&D Engineer responsible for designing and deploying multi-project server infrastructure using Docker and Docker Compose. Manages CI/CD pipelines via GitHub Actions self-hosted runners, administers Linux servers with multi-environment (testing/production) setups, maintains shared database architecture, and develops full stack internal web applications across multiple business units.",
+    period: "April 2026",
+    description: "Built Opsora, a self-hosted monitoring dashboard that helps administrators track application health, uptime, and response times. Brought web applications, servers, and Docker containers into one view, with alerts and an activity log for troubleshooting. For other internal applications, handled Docker containerization and automated CI/CD pipelines using GitHub Actions self-hosted runners. Managed Linux deployments with separate testing and production environments.",
     autoProjectsFromPlace: "DSG Son's Group Inc.",
-    tools: ["Linux CLI", "Docker", "Git / GitHub", "VS Code", "AI", "Node.js", "Next.js", "Nginx", "Laravel", "React", "MySQL", "CI/CD", "GitHub Actions"],
+    tools: ["Laravel", "React", "Next.js", "Node.js", "MySQL", "Docker", "CI/CD", "GitHub Actions", "Linux CLI", "Nginx", "Git / GitHub", "VS Code", "AI"],
   },
   {
     company: "Private Client",
@@ -258,6 +259,15 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "Rentora (Boarding House Management)",
+    desc: "A boarding house management platform for Philippine landlords, with a desktop admin interface and an installable mobile app for boarders. As Fullstack Developer, built room and bed management, boarder records, monthly billing, payment-proof verification, receipts, maintenance requests, and announcements. Developed the frontend and backend with Next.js, React, TypeScript, Tailwind CSS, and Supabase, using PostgreSQL, role-based access, and row-level security to protect each boarding house's data.",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "PWA"],
+    type: "Full Stack",
+    status: "Completed",
+    link: "https://github.com/RenzSarucam/Rentora",
+    place: "Personal Project",
+  },
+  {
     title: "Keycloak (Identity & Access Management)",
     desc: "Deployed with Docker as the open-source identity and access management (IAM) platform used at DSG Son's Group Inc. Keycloak is a self-hosted, open-source solution that provides single sign-on (SSO), centralized user and role management, and standards-based authentication through OpenID Connect, OAuth 2.0, and SAML. Running it as a container keeps the setup reproducible and easy to upgrade alongside the organization's other Dockerized systems.",
     tags: ["Docker", "Keycloak", "IAM", "SSO", "OpenID Connect", "OAuth 2.0", "SAML", "Open Source", "Self-hosted"],
@@ -277,7 +287,7 @@ export const projects: Project[] = [
   },
   {
     title: "Opsora (Infrastructure & Application Monitoring Platform)",
-    desc: "A self-hosted infrastructure and application monitoring platform built as a personal project and actively used at DSG Son's Group Inc. to monitor the organization's deployed internal systems. Opsora gives administrators a single dark-themed dashboard to track application health, uptime, and response times across all deployed services — showing which applications are online, warning, or offline in real time. It centralizes monitoring for web applications, servers, and Docker containers with deduplication alerts and an activity log. Built with Next.js App Router + TypeScript frontend, Laravel 12 backend with Sanctum session auth, MySQL, and Docker Compose.",
+    desc: "A self-hosted infrastructure and application monitoring platform built as a personal project for monitoring deployed internal systems at DSG Son's Group Inc. Opsora gives administrators a single dark-themed dashboard to track application health, uptime, and response times across all deployed services — showing which applications are online, warning, or offline in real time. It centralizes monitoring for web applications, servers, and Docker containers with deduplication alerts and an activity log. Built with Next.js App Router + TypeScript frontend, Laravel 12 backend with Sanctum session auth, MySQL, and Docker Compose.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Laravel 12", "Sanctum", "MySQL", "Docker", "Recharts", "Monitoring", "Self-hosted"],
     type: ["Full Stack", "Docker"],
     status: "Completed",
@@ -614,12 +624,5 @@ export const certificates: Certificate[] = [
     year: "2024",
     color: "#4285f4",
     image: "/images/certificates/gdg-build-with-ai.jpg",
-  },
-  {
-    title: "Champion - Mobile Legends: Bang Bang Tournament (IT Day 2021)",
-    issuer: "Holy Cross of Davao College - ITS",
-    year: "2021",
-    color: "#ef9f27",
-    image: "/images/certificates/hcdc-mlbb-champion.jpg",
   },
 ];

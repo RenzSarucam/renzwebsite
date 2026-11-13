@@ -6,39 +6,39 @@ import { getDavaoWeather } from "@/app/_lib/weather";
 export default async function Front() {
   const weather = await getDavaoWeather();
   const stats: [string, string][] = [
-    [`No. ${projects.length}`, "Exhibits on file"],
+    [`${projects.length}`, "Projects"],
     // live from Open-Meteo; falls back to the fixed 32°C line if the service can't be reached
     [weather ? `${weather.temp}°C` : "32°C", `Davao City · ${weather ? weather.label : "Light on bugs"}`],
-    ["Global", "Jurisdiction · remote-friendly"],
-    ["Open", "Status · taking new cases"],
+    ["Global", "Available for remote work"],
+    ["Open", "Available for new projects"],
   ];
 
   return (
     <section className="wrap hero" aria-labelledby="headline">
       <div className="hero-strip label">
-        <span>Front Page</span>
-        <span>Filed under: Open Investigations</span>
+        <span>Portfolio</span>
+        <span>Web development &amp; deployment</span>
       </div>
 
       <div className="hero-grid">
         <div className="hero-left">
-          <p className="hero-kicker label">Case No. 2023-RS — Findings Published</p>
+          <p className="hero-kicker label">Full-Stack Developer · Davao City</p>
           <h1 id="headline" className="hero-title">
-{/*  */}            Building software that simplifies work — <em>from idea to deployment.</em>
+            Your idea.<br />Built &amp; deployed.
           </h1>
           <blockquote className="hero-deck">
-            {profile.firstName} builds full-stack web applications for DSG Son&apos;s Group Inc., manages Docker
-            infrastructure and CI/CD pipelines, and creates scalable, reliable, and user-focused digital solutions.
+            I turn business ideas into dependable web applications — with thoughtful design, full-stack development,
+            and deployment handled from start to finish.
           </blockquote>
           <p className="hero-byline label">
-            By <b>The Detective Desk</b> · Reporting from {profile.location.split(",")[0]}, between deploys
+            {profile.location}
           </p>
           <div className="btn-row">
             <a className="btn btn-solid" href="#work">
-              Open the evidence →
+              View projects →
             </a>
             <a className="btn" href="#contact">
-              Get in touch
+              Discuss a project
             </a>
           </div>
 

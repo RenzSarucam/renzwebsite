@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import Intro from "@/components/Intro";
+>>>>>>> 71e37e9277966704943729a342b36013b4d9d884
 import Nav from "@/components/Nav";
 import Masthead from "@/components/Masthead";
 import Front from "@/components/Front";
@@ -10,6 +14,7 @@ import Credentials from "@/components/Credentials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
+import TypeFade from "@/components/TypeFade";
 import { getCaseImages } from "@/app/_lib/case-images";
 
 function Section({ id, kicker, title, sub, page, children }: {
@@ -26,8 +31,8 @@ function Section({ id, kicker, title, sub, page, children }: {
         <Reveal>
           <div className="section-head">
             <div>
-              <p className="kicker">{kicker}</p>
-              <h2 className="section-title">{title}</h2>
+              <p className="kicker"><TypeFade>{kicker}</TypeFade></p>
+              <h2 className="section-title"><TypeFade>{title}</TypeFade></h2>
               {sub && <p className="section-sub">{sub}</p>}
             </div>
             <span className="section-no">{page}</span>
@@ -42,25 +47,27 @@ function Section({ id, kicker, title, sub, page, children }: {
 export default function Home() {
   return (
     <>
+<<<<<<< HEAD
+=======
+      <Intro />
+>>>>>>> 71e37e9277966704943729a342b36013b4d9d884
       <div className="page">
         <Masthead />
         <Nav />
         <main>
           <Front />
           <Profile />
-          <Section id="work" kicker="The Evidence Room" title="Exhibits" sub="Every system, tool and side project on file — all confirmed." page="File 03">
-            <Works images={getCaseImages()} />
-          </Section>
-          <Section id="stack" kicker="Forensics" title="The Lab Report" page="Substances detected on the subject, as of this edition">
+          <Works images={getCaseImages()} />
+          <CollapsibleSection id="stack" kicker="Technical Skills" title="Tools I Use" stickyHeader alwaysOpen>
             <StackLedger />
-          </Section>
-          <CollapsibleSection id="career" kicker="Known Whereabouts" title="The Case History" sub="Most recent sighting first." file="File 05" stickyHeader>
+          </CollapsibleSection>
+          <CollapsibleSection id="career" kicker="Work Experience" title="Where I’ve Worked" sub="My roles and projects, starting with the most recent." stickyHeader alwaysOpen>
             <Career />
           </CollapsibleSection>
-          <CollapsibleSection id="credentials" kicker="Records" title="Schooling & Clearances" file="File 06" stickyHeader>
+          <CollapsibleSection id="credentials" kicker="Education & Certificates" title="Education & Certificates" file="Credentials" stickyHeader>
             <Credentials />
           </CollapsibleSection>
-          <Section id="contact" kicker="Get in Touch" title="Open a New Case" sub="Projects, roles, collaborations — or just a hello." page="File 07">
+          <Section id="contact" kicker="Contact" title="Let’s Work Together" sub="Have a project or role in mind? I’d be glad to hear from you." page="Contact">
             <Contact />
           </Section>
         </main>

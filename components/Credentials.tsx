@@ -17,7 +17,7 @@ export default function Credentials() {
         ))}
       </div>
       <div className="cred-col">
-        <h3 className="cred-h">Clearances &amp; Commendations</h3>
+        <h3 className="cred-h">Certificates &amp; Awards</h3>
         {certificates.map((c) => (
           <a className="cert" key={c.title} href={c.image} target="_blank" rel="noopener noreferrer">
             <b>{c.title}</b>

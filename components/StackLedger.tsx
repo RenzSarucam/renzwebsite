@@ -1,6 +1,6 @@
 import { skillGroups } from "@/app/_lib/portfolio-data";
 
-/** Short "evidence tag" shown in the Code column. */
+/** Short label shown in the skills table. */
 const CODES: Record<string, string> = {
   "React / Next.js": "RNX",
   "HTML / CSS": "HTML",
@@ -48,14 +48,14 @@ export default function StackLedger() {
         <table className="lab">
           <thead>
             <tr>
-              <th scope="col">Substance</th>
-              <th scope="col" className="lab-code">Code</th>
-              <th scope="col">Detected</th>
-              <th scope="col" className="lab-finding">Finding</th>
+              <th scope="col">Skill</th>
+              <th scope="col" className="lab-code">Short name</th>
+              <th scope="col">Usage</th>
+              <th scope="col" className="lab-finding">Experience</th>
             </tr>
           </thead>
           <tbody>
-            {rows.map((r, i) => {
+            {rows.map((r) => {
               const f = finding(r.level);
               return (
                 <tr key={r.name}>
@@ -63,7 +63,7 @@ export default function StackLedger() {
                   <td className="lab-code">{CODES[r.name] ?? r.name.slice(0, 4).toUpperCase()}</td>
                   <td className="lab-detected">{detected(r.level)}</td>
                   <td className="lab-finding">
-                    <span className={`finding finding-${f.tone}`} style={{ transform: `rotate(${i % 2 ? 1.2 : -1.2}deg)` }}>
+                    <span className={`finding finding-${f.tone}`}>
                       {f.label}
                     </span>
                   </td>
@@ -74,7 +74,7 @@ export default function StackLedger() {
         </table>
       </div>
       <p className="disclaimer">
-        Findings are self-reported and illustrative — a snapshot of where the hours go, not admissible in court.
+        Skill levels are my own estimate, based on the tools I use in my work and projects.
       </p>
     </div>
   );

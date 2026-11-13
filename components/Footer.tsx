@@ -1,11 +1,12 @@
 import { contactEmail, githubUrl, linkedinUrl, profile } from "@/app/_lib/portfolio-data";
+import TypeFade from "@/components/TypeFade";
 
 const sections: [string, string][] = [
-  ["Evidence Room", "#work"],
-  ["Lab Report", "#stack"],
-  ["Case History", "#career"],
-  ["Records", "#credentials"],
-  ["Get in Touch", "#contact"],
+  ["Projects", "#work"],
+  ["Skills", "#stack"],
+  ["Experience", "#career"],
+  ["Education", "#credentials"],
+  ["Contact", "#contact"],
 ];
 
 const iconProps = {
@@ -24,18 +25,17 @@ export default function Footer() {
   return (
     <footer className="ft">
       <div className="wrap">
-        <p className="ft-name">{profile.fullName}</p>
+        <p className="ft-name"><TypeFade>{profile.fullName}</TypeFade></p>
 
         <div className="ft-grid">
           <p className="ft-about">
-            A full-stack web developer in {profile.location}. Building and running internal systems at DSG Son&apos;s
-            Group Inc., with Docker and CI/CD behind every one. This broadsheet is hand-set in Libre Caslon, Libre
-            Franklin and Courier Prime.
+            I&apos;m a full-stack web developer in {profile.location}. My experience covers internal web
+            applications, deployment, and the infrastructure that supports them.
           </p>
 
           <div>
-            <h4>Sections</h4>
-            <ul>
+            <h4><TypeFade>Sections</TypeFade></h4>
+            <ul className="ft-sections">
               {sections.map(([label, href]) => (
                 <li key={href}>
                   <a href={href}>{label}</a>
@@ -45,7 +45,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4>The Desk</h4>
+            <h4><TypeFade>Contact</TypeFade></h4>
             <ul>
               <li>{profile.location}</li>
               <li>PHT · Remote-first</li>
@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4>Wire Services</h4>
+            <h4><TypeFade>Links</TypeFade></h4>
             <ul>
               <li>
                 <a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -71,14 +71,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="ft-stamp-row">
-          <span className="ft-stamp" aria-hidden="true">Case closed</span>
-        </div>
-
         <div className="ft-bottom">
-          <span>
-            © 2026 {profile.fullName} · All rights reserved · Printed in Davao City
-          </span>
+          <span>© 2026 {profile.fullName} · Davao City, Philippines</span>
           <div className="ft-icons">
             <a href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <svg {...iconProps}>
