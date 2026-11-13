@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { caseFiles } from "@/app/_lib/case-files";
 import CaseArt from "@/components/CaseArt";
 import { useCollapseScroll } from "@/app/_lib/use-collapse-scroll";
+import { useScrollReveal } from "@/app/_lib/use-scroll-reveal";
 
 const FILTERS = ["All", "Full Stack", "Docker", "Mobile", "Figma"] as const;
 const INITIAL = 9;
@@ -12,6 +13,8 @@ const INITIAL = 9;
 export default function Works({ images }: { images: Record<string, string> }) {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
   const [expanded, setExpanded] = useState(false);
+  const grid = useRef<HTMLDivElement>(null);
+  useScrollReveal(grid, ".exhibit", `${filter}:${expanded}`);
   useCollapseScroll(expanded, "work");
 
   const counts = useMemo(
@@ -47,17 +50,22 @@ export default function Works({ images }: { images: Record<string, string> }) {
         ))}
       </div>
 
-      <div className="works-grid">
+      <div className="works-grid" ref={grid}>
         {shown.map((c) => (
-          <article className="exhibit is-linked" key={c.slug}>
+          <Link
+            href={`/case-files/${c.slug}`}
+            className="exhibit is-linked reveal"
+            key={c.slug}
+            aria-label={`Open case file: ${c.headline}`}
+          >
             <p className="exhibit-letter">Exhibit {c.letter}</p>
             <p className="exhibit-client">{c.place?.split(" · ")[0] ?? "Personal Project"}</p>
             <h3 className="exhibit-title">
-              <Link href={`/case-files/${c.slug}`}>{c.headline}</Link>
+              {c.headline}
             </h3>
-            <Link href={`/case-files/${c.slug}`} className="exhibit-hit" aria-label={`Open case file: ${c.headline}`} tabIndex={-1}>
+            <div className="exhibit-hit">
               <CaseArt c={c} image={images[c.slug]} />
-            </Link>
+            </div>
             <div className="exhibit-body">
               <p className="exhibit-desc">{c.desc}</p>
               <div className="tags">
@@ -69,12 +77,12 @@ export default function Works({ images }: { images: Record<string, string> }) {
               </div>
               <div className="exhibit-foot">
                 <span className="exhibit-where">{c.types.join(" · ")}</span>
-                <Link className="exhibit-link" href={`/case-files/${c.slug}`}>
+                <span className="exhibit-link">
                   Open case file <span aria-hidden="true">→</span>
-                </Link>
+                </span>
               </div>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
 

@@ -1,3 +1,5 @@
+import Image from "next/image";
+import portrait from "@/public/images/renz-illustration.jpg";
 import { profile, projects } from "@/app/_lib/portfolio-data";
 import { getDavaoWeather } from "@/app/_lib/weather";
 
@@ -52,7 +54,12 @@ export default async function Front() {
 
         <aside className="hero-right">
           <figure className="illus">
-            <img src="/images/renz-illustration.jpg" alt={`Illustrated portrait of ${profile.fullName} at his desk`} />
+            <Image
+              src={portrait}
+              alt={`Illustrated portrait of ${profile.fullName} at his desk`}
+              sizes="(max-width: 480px) calc(100vw - 32px), 420px"
+              priority
+            />
             <figcaption className="illus-cap">
               <span>{profile.fullName}</span>
               <span>{profile.location.split(",")[0]}</span>
