@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import Intro from "@/components/Intro";
->>>>>>> 71e37e9277966704943729a342b36013b4d9d884
 import Nav from "@/components/Nav";
 import Masthead from "@/components/Masthead";
 import Front from "@/components/Front";
@@ -47,10 +44,7 @@ function Section({ id, kicker, title, sub, page, children }: {
 export default function Home() {
   return (
     <>
-<<<<<<< HEAD
-=======
       <Intro />
->>>>>>> 71e37e9277966704943729a342b36013b4d9d884
       <div className="page">
         <Masthead />
         <Nav />
