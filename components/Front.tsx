@@ -1,14 +1,22 @@
 import Image from "next/image";
+import { Suspense } from "react";
 import portrait from "@/public/images/renz-illustration.jpg";
 import { profile, projects } from "@/app/_lib/portfolio-data";
 import { getDavaoWeather } from "@/app/_lib/weather";
 
-export default async function Front() {
+async function WeatherStat() {
   const weather = await getDavaoWeather();
+  return (
+    <div>
+      <dt>{weather ? `${weather.temp}°C` : "32°C"}</dt>
+      <dd className="label">Davao City · {weather ? weather.label : "Light on bugs"}</dd>
+    </div>
+  );
+}
+
+export default function Front() {
   const stats: [string, string][] = [
     [`${projects.length}`, "Projects"],
-    // live from Open-Meteo; falls back to the fixed 32°C line if the service can't be reached
-    [weather ? `${weather.temp}°C` : "32°C", `Davao City · ${weather ? weather.label : "Light on bugs"}`],
     ["Global", "Available for remote work"],
     ["Open", "Available for new projects"],
   ];
@@ -43,7 +51,16 @@ export default async function Front() {
           </div>
 
           <dl className="hero-stats">
-            {stats.map(([value, caption]) => (
+            {stats.slice(0, 1).map(([value, caption]) => (
+              <div key={value}>
+                <dt>{value}</dt>
+                <dd className="label">{caption}</dd>
+              </div>
+            ))}
+            <Suspense fallback={<div><dt>—</dt><dd className="label">Davao City · Weather loading</dd></div>}>
+              <WeatherStat />
+            </Suspense>
+            {stats.slice(1).map(([value, caption]) => (
               <div key={value}>
                 <dt>{value}</dt>
                 <dd className="label">{caption}</dd>

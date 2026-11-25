@@ -9,15 +9,17 @@ let played = false;
 const PRINT_MS = 1520; // 2 seconds total, including the 480ms exit.
 const EXIT_MS = 480;
 
-export default function Intro() {
+export default function Intro({ loading = false }: { loading?: boolean }) {
   // Include the intro in the server HTML so it covers the portfolio before hydration.
-  const [visible, setVisible] = useState(() => !played);
+  const [visible, setVisible] = useState(() => loading || !played);
   const [leaving, setLeaving] = useState(false);
   const skipButton = useRef<HTMLButtonElement>(null);
   const leave = useRef<() => void>(() => {});
   const skip = useCallback(() => leave.current(), []);
 
   useEffect(() => {
+    // The route fallback stays visible until Next.js streams the page.
+    if (loading) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (played || motion.matches) {
       setVisible(false);
@@ -80,20 +82,20 @@ export default function Intro() {
       motion.removeEventListener("change", onMotionChange);
       restorePage();
     };
-  }, []);
+  }, [loading]);
 
   if (!visible) return null;
 
   return (
-    <div id="portfolio-intro" className={`${styles.press}${leaving ? ` ${styles.leaving}` : ""}`} role="region" aria-label="Portfolio introduction">
+    <div id="portfolio-intro" className={`${styles.press}${leaving ? ` ${styles.leaving}` : ""}`} role="region" aria-label={loading ? "Loading portfolio" : "Portfolio introduction"}>
       <noscript>
         <style>{"#portfolio-intro { display: none !important; }"}</style>
       </noscript>
       <header className={styles.header}>
         <span className={styles.imprint}>An independent portfolio</span>
-        <button ref={skipButton} className={styles.skip} onClick={skip}>
+        {!loading && <button ref={skipButton} className={styles.skip} onClick={skip}>
           Skip intro
-        </button>
+        </button>}
       </header>
 
       <div className={styles.sheet}>
@@ -121,8 +123,9 @@ export default function Intro() {
       <footer className={styles.footer}>
         <p className={styles.status} role="status">
           <img className={styles.statusIcon} src="/cursors/fountain-pen.svg" width="22" height="22" alt="" aria-hidden="true" draggable={false} />
-          {leaving ? "Ready to read" : "Putting ink to paper"}
+          {leaving ? "Ready to read" : loading ? "Loading portfolio" : "Putting ink to paper"}
         </p>
+        <span className={styles.progress} aria-hidden="true"><span /></span>
         <span className={styles.turn}>A few things I’ve made</span>
       </footer>
     </div>

@@ -92,7 +92,12 @@
 .status { display: flex; align-items: center; gap: 8px; margin: 0; }
 .statusIcon { display: block; flex-shrink: 0; }
 .turn { color: var(--ink-2); }
+.progress { width: clamp(60px, 16vw, 180px); height: 3px; overflow: hidden; background: var(--paper-2); }
+.progress > span { display: block; width: 40%; height: 100%; background: var(--ink); animation: loading-ink 1.4s ease-in-out infinite alternate; }
+.leaving .progress > span { animation: none; width: 100%; }
 .leaving { pointer-events: none; animation: sheet-exit 480ms var(--press-ease) forwards; }
+
+@keyframes loading-ink { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
 
 @keyframes ink-pass {
   from { clip-path: inset(0 100% 0 0); }
@@ -115,6 +120,8 @@
 @media (max-width: 600px) {
   .press { gap: 24px; }
   .header, .footer { font-size: 11px; }
+  .footer { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; }
+  .progress { grid-column: 1 / -1; grid-row: 2; width: 100%; }
   .edition { font-size: 9px; letter-spacing: 0.04em; gap: 10px; }
   .title { font-size: clamp(80px, 24vw, 144px); }
   .nameplate { padding-top: 24px; padding-bottom: 18px; }
@@ -134,4 +141,8 @@
   .edition { padding-bottom: 6px; }
   .byline { padding-top: 6px; }
 }
-@media print, (prefers-reduced-motion: reduce) { .press { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .progress > span { animation: none; width: 100%; }
+  .leaving { animation: none; }
+}
+@media print { .press { display: none; } }
