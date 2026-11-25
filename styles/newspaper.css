@@ -94,7 +94,7 @@ section[id] { scroll-margin-top: calc(var(--nav-height) + 16px); }
 .exhibit-title { font-size: 24px; font-weight: 700; line-height: 1.2; letter-spacing: -0.04em; margin-bottom: 18px; }
 .exhibit-hit { padding-top: 0; }
 .polaroid-shot { padding: 5px; border: 2px solid var(--ink); box-shadow: none; background: var(--paper); }
-.polaroid-shot .project-print { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; background: var(--paper-2); filter: grayscale(1); transition: filter 220ms ease; }
+.polaroid-shot .project-print { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; background: var(--paper-2); filter: grayscale(1); transition: filter 460ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1); }
 .exhibit:hover .project-print, .exhibit:focus-within .project-print { filter: grayscale(0); }
 .polaroid-shot::after { display: none; }
 .polaroid-blank { background-image: none; background-color: var(--paper-2); }
@@ -367,10 +367,54 @@ section[id] { scroll-margin-top: calc(var(--nav-height) + 16px); }
 .t-more { padding-inline: 8px; }
 .nav-links a:hover { background: var(--paper-2); }
 .works-grid .exhibit:hover, .works-grid .exhibit:focus-within { background: var(--paper-2); }
-.exhibit:hover .exhibit-title a, .exhibit:focus-within .exhibit-title a,
 .cert:hover b, .cert:focus-visible b { text-decoration: underline; text-underline-offset: 4px; }
 .cert:hover, .cert:focus-visible { background: var(--paper-2); }
 .cbox-mail:hover, .cbox-mail:focus-visible { background: var(--paper-2); text-decoration: underline; text-underline-offset: 4px; }
 .case-image-trigger:hover { background: transparent; text-decoration: none; }
 .case-image-trigger:hover .case-image-hint, .case-image-trigger:focus-visible .case-image-hint { background: var(--ink); color: var(--paper); }
 .rs-root, .rs-page, .case-image-viewer { background-color: var(--paper); background-image: var(--paper-grain); }
+
+/* A printed article responds as one piece, without moving its neighbours. */
+.works-grid .exhibit {
+  transition-property: opacity, transform, background-color;
+  transition-duration: 680ms, 820ms, 360ms;
+  transition-timing-function: ease, cubic-bezier(0.16, 1, 0.3, 1), ease;
+}
+.works-grid .polaroid { transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1); }
+.works-grid .polaroid-shot { overflow: hidden; }
+.works-grid .exhibit-title a {
+  position: relative;
+  display: inline-block;
+  background: transparent;
+  text-decoration: none;
+}
+.works-grid .exhibit-title a::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -4px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.works-grid .exhibit:focus-within .exhibit-title a::after { transform: scaleX(1); }
+@media (hover: hover) and (pointer: fine) {
+  .works-grid .exhibit:hover .exhibit-title a::after { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .works-grid .exhibit:focus-within .polaroid { transform: translateY(-4px); }
+  .works-grid .exhibit:focus-within .project-print { transform: scale(1.02); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .works-grid .exhibit:hover .polaroid { transform: translateY(-4px); }
+  .works-grid .exhibit:hover .project-print { transform: scale(1.02); }
+}
+@media (hover: none) {
+  .works-grid .project-print { filter: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .works-grid .exhibit, .works-grid .polaroid, .works-grid .project-print,
+  .works-grid .exhibit-title a::after, .works-grid .exhibit-link span[aria-hidden] { transition: none; }
+  .works-grid .exhibit-link span[aria-hidden] { transform: none; }
+}
