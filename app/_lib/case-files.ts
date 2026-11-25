@@ -27,7 +27,9 @@ export const exhibitLetter = (i: number) =>
  * Per-project deployment status, keyed by slug. Anything listed here wins over the defaults below.
  * e.g.  "crisismesh": "Live on Vercel",
  */
-export const DEPLOY_OVERRIDES: Record<string, string> = {};
+export const DEPLOY_OVERRIDES: Record<string, string> = {
+  onus: "Local development",
+};
 
 const defaultDeploy = (types: string[]) =>
   types.includes("Docker")

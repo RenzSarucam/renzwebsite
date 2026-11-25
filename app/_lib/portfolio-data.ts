@@ -259,6 +259,15 @@ export const workExperiences: WorkExperience[] = [
 
 export const projects: Project[] = [
   {
+    title: "ONUS (Security Assessment Workspace)",
+    desc: "A customized interface for ONUS, an open-source vulnerability assessment and penetration testing platform originally created by maverickaayush. My contribution focuses on modifying the design of the existing application, including a dark security workspace, cyan accents, sidebar navigation, and a clearer assessment form. The interface brings target URL entry, assessment options, and authorization confirmation into one organized workflow, with supporting text that explains the scope of local testing. The local setup shown runs HTTP security-header checks and identifies skipped modules in the scan timeline. This project highlights my work adapting an existing open-source interface while crediting the original platform and its underlying security functionality.",
+    tags: ["Open Source", "UI/UX", "Dashboard Design", "Cybersecurity", "Security Assessment"],
+    type: "UI/UX",
+    status: "Customized",
+    link: "https://github.com/maverickaayush/ONUS",
+    place: "Personal Project",
+  },
+  {
     title: "Rentora (Boarding House Management)",
     desc: "A boarding house management platform for Philippine landlords, with a desktop admin interface and an installable mobile app for boarders. As Fullstack Developer, built room and bed management, boarder records, monthly billing, payment-proof verification, receipts, maintenance requests, and announcements. Developed the frontend and backend with Next.js, React, TypeScript, Tailwind CSS, and Supabase, using PostgreSQL, role-based access, and row-level security to protect each boarding house's data.",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "PWA"],
