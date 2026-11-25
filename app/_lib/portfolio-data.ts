@@ -264,7 +264,7 @@ export const projects: Project[] = [
     tags: ["Docker", "Open Source", "Web Development", "Bug Fixes", "UI/UX", "Cybersecurity", "Dashboard Design", "Security Assessment"],
     type: ["Docker", "Web Development", "UI/UX"],
     status: "Customized",
-    link: "https://github.com/maverickaayush/ONUS",
+    link: "https://github.com/RenzSarucam/ONUS",
     place: "Personal Project",
   },
   {
