@@ -260,9 +260,9 @@ export const workExperiences: WorkExperience[] = [
 export const projects: Project[] = [
   {
     title: "ONUS (Security Assessment Workspace)",
-    desc: "A customized interface for ONUS, an open-source vulnerability assessment and penetration testing platform originally created by maverickaayush. My contribution focuses on modifying the design of the existing application, including a dark security workspace, cyan accents, sidebar navigation, and a clearer assessment form. The interface brings target URL entry, assessment options, and authorization confirmation into one organized workflow, with supporting text that explains the scope of local testing. The local setup shown runs HTTP security-header checks and identifies skipped modules in the scan timeline. This project highlights my work adapting an existing open-source interface while crediting the original platform and its underlying security functionality.",
-    tags: ["Open Source", "UI/UX", "Dashboard Design", "Cybersecurity", "Security Assessment"],
-    type: "UI/UX",
+    desc: "A customized version of ONUS, an open-source vulnerability assessment and penetration testing platform originally created by maverickaayush. My contributions include designing and coding a new interface, modifying the existing application code, and fixing issues encountered during customization. I implemented a dark security workspace with cyan accents, sidebar navigation, and a redesigned assessment form that brings target URL entry, assessment options, and authorization confirmation into one organized workflow. Supporting text explains the scope of local testing, where HTTP security-header checks run and skipped modules are identified in the scan timeline. This project combines hands-on web development, debugging, and UI/UX design, building on the original open-source platform while crediting its author and underlying security functionality.",
+    tags: ["Open Source", "Web Development", "Bug Fixes", "UI/UX", "Cybersecurity", "Dashboard Design", "Security Assessment"],
+    type: ["Web Development", "UI/UX"],
     status: "Customized",
     link: "https://github.com/maverickaayush/ONUS",
     place: "Personal Project",
