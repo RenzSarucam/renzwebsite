@@ -1052,12 +1052,12 @@ html { overflow-x: visible; }
 }
 
 /* Ink-and-paper cursors use native hotspots and stay responsive without JavaScript. */
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) and (any-pointer: fine) {
   html, html body, html body * {
-    cursor: url("/cursors/editorial-arrow.svg") 4 3, auto !important;
+    cursor: url("/cursors/editorial-quill.svg") 4 32, url("/cursors/editorial-quill.png") 4 32, auto !important;
   }
   html body :where(a[href], a[href] *, button:not(:disabled), button:not(:disabled) *, summary, summary *, [role="button"], [role="button"] *) {
-    cursor: url("/cursors/editorial-nib.svg") 6 3, pointer !important;
+    cursor: url("/cursors/editorial-nib.svg") 6 3, url("/cursors/editorial-nib.png") 6 3, pointer !important;
   }
   html body :where(input, select, option) {
     cursor: auto !important;
