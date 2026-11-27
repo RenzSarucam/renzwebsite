@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <title>Engraved fountain pen</title>
+  <g transform="translate(6 58) rotate(39)">
+    <!-- The nib tip is the native cursor hotspot. -->
+    <g stroke="#fff" stroke-width="2.7" stroke-linejoin="round">
+      <path d="M0 0-4-13-3-19h6l1 6Z" fill="#eee"/>
+      <path d="M-3-19-4-25-4-54Q0-61 4-54L4-25 3-19Z" fill="#161616"/>
+    </g>
+    <g stroke="#171717" stroke-width=".8" stroke-linejoin="round">
+      <path d="M0 0-4-13-3-19h6l1 6Z" fill="#efefeb"/>
+      <path d="M0 0v-13M-3-14l3-3 3 3M-3-11l2 2M3-11 1-9" fill="none"/>
+      <circle cy="-13" r="1" fill="#171717"/>
+      <path d="M-3-19-3.5-22-3-28h6l.5 6L3-19Z" fill="#aaa"/>
+      <path d="M-4-28v-26Q0-61 4-54v26Z" fill="#202020"/>
+      <path d="M-2.5-29v-24Q0-57 2.5-53v24" fill="none" stroke="#c9c9c4"/>
+      <path d="M-4-28h8v2h-8ZM-3.5-23h7v2h-7Z" fill="#f4f4ed"/>
+      <path d="M-4-52h8v2h-8Z" fill="#d9d9d3"/>
+    </g>
+    <g fill="none" stroke="#e6e6df" stroke-width=".55" stroke-linecap="round">
+      <path d="M0-31q-4-3 0-5 4-2 0-5-4-3 0-6 4-2 0-3M0-31q4-3 0-5-4-2 0-5 4-3 0-6-4-2 0-3"/>
+      <path d="M-1-54q1-2 2 0M1-48v15q2 2 2-1v-14M-2-21h4M-2-24h4"/>
+    </g>
+  </g>
+</svg>

@@ -109,7 +109,7 @@ export default function CaseFilePage({ params }: Props) {
               </a>
             ) : (
               <p className="form-note">
-                This project is used internally, so I can’t share its source code or live system. Contact me to learn more:{" "}
+                {c.sharingNote ?? "This project is used internally, so I can’t share its source code or live system. Contact me to learn more:"}{" "}
                 <a href={`mailto:${contactEmail}?subject=${encodeURIComponent(`About ${c.headline}`)}`}>{contactEmail}</a>
               </p>
             )}

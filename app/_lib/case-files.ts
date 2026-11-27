@@ -28,6 +28,7 @@ export const exhibitLetter = (i: number) =>
  * e.g.  "crisismesh": "Live on Vercel",
  */
 export const DEPLOY_OVERRIDES: Record<string, string> = {
+  municipality: "Local demonstration only · Not publicly deployed",
   onus: "Local development",
 };
 

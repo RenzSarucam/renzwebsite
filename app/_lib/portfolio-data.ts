@@ -5,6 +5,7 @@ export type Project = {
   type: string | string[];
   status: string;
   link: string;
+  sharingNote?: string;
   place?: string;
 };
 
@@ -258,6 +259,16 @@ export const workExperiences: WorkExperience[] = [
 ];
 
 export const projects: Project[] = [
+  {
+    title: "Municipality (Carmen Digital Government Website Proposal)",
+    desc: "An unofficial digital government website proposal for the Municipality of Carmen, independently developed by Renz Carl Jansen Sarucam for municipal review. Built a public website with municipality information, officials and department directories, announcements, programs, events, projects, tourism, service guides, global search, and a community calendar. Developed a role-based CMS with editorial review and publishing, revision history, audit logs, demonstration feedback tracking, and quarantined uploads. Includes a local SQLite demonstration and a Supabase Auth, PostgreSQL, and storage adapter with row-level security. This demonstration uses synthetic content and licensed illustrative photographs that are not verified Carmen destinations. It has no municipal endorsement and does not process payments, issue certificates, or support actual resident transactions. Official use and production release require written municipal approval and operational verification.",
+    tags: ["Supabase", "PostgreSQL", "SQLite", "CMS", "Role-Based Access", "Row-Level Security"],
+    type: "Full Stack",
+    status: "Unofficial demonstration",
+    link: "",
+    sharingNote: "Source code is private. This unofficial proposal is presented for municipal review; no public deployment has been authorized. Contact me to discuss the project:",
+    place: "Independent Proposal",
+  },
   {
     title: "ONUS (Security Assessment Workspace)",
     desc: "A customized version of ONUS, an open-source vulnerability assessment and penetration testing platform originally created by maverickaayush. My contributions include designing and coding a new interface, modifying the existing application code, and fixing issues encountered during customization. I implemented a dark security workspace with cyan accents, sidebar navigation, and a redesigned assessment form that brings target URL entry, assessment options, and authorization confirmation into one organized workflow. Supporting text explains the scope of local testing, where HTTP security-header checks run and skipped modules are identified in the scan timeline. This project combines hands-on web development, debugging, and UI/UX design, building on the original open-source platform while crediting its author and underlying security functionality.",
